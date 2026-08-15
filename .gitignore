@@ -1,0 +1,72 @@
+# Dependencies and package-manager state
+node_modules/
+.pnpm-store/
+
+# Generated builds, reports, and caches
+/dist/
+/build/
+/out/
+/coverage/
+.nyc_output/
+/.vite/
+.cache/
+/playwright-report/
+/test-results/
+/blob-report/
+*.tsbuildinfo
+.eslintcache
+
+# Local scratch and intermediate research/rendering outputs
+/.tmp/
+/tmp/
+/temp/
+/exports/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Logs and transient files
+logs/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.tmp
+*.temp
+*.bak
+*.orig
+*.swp
+*.swo
+*~
+
+# Local environment and credentials (templates remain allowed)
+.env
+.env.*
+!.env.example
+!.env.*.example
+.credentials/
+.secrets/
+credentials/
+secrets/
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+credentials*.json
+service-account*.json
+
+# IDE and operating-system metadata
+.idea/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.DS_Store
+Thumbs.db
+Desktop.ini

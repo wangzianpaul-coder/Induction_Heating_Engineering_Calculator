@@ -1,0 +1,410 @@
+
+
+===== PDF PAGE 1 =====
+
+IEEE TRANSACTIONS ON MAGNETICS. VOL. 25, NO. 3. MAY 1989 2745 
+The Mathematical Model of Induction Heating of 
+n 
+Ferromagnetic Pipes 
+TADEUSZ P. SKOCZKOWSKI AND MARIAN F. KALUS 
+Abstract-In this paper a mathematical model of coupled heat trans- 
+fer and electromagnetic phenomena in induction heaters of ferromag- 
+netic, steel pipes has been described. The model takes into account the 
+nonlinearity of all coefficients, the characteristics of the supply source, 
+and the thermal influence of the lining. A method of partial decoupling 
+of fields has been proposed. Experimental verification of the computed 
+results has also been presented. 
+I. INTRODUCTION 
+UR TASK is to build a mathematical model of phys- 
+0 ical phenomena which occur during a process of in- 
+duction heating of ferromagnetic pipes. The phenomena 
+are of electromagnetic, thermal, metallurgical, and 
+strength types. The most characteristic feature of induc- 
+tion heating seems to be the fact that all of them are closely 
+coupled. Because of the complexity, only the two domi- 
+nating fields-eletromagnetic and thermal-are to be con- 
+sidered in this model. There are some factors which make 
+the induction heaters difficult to design. The main factors 
+are: the presence of several coupled physical fields and 
+the need to describe them with partial differential equa- 
+tions, nonlinearity of all coefficients, complex heat ex- 
+change among all parts of the heater, great variety of geo- 
+metric configurations and shapes of heated bodies, and a 
+large number of possible manufacturing processes. 
+11. MATHEMATICAL DESCRIPTION 
+The coupled electromagnetic and temperature fields in 
+an induction heater may be expressed by a set of differ- 
+ential equations-the Maxwell equations for the electro- 
+magnetic field and the Fourier-Kirchhoff equation for the 
+temperature fields [3]. 
+We assume that the pipe and the coil are both infinite 
+and axisymmetrical, the bodies are idealized homoge- 
+neous and isotropic, the presence of coil windings is ig- 
+nored when the heat transfer phenomena are considered, 
+the heat generated due to hysteresis loop is neglected in 
+comparison with that due to eddy currents. 
+When all the assumptions have been accepted, the two 
+fields may be described in cylindrical coordinates in the 
+Manuscript received September 30, 1987; revised June 25. 1988. This 
+paper was presented at the International Symposium on Electromagnetic 
+Fields in Electrical Engineering, Pavia, Italy, September 23-25, 1987. 
+The authors are with the Electrical Engineering Department, Silesian 
+Technical University, Gliwice, Poland. 
+IEEE Log Number 8826000. 
+= 0 (3) 
+where H is the field strength, Tis temperature, t is time, 
+p is magnetic permeability, p is electrical resistivity, y is 
+mass density, c is the specific heat, A is thermal conduc- 
+tivity, r is the variable radius, and subscript L refers to 
+the lining, subscript 2 to the heated body. 
+The initial and the boundary conditions which mainly 
+determine the accuracy of the results and the running time 
+can be formulated as follows: 
+For the electromagnetic field: 
+the initial conduction 
+H(r, 0) = Hp (4) 
+the boundary condition at the external surface of the 
+When at the external surface magnetic flux density is 
+forced, the electrical circuit consisting of a source and a 
+heater can be described by an expression of the following 
+type: 
+pipe. 
+where U, is the voltage of the source, i, is the current of 
+the coil, R is the total resistance of the heater, L is the 
+inductance of the coil and the air gap, and \k2 is the flux 
+in the pipe. 
+Applying the Ampere and Faraday laws one can write 
+001 8-9464/89/0500-2745$01 .OO O 1989 IEEE 
+
+===== PDF PAGE 2 =====
+
+2146 IEEE TRANSACTIONS ON MAGNETICS, VOL. 25, NO. 3. MAY 1989 
+where w is the number of windings of the coil, 1, is the 
+length of the coil, and subscript e refers to the external 
+surface. 
+Since the resistance and the inductance of the heater are 
+not known at the begining of the computations, they must 
+be estimated in a short iterative process applying the 
+equations from the classical induction heating theory to 
+obtain the initial values. 
+When at the external surface the field strength is forced, 
+the condition can be simply written in the following form: 
+il(t) * w 
+4 
+H,(t) = ~ 
+(7) 
+the boundary condition at the internal surface of the pipe: 
+where subscript i refers to the internal surface. 
+assumption of axial symmetry one can write 
+If we consider the case of a solid cylinder, from the 
+111. CHANGE OF COEFFICIENTS DURING THE HEATING 
+CYCLE 
+All the preceding equations are strongly nonlinear due 
+to the dependence of all their coefficients on the field 
+quantities: namely, on the field strength and temperature. 
+They were given in an analytical form and tabulated at the 
+first entry into the program. 
+For steel the thermal coefficients take the form 
+- A2 
+eh( X3 * (T - 975)/1000)' 
+E = (1.5, . * * , 2.5) percent (16) 
++ c2 * exp (e3 * (T - 768l), 
+E = (2.2, . * , 4.9) percent (17) 
+- = 0, aH 
+ar for r = 0. 
+For the temperature field in 
+the initial condition 
+Tz(r, 0) 
+the boundary conditions 
+= T, 
+E = (0.6, * , 2.0) percent (18) 
+(19) 
++ 273f - (TL, + 273f) 
+where E is the maximum error of approximation within the 
+( 1) temperature range from 0°C to 1200°C. 
+For chamotte lining, the thermal coefficients take the - 
+following form: 
+(20) 
+(21 1 
+(22) 
+W 
+m "C 
+(12) a T2 
+at X,(T) *- =  CY^ * (T, - T,) 
+XL(T) = (0.697 + O.OOO64 * T) * 1.1163 - 
+where E is thermal emissivity, a is the convective heat 
+ature. kg "C 
+transfer coefficient, T, is the appropriate ambient temper- J cL(T) = (880 + 0.23 * T) * 4186.8 - 
+For the temperature field in the lining: 
+kg 
+the initial condition m3 
+YL = 1850 -. 
+TL(T, 0) = TLp (13) The magnetic permeability has been found to be 
+the boundary conditions 
+TLy = Too 
+where where To, is the average temperature of the coil cooling 
+water and is assumed to be 50°C. ( /TI6 m 
+1- 
+a TL 
+at AL(T) * - = q(T) ((Te + 273f - (TL, + 273)4) 
++ (YL * (re - TL!). (15) where Tc is the temperature of the Curie transition. 
+
+===== PDF PAGE 3 =====
+
+SKOCZKOWSKI AND KALUS: INDUCTION HEATING OF FERROMAGNETIC PIPES 2141 
+Some reasonable doubts may arise when magnetic 
+permeability is to be calculated. According to [3] for such 
+strong fields as are applied in induction heating (H > lo4 
+A/m) we can make use of an initial magnetization curve 
+which is an average for all kinds of steels containing 0.22, 
+... , 0.99 percent of carbon. The errors which may ap- 
+pear from taking into account an average curve instead of 
+the proper one for a certain kind of steel are less than 2.5 
+percent. 
+Electrical resistivity as a function of temperature has 
+been described in this simple form 
+where B is the temperature coefficient of resistance. 
+The thermal coefficients a,, a2, aL which are functions 
+of many factors, i.e., temperature, geometric shapes, and 
+state of surfaces, have been approximated. 
+IV. NUMERICAL METHODS 
+Almost all analyses based on widely used methods, i.e., 
+FEM, integral equations, provide the engineer with a pre- 
+cise map of field quantities [4], [5]. An experienced man 
+finds the information useful in correcting the design of an 
+electromagnetic device to make its operation better and 
+safer. But when one faces the problem of designing the 
+supply source for that device, one requires the global 
+quantities of the load. A further step is to be added-from 
+the field distribution the global quantities must be de- 
+rived. The easier and cheaper it is done the better. The 
+problem becomes extremely severe when the load changes 
+its properties during the work-induction heaters seem to 
+be the best examples of that. In such cases, the finite dif- 
+ference method is likely to be suitable due to a relatively 
+small number of points at which the field is calculated. 
+As the finite difference method has been chosen, the 
+solution region in the pipe was taken to be either the entire 
+pipe wall or a surface layer having a thickness of 4 * A,, 
+where Ae accounted for magnetic permeability obtained 
+from magnetization characteristic at the surface field 
+strength He. The introduction of the finite approximation 
+involves a leading error of O(At, Ar)2. 
+Only (1 1) and (15) which described heat exchange be- 
+tween the body and the lining were treated as nonlinear; 
+for the temperature appeared in them in the fourth power 
+and even small errors in temperature determination might 
+have caused great errors in the heat flow calculations. 
+The program was run with 63 and 31 grid points and 
+for the latter grid the computed temperature error was 2.3 
+percent as compared to the results obtained in the first 
+case with a smaller Ar. 
+V. AVERAGING METHOD 
+The comparison of the equivalent time constants of 
+thermal and electromagnetic processes shows that these 
+differ considerably. Thus the solving of equations of both 
+fields with the same time step seems very ineffective. To 
+avoid these calculations of the thermal process, charac- 
+terized by great inertia, a method from nonlinear mechan- 
+ics has been applied; namely, the “averaging method” 
+[6]. The main idea of this method is to split two motions 
+into “a quick one” (in our case, electromagnetic) and “a 
+slow one” (thermal). It is assumed that the quick field is 
+periodic between two time points at which the thermal 
+field is calculated. In (2) the average value of the internal 
+heat sources is placed instead of the instantaneous value 
+where w,, is the average value of internal heat sources and 
+Ha” is the average value of field strength found to be 
+n = 0, 1, 2 * * * . (27) 
+Even though the method presented above reduced the 
+calculation time, the time remained relatively long. Dur- 
+ing the numerical experiments, it was found that there was 
+no need to compute the magnetic field distribution in the 
+pipe for every period of the magnetic field. No significant 
+changes in temperature distribution have been observed 
+when the new average value of internal heat sources was 
+used in calculations when the temperature of the external 
+surface of the heated body was increased by 5°C. This 
+means that during the whole heating cycle up to lOOO”C, 
+the heat sources are to be changed 200 times instead of 3 
+times as it happens in the case of classical heat problems 
+commonly applied to induction heating. Only when the 
+temperature reaches the Curie transition, when the mag- 
+netic permeability begins to slope, due to high tempera- 
+ture, internal heat sources have been calculated more often 
+in order not to overlook the Curie transition. Later, we 
+again return to the previous algorithm of “sampling” the 
+temperature field. 
+The proposed method of decoupling the fields is an ap- 
+proximate one and should be applied very cautiously de- 
+pending on the thermal inertia of the system, but for en- 
+gineering calculations it seems to be a very useful one. 
+VI. INFLUENCE OF POWER SUPPLY SOURCE 
+The character of the supply source which feeds any 
+electromagnetic device, and the properties of its control 
+system exert great influence on the heating process. This 
+important feature is not usually taken into account when 
+one sets up a mathematical model of any process. Let us 
+discuss the constraints we face in induction heating. 
+When the heater is fed from an ac machine medium- 
+frequency generator, the frequency of the supply voltage 
+remains unchanged during the whole cycle of heating. But 
+
+===== PDF PAGE 4 =====
+
+2748 IEEE TRANSACTIONS ON MAGNETICS. VOL. 2.5, NO. 3. MAY 
+Ll 
+Fig. I. Cross section of the considered induction heating system 
+TABLE I 
+KEY VALUES OF THE HEATER 
+Supply voltage 
+Maximum ac output voltage 
+Maximum output current of 
+Constant current of the 
+Average frequency 
+Thyristor recovery time 
+Length of coil 
+Number of windings 
+Parallel capacitor 
+Thermal constants: 
+of the converter 
+dc link 
+inductor 
+3 x 380 V/50 Hz 
+600 V 
+250 A 
+426 A 
+2.2 kHz 
+1.0 m 
+30 x $20 Cu 
+t2 = 0.85, E,. = 0.8, 01, = 7 W/m’K, 
+01~ = 13 W/m2K, 
+yZ(T); X2( T); c2( T) same as for 
+80 ps 
+120 pF 
+medium-carbon steel. 
+when we consider a thyristor as a parallel converter, as it 
+has happened in our case, the output frequency can vary 
+in a wide range-that change cannot be neglected at any 
+rate. The parallel converter must work at a frequency 
+which is a little higher than the frequency of self-oscilla- 
+tions of its resonant circuit. Also, it is varying when the 
+heating cycle progresses due to the change in the induc- 
+tance of the load when the capacitance remains un- 
+changed. 
+The program contained a special loop that adjusted the 
+frequency used in computations to the resonant frequency 
+in such a way that the thyristor recovery time was at all 
+times equal to that required. 
+It must also be determined which electrical quantity is 
+controlled and stabilized by the source control system. 
+Three main types are possible-when the supply power, 
+the voltage across the inductor, or its current are fixed. 
+We had the latter types, thus the boundary condition (7) 
+was applied. 
+VII. COMPUTATION RESULTS AND EXPERIMENTAL 
+VERIFICATION 
+In order to check the accuracy of the model outlined in 
+this paper laboratory experiments have been carried out. 
+Fig. 2, Waveforms of basic electromagnetic quantities. Ferromagnetic 
+state. 
+An induction heater of the rate of 100 kW and output fre- 
+quency of up to 3000 Hz was built (Fig. 1, Table I). In 
+Figs. 2-4, the computed waveforms of the basic electro- 
+magnetic quantities are shown. In Fig. 2, the whole pipe 
+possesses the ferromagnetic properties: in Fig. 3, the ex- 
+ternal layer of the pipe has already lost the ferromagnetic 
+properties while the inner layer is still ferromagnetic. In 
+Fig. 4, the whole material is nonmagnetic. In the first two 
+stages the waveforms are highly distorted due to ferro- 
+magnetic properties. 
+A comparison between the results presented above and 
+the ones obtained from a simple harmonic model with a 
+
+===== PDF PAGE 5 =====
+
+SKOCZKOWSKI AND KALUS: INDUCTION HEATING OF FERROMAGNETIC PIPES 
+-5tOT i 
+2749 
+-0.71 
+-02 
+(C) 
+Fig. 4. Waveforms of basic electromagnetic quantities. Nonmagnetic state. 
+TIME/PERIOD 
+(C) 
+Fig. 3. Waveforms of basic electromagnetic quantities. Transient ferro- 
+magnetic state. 
+magnetic permeability as a function of H, when the tem- 
+perature distribution in the pipe was the same for both 
+models, has been made [3], [7]. The differences between 
+the two models have never been larger than 7 percent, 
+which indicates that the influence of the distortions of 
+electromagnetic quantities is in some way negligible when 
+powers due to eddy currents are estimated. 
+The best way to check the accuracy of the model was 
+to compare the computed and the measured temperatures 
+of the pipe and the resistance (power) of the heater. One 
+comparison is shown in Figs. 5 and 6. A close agreement 
+is apparent and the obtained accuracy was better than 10 
+percent for temperature and 12 percent for resistance. 
+UME ,rnrnl 
+Fig. 5. Comparison between computed and measured temperature of the 
+pipe. 
+> lil .z5*- \ 
+%L - 
+6Jt ~~ -~ 
+T"+ Pn 
+Fig 6 Comparlson between computed and measured resistance of the 
+heater 
+
+===== PDF PAGE 6 =====
+
+2750 IEEE TRANSACTIONS ON MAGNETICS, VOL. 25. NO. 3. MAY 1989 
+VIII. CONCLUSION 
+The unique attraction of the presented model is its 
+mathematical simplicity, precisely written boundary con- 
+ditions, taking into account the character of the supply 
+source and the thermal influence of the lining. These fea- 
+tures result in the utmost economy of computer storage 
+and accuracy of computations. The proposed method of 
+decoupling the fields has improved the economy of com- 
+putations causing an insignificant decrease in accuracy, 
+acceptable in most engineering problems, both in the field 
+of electrical and process engineering. 
+So far, this model has been used by us in the process 
+of time-optimal control of induction heating of steel pipes 
+when a microprocessor system was applied, as a main 
+controller. 
+REFERENCES 
+J. D. Lavers, “Numerical solution methods for electroheat problems,” 
+IEEE Trans. Magn., vol. MAG-19, pp. 2566-2572, 1983. 
+W. S. Niemkov and W. B. Demidovic, “Effective algorithms of nu- 
+merical calculations of induction heating equipment,” Electromech.. 
+no. 11, 1984 (in Russian). 
+T. Skoczkowski, “The analysis of electromagnetic and thermal phe- 
+nomena in induction heaters of rotational bodies,” Ph.D. dissertation, 
+Silesian Technical University, Gliwice, Poland, 1985. 
+[4] W. R. Hodgins and J. F. Waddington, “The solution of 3-D induction 
+heating problems using an integral equation method,” IEEE Trans. 
+Magn., vol. MAG-18, pp. 476-480, 1982. 
+[SI P. Masse, B. Morel, and Th. Breville, “A finite element prediction 
+correction scheme for magneto-thermal coupled problem during Curie 
+transition,” IEEE Trans. Magn., vol. MAG-21, pp. 1871-1873, 1985. 
+[6] J. A. Mitropolskij, Averaging Method in Nonlinear Mechanics. Kiev, 
+USSR: Naukova Dumka, 1971 (in Russian). 
+[7] M. S. El-Markaby, T. H. Fawzi, and M. T. Ahmed, “Approximate 
+treatment of nonlinear eddy current problems,” IEEE Trans. Mugn., 
+vol. MAG-18, pp. 1737-1739, 1982. 
+Tadeusz P. Skoczkowski received the M.S. and Ph.D. degrees in 1977 
+and 1985, respectively, both in electrical engineering, from Silesian Tech- 
+nical University, Gliwice, Poland. 
+Since 1977 he has been with the Department of Electrical Engineering 
+of that university as a lecturer. His main activities are in the fields of elec- 
+troheat theory, mathematical modeling of electroheat devices, and power 
+electronics. 
+Marian F. Kalus received the M.S. and Ph.D. degrees in 1976 and 1986, 
+respectively, both in electrical engineering, from Silesian Technical Uni- 
+versity, Gliwice, Poland. 
+He is involved in industrial work in the field of power electronics and 
+control of induction heaters. His current research interests include micro- 
+processor applications and computer control of electroheat devices. 

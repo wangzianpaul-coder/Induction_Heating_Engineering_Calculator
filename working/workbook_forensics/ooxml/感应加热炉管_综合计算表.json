@@ -1,0 +1,156 @@
+{
+  "path": "C:\\Users\\王小明\\OneDrive - UNSW\\桌面\\职称论文\\电磁感应项目\\感应加热炉管_综合计算表.xlsx",
+  "bytes": 51894,
+  "mtime": 1774942213.0,
+  "sha256": "67183210A8A5CA1242D9C8278867EA1A4C52C0AC8E9A7EA6B432582512ED16FF",
+  "parts": [
+    {
+      "name": "docProps/app.xml",
+      "size": 205,
+      "compressed": 149
+    },
+    {
+      "name": "docProps/core.xml",
+      "size": 555,
+      "compressed": 239
+    },
+    {
+      "name": "xl/theme/theme1.xml",
+      "size": 10140,
+      "compressed": 1552
+    },
+    {
+      "name": "xl/worksheets/sheet1.xml",
+      "size": 12479,
+      "compressed": 2586
+    },
+    {
+      "name": "xl/worksheets/sheet2.xml",
+      "size": 327987,
+      "compressed": 39797
+    },
+    {
+      "name": "xl/worksheets/sheet3.xml",
+      "size": 5354,
+      "compressed": 1201
+    },
+    {
+      "name": "xl/worksheets/sheet4.xml",
+      "size": 5506,
+      "compressed": 1348
+    },
+    {
+      "name": "xl/worksheets/sheet5.xml",
+      "size": 5814,
+      "compressed": 1495
+    },
+    {
+      "name": "xl/styles.xml",
+      "size": 5749,
+      "compressed": 864
+    },
+    {
+      "name": "_rels/.rels",
+      "size": 531,
+      "compressed": 192
+    },
+    {
+      "name": "xl/workbook.xml",
+      "size": 1173,
+      "compressed": 451
+    },
+    {
+      "name": "xl/_rels/workbook.xml.rels",
+      "size": 1084,
+      "compressed": 199
+    },
+    {
+      "name": "[Content_Types].xml",
+      "size": 1519,
+      "compressed": 299
+    }
+  ],
+  "workbook": {
+    "calcPr": {
+      "calcId": "124519",
+      "calcMode": "auto",
+      "fullCalcOnLoad": "1",
+      "forceFullCalc": "1"
+    },
+    "workbookPr": {},
+    "defined_names": [],
+    "sheets": [
+      {
+        "name": "主页",
+        "sheetId": "1",
+        "state": "visible",
+        "relationship_id": "rId1",
+        "part": "//xl/worksheets/sheet1.xml"
+      },
+      {
+        "name": "Nagaoka系数",
+        "sheetId": "2",
+        "state": "visible",
+        "relationship_id": "rId2",
+        "part": "//xl/worksheets/sheet2.xml"
+      },
+      {
+        "name": "Wheeler公式",
+        "sheetId": "3",
+        "state": "visible",
+        "relationship_id": "rId3",
+        "part": "//xl/worksheets/sheet3.xml"
+      },
+      {
+        "name": "保温层厚度",
+        "sheetId": "4",
+        "state": "visible",
+        "relationship_id": "rId4",
+        "part": "//xl/worksheets/sheet4.xml"
+      },
+      {
+        "name": "冷却水流量",
+        "sheetId": "5",
+        "state": "visible",
+        "relationship_id": "rId5",
+        "part": "//xl/worksheets/sheet5.xml"
+      }
+    ],
+    "external_relationships": []
+  },
+  "sheets": [
+    {
+      "name": "主页",
+      "part": "//xl/worksheets/sheet1.xml",
+      "error": "missing XML"
+    },
+    {
+      "name": "Nagaoka系数",
+      "part": "//xl/worksheets/sheet2.xml",
+      "error": "missing XML"
+    },
+    {
+      "name": "Wheeler公式",
+      "part": "//xl/worksheets/sheet3.xml",
+      "error": "missing XML"
+    },
+    {
+      "name": "保温层厚度",
+      "part": "//xl/worksheets/sheet4.xml",
+      "error": "missing XML"
+    },
+    {
+      "name": "冷却水流量",
+      "part": "//xl/worksheets/sheet5.xml",
+      "error": "missing XML"
+    }
+  ],
+  "media": [],
+  "external_link_parts": [],
+  "custom_xml_parts": [],
+  "macros": [],
+  "embedded_objects": [],
+  "docProps/core.xml": "<ns0:coreProperties xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:ns0=\"http://schemas.openxmlformats.org/package/2006/metadata/core-properties\" xmlns:ns2=\"http://purl.org/dc/terms/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><dc:creator>openpyxl</dc:creator><ns2:created xsi:type=\"dcterms:W3CDTF\">2026-03-31T07:14:52Z</ns2:created><ns2:modified xsi:type=\"dcterms:W3CDTF\">2026-03-31T07:14:52Z</ns2:modified></ns0:coreProperties>",
+  "docProps/app.xml": "<ns0:Properties xmlns:ns0=\"http://schemas.openxmlformats.org/officeDocument/2006/extended-properties\"><ns0:Application>Microsoft Excel Compatible / Openpyxl 3.1.5</ns0:Application><ns0:AppVersion>3.1</ns0:AppVersion></ns0:Properties>",
+  "docProps/custom.xml": null
+}

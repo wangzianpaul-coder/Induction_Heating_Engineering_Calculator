@@ -1,0 +1,1821 @@
+SAND REPORT
+SAND2002-3132
+Unlimited Release
+Printed October 2002
+CFD Calculation of Internal Natural
+Convection in the Annulus between
+Horizontal Concentric Cylinders
+Nicholas D. Francis, Jr., Michael T. Itamura, Stephen W. Webb, and Darryl L. James
+Prepared by
+Sandia National Laboratories
+Albuquerque, New Mexico  87185 and Livermore, California  94550
+Sandia is a multiprogram laboratory operated by Sandia Corporation,
+a Lockheed Martin Company, for the United States Department of 
+Energy under Contract DE-AC04-94AL85000.
+Approved for public release; further dissemination unlimited.
+
+
+2
+Issued by Sandia National Laboratories, operated for the United States Department of Energy by
+Sandia Corporation.
+NOTICE:  This report was prepared as an account of work sponsored by an agency of the United
+States Government.  Neither the United States Government, nor any agency thereof, nor any of
+their employees, nor any of their contractors, subcontractors, or their employees, make any
+warranty, express or implied, or assume any legal liability or responsibility for the accuracy,
+completeness, or usefulness of any information, apparatus, product, or process disclosed, or
+represent that its use would not infringe privatel y owned rights. Reference herein to any specific
+commercial product, process, or service by trade name, trademark, manufacturer, or otherwise,
+does not necessarily constitute or imply its endorsement, recommendation, or favoring by the
+United States Government, any agency thereof, or any of their contractors or subcontractors.  The
+views and opinions expressed herein do not necessarily state or reflect those of the United States
+Government, any agency thereof, or any of their contractors.
+Printed in the United States of America. This report has been reproduced directly from the best
+available copy.
+Available to DOE and DOE contractors from
+U.S. Department of Energy
+Office of Scientific and Technical Information
+P.O. Box 62
+Oak Ridge, TN  37831
+Telephone: (865)576-8401
+Facsimile: (865)576-5728
+E-Mail: reports@adonis.osti.gov
+Online ordering:  http://www.doe.gov/bridge 
+Available to the public from
+U.S. Department of Commerce
+National Technical Information Service
+5285 Port Royal Rd
+Springfield, VA  22161
+Telephone: (800)553-6847
+Facsimile: (703)605-6900
+E-Mail: orders@ntis.fedworld.gov
+Online order:  http://www.ntis.gov/help/ordermethods.asp?loc=7-4-0#online 
+
+
+3
+SAND2002-3132
+Unlimited Release
+Printed October 2002
+CFD Calculation of Internal Natural Convection in the Annulus
+between Horizontal Concentric Cylinders
+Nicholas D. Francis, Jr., and Michael T. Itamura
+Subsystems Performance Assessment Department
+Stephen W. Webb
+Environmental Technology Department
+Sandia National Laboratories
+P.O. Box 5800
+Albuquerque, NM 87185-0776
+Darryl L. James
+Texas Tech University
+Department of Mechanical Engineering
+Box 41021
+Lubbock, TX 79409-1021
+ABSTRACT
+The objective of this heat transfer and fluid flow study is to assess the ability of a computational
+fluid dynamics (CFD) code to reproduce the expe rimental results, numeric al simulation results,
+and heat transfer correlation equations developed in the literature for natural convection heat
+transfer within the annulus of horizontal concentric cylinders. In  the literature, a variety of heat
+transfer expressions have been  developed to compute average equivalent thermal conductivities.
+However, the expressions have been primarily de veloped for very small inner and outer cylinder
+radii and gap-widths. In this comparative study, interest is primarily focused on large gap widths
+(on the order of half meter or greater) and large radius ratios. From the steady-state CFD analysis
+it is found that the concentric cylinder models for the larger geometries compare favorably to the
+results of the Kuehn and Goldstein correlations in the Rayleigh number range of about 10
+5 to 108
+(a range that encompasses the laminar to turbulent transition). For Rayleigh numbers greater than
+108, both numerical simulations and experimental data (from the literature ) are consistent and
+result in slightly lower equivalent thermal conductivities than those obtained from the Kuehn and
+Goldstein correlations. 
+
+4
+CONTENTS
+1 INTRODUCTION .................................................................................................................. .11
+2 MODEL DESCRIPTION AND COMPARISON TO LITERATURE DATA AND
+RESULTS ......................................................................................................................................11
+2.1 Introduction................................................................................................................ .....12
+2.2 Turbulence Modeling......................................................................................................14
+2.3 Literature Results for Natu ral Convection in an Annulus ..............................................18
+2.4 CFD Models Developed to Co mpare to Literature Results ............................................21
+2.5 Grid Specifications fo r Concentric Cylinders.................................................................21
+2.6 CFD Model Settings and Parameters..............................................................................23
+2.7 Boundary Conditions ......................................................................................................25
+2.8 Thermal Properties.......................................................................................................... 25
+2.9 Operating Conditions......................................................................................................27
+2.10 Results of the Comparative Heat Transfer Study............................................................28
+2.10.1 Appropriateness of the Turbulence Model used in the Study ....................... 28
+2.10.2 Correlation, Experimental  Data, and CFD Code Comparison for Average
+Heat Transfer ..................................................................................................................30
+2.10.3 Experimental Data a nd CFD Comparison for Local Heat Transfer.............. 33
+2.10.4 Experimental Data and CFD Comparison for Local Temperature................ 34
+2.10.5 Grid Independence Study .............................................................................. 36
+3 DISCUSSION.................................................................................................................... ......39
+4 REFERENCES .................................................................................................................... ....39
+
+5
+FIGURES
+Page
+Figure 1. Computational Grid for the 25 %-Scale Concentric Cylinder Geometry.....................23
+Figure 2. Turbulent Reynolds Number for Full-Scale Concentric Cylinders ( RaL =
+5.3x109). .......................................................................................................................29
+Figure 3. Comparison of CFD Model Results to the Kuehn and Goldstein Correlation
+Equation (1978) and the General Correla tion in Kuehn and Goldstein (1976b)
+for Concentric Cylinders..............................................................................................30
+Figure 4. Comparison of CFD Model Results  for Concentric Cylinders to Other
+Experimental Results, Model Results, and Heat Transfer Correlations ......................32
+Figure 5. Comparison of Local CFD Model Heat Transfer to the Kuehn and Goldstein
+(1978) Experimental Measurements for Pressurized Nitrogen (Concentric
+Cylinders).....................................................................................................................34
+Figure 6. Comparison of CFD Model Temper atures to the Kuehn and Goldstein (1978)
+Experimental Measurements for Pressurized Nitrogen (Concentric Cylinders)..........35
+Figure 7. Refined Grid (81 x81) for the Full-Scale Concentric Cylinders ...................................37
+Figure 8. Centerline Vertical Velocity for the Full-Scale Concentric Cylinders ........................38
+
+6
+TABLES
+Page
+Table 1. Internal Natural Convection Heat Transfer in the Literature.......................................13
+Table 2. Concentric Cylinder Geometries..................................................................................21
+Table 3. Operating Conditions................................................................................................... 27
+Table 4. Grid Independence Stud y for Heat Transfer Rates .....................................................37
+
+7
+NOMENCLATURE
+B empirical constant (9.81)
+cp fluid specific heat (J/kg-K)
+C/g109 RNG theory determined constant (0.0845)
+Di inner cylinder wall diameter (m)
+Do outer cylinder wall diameter (m)
+E total energy (J/kg)
+g acceleration due to gravity (m/s2)
+ih mean overall heat transfer coefficient (W/m2-K)
+keq average equivalent thermal conductivity for natural convection (-)
+k turbulent kinetic energy (m2/s2)
+kp turbulent kinetic energy at wall adjacent cell center (m2/s2)
+ka air thermal conductivity (W/m-K)
+L annulus gap width, Ro – Ri (m)
+Mw molecular weight of air (kg/kmol)
+Nui Nusselt number for natural convection from the inner cylinder (-)
+Nuo Nusselt number for natural convection from the outer cylinder (-)
+iDuN average overall Nusselt number
+Nucond Nusselt number for conduction
+Nuconv Nusselt number for convection between concentric cylinders
+p pressure (N/m2)
+Pr Prandtl number (-)
+Prt turbulent Prandtl number (-)
+QFLUENT total heat transfer rate from the CFD models (W)
+Qcond conduction heat transfer rate from the CFD models (W)
+q/g162/g162wall heat flux (W/m2)
+r* dimensionless radial distance, L
+RR i/g45
+Rg universal gas constant (N-m/kmol-K)
+Rey turbulent Reynolds number (-)
+RaL Rayleigh number based on gap-width (-)
+RaDi Rayleigh number based on inner diameter (-)
+RaDo Rayleigh number based on outer diameter (-)
+R radial distance (m)
+Ro outside radius (m)
+Ri inside radius (m)
+Ti inner cylinder wall temperature (K or oC)
+To outer cylinder wall temperature (K or oC)
+Tc cold cylinder (outer) wall temperature (K or oC)
+Th hot cylinder (inner) wall temperature (K or oC)
+Tfilm_i inner cylinder film temperature based on bulk temperature
+Tfilm_o outer cylinder film temperature based on bulk temperature
+/g68T temperature difference (K or oC)
+BT bulk fluid temperature (K or oC)
+
+8
+Tp fluid temperature at wall adjacent cell center (K or oC)
+Tw wall temperature (K or oC)
+u velocity (m/s)
+y normal distance to nearest wall (m)
+yp distance from wall adjacent cell center to the wall (m)
+Greek
+/g97 fluid thermal diffusivity, ka//g114cp (m2/s), 
+/g97k,/g101,T inverse effective Prandtl numbers 
+/g98 volumetric thermal expansion coefficient (K-1)
+/g100T laminar thermal boundary layer thickness for a plane wall (m)
+/g100v laminar viscous boundary layer thickness for a plane wall (m)
+/g101 dissipation rate of turbulent kinetic energy (m2/s3)
+/g113 angular position (0o vertical up, 180o vertical down)
+/g109 molecular fluid viscosity (kg/m-s)
+/g109t turbulent viscosity (kg/m-s)
+/g109eff effective viscosity, /g109t + /g109/g32/g32(kg/m-s)
+/g110 fluid kinematic viscosity, /g109//g114 (m2/s)
+/g114 fluid density (kg/m3)
+/g116w wall shear stress (N/m2)
+/g117ˆ viscosity ratio, /g109
+/g109eff  (-)
+/g102 dimensionless temperature, 
+ch
+c
+TT
+TT
+/g45
+/g45
+ (-)
+/g119 specific dissipation rate
+
+9
+ACKNOWLEDGEMENTS
+The authors would like to thank Charles E. Hi ckox, Jr., of Sandia National Laboratories and
+Veraun Chipman of Lawrence Livermore National La boratory for their thorough reviews of this
+document.  This work was supported by the Yucca Mountain Site Characterization Office as part
+of the Office of Civilian Radioactive Waste Management (OCRWM), which is managed by the
+U.S. Department of Energy, Yucca Mountain S ite Characterization Project.  Sandia is a
+multiprogram laboratory operated by Sandia Corpor ation, a Lockheed Martin Company, for the
+United States Department of Energy under Contract DE-AC04-94AL85000.
+
+10
+Intentionally Left Blank
+
+11
+1 INTRODUCTION
+This report documents a comparison of com putational fluid dynamics (CFD) simulations
+of natural convection in the annulus formed between horizontal concentric cylinders with
+experimental data and other numerical simulations available in the heat transfer literature.
+CFD simulations are used to compute both overall and local heat transfer rates for
+concentric cylinder arrangements. The CFD calculated heat transfer rates are then used
+directly in comparisons with data, correlation equations, and other numerical simulations.
+In this comparative study, interest is primarily focused on large gap widths (on the order
+of 0.5 m or greater) with radius ratios (
+Ro/Ri) of about 3.5. 
+Although the Yucca Mountain Project (YMP) ge ometries are not concentric, a typical
+simplifying assumption is made such that an  average equivalent thermal conductivity for
+natural convection can be computed with an  existing correlation applied at a geometric
+scale appropriate to YMP. The resulting aver age equivalent thermal conductivity is then
+applied to a non-concentric annulus. This re port focuses on heat transfer and fluid flow
+within the annulus between horizontal concen tric cylinders at the scale appropriate to
+YMP.  Francis et al., 2002, develops an analysis of heat transfer and fluid flow within the
+annulus of non-concentric cylinders. 
+The CFD computer code, FLUENT, version 5.5 (Fluent Incorporated, 1998) and version
+6.0 (Fluent Incorporated, 2001), are used for the analysis. FLUENT is a computational
+fluid dynamics code that solv es conservation of mass, mome ntum, energy (including a
+radiative transfer equation), species, and turbulence models using various means to obtain
+closure for the turbulent momentum equations. Transient or steady state formulations are
+also available. For this heat transfer analysis, both steady-state laminar and turbulent
+natural convection heat transfer are considered. 
+2 MODEL DESCRIPTION AND COMPARISON TO LITERATURE DATA
+AND RESULTS
+This section provides a brief discussion of previous natural convection heat transfer
+experiments, correlation equations, and numerical simulations. In the literature, a variety
+of heat transfer expressions have been de veloped for horizontal concentric cylinders.
+However, these expressions are typically base d on experimental results using very small
+inner and outer cylinder radii (on the order of a few centimeters) and gap-widths (1.9 cm
+/g163 
+L /g163 7.1 cm). In the present natural convection heat transfer study, the correlation
+equations are applied to much  larger gap-widths (0.5 m /g163 L /g163 1.9 m) and cylinder radii
+(0.2 m /g163 Ri, Ro /g163 2.75 m). 
+
+12
+2.1 Introduction
+This report considers the effects of an imposed temperature difference and system
+geometry on CFD calculations of internal natu ral convection heat transfer in a horizontal
+annulus. Comparisons to established heat tr ansfer correlation equations and experimental
+heat transfer measurements described in the literature are performed. An investigation of
+this type provides an evaluation of the capability of the CFD code to predict heat transfer
+in a known geometry as a precursor to calculating conditions in modified configurations. 
+Previous experimental and theoretical studi es of internal natural convection in the
+annulus between horizontal cylinders have b een largely restricted to simple geometries
+such as concentric or eccentric horizontal cylinders. In many of these cases, the
+geometries have small (~ 3 cm) gap widths (
+L = Ro – Ri). Typically, a single radius ratio
+was considered (e.g., Kuehn and Goldstein, 1976a and 1978, considered a radius ratio of
+2.6; Bishop, 1988, and McLeod and Bishop, 1989, considered a radius ratio of 3.37;
+Vafai et al., 1997, considered a radius ratio  of 1.1). A limited number of numerical and
+experimental studies have inve stigated the influence of the radius ratio on internal flow
+characteristics (Lis, 1966; Bishop et al, 1968; Desai and Vafai, 1994; Char and Hsu,
+1998). Some investigators deve loped heat transfer correl ation equations for their
+experimental results (Lis, 1966; Bishop et  al, 1968; Kuehn and Goldstein, 1976a; Kuehn
+and Goldstein, 1978; Bishop, 1988). In the expe rimental studies, the range of radius
+ratios considered was 1.1 ≤ 
+Ro/Ri ≤ 4. In the numerical studies , a wide range of radius
+ratios was considered (1.5 ≤ Ro/Ri ≤ 11), including a radius ratio of 3.5, which is similar
+to that of the Yucca Mountain Project (Y MP) geometry (Webb et al., 2002). In the
+present comparative study, interest is focuse d on large gap widths (on the order of 0.5 m
+or greater) and larger radius ratios (Ro/Ri ≈ 3.2-3.5) than used in most of the experimental
+studies. 
+Most of the concentric cylinder modeling studies consider gases (Pr ≈ 0.7) as the working
+fluid in the annulus (Kuehn and Goldst ein, 1976a; Kuehn and Goldstein, 1978; Farouk
+and Guceri, 1982; Desai and Vafa i, 1994); although, some investigated a larger range of
+Prandtl numbers (Kuehn and Goldstein, 1976a; Desai and Vafai, 1994). An experimental
+analysis used water (Pr ≈ 5) as the working fluid in the annulus (Kuehn and Goldstein,
+1976a). Some numerical studies considered Pr andtl numbers as high as 5000 (engine oil
+at room temperature) and as low as a bout 0.01 (liquid metals). The present study
+considers gases with a Prandtl number of approximately 0.7 (e.g., air, nitrogen).
+Table 1 lists the investigators and the form in which their natural convection heat transfer
+investigation was presented (experime nt, correlation equation, and numerical
+simulations). 
+
+13
+Table 1.  Internal Natural Convection Heat Transfer in the Literature
+Investigators Experimental
+Data
+Correlation
+Equation 
+Numerical
+Simulation
+Bishop, 1988 X X
+Bishop et al., 1968 X X
+Char and Hsu, 1998 X
+Desai and Vafai, 1994 X
+Farouk and Guceri, 1982 X
+Fusegi and Farouk, 1986 X
+Kuehn, 1976 X X X
+Kuehn and Goldstein, 1976a X X X
+Kuehn and Goldstein, 1976b X
+Kuehn and Goldstein, 1978 X X
+J. Lis, 1966 X X
+McLeod and Bishop, 1989 X X
+Raithby and Hollands, 1975 X X
+Vafai et al., 1997 X X X
+Webb et al., 2002 X X
+For internal natural convection in an annulus, a Rayleigh number based on gap-width
+/g110/g97
+/g98 3LTgRaL
+/g68/g61 (1)
+is normally used to determine if the internal flow is laminar or turbulent (Kuehn and
+Goldstein, 1978). The transition gap-width Rayl eigh number for turbulence is about 10 6
+(Kuehn and Goldstein, 1978; Desai and Vafa i, 1994; Char and Hsu, 1998). For Rayleigh
+numbers less than 106, the flow is laminar.
+For Rayleigh numbers greater than the tr ansition value, the annulus internal flow
+conditions are characterized by a turbul ent upward moving plume above the inner
+cylinder and a turbulent downward flow agains t the outer wall. Stagnation regions exist
+near the top where the plume impinges on the outer cylinder and over the entire bottom of
+the annulus. A low velocity laminar region exists in the annulus away from the walls.
+Turbulent flow conditions in the annulus are typically obtained either through the length
+scale (e.g., gap width) or the operating c onditions (e.g., temperature difference and
+operating pressure) of the c onfiguration. For the very small gap widths (~ 3 cm)
+considered in the experiments presented in the literature, air at atmospheric temperatures
+and pressures would not result in turbulent flow (e.g., Ra
+L < 106). Pressurized gases such
+as nitrogen were often used in experiments to obtain the fluid properties necessary to
+achieve turbulent Rayleigh numbers for very  small gap widths and small temperature
+differences (Kuehn and Goldstein, 1978). The re sults of the experiments were then used
+
+14
+to establish correlation equations that relate  fluid properties and apparatus geometry to
+average heat transfer rates, as discussed in an upcoming section. Numerical simulations
+have been developed for some of the ex perimental geometries  to compare model
+predictions to measured temperatures and heat transfer coefficients. Most of the
+numerical simulations are two-dimensional, but a limited number of three-dimensional
+studies have been conducted (Fusegi and Farouk, 1986; Desai and Vafai, 1994). 
+Most of the experimental data discussed above and presented in the literature are
+restricted to heat transfer results such as temperature and equivalent thermal conductivity.
+Experimental measurements of  fluid velocity and turbul ence quantities for the annulus
+configuration have not been published in the literature. 
+In the present study, a variety of two-d imensional models are developed to compare
+directly to the existing heat transfer correlations and experimental data developed in the
+literature. The two-dimensional CFD models are applied for both laminar and turbulent
+flow Rayleigh numbers. 
+2.2 Turbulence Modeling
+Turbulence is characterized by fluctuating quantities (e.g., velocity, temperature, etc.).
+The velocity fluctuations impact transport of quantities such as mass, momentum, and
+energy. Direct simulation of all scales of a velocity fluctuation is not computationally
+practical. Therefore, simplifications for turbulent flow solutions are necessary. Typical
+approaches for handling turbulent flows are through Reynolds averaging or filtering the
+Navier-Stokes equations. However, both methods introduce unknown terms into the
+Navier-Stokes equations; therefore, additional turbulence modeling is required to achieve
+closure of the flow equations. 
+Reynolds-averaged Navier-Stokes equations (RANS) are written in terms of mean
+quantities and unknown terms with  respect to the time-avera ged fluctuating components
+that are generally referred to as the turbulent Reynolds stresses. The RANS approach is
+used in the following turbulence models available in FLUENT:
+One equation model:
+/g183 Spalart-Allmaras 
+Two equation models:
+/g183 k-/g101 models including, standard, realizable, and renormalization-group (RNG)
+/g183 k-/g119 models including, standard and shear-stress transport
+Five equation model (in two-dimensions) and a seven equation model (in three-
+dimensions)
+
+15
+/g183 Reynolds stress model (RSM)
+Filtered Navier-Stokes equations typically remove eddies that are smaller than the
+computational mesh size. Larger eddies are fully computed in a time-dependent
+simulation of the flow. Similar to the Rey nolds-averaging, filtering also introduces
+unknown terms in the Navier-Stokes equations. These terms are related to the subgrid-
+scale stresses. Additional turbulence modelin g is necessary to achieve closure. The
+filtering approach is used in the following turbulence model in FLUENT:
+/g183 Large eddy simulation (LES)
+Due to computational limitations associated with the time-dependent approach of the
+LES, the CFD analyses described in this document utilize the RANS equations
+(specifically the RNG k-/g101 turbulence equations). 
+In the RANS approach, unsteadiness is remove d by casting all variables (e.g., velocity,
+temperature, and pressure) into mean and fluctuating components and time-averaging the
+subsequent governing equations. The governing flow equations, written in terms of mean
+velocity and temperature components, fo r mass, momentum, and energy take the
+following forms after averaging:
+Conservation of Mass (Continuity)
+/g40/g41 0/g61/g182
+/g182/g43/g182
+/g182
+i
+i
+uxt /g114/g114 (2)
+Conservation of Momentum (Navier-Stokes)
+/g40/g41 /g40/g41 /g40/g41
+''
+3
+2
+ji
+j
+i
+l
+l
+ij
+i
+j
+j
+i
+ji
+ji
+i
+i uuxgx
+u
+x
+u
+x
+u
+xx
+puuxut /g114/g114/g100/g109/g114/g114 /g45/g182
+/g182/g43/g43
+/g250
+/g250
+/g251
+/g249
+/g234
+/g234
+/g235
+/g233
+/g247/g247
+/g248
+/g246
+/g231/g231
+/g232
+/g230
+/g182
+/g182/g45/g182
+/g182/g43/g182
+/g182
+/g182
+/g182/g43/g182
+/g182/g45/g61/g182
+/g182/g43/g182
+/g182
+(3)
+All of the terms in equation (3), with the exception of the last term, are written with
+respect to mean velocities or pressure. The last term on the RHS of the momentum
+equation contains the turbulent Reynolds stresses.
+Conservation of Energy
+/g40/g41 /g40/g41/g40/g41 /g247/g247
+/g248
+/g246
+/g231/g231
+/g232
+/g230
+/g182
+/g182
+/g182
+/g182/g61/g43/g182
+/g182/g43/g182
+/g182
+j
+eff
+j
+i
+i x
+T
+xpEuxEt /g108/g114/g114 (4)
+where viscous heating and source terms are neglected and /g108eff = /g97Tcp/g109eff. The /g97T term is
+computed in a manner similar to the inverse effective Prandtl numbers in the turbulence
+
+16
+equations described below. Th e turbulent Prandtl number for energy is a function of the
+molecular Prandtl number and the effective viscosity described below.
+The Boussinesq hypothesis (an assumption applied by the Spallart-Allmaras, k-/g101, and k-/g119
+turbulence models) can be used to relate the Reynolds stresses to the mean velocity
+gradients and other turbulence quantities including the turbulent viscosity:
+/g247/g247
+/g248
+/g246
+/g231/g231
+/g232
+/g230
+/g182
+/g182/g43/g45/g247/g247
+/g248
+/g246
+/g231/g231
+/g232
+/g230
+/g182
+/g182/g43/g182
+/g182/g61/g45
+i
+i
+tij
+i
+j
+j
+i
+tji
+x
+ukx
+u
+x
+uuu /g109/g114/g100/g109/g114 3
+2''
+(5)
+As described above, a number of different turbulence models can be applied when
+solving turbulent flow fields. The RNG k-/g101 is selected for this analysis. The primary
+reasons for using the RNG k-/g101 turbulence model are that it allows for variation in the
+turbulent Prandtl number as a function of  flow conditions, it provides a means for
+including low-Reynolds number effects in the effective viscosity formulation, and it
+includes an extra term, R/g101, in the /g101-equation to better mode l separated flows. The
+conservation equations for the RNG k-/g101 turbulence (two-equation) model are given
+below:
+k – turbulent kinetic energy
+/g40/g41 /g40/g41 Mbk
+j
+effk
+j
+i
+i
+YGGx
+k
+xukxkt /g45/g45/g43/g43/g247/g247
+/g248
+/g246
+/g231/g231
+/g232
+/g230
+/g182
+/g182
+/g182
+/g182/g61/g182
+/g182/g43/g182
+/g182 /g101/g114/g109/g97/g114/g114 (6)
+/g101 – dissipation of turbulent kinetic energy
+/g40/g41 /g40/g41 /g40/g41 /g101/g101/g101/g101/g101
+/g101/g114/g101/g101/g109/g97/g101/g114/g101/g114 RkCGCGkCxxuxt
+bk
+j
+eff
+j
+i
+i
+/g45/g45/g43/g43/g247/g247
+/g248
+/g246
+/g231/g231
+/g232
+/g230
+/g182
+/g182
+/g182
+/g182/g61/g182
+/g182/g43/g182
+/g182 2
+231
+(7)
+where /g97k and /g97/g101 are inverse effective Prandtl numbers derived analytically by the RNG
+theory, Gk is the generation of turbulent kinetic energy due to mean velocity gradients, Gb
+is the generation of turbulent kinetic energy  due to buoyancy (a function of gravity and
+temperature gradient), YM is the contribution of fluctuating dilation to the dissipation rate,
+C1/g101 and C2/g101 are constants, C3/g101 is a (calculated) factor related to how the buoyant shear
+layer is aligned with gravity, and R/g101 is a strain rate term written as a function of the mean
+rate-of-strain tensor. Including full buoyancy effects in the equations is related to
+inclusion of the generation of turbulence due to a buoyancy term in the transport equation
+for the dissipation rate of turbul ent kinetic energy (e.g., in the /g101-equation). In the
+governing equations, the subscripts 
+i, j, and l refer to values in the various directions ( i =
+x, y, and z directions; j = x, y, and z directions, l = x, y, and z directions).
+
+17
+The RNG k-/g101 turbulence model provides an analytic ally derived differential formula for
+the effective viscosity that accounts for low-Reynolds number effects in the flow domain.
+It is written in terms of the effective viscosity, /g109eff. 
+/g117
+/g117
+/g117
+/g101/g109
+/g114
+/g117
+ˆ
+1ˆ
+ˆ72.1
+3
+2
+d
+C
+kd
+/g43/g45
+/g61/g247/g247
+/g248
+/g246
+/g231/g231
+/g232
+/g230
+(8)
+where /g109
+/g109/g117eff/g61ˆ  and C/g117 is a constant ( /g187100). The differential equation for viscosity is
+applicable to low-Reynolds number and nea r-wall flows. In the high Reynolds number
+limit, the turbulent viscosity produced by the differential equation is given by:
+/g101/g114/g109 /g109
+2
+kCt /g61 (9)
+The various model constants are C1/g101 = 1.42, C2/g101 = 1.68, and C/g109 = 0.0845, which are the
+default values in FLUENT.  For complete details, refer to the FLUENT documentation
+on modeling turbulence (Fluent, Inc., 2001).
+Use of the differential formula for the viscos ity requires an appropri ate treatment of the
+near-wall region. Specifically, it requires that the viscous sublayer and the buffer layer
+(e.g., the near-wall region) are resolved (meshed) all the way to the wall (e.g., to the
+surface of the inner and outer cylinders). The use of hydrodynamic wall functions (e.g.,
+an alternative approach using semi-empirical modeling of the near-wall velocity
+behavior) is not appropriate when low-Reynol ds number effects are pervasive within the
+flow domain. Additionally, the hydrodynamic wa ll function approach is not applicable in
+the presence of strong body forces (as in the case of buoyancy-driven flows). The
+inapplicability of the hydrodynamic wall function approach is illustrated in Figure 4 of
+this document. As shown in the figure, Desai and Vafai, 1994, apply standard wall
+functions through the viscous sublayer in th eir analysis of internal natural convection.
+Their resulting heat transfer rates tend to underpredict the other literature results.
+Therefore, the boundary layer must be adequately resolved by the grid in order to obtain
+the correct surface heat transfer rates (the quantity used to determine the heat transfer
+characteristics previously described). 
+A wall function approach is used for the ne ar-wall mean temperature. In the viscous
+sublayer, a linear law is written in terms of the molecular Prandtl number:
+**
+Pr yT /g61         /g40 /g41**
+Tyy /g60 (10)
+while in the turbulent sublayer, a logarithmic law is written in terms of the turbulent
+Prandtl number:
+
+18
+/g40/g41
+/g250/g251
+/g249
+/g234/g235
+/g233/g43/g250
+/g250
+/g251
+/g249
+/g234
+/g234
+/g235
+/g233
+/g45/g247/g247
+/g248
+/g246
+/g231/g231
+/g232
+/g230/g61
+/g250/g251
+/g249
+/g234/g235
+/g233 /g43/g61
+/g45
+teP
+PByT
+t
+t
+PrPr007.043
+**
+28.011Pr
+Pr24.9
+ln1Pr /g107
+         /g40 /g41**
+Tyy /g62 (11)
+where /g107 is von Karman’s constant (0.41) and P is a function of the molecular and
+turbulent Prandtl numbers (Fluent Incorp orated, 2001). The dime nsionless quantities in
+the above equations are defined as:
+/g40/g41
+q
+kCcTTT
+PpPw
+/g162/g162
+/g45/g61
+2141
+* /g109/g114 (12)
+and,
+/g109
+/g114/g109 PP ykCy
+2141
+* /g61 (13)
+The selection of linear or logarithmic laws is based on the computation of *
+Ty . This
+quantity is computed as the y* value at which the linear law and the logarithmic law
+intersect. For a refined grid (e.g., y+ = /g114
+/g116
+/g110
+wpy  <10), the linear law (equation 10) is
+selected based on the intersection of the two curves. It is noted that in equilibrium
+turbulent boundary layers, y* and y+ are approximately equal. The law-of-the-wall for
+temperature is acceptable in this analysis since the near-wall treatment for velocity places
+grid points inside the viscous sublayer. Subsequently, the natural convection boundary
+layer is resolved for both velocity and temperature. 
+2.3 Literature Results for Natural Convection in an Annulus
+Numerous investigators (refer to Table 1) have developed na tural convection heat
+transfer correlations for horizontal concentric and eccentric cylinders that relate an
+average equivalent thermal conductivity in an annulus to Rayleigh numbers based on the
+inner and outer diameters. The average equiva lent thermal conductivity is defined as the
+ratio of natural convection heat transfer to that of pure conduction. An equivalent thermal
+conductivity of one is representative of pur e conduction heat transfer. The equivalent
+conductivity indicates the importance of na tural convection when compared to pure
+conduction. 
+The analysis in this section focuses on the correlation equations developed by Kuehn and
+Goldstein. The general heat transfer corr elation developed by Kuehn and Goldstein
+
+19
+(1976b) is valid for any Prandtl number and for laminar or turbulent internal flow
+conditions. The heat transfer correlation in  Kuehn and Goldstein (1978) is valid for a
+Prandtl number of about 0.7 (applicable to pressurized nitrogen which was the working
+fluid used in their work) and for laminar  or turbulent flow conditions. Kuehn and
+Goldstein (1978) made modifications to the empirical constants in the general correlation
+thereby making it somewhat more specific to the experimental geometry and conditions
+as described in that paper (e.g., 
+Ro/Ri = 2.6 and 2 x102 < RaL < 8 x107). The correlation
+presented in Kuehn and Goldstein (1978) is described below by equations (14) through
+(22).  The more general correlation presen ted in Kuehn and Goldstein (1976b) is not
+discussed in detail here due to its complexity; however, it is shown graphically in the
+various comparisons between correlations and models. Note that the Kuehn and
+Goldstein (1978) correlation equation is one of  the most widely used correlations for
+natural convection heat transfer in a horiz ontal annulus. For exam ple, Gebhart et al.,
+1988; Bejan, 1995, and Incropera and DeWitt, 1990, all recommend use of the Kuehn and
+Goldstein heat transfer correlation equations for natural convection in an annulus. 
+The Kuehn and Goldstein (1978) heat transfer  correlation equations described below are
+functions of fluid prope rties, annulus geometry, temperat ure difference, and a bulk fluid
+temperature. The correlation is based on Rayleigh numbers for the inner and outer
+cylinders and a bulk fluid temperature as:
+/g40/g41
+/g110/g97
+/g98 3
+iBi
+Di
+DTTgRa /g45/g61 (14)
+and,
+/g40/g41
+/g110/g97
+/g98 3
+ooB
+Do
+DTTgRa /g45/g61 (15)
+The fluid properties in equations (14) and (15) are evaluated at the film temperature
+written as a function of the bulk temperature, that is, for the inner cylinder,
+/g40/g41
+2_
+iB
+ifilm
+TTT /g43/g61 , and for the outer cylinder, /g40 /g41.2_
+oB
+ofilm
+TTT /g43/g61   The bulk fluid
+temperature is defined by Kuehn and Goldstein as:
+oi
+i
+oi
+oB
+NuNu
+Nu
+TT
+TT
+/g43/g61/g45
+/g45 (16)
+where the Nusselt numbers in equation (16) are based on the inner and outer cylinder
+Rayleigh numbers and are defined as: 
+
+20
+/g40/g41 /g40/g41 /g250
+/g250
+/g250
+/g250
+/g251
+/g249
+/g234
+/g234
+/g234
+/g234
+/g235
+/g233
+/g250/g251
+/g249
+/g234/g235
+/g233 /g43
+/g43
+/g61
+15115
+3115
+41
+12.05.0
+21ln
+2
+DiDi
+i
+RaRa
+Nu (17)
+and,
+/g40/g41 /g40/g41 /g250
+/g250
+/g250
+/g250
+/g251
+/g249
+/g234
+/g234
+/g234
+/g234
+/g235
+/g233
+/g250/g251
+/g249
+/g234/g235
+/g233 /g43
+/g45
+/g45/g61
+15115
+3115
+41
+12.0
+21ln
+2
+DoDo
+o
+RaRa
+Nu (18)
+Equations (17) and (18) are valid for a Pr andtl number of 0.7 and any Rayleigh number.
+The average equivalent thermal conductivity for natural convection is defined as the
+following:
+cond
+eq
+Nu
+Nuk /g61 (19)
+The Nusselt number parameters in equation (19) are defined as:
+i
+o
+cond
+D
+DNu
+ln
+2/g61 ,  concentric cylinders only (20)
+/g40/g41 /g40/g41/g91/g93 1511515
+convcond NuNuNu /g43/g61 (21)
+and the convection Nusselt number is:
+1
+11
+/g45
+/g250/g251
+/g249
+/g234/g235
+/g233 /g43/g61
+oi
+conv
+NuNuNu (22)
+where inner and outer cylinder Nusselt numbers Nui and Nuo are from equations (17) and
+(18), respectively. The conduc tion Nusselt number (equation 20) is specifically derived
+for concentric cylinders. Solution of the above  equations requires an initial guess for the
+bulk fluid temperature, BT . Typically, about 4 to 5 iterations are required to obtain
+convergence to within a fraction of a percen t. Upon convergence, equation (19) gives the
+average equivalent thermal conductivity. 
+The comparison with the Kuehn and Goldstei n heat transfer correlations (1976b and
+1978) is selected in this report since these co rrelations are widely considered standards in
+
+21
+the natural convection heat tr ansfer literature. However, other annulus heat transfer
+correlation equations exist in the literature . Some of the more recent are Bishop (1988)
+and McLeod and Bishop (1989), who provided an equation for the average equivalent
+conductivity in terms of Rayleigh number based on gap width and expansion number
+(/g98/g68T). Lis (1966) provided an equation for the average equivalent conductivity in terms
+of Rayleigh number based on diameter and ot her geometrically based terms. Raithby and
+Hollands (1975) provided an equation for the average equivalent conductivity in terms of
+the Prandtl number, a Rayleigh number base d on gap width, and other geometric based
+terms. Finally, Vafai et al. (1997) provide  for an average Nusselt number correlation in
+terms of a modified Rayleigh number. 
+2.4 CFD Models Developed to Compare to Literature Results
+A number of two-dimensional CFD models we re developed to compare to the existing
+literature results and correlation equations applied to YMP-scale geometries. Concentric
+cylinder models for 25%-scale, 44%-scale, and full-scale geometries are compared to the
+correlation equations. Additionally, a two-dimensional CFD model is developed based on
+Kuehn and Goldstein’s experimental geom etry and operating conditions (Kuehn and
+Goldstein, 1978, Ra
+L = 2.51x106) and is compared directly to their correlation equation. 
+2.5 Grid Specifications for Concentric Cylinders
+The geometric specifications fo r the horizontal concentric cylinder CFD simulations are
+given in Table 2. The table includes the modeled case, inner and outer cylinder diameters,
+diameter ratio (radius ratio), and the gap width. The significant difference in the scales
+between previous experiments and the application to YMP is clearly shown in Table 2.
+Table 2. Concentric Cylinder Geometries
+Case Inner Cylinder,
+Di  (m)
+Outer Cylinder,
+Do  (m)
+Do/DI Gap-Width
+L (m)
+Kuehn and
+Goldstein, 1978
+0.0356 0.0926 2.6 0.03
+25%-Scale YMP 0.4 1.37 3.4 0.5
+44%-Scale YMP 0.7 2.42 3.5 0.9
+Full-Scale YMP 1.7 5.5 3.2 1.9
+The radial and angular discretization for the large-scale geometries (25%-scale, 44%-
+scale, and full-scale) is described below.  In the case of 25%-scale and full-scale
+geometries, the radial discre tization included 61 divisions. In the case of the 44%-scale
+geometry, the radial discretization included 50 divisions. In each of the large-scale
+geometries, the radial divisions included cell clustering at th e walls of both the inner and
+outer cylinders (refer to Figure 1). A two-si ded cell clustering factor (e.g., refinement on
+
+22
+both walls, coarse in the middle) of 1.2 is applied to each geometry in the radial direction.
+Cell clustering is necessary in the near-wall region to resolve changes in the solution
+variables (e.g., velocity, temperature, etc. ) in the boundary layer. In the boundary layer,
+solution variables are rapidly changing due to interactions with the wall. 
+The decision to apply additional cell clusteri ng at the inner and outer cylinder walls is
+based on an order-of-magnitude analysis that  provides the order of magnitude for the
+laminar thermal boundary layer thickness for a plane wall (Bejan, 1995):
+41
+H
+T
+Ra
+H/g181/g100 (23)
+where H = R/g113/g32/g32is defined as the distance along the cylinder wall and RaH is a Rayleigh
+number based on this distance. Therefore, as RaH increases, /g100T decreases thus requiring
+finer resolution at the cylinder walls to resolve the thin boundary layer. Each of the
+concentric geometries uses the same cell clus tering factor (= 1.2).  However, since the
+25%-scale geometry results in a lower Ra yleigh number (and hence thicker boundary
+layer) than the full-scale geometry, it, in theory, does not require as much cell clustering
+on the walls. Equation (23) only addresses the thermal boundary thickness. 
+One must also address the viscous (veloc ity) boundary layer thickness as well. It is
+possible to relate the thermal boundary la yer thickness to the viscous boundary layer
+thickness through the Prandtl number of the wo rking fluid. For Prandtl number fluids of
+approximately one (0.7 in this case), the laminar viscous boundary layer is only slightly
+less than the thermal boundary layer thickness as indicated by the relationship (Bejan,
+1995)
+/g247/g247
+/g248
+/g246
+/g231/g231
+/g232
+/g230 21
+Pr~
+T
+v
+/g100
+/g100
+ (24)
+where /g100v is the laminar velocity boundary layer thickness. Therefore, if the cell clustering
+on the cylinder wall is adequate to resolve the thermal boundary layer, it is approximately
+adequate to resolve the viscous boundary layer as long as the local velocity gradients
+(e.g., the maximum velocity) are captured. Changes in the solution variables decrease
+away from the (thermal and velocity) bound ary layers. Therefore, as one moves away
+from the cylinder walls (and the boundary layers associated with the walls), larger cell
+widths in the core region are acceptable due to small changes in fluid velocities and
+temperatures occurring in the core region. 
+Angular discretization for the full-scale, 44%-scale, and 25%-scale geometries is 51, 60,
+and 61, respectively. A cell-clustering factor of 1.1 is applied to the angular direction in
+the direction of both symmetry boundaries for the full-scale and ¼-scale geometries. That
+is, added cell resolution on both symmetry bounda ries near the plumes. A cell-clustering
+factor of 1.03 is applied to the angular di stribution from the top down in the 44%-scale
+geometry (near the top in the plume region). 
+
+23
+The computational mesh for the 25%-scale geom etry is shown in Figure 1. As indicated,
+cell clustering occurs at the walls of bot h cylinders and on the symmetry boundaries. The
+other concentric cylinder geometries are analogous.
+The Kuehn and Goldstein simulation uses a 60 (angular) by 20 (radial) grid with cell
+clustering towards the walls and symmetry  boundaries. Cell clustering on walls allows
+the formation of the boundary layer due to fluid viscosity and the presence of the wall.
+In order to determine if a grid independe nt solution has been attained, one of the
+geometries (the full-scale concentric cylinder case) is selected for further grid refinement
+study. The full-scale concentric cylinder arrangement is selected due to its large Rayleigh
+number and due to the fact that it is  one of the coarser simulations (61 x51) used in this
+natural convection heat transfer study. The results are presented in Section 2.10.5.
+2.6 CFD Model Settings and Parameters
+The CFD numerical simulation settings and runtime monitoring for equation residuals,
+discretization, convergence, and steady-state energy balance are described in this section. 
+The steady-state segregated solver is used in  this work. The segregated solver approach
+results in the governing equations being solved sequentially. An implicit linearization
+technique is applied in the segregated so lution of the modeled equations previously
+Figure 1.  Computational Grid for the 25%-Scale Concentric Cylinder Geometry.
+Th
+Tc
+
+24
+described. This results in a linear system of equations at each computational cell. The
+equations are coupled and non-linear; therefore,  several iterations of  the equation set are
+required to obtain a converged solution. 
+FLUENT uses a control-volume method to so lve the governing equations. The equations
+are discrete for each computational cell.  In applying this solution method the CFD
+simulation stores flow proper ties (e.g., dependent variables) at cell centers. However,
+face values are required for the convection terms in the discretized equations. Face values
+are obtained by interpolation from the cell  centers using a second-order upwind scheme
+for the momentum and energy equations and a first-order upwind scheme for the
+turbulence equations. It is noted that the diffusion terms in the equations are central-
+differenced and are second-order accurate . Two pressure inter polation schemes are
+applied to this analysis. Body-force-w eighted and PRESTO! (PREssure Staggering
+Option) schemes are used to compute face pressure from cell center values. Both
+interpolation schemes are applicable to buo yancy driven flows. The body-force-weighted
+scheme tends to result in better (fast er) convergence performance than PRESTO!.
+Pressure-velocity coupling is achieved through the SIMPLE algorithm. The SIMPLE
+(Semi-Implicit Method for Pressure-Linked Equations) algorithm uses the discrete
+continuity equation to determine a cell pre ssure correction equation. Once a solution to
+the cell pressure correction equation is obtained the cell pressure and face mass fluxes are
+then corrected using the cell pressure correction term. 
+Because the equation set being solved is linearized, it is necessary to control the rate of
+change of the flow/energy variables at e ach iteration step. Unde r-relaxation parameters
+are assigned to pressure, momentum, energy, turbulence kinetic energy, turbulence
+dissipation rate, and a variety of others that  go unmodified from default settings (usually
+1.0). For the buoyancy driven flow problems considered in this report, the default settings
+for the under-relaxation parameters for the flow equations are too high.  Therefore,
+additional under-relaxation is necessary to obtain a converged solution. For the lower
+Rayleigh number cases (<10
+7), the under-relaxation parameters for the flow equations are
+specified at about 0.1 or so (turbulence dissipation rate is set slightly lower).  Typically,
+the under-relaxation for the energy equation is maintained at 1.0. For the higher Rayleigh
+number cases (>107), the under-relaxation parameters for the flow equations are specified
+smaller than 0.1. In cases above 10 9, the under-relaxation para meters are set at about
+0.01. Typically, the under-relaxation for th e energy equation is maintained at or just
+below 1.0. 
+The lowest Rayleigh number flow solution is given an arbitrary initial starting point for
+fluid velocity, temperature, and turbulence quantities. Additional iterations are required
+for solution convergence. Most of the flow so lutions at increasing Rayleigh numbers are
+achieved by starting from a previously conve rged solution at a lower Rayleigh number.
+For instance, a flow solution at a Rayleigh number of 10
+8 is started from a converged
+flow solution at a Rayleigh of 107. However, in some of the large Rayleigh number cases
+(>109), final convergence required an arbitrar y initial starting point rather than that
+obtained from using a previously converged solution at a lower Rayleigh number. This
+nuance reflects the non-linearity of the equation set being solved. 
+
+25
+A flow solution is considered to have conve rged after all equation residuals have been
+reduced by about 4 to 5 orders of magnitude. For the higher Rayleigh number flow cases,
+this may require about 10,000 or more iterati ons to achieve. A final convergence criteria
+specified in the CFD simulations is based on an overall steady-state energy balance.
+When the energy imbalance between cylind ers is at or below about 2%, the flow
+simulation is assumed to be at steady-state. Therefore, when the residuals are reduced by
+4 to 5 orders of magnitude and the energy  imbalance is about 2% or less, the flow
+simulation is complete. 
+2.7 Boundary Conditions
+The temperature boundary conditions are specifi ed to give a temperature difference ( /g68T)
+across the inner and outer cylinders similar to that expected at early times between the
+waste package and the drift wall at th e Yucca Mountain repository during high
+temperature operation. The hot temperature ( T
+h) of the inner cylinder is assumed to be
+100oC (373 K) and the cold temperature ( Tc) of the outer cylinder is assumed to be 80 oC
+(353 K), which results in a /g68T of 20 oC. The temperature difference is more important
+than the actual temperatures in the natural convection calculations because it, along with
+the geometry, determines the Rayleigh number. 
+For the Kuehn and Goldstein (1978) numerical simulation, the inner cylinder temperature
+(Th) is 28.1 oC and the outer cylinder temperature ( Tc) is 27.2 oC, for a temperature
+difference of 0.91 oC (Kuehn and Goldstein 1978), consiste nt with the experimental data
+reported in their paper. The specified wall temperatures for all models are maintained as
+constants during the steady state simulations. 
+A vertical plane through th e geometric center forms a symmetry boundary (half domain
+modeled due to symmetry) as illustrated earlier in Figure 1. The existence of a steady-
+state solution is tacitly assumed since symmetry boundary conditions are imposed on the
+numerical simulations. Steady laminar flow has been found experimentally for low
+Rayleigh numbers (Kuehn and Goldstein 1976a).  At Rayleigh numbers of the order of
+10
+7, the wall boundary layers are steady (Kuehn and Goldstein 1978). For larger Rayleigh
+numbers (5x108 /g163 RaL /g163 5x109), it is assumed that a steady-state solution is achievable
+since the solutions converged. However, it is possible that some flow regimes
+(presumably at high Rayleigh numbers) may not exhibit steady-state behavior. 
+2.8 Thermal Properties
+Thermal property inputs for air and nitroge n are required in the CFD simulations.
+Constant thermophysical properties are specified at the average fluid temperature of 90oC
+for the large-scale geometries. This temperature is different than the bulk temperature
+defined by Kuehn and Goldstein (see equa tion 16). The definitions for the bulk fluid
+temperatures would result in about 3
+oC temperature difference at which the fluid
+properties are evaluated. So, in the case of  the fluid thermal conductivity, the average
+
+26
+film temperature gives 0.031 W/m-K while th e film temperature using the bulk fluid
+temperature definition (see Section 2.3) give s 0.0307 W/m-K. This small difference does
+not influence the CFD simulations presented in this document.  
+Using Bejan (1995), Appendix D for air evaluated at 90 oC, the following thermophysical
+property values for the density, dynamic viscosity, thermal conductivity, and specific heat
+are 0.9745 kg/m 3, 2.135 x10-5 kg/s-m, 0.031 W/m-K, and 1010.25 J/kg-K, respectively.
+The fluid kinematic viscosity is 2.1909x10 –5 m2/s and the fluid thermal diffusivity is
+3.1488x10–5 m2/s.  The Prandtl number is 0.7. The volumetric thermal expansion
+coefficient is 1/ Tfilm (= 1/363 K) for an ideal gas. The dynamic viscosity, thermal
+conductivity, and specific heat are inputs in  the numerical simulations. Each thermal
+quantity except the fluid density is treated as  a constant. The fluid density is computed
+internally by FLUENT using the incompressible-ideal-gas law. The incompressible-ideal-
+gas law is 
+TM
+R
+P
+w
+g
+o/g61/g114 (25)
+where Po is the operating pressure desc ribed in the next section and T is the fluid
+temperature. 
+Internal natural convection occurs when a density variation (due to a temperature
+variation) exists in a gravitational field. The incompressible-ideal-gas law is applied in
+the density calculation when pressure variations are small enough such that the overall
+internal flow conditions are essentially incompressible, but a relationship between density
+and temperature is required as the driving force for fluid flow. The internal density
+variation is based on the input ambient ope rating pressure and the computed fluid
+temperature.
+The working fluid used in the Kuehn and Go ldstein (1978) experiment is pressurized
+nitrogen. Using an average fluid temperature of 27.7oC (300.7 K), the density of nitrogen
+is computed using the ideal gas law as 39.3 kg/m 3 for an operating pressure of 3,500 kPa
+(34.6 atm in the paper). (Note that this is  the only CFD simulation presented here that
+does not use 101.3 kPa as its operating pressure.) Reference to compressibility-factor data
+for nitrogen at this temperature and pressure indicates a compressibility factor of one
+(Van Wylen and Sonntag, 1986), so that th e ideal gas law is applicable at this
+temperature and pressure. 
+From Kuehn and Goldstein (1978), for a specified Rayleigh number of 2.51 x106 and
+Prandtl number of 0.731, the kinematic viscosity and thermal diffusivity are computed for
+nitrogen as 4.462 x10-7 m2/s and 6.104 x10-7 m2/s, respectively. The thermal conductivity
+of nitrogen is computed as a function of temp erature and pressure as described in Kuehn
+(1976, Appendix A and Table A.1). Evalua ting equation A.1 in Appendix A of this
+reference at two temperatures (300 K and 320 K) and interpolating at the average
+
+27
+temperature (300.7 K) gives a temperature and pressure dependent  thermal conductivity
+of 0.02735 W/m-K. Once the thermal conductivity is established, the specific heat for
+nitrogen is readily computed as 1141.4 J/kg-K because the thermal diffusivity and density
+are known. As in the case for air, the volum etric thermal expansion coefficient is 1/ T
+film
+(= 1/300.7 K). The dynamic viscosity, therma l conductivity, and specific heat are inputs
+in the simulations. The density is computed internally using the incompressible-ideal-gas
+law as previously described.
+2.9 Operating Conditions
+The operating pressure selected for the larg e scale geometries is  101.3 kPa. A standard
+atmospheric pressure at sea level is selected to perform a comparison to literature heat
+transfer results for natural convection ( both data and correlation equations). The
+operating pressure for the Kuehn and Gold stein (1978) simulation is 3,500 kPa. The
+gauge pressure is specified during solution initialization as 0 Pa for all numerical
+simulations. The absolute pressure is the operating pressure plus the gage pressure.
+Gravity is specified as 9.81 m/s
+2.  To achieve lower Rayleigh numbers for a given
+geometry and temperature difference, the gravity vector is simply scaled below its normal
+value.  For instance, if for a given geometry and temperature difference a gravity vector
+(-
+g) of 9.81 m/s2 results in a Rayleigh number of 1x108, a gravity vector of (9.81/10) m/s2
+results in a Rayleigh number of 1x10 7 for the same temperature difference and length
+scale. Using gap widths as the length scale in the Rayleigh numbers, the operating
+conditions for each geometry are given in Table 3. 
+Table 3. Operating Conditions 
+Case Gravity, -g
+(m/s2)
+RaL Internal Flow
+Conditions
+25% Scale 0.0981 8.9x105 Laminar
+25% Scale 0.981 8.9x106 Turbulent
+25% Scale 9.81 8.9x107 Turbulent
+44% Scale 0.189 1x107 Turbulent
+44% Scale 1.89 1x108 Turbulent
+44% Scale 9.81 5x108 Turbulent
+Full Scale 0.00981 5.3x106 Turbulent
+Full Scale 0.0981 5.3x107 Turbulent
+Full Scale 0.981 5.3x108 Turbulent
+Full Scale 9.81 5.3x109 Turbulent
+Kuehn and Goldstein 0.0981 2.51x104 Laminar
+Kuehn and Goldstein 0.981 2.51x105 Laminar
+Kuehn and Goldstein
+1978
+9.81 2.51x106 Turbulent
+
+28
+Based on Table 3, most of the flow conditions  are turbulent for these gap widths and a
+temperature difference of 20oC. 
+2.10 Results of the Comparative Heat Transfer Study
+2.10.1 Appropriateness of the Turbulence Model used in the Study
+To investigate the extent of low-Reynolds num ber effects in the flow domain of interest,
+the turbulent Reynolds number is plotted for a number of different angular positions (0o is
+vertically upward, 180 o vertically downward) represented in the full-scale concentric
+cylinder simulation. The turbulent Reynolds number (Rey) is defined as: 
+/g109
+/g114yk
+y /g61Re (26)
+Figure 2 illustrates the turbulent Reynolds num ber for each interior grid point as well as
+those values at selected angular positions. For Re y greater than 200, the fully turbulent
+RNG k-/g101 equations are solved for the turbulence quantities. For Rey less than 200 (e.g., in
+the near-wall region), a one-equation model (the k-equation) is employed together with a
+length-scale equation in terms of Re y in order to determine the rate of dissipation of the
+turbulent kinetic energy ( /g101). From Figure 2 it is apparent that a fair portion of the fluid
+domain exhibits turbulent Reynolds numbe rs less than 200, hence the need for a
+turbulence model that accounts for the presence of low-Reynolds number effects. 
+
+29
+The legend in Figure 2 indicates the locations  at which the turbulent Reynolds number is
+computed including each cell in the flow domain (default-interior), and lines at different
+angular positions where line0 represents a line vertically upward from the center of the
+inner cylinder and line180 represents a line ve rtically downward from the center of the
+inner cylinder. From this figure it is clear that both flow regimes exist within the domain.
+That is, high Reynolds number regions in wh ich the fully turbulent equations are solved
+by the model. Additionally, low Reynolds number regions exist in the flow domain such
+that in the viscosity-affected regions, 
+/g101 is not computed with the transport equation and
+the differential equation for the effective viscosity is necessarily applicable. 
+Due to the abundance of low Reynolds numbe r regions in the flow domain, the RNG k-/g101
+turbulence model with the differential equation for effective viscosity is applied to each
+of the simulations performed for the concen tric cylinder geometries described in this
+section.
+Position (m)
+32.521. 510. 50
+3000
+25 00
+2000
+15 0 0
+10 0 0
+50 0
+0
+line90
+line60
+line30
+line180
+line150
+line120
+line0
+def ault-interior
+Figure 2. Turbulent Reynolds Number for Full-Scale Concentric Cylinders ( RaL =
+5.3x109).
+Rey
+
+30
+2.10.2 Correlation, Experimental Data, and CFD Code Comparison for Average
+Heat Transfer
+Figure 3 illustrates a comparison of an aver age equivalent therma l conductivity between
+the correlation equations (14 through 22) and the CFD modeled geometries for concentric
+cylinders in two dimensions. Additionally, th e general correlation equation is also shown
+(Kuehn and Goldstein, 1976b). Recall that the average equivalent thermal conductivity is
+defined as the ratio of natural convection heat  transfer to that of pure conduction. When
+the average equivalent thermal conductivity is equal to one, the mode of heat transfer is
+pure conduction. The lines in the figure re present the correlation equations. The data
+points represent the CFD numerical simulation results. Figure 4 illustrates, in addition to
+the information given in Figure 3, other literature data points either representing
+experimental or simulation results as indicated in the figure legend. 
+1
+10
+100
+1000
+1.0E+03 1.0E+04 1.0E+05 1.0E+06 1.0E+07 1.0E+08 1.0E+09 1.0E+10 1.0E+11
+Rayleigh Number (Gap-Width)
+keq
+Kuehn and Goldstein, 1978
+FLUENT, K & G
+K & G , 1/4 Scale
+FLUENT, 1/4 Scale
+K & G, 44% Scale
+FLUENT, 44% Scale
+K & G, Full Scale
+FLUENT, Full Scale
+Kuehn and Goldstein, 1976b
+Figure 3.  Comparison of CFD Model Results to the Kuehn and Goldstein Correlation
+Equation (1978) and the General Correlation in Kuehn and Goldstein (1976b) for
+Concentric Cylinders.
+
+31
+The Rayleigh number in Figure 3 is based on the gap-width ( L) between cylinders.  The
+average equivalent conductivity from the lite rature is given by equation (19). The
+numerical simulation results are written in terms of an average heat transfer coefficient
+initially and then in terms of an average Nusselt number. With knowledge of the Nusselt
+number and a conduction based Nusselt number, one can compute the average equivalent
+conductivity as a ratio of the two quantities (comparable to equation 19). The equivalent
+conductivity based on numerical simulations is compared to the correlation equations in
+Figure 3. 
+The average heat transfer coefficient is computed from the CFD simulation (per unit
+length) as follows (Kuehn and Goldstein, 1978).
+TD
+Qh
+i
+FLUENT
+i
+/g68/g61/g112
+2 (27)
+It is noted that the numerical simulati ons utilize symmetry boundary conditions in the
+formulation, hence the factor 2 in equation (27). The steady state heat transfer rate from
+the numerical simulation, 
+QFLUENT, is substituted directly into equation (27) to compute
+the average heat transfer coefficient.
+The average Nusselt number is then computed in terms of the average heat transfer
+coefficient as the following (Kuehn and Goldstein 1976b, nomenclature):
+a
+ii
+D
+k
+DhuN
+i
+/g61 (28)
+The air thermal conductivity ( ka) is computed at the average fluid temperature of 90 oC.
+The average equivalent conductivity for natu ral convection in the concentric annulus is
+given as the following (Kuehn and Goldstein 1978; McLeod and Bishop 1989):
+cond
+FLUENT
+cond
+D
+eq
+Q
+Q
+Nu
+uN
+k
+i
+/g61/g61 (29)
+with the average Nusselt number given by  equation (28) and the conduction Nusselt
+number (Nucond) given by equation (20) for the concentric cylinder case. 
+The equivalent conductivity from equation (29) (using Nusselt numbers) is plotted in
+Figure 3 for each of the concentric cylinder geometries considered. Reference to Figure 4
+provides an illustration of a comparison to other experimental data and numerical
+simulation results. These plots show that for laminar flow with a Rayleigh number of 10
+5,
+the total heat transfer is approximately two to four times larger than for conduction only.
+
+32
+For a moderately turbulent regime with a Rayleigh number of 10 7, the total heat transfer
+is approximately ten times higher than c onduction only. Based on this initial comparison
+in Figure 3, the numerical results at higher Rayleigh numbers (>10 8) are slightly low
+when compared to the Kuehn and Goldstein correlations. 
+Figure 4 contains the results of the co rrelation equations (1976b and 1978), numerical
+simulation (FLUENT) results for concentric cylinders (25-scale, 44%-scale, and full-
+scale, as previously shown in Figure 3), experimental data from the literature, and other
+numerical simulation studies from the literature. Experimental and correlated heat
+transfer data from the literature included results from Kuehn and Goldstein (1978): “K &
+G Data, 1978,” Bishop (1988): “Bishop Correlated Data, 1988,” and Lis (1966): “J. Lis
+Data, Do/Di = 4, 3, and 2, 1966.” Numeri cal simulation results from the literature
+included Desai and Vafai (1994): “D & V Model, 1994.” The Bishop correlation data are
+valid for Rayleigh numbers between 6
+x106 and 2 x109. Figure 4 illustrates the Bishop
+correlation data slightly on either side of its range of investigated validity (e.g., at
+evaluated at 5
+x106 and 2.5x109). The estimated experimental data uncertainty is about 10-
+15%.  
+1
+10
+100
+1000
+1.0E+03 1.0E+04 1.0E+05 1.0E+06 1.0E+07 1.0E+08 1.0E+09 1.0E+10 1.0E+11
+Rayleigh Number (Gap-Width)
+keq
+Kuehn and Goldstein, 1978
+FLUENT, K & G
+K & G , 1/4 Scale
+FLUENT, 1/4 Scale
+K & G, 44% Scale
+FLUENT, 44% Scale
+K & G, Full Scale
+FLUENT, Full Scale
+J. Lis Data, Do/Di = 4, 1966
+J. Lis Data, Do/Di = 3, 1966
+J. Lis Data, Do/Di = 2, 1966
+K & G Data, 1978
+Bishop Correlated Data, 1988
+D & V Model, 1994
+Kuehn and Goldstein, 1976b
+Figure 4.  Comparison of CFD Model Results for Concentric Cylinders to Other
+Experimental Results, Model Results, and Heat Transfer Correlations.
+
+33
+From the figure it is noted that the ra nge of Rayleigh numbers investigated both
+numerically and experimentally encompassed both laminar and turbulent flow conditions.
+From the figures, it is noted that the numer ical simulations and ex perimental data are
+similar to the correlation equations at Rayleigh numbers less than about 108. For Rayleigh
+numbers greater than 10 8, the numerical simulations and experimental data agree very
+well. In contrast, Kuehn and Goldstein (1976b and 1978) slightly overpredict the average
+equivalent thermal conductivity. This trend is consistent among the different geometries
+considered.
+2.10.3 Experimental Data and CFD Comparison for Local Heat Transfer
+For a simple concentric cylinder arrangement, the local equivalent thermal conductivity is
+computed from the numerical simulations based on the local heat transfer rates.
+Experimentally, the local heat transfer coefficients are obtained through an analysis of the
+surface temperature gradients at different locations. A graphical depiction of how the
+equivalent thermal c onductivity varies with angular position provides an idea of how
+fluid motion results in an asymmetric distri bution of heat transfer around the cylinders.
+For instance, the local inner cylinder equiva lent thermal conductivit y is smallest on top
+where flow separates and is largest on botto m where the boundary layer is thinnest. The
+local outer cylinder equivalent thermal c onductivity is smallest on bottom where flow
+separates and largest on top where flow im pinges and the boundary layer is thin. This
+feature may be important when considering the effects of both increasing temperature and
+mass transfer due to internal heating since the local variability in these quantities may
+influence where processes such as condens ation may occur in the full-scale problem.
+Illustration of local variability is shown through experiment as well as CFD simulation
+results. 
+The CFD numerical simulations are compared to the experimental data taken from Kuehn
+and Goldstein (1978). With pressurized nitrogen (Pr /g187 0.7) as the working fluid and a gap
+width Rayleigh number of about 2.5 x106, Kuehn and Goldstein measured the local heat
+transfer rates around both the inner and outer  circumferences of the cylinders in a
+concentric cylinder arrangement. With /g113 = 0 o representing the top and /g113 = 180 o the
+bottom, Figure 5 illustrates the local vari ability of the effectiv e thermal conductivity
+around both the inner and outer cylinders. It also shows the average effective
+conductivity obtained from experiment  for a Rayleigh number of 2.5 x106 (Kuehn and
+Goldstein, 1978). Experiment data and num erical simulations are both presented in
+Figure 5. 
+
+34
+This figure shows the heat transfer rates vary significantly with angular position around
+both cylindrical surfaces (inner and outer surfaces) with the largest heat transfer
+occurring at the bottom of the inner cyli nder and at the top of the outer cylinder.
+Therefore, the correlation equations (developed for overall heat transfer) in the literature
+(shown in Figures 3 - 4 above) will not capture local variability on either cylinder.
+2.10.4 Experimental Data and CFD Comparison for Local Temperature
+A similar analysis is performed for the fluid temperatures measured at angular
+coordinates of 0 o, 30o, 60o, 90o, 120 o, 150o, and 180 o at a Rayleigh number of 2.5 x106
+(Kuehn and Goldstein, 1978). The angular coor dinate is measured from the top of the
+cylinder. 
+Kuehn and Goldstein, 1978
+Ra L  = 2.51x106
+0
+10
+20
+30
+40
+50
+60
+0 20 40 60 80 100 120 140 160 180
+/g113
+keq
+Turbulent, Inner Cylinder
+Laminar, Inner Cylinder
+Data, Inner Cylinder
+Turbulent, Outer Cylinder
+Laminar, Outer Cylinder
+Data, Outer Cylinder
+Average keq
+Figure 5. Comparison of Local CFD Model Heat Transfer to the Kuehn and Goldstein
+(1978) Experimental Measurements for Pressurized Nitrogen (Concentric
+Cylinders).
+top bottom
+
+35
+Two models are compared to the experimental temperature data.  The first CFD
+simulation applies a turbulence flow model using the RNG k- /g101 model described in
+Section 2.2. The second CFD simulation is fo r laminar flow only.  Both turbulent and
+laminar flow models are considered since the Rayleigh number at which the data is taken
+is close to the transition Rayleigh number of 106. Dimensionless temperature and distance
+are plotted on Figure 6.  The solid lines illustrate the turbulence model results; the dashed
+lines illustrate the laminar flow results. The data points taken from Kuehn and Goldstein
+are shown as symbols. 
+It is evident from Figure 6 that both flow models have merits at this Rayleigh number.
+This is to be expected since the operating conditions are so close to transition. In the
+upper half of the annulus (excluding the pl ume region directly above the inner cylinder),
+the lines 30, 60, 90
+o indicate that the laminar flow solutions more closely match the
+experimental data. The turbulent flow solution at these locations effectively transports
+heat by an eddy diffusivity term (a function of the turbulent viscosity and turbulent
+Prandtl number). Therefore, the turbulent transport of energy elevates the temperatures in
+Kuehn and Goldstein, 1978
+Ra L  = 2.51 x 106
+0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1
+0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1
+r*
+/g102
+0 Turb
+0 Lam
+0
+30 Turb
+30 Lam
+30
+60 Turb
+60 Lam
+60
+90 Turb
+90 Lam
+90
+120 Turb
+120 Lam
+120
+150 Turb
+150 Lam
+150
+180 Turb
+180 Lam
+180
+Figure 6. Comparison of CFD Model Temperatures to the Kuehn and Goldstein (1978)
+Experimental Measurements for Pressurized Nitrogen (Concentric
+Cylinders).
+Inner Outer
+
+36
+the upper region of the annulus. In the lower portion of the heated annulus (lines 120,
+150, 180o), both flow models represent the data relatively well. The differences between
+the laminar and turbulent flow solutions are minor in this slow moving region. Recall that
+the RNG k-/g101 model handles transitional flows thro ugh the use of a differential equation
+for the fluid viscosity described in Section 2.2. 
+The heated fluid in the plum e above the inner cylinder im pinges on the outer cylinder.
+This location is represented by the line 0 o. Neither fluid flow model readily captures the
+experimental data at this location. However, as expected, the turbulent flow model comes
+closer to matching the temperature data. The heated plume region exhibits more
+turbulence-like qualities than any other region in the flow domain. The turbulence model
+tends to overpredict the turbulent transport of energy in the heated plume even with the
+generation of dissipation included in the 
+/g101-equation, which, in turn, reduces the
+generation of turbulent kinetic energy in th e plume. The transport of turbulent energy
+reduces the gradient in temperature within the stagnation region that forms when the
+heated plume impinges on the outer cylinder.  This reduction in temperature gradient
+results in a smaller k
+eq at the top of the outer cylinder for the turbulent flow model when
+compared to the laminar flow model. 
+It is noted from Figure 6 that a thermal re sistance occurs across the thin boundary layer
+on the inner cylinder as indicated by the large temperature drop. A temperature drop also
+occurs across the boundary layer on the outer cylinder.  The behavior of the numerical
+simulation in the boundary layer on the outer cylinder closely resembles the
+experimentally determined temperature data. 
+Finally, Figure 6 indicates that the core fluid is at an almost constant temperature with the
+exception of a slight temperature inversion o ccurring near the center of the annulus. That
+is, the fluid nearer the cool surface is warmer than the fluid near the hot surface. 
+2.10.5 Grid Independence Study
+The full-scale YMP concentric cylinder geometry ( RaL = 5.3 x109) is selected for a grid
+independence study. The coarse grid contains 3111 (51 x61) cells. The coarse grid is
+analogous to the grid shown in Figure 1. The refined grid contains 6561 (81 x81) cells.
+One additional refinement takes place in th e angular direction of the refined grid. It
+contains 7371 cells (91x81). 
+Unlike Figure 1, Figure 7 shows a coarsened resolution in the lower stagnation region so
+that more cells could be concentrated near the top where the flow is turning due to
+boundary conditions. The grid independence stud y considers both heat transfer rates and
+fluid velocities. 
+
+37
+The steady-state heat transfer rates are checked at each of the Rayleigh numbers indicated
+in Table 3 for the full-scale concentric cylinder case. Table 4 gives the overall heat
+transfer rates from the inner cylinder to the outer cylinder as a function of the Rayleigh
+number. 
+Table 4 Grid Independence Study for Heat Transfer Rates
+Rayleigh
+Number
+Coarse Grid,
+3111 (51x61)
+(W)
+Refined Grid,
+6561 (81x81)
+(W)
+Angular Refined
+Grid, 7371 (91x81)
+(W)
+% Change
+5.3x106 14.03 13.53 13.82 1.5a, -2b
+5.3x107 23.74 22.83 23.41 1.4, -2.5
+5.3x108 41.92 41.75 43.6 -3.9, -4.2
+5.3x109 78.35 77.3 80.87 -3, -4.4
+a – coarse grid with respect to angular refined grid
+b – refined grid with respect to angular refined grid
+Figure 7. Refined Grid (81x81) for the Full-Scale Concentric Cylinders.
+Th
+Tc
+
+38
+The overall heat transfer rates are within a few percent of each other. Some of the
+differences in the cases shown in Table 4 are attributed to the inexactness of using the
+energy imbalance as the stead y-state stopping point. Theref ore, based on heat transfer
+rates, the CFD results are reasonably independent of the grid. 
+The flow field was also examined for gr id independence. For a gap width Rayleigh
+number of 5.3x109, the maximum velocity for the coarse grid is 0.31 m/s. The maximum
+velocity for the refined grid and the angular refined is 0.30 and 0.29 m/s, respectively. A
+horizontal centerline plot of the vertical velocity (same as Y Velocity) for each
+simulation grid is shown in the Figure 8. It illustrates the centerline vertical velocity for
+the coarse grid overlain on the refined grid. 
+The figure demonstrates grid independence for the full-scale simulations for the fluid
+velocity results. The other CFD simulations contain between 3000 (44%-scale concentric
+cylinders) and 6172 (44%-scale YMP geometry) cells. Based on the grid independence
+study for the full-scale simulation and the expectation that the full scale domain will
+require more grid elements than the other cases (e.g., 25% and 44%), the number of
+computational cells in the coarse full-scale model is adequate to generate grid
+independent heat transfer rates and fluid velocities.
+Position (m)
+(m/s)
+Vel oci ty
+Verti cal
+2. 82. 62.42.221. 81. 61. 41. 210. 8
+0. 3
+0. 2
+0.1
+0
+-0.1
+-0.2
+-0.3
+7371 cells
+6561 cells
+3111 cells
+Y Velocity
+Figure 8. Centerline Vertical Velocity for the Full-Scale Concentric Cylinders .
+
+39
+3 DISCUSSION
+Based on this CFD analysis it was demonstrat ed that internal natural convection heat
+transfer in the annulus betwee n concentric cylinders, the e quivalent thermal conductivity
+correlation equations developed in the literature for concentric cylinders with small
+geometric features (e.g., small radii) can also be applied to the concentric cylinder cases
+with much larger geometric features up to a Rayleigh number of less than 10
+8 (this
+includes both laminar and turbulent flow re gimes). For Rayleigh numbers greater than
+108 (turbulent flow regime), the correlation equations overpredict heat transfer rates (e.g.,
+a larger equivalent thermal conductivity) than both the CFD simulations presented in this
+report and the experimental data presented in the heat transfer literature. At the higher
+Rayleigh numbers, the numerical simulations are consistent with the experimental data. A
+comparison of experimentally determined local heat transfer and temperature data to
+CFD results indicates that the numerical simulations adequately represent the flow
+physics occurring within the annulus, but, at transition to turbulence, flow features are
+satisfied by both laminar and turbulence flow models. This being the case, it is necessary
+to use a turbulence flow model that handles transitional effects as well as large Reynolds
+number effects. Hence, the selection of the RNG 
+k-/g101 turbulent flow model with the
+differential equation for flui d viscosity is appropriate when considering natural
+convection heat transfer and fluid flow in an annulus.  
+4 REFERENCES
+Bejan, A. 1995.  Convection Heat Transfer.   2nd Edition.  New York, New York:  John
+Wiley & Sons.  
+Bishop, E.H.  1988.  "Heat Transfer by Natural Convection of Helium Between
+Horizontal Isothermal Concentric Cylinders at Cryogenic Temperature." 
+Journal of Heat
+Transfer, 111, 109-115. 
+Bishop, E.H., Carley C.T., and Powe, R.E.  1968. “Natural Convective Oscillatory Flow
+in Cylindrical Annuli.” International Journal of Heat and Mass Transfer,  Vol. 11, 1741-
+1752. Pergamon Press.
+Char, M-I., and Hsu, Y-H.  1998.  "Compara tive Analysis of Linear and Nonlinear Low-
+Reynolds Number Eddy Viscosity Models to Turbulent Natural Convection in Horizontal
+Cylindrical Annuli." 
+Numerical Heat Transfer, Part A , (33), 191-206.  Washington, DC,
+Taylor & Francis.  
+Desai, C. P., and Vafai, K.  1994.  "An In vestigation and Comparative Analysis of Two-
+and Three-Dimensional Turbulent Natura l Convection in a Horizontal Annulus."
+International Journal of Heat and Mass Transfer, 37 , (16), 2475-2504.  New York, New
+York:  Pergamon Press.  
+
+40
+Farouk, B., and Guceri, S.I.  1982.  "Lamin ar and Turbulent Natural Convection in the
+Annulus Between Horizontal Concentric Cylinders."  Journal of Heat Transfer, 104 , (4),
+631-636.  New York, New York:  American Society of Mechanical Engineers.  
+Fluent Incorporated.   1998.  Fluent 5 User's Guide.  Volumes 1 to 4.  Lebanon, New
+Hampshire: Fluent Incorporated.  
+Fluent Incorporated.   2001.  Fluent 6 User's Guide.  Volumes 1 to 5.  Lebanon, New
+Hampshire: Fluent Incorporated.  
+Francis, N.D., Webb, S.W., Itamura, M.T., and James, D.L.  2002. “CFD Modeling of
+Natural Convection Heat Transfer and Fluid Flow in Yucca Mountain Project (YMP)
+Enclosures.” (SAND REPORT In Draft).
+Fusegi, T., and Farouk, B. 1986.  "A Three Dimensional Study of Natural Convection in
+the Annulus Between Horizontal  Concentric Cylinders."  Heat Transfer 1986,
+Proceedings of The Eighth Inter national Heat Transfer Conference .   C.L. Tien, V.P.
+Carey, and J.K. Ferrell.  4, 1575-1580. Hemisphere Publishing Corporation.  
+Gebhart, G., Jaluria, Y., Mahajan, R.L ., and Sammakia, B. 1988. Buoyancy-Induced
+Flows and Transport. Reference Edition. Ne w York, New York: Hemisphere Publishing
+Corporation. 
+Incropera, F.P., and DeWitt, D.P. 1990.  Fundamentals of Heat and Mass Transfer .   3rd
+Edition. New York, New York:  John Wiley & Sons.
+Kuehn, T. H. 1976.  Natural Convection Heat Transfe r from a Horizontal Circular
+Cylinder to a Surrounding Cylindrical Enclosure .  Ph.D. Dissertation.  Ann Arbor,
+Michigan:  University Microfilms International/University of Minnesota.  
+Kuehn, T.H., and Goldstein, R.J.  1976a.  "An Experimental and Theoretical Study of
+Natural Convection in the Annulus Betwee n Horizontal Concentric Cylinders."  Journal
+of Fluid Mechanics, 74, (part 4), 695-719 
+Kuehn, T.H., and Goldstein, R.J.  1976b.  "Correlating Equations for Natural Convection
+Heat Transfer Between Horizontal Circular Cylinders."  International Journal of Heat
+and Mass Transfer, 19, (10), 1127-1134.  New York, New York:  Pergamon Press.  
+Kuehn, T.H., and Goldstein, R.J.  1978.  "A n Experimental Study of Natural Convection
+Heat Transfer in Concentric and Ecce ntric Horizontal Cylindrical Annuli."  Journal of
+Heat Transfer, Transactions of the ASME, 100 , ([4]), 635-640.  [New York, New York:
+American Society of Mechanical Engineers].  
+Lis, J.  1966.  "Experimental Investigati on of Natural Convection Heat Transfer in
+Simple and Obstructed Horizontal Annuli."  Third International Heat Transfer
+Conference, 2, (2), 196-204 
+
+41
+McLeod, A.E., and Bishop, E.H.  1989.  "Turbulent Natural Convection of Gases in
+Horizontal Cylindrical Annuli at Cryogenic Temperatures."  International Journal of
+Heat and Mass Transfer, 32, (10), 1967-1978.  New York, New York:  Pergamon Press.  
+Raithby, G.D., and Hollands, K.G.T.  1975.   "A General Method of Obtaining
+Approximate Solutions to Laminar and Turbulent Free Convection Problems." In
+Advances in Heat Transfer, 11, 265-315 of Advances in Heat Transfer.  New York, New
+York:  Academic Press.  
+Vafai, K., Desai, C.P., Iyer, S.V., and Dyko, M.P.  1997.  "Buoyancy Induced Convection
+in a Narrow Open-Ended Annulus."  Journal of Heat Transfer, 119 , (3), 483-494.  New
+York, New York:  The American Society of Mechanical Engineers.
+Van Wylen, G. J., and Sonntag, R.E., 1986. Fundamentals of classical thermodynamics .
+third edition. John Wiley & Sons, New York, NY.
+Webb, S.W., Francis, N.D., Dunn, S.D., Itamura, M.T., and James, D.L.  2002.
+“Thermally-Induced Natural Convection Effects in Yucca Mountain Drifts.” Journal of
+Contaminant Hydrology.  (In Press).
+
+Dist-1
+DISTRIBUTION
+External
+Sandra Dalvit-Dunn
+Science Engineering Associates
+3203 Richards Lane
+Santa Fe, NM 87505
+John Del Mar 
+Science Engineering Associates
+3203 Richards Lane
+Santa Fe, NM 87505
+William Lowry 
+Science Engineering Associates
+3203 Richards Lane
+Santa Fe, NM 87505
+Thomas A. Buscheck
+Lawrence Livermore National Laboratory
+7000 East Avenue
+Livermore, CA 94550-9234
+Lee Glascoe
+Lawrence Livermore National Laboratory
+7000 East Avenue
+Livermore, CA 94550-9234
+Michael J. Anderson
+1180 Town Center Drive
+Las Vegas, NV 89144
+James A. Blink 
+1180 Town Center Drive
+Las Vegas, NV 89144
+Veraun Chipman 
+1180 Town Center Drive
+Las Vegas, NV 89144
+Thomas W. Doering
+1180 Town Center Drive
+Las Vegas, NV 89144
+Harris Greenberg
+MTS
+P.O. Box 364629
+Yucca Mountain Site Characterization Office
+Las Vegas, NV 89036
+
+Dist-2
+Matthew D. Hinds
+1180 Town Center Drive
+Las Vegas, NV 89144
+James Houseworth 
+1180 Town Center Drive
+Las Vegas, NV 89144
+Norman Kramer 
+1180 Town Center Drive
+Las Vegas, NV 89144
+Bruce Kirstein
+1180 Town Center Drive
+Las Vegas, NV 89144
+Junghun Leem
+1180 Town Center Drive
+Las Vegas, NV 89144
+Helen Marr
+1180 Town Center Drive
+Las Vegas, NV 89144
+Delwin Mecham
+1180 Town Center Drive
+Las Vegas, NV 89144
+Randolph Schreiner
+1180 Town Center Drive
+Las Vegas, NV 89144
+Daniel A. Thomas
+1180 Town Center Drive
+Las Vegas, NV 89144
+
+Dist-3
+Universities
+Darryl L. James (2)
+Texas Tech University 
+Department of Mechanical Engineering
+Box 41021
+Lubbock, TX 79409-1021
+Thomas H. Kuehn
+Department of Mechanical Engineering
+Institute of Technology
+University of Minnesota
+111 Church St. SE
+Minneapolis, MN 55455-0111
+Kambiz Vafai
+University of California, Riverside
+Department of Mechanical Engineering
+A363 Bourns Hall
+Riverside, CA 92521
+
+Dist-4
+Internal
+MS Org.
+0701 6100 P. B. Davies
+0706 6113 R. E. Finley
+0718 6141 C. Lopez
+0718 6141 K. B. Sorenson
+0719 6131 S. M. Howarth
+0719 6131 S. W. Webb (10)
+0735 6115 C. K. Ho
+0750 6116 D. J. Borns
+0751 6117 L. S. Costin
+0751 6117 S. R. Sobolik
+0771 6800 D. L. Berry
+0776  6852 N. D. Francis (20)
+0776  6852 M. T. Itamura (5)
+0776  6852 H. N. Jow
+0776 6852 E. J. Nowak
+0776  6852 A. W. Reed
+0778  6851 R. L. Jarek
+0778  6851 C. F. Jove-Colon
+0778  6851 R. J. MacKinnon
+0821 9132 L. A. Gritzo
+0835 9141 S. N. Kempka
+0836 9116 E. S. Hertel
+0836 9117 R. O. Griffith
+0836 9117 C. E. Hickox, Jr.
+1399  6850 A. S. Orrell
+1399  6855 C. L. Howard
+0731 4415 NWM Library (2)
+9017 8940-2 Central Technical Files
+0899 4916 Technical Library (2)
+0619 12690 Review and Approval Desk,
+For DOE/OSTI (2)

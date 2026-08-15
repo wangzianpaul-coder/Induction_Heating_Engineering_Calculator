@@ -1,0 +1,515 @@
+
+===== PDF PAGE 1 =====
+第39卷 第 10期
+2 0 1 8年 1 0 月
+材 料 热 处 理 学 报
+TＲANSACTIONS OF MATEＲIALS AND HEAT TＲEATMENT
+Vol ． 39 No ． 10
+October 2 0 1 8
+DOI:10. 13289 / j． issn． 1009- 6264. 2018- 0251
+A335P92 钢厚壁管局部感应加热温度场的数值模拟
+张
+建林
+1
+， 鲁 立
+1
+， 刘 川
+2
+， 迟
+鸣声
+3
+， 朱 平
+1
+(1． 苏州热工研究院有限公司再制造与电力安全中心 ，江
+苏 苏州 215004;2． 江苏科技大学材料科学与
+工程学院，江苏 镇江 212003;3． 中广核(上海)新能源有限公司 ，上海 200126)
+摘 要 :利用有限元软件 ANSYS 建
+立规格为 586 mm × 72 mm 的 A335P92 钢厚壁管焊接接头感应加热的电磁 -热耦合数值模
+型，通过开发自动热追踪算法程序计算并分析钢管焊接接头局部焊后热处理内外壁温差以及截面温度场分布 。对模型进行验证
+后，进一步分析了加热宽度 、线圈匝数、频率、内壁换热系数对管道局部焊后热处理温度场的影响规律 。结果表明 ，感应加热具有
+明显的集肤效应 ，在居里点出现明显的温度波动 ;加热宽度(线圈布置宽度 )大于 600 mm 时，改变线圈匝数 (n = 10 ～ 30 )、电磁频
+率(H = 1000 ～ 3000 Hz )对管道内外壁温差影响不明显 ;内壁换热系数是管道内外壁温差的关键影响因素 。
+关键词:A335P92 钢管; 局部焊后热处理 ; 电磁感应加热 ; 数值模拟
+中图分类号 :TG142. 7 文献标志码 :A 文章编号:1009- 6264(2018)10- 0106- 06
+Numerical simulation of local induction heating temperature field of
+A335P92 steel thick wall pipe
+ZHANG Jian- lin
+1
+， LU Li
+1
+， LIU Chuan
+2
+， CHI Ming- sheng
+3
+， ZHU Ping
+1
+(1． Ｒemanufacturing and Electric Power Security Center ;Suzhou Nuclear Power Ｒesearch Institute Co Ltd ，
+Suzhou 215004 ，China;2． School of Materials Science and Engineering ;Jiangsu University of Science and
+Technology，Zhenjiang 212003 ，China;3． CGN (Shanghai)New Energy Co Ltd ，Shanghai 200126 ，China)
+Abstract:A electromagnetic and thermal coupling numerical model of induction heating of A335P92 steel thick wall pipe welded joint was
+established by using finite element software ANSYS． The temperature difference between the inner and outer wall and the distribution of
+cross- section temperature field in the local post- weld heat treatment of welded steel pipe joints were analyzed by an automatic thermal
+tracing algorithm program． After verification of the model ，the effects of heating width ，number of coils / coil gap ，frequency and heat
+transfer coefficient of inner wall on the local heat treatment temperature field of the steel pipe were analyzed． The results show that the
+induction heating has obvious skin effect and the obvious temperature fluctuation occurs at Curie- point temperature ;when the heating width
+(coil layout width )is greater than 600 mm ，the change of number of coils (n = 10 － 30 )and electromagnetic frequency (H = 1000 －
+3000 Hz )has little effect on the temperature difference between the outer and inner walls of the steel pipe ;and the heat transfer
+coefficient of the inner wall is the key factor affecting the temperature difference between the inner and outer walls of the steel pipe．
+Keywords:A335P92 steel pipe ;local postweld heat treatment ;electromagnetic induction heating ;
+numerical simulation
+收
+稿日期: 2018- 06- 11; 修订日期 : 2018- 07- 10
+基金项目: 国家自然科学基金资助项目 (51575251)
+;国家重点研发计划重点专项 (2017YFB0305303)
+作
+者简介: 张建林(1988—)
+，男，工
+程师，硕士，主要从事电站焊接及失效分析工作 ，发表论文 5 篇，电话:0512- 68282448，E- mail:zhjianlin2008
+@ 163． com 。
+引用格式: 张建林，鲁立，刘川，等． A335P92 钢厚壁管局部感应加热温度场的数值模拟 ［J］． 材料热处理学报 ，2018，39(10)
+:106 － 111．
+ZHANG Jian- lin，LU Li ，LIU Chuan ，et al． Numerical simulation of local induction heating temperature field of A335P92 steel thick wall pipe
+［J］． Transactions of Materials and Heat Treatment ，2018，39(10) :106 － 111．
+A335P92 钢属于新型马氏体耐热钢 ，主
+要应用于
+超(超)临界机组主蒸汽管道 、高温再热蒸汽管道 、集
+箱等厚壁高温部件 ，该钢焊后需要合理的热处理来消
+除焊接残余应力 、提高组织稳定性 、改善焊接接头综
+合力学性能。
+随着机组蒸汽温度和压力的提高 ，A335P92 管道
+壁厚越来越大 ，内外壁温差越来越大 ，研究内外壁温
+差的影响规律对后续内外壁温差的控制和热处理工
+艺的制定具有重要的意义 。电磁感应加热相比于电
+加热方式进行热处理 ，具有效率高、均匀性好、环保的
+===== PDF PAGE 2 =====
+第 10 期
+张建林等:A335P92 钢厚壁管局部感应加热温度场的数值模拟
+特
+点
+［1- 2］
+，目
+前 徐 连 勇、王 学 等
+［3- 8］
+已经开展了诸多
+9% Cr 钢管道电加热
+局部热处理温度场的研究 ，但是
+针对电磁感应局部热处理方式影响规律的系统研究
+还相对匮乏。
+本文 采 用 ANSYS 有限元模拟软件 ，建 立 了
+A335P92 钢厚壁管道焊接接头电磁感应热处理下的
+有限元模型，采用电磁感应和温度场顺序耦合方法计
+算温度场，基于热源追踪算法根据测试温度结果自动
+调整电流密度载荷算法 ，并且通过实验测试验证了计
+算模型和算法 。基于建立的模型和算法 ，模拟了不同
+变量对管道局部热处理温度场的影响规律 ，为现场的
+热处理工艺优化提供了理论依据 。
+1 感应加热有限元模型
+1. 1 有
+限元模型
+图 1 感应加热有限元模型
+Fig． 1 Finite element model of induction heating
+本
+文以 586 mm × 72 mm 的 A335P92 管 道 为
+例，为提高计算效率 ，采用轴对称模型计算感应加热
+方式的温度场 ，电磁场和温度场的计算采用 ANSYS
+软件的 APDL 程序语言自动实现 ，建立感应局部热处
+理的计算模型如图 1 所示，升温速率 100 ℃ / h ，最高
+温度 760 ℃ ，加热宽度 720 mm ，保温宽度 1300 mm ，
+单匝线圈等 效 直 径 10 mm ，线 圈 匝 数30，匝 间 距 约
+15 mm ，其中线圈匝数和匝间距根据加热宽度和线圈
+等效宽度计算而来 。模型中考虑空气层 、管道、保温
+棉、加热线圈 ，外空气层厚度设置为 200 mm ，内空气
+层厚度为内径大小 ，保温棉厚度设置为 50 mm 。考虑
+到感应加热的集肤效应 ，细化管外壁的有限元网格
+(集肤效应层至少包含 4 个单元 )。与空气接触区域
+(内壁、未保温区域和端面 )以及保温区域的散热系
+数分别为 2 W / (m
+2
+·℃ )、33 W / (m
+2
+·℃ )
+［9- 10］
+;施
+加载
+荷为线圈上的电流密度 (A / m
+2
+)和
+频率(Hz)
+，并
+采用
+顺序耦合方式计算电磁感应和温度场 。即通过静态
+电磁感应计算出热生成率 (W / m
+3
+)
+，然后将计算的热
+生
+成率施加在代表管件的单元上计算瞬态温度场 。
+采用自动热追踪算法 ，根据判断加热区域表面中心点
+的升温率与要求升温率的差值不断调整施加在线圈
+单元上的电流密度 ，最终获得合适的热生成率 。
+A335P92 钢的热物理性能参考 A335P92 手册和
+文献［7- 8］
+，磁
+导率和电阻率参考文献 ［11- 12］
+，文
+献
+［13］所述 A335P92 钢在 740 ℃ 左右存在有一个磁导
+率下降所致的温度敏感区 (即居里点温度 )
+，本
+文设
+置 A335P92 钢的居里点温度为 740 ℃ ，详细热物理
+性能及电磁参数如表 1。
+表 1 A335P92 钢的热物理及电磁属性
+Table 1 Thermal physical and electromagnetic
+properties of the A335P92 steel
+Temperature /
+℃
+Specific heat /
+(J·kg － 1·
+℃ － 1 )
+Thermal
+conductivity /
+(W·m － 1·
+℃ － 1 )
+Ｒelative
+magnetic
+conductivity
+Electrical
+resistivity /
+(10 － 6 Ω·m)
+25 420 27. 6 32. 3 0. 53
+100 430 28. 0 32 0. 58
+200 460 28. 2 31. 6 0. 65
+300 480 28. 1 － 0. 75
+400 510 28. 5 29. 3 0. 85
+500 580 29 27. 5 0. 98
+600 630 27 25. 1 1. 13
+700 － 29. 1 13. 3 1. 28
+740 1000 31 1. 0 1. 019
+800 850 32 1. 0 1. 47
+1. 2 热
+源模型
+电磁感应加热现象是多维瞬态问题和电磁 、热
+传递以及弹塑性大变形分析相耦合的复杂问题
+［14］
+，
+本
+文通过 ANSYS 参数化设计语言 (APDL)开 发 了
+一套可以根据控温点温度自动调整电流密度载荷
+的闭环控 制 程 序，如 图 2 所 示，实 现 电 磁—热 耦 合
+场分析 。
+图 2 感
+应加热磁—热耦合计算流程图
+Fig． 2 Flow diagram of magnetic- thermal coupling computation
+7 0 1
+===== PDF PAGE 3 =====
+材 料 热 处 理 学 报
+第 39 卷
+2 电
+磁—热耦合场有限元数学方程
+2. 1 电
+磁感应理论
+感应加热的实质是利用电磁感应在导体内产生
+的涡流发热来达到加热工件的目的 ，涡流引起的单位
+体积单位时间内热生成率的表达式为式 (1)
+:
+q
+·
+= J
+2
+ρ = ρ A
+(
+)t = ρ (A
+^
+e
+jωt
+)
+(
+)t
+2
+= ρ (jωA
+^
+e
+jωt
+)
+2
+(1)
+式
+中:j = － 槡 1，A
+^
+为
+磁向量幅值;ω 为角频率;ρ 为电
+导率。磁感应涡流所生成的热生成率与电导率和磁向
+量幅值相关，且该热生成率因集肤效应的现象 ，作用
+于集肤层内造成温度升高 ，根据文献［15］所述，涡流
+的理论透入深度为 :
+δ = 2σ / (ω μ r μ0槡 )
+(2)
+式
+中:δ 为集肤深度;ω 为交变磁场角速度(2πf，rad / s)
+，
+μ0 为真空下的磁导率 (4π × 10
+－ 7
+H / m)
+，μr 为
+相对磁
+导率，σ 为电阻率 (Ω·m)。除涡流产生的热效应外 ，
+还有磁滞损耗所产生的热效应 ，但由于该部分热量较
+小可以忽略
+［16］
+。
+2. 2 热量传递数值模型
+热
+模型可以由下列瞬态热传导方程 (3 )、(5 )
+控制
+［17］
+:
+［c(T)
+］γ T
+t + (－ ［λ(T)
+］T) = w (3)
+式
+中:c(T)为比热，随温度的变化而变化 ;T 为温度
+向量;γ 为质量密度;
+［λ(T) ］为
+热传导系数 ，随温度
+的变化而变化 ;w 为热源的体积能量密度向量 ，可由
+下式表示:
+w = σω
+2
+A
+2
+(4)
+工作表面的边界
+条件是对流和辐射 ，如 下 式
+所示:
+［λ(T)
+］T
+t = － h (T － T a )－ c s ε(T
+4
+－ T
+4
+a )
+(5)
+式
+中:Ta 为
+环境温度;h 为对流热传递系数 ;ε 为辐射
+系数;cs 为 Stefan- Boltzman常
+数;n 为工作表面的外
+法向。
+3 计
+算过程验证
+以
+文献［18］开展的感应加热实验和数值计算模
+型作为本文计算的验证模型 。该文献中采用感应加
+热方 式 加 热 E235 钢 (碳 含 量 0. 12% ，Mn 含 量
+1. 09% ，Si 含量 0. 24% )
+，居
+里点温度为 768 ℃ 。加
+热过程分为两个阶段 ，第一阶段为开始加热到 15 s
+阶段，该阶段的钢管温度在居里温度以下 ，加热频率
+为 15000 Hz ，第二阶段为加热 15 s 之后，加热频率为
+15750 Hz 。模拟钢管外壁不同位置的温度变化曲线
+如图 3 所示。
+图 3 钢管外壁计算的温度变化曲线
+Fig． 3 The temperature change curves of the
+outer wall of the steel pipe
+从
+图 3 中看出，本文计算的感应加热管子外壁的
+温度变化与文献 ［18］中的计算和实验结果比较接
+近，加热 0 ～ 15 s 的过程中 ，加热中心外壁的温度升
+温过程为线性 ，在居里点 768 ℃ 温度附近温度变化出
+现了一小平台 ，随后温度持续升高 。本文计算 15 s
+之后的温度曲线较文献 ［18］中的温度曲线稍有偏
+低，主要原因为文献 ［18］中未给定材料随温度变化
+的磁导率，本文采用文献 ［19］碳钢材料磁导率进行
+计算，另外内外壁在高温下的散热系数可能与文献不
+一致造成计算偏差 。总体而言，本文计算的居里点温
+度前及居里点温度附近的温度变化与文献 ［18］中结
+果非常接近。可以认为本文采用的模型和计算方法
+能够较准确模拟钢管感应加热温度场 。
+4 模拟结果与分析
+4. 1 电磁场与温度场结果与分析
+以
+规格为 586 mm × 72 mm 的 A335P92 钢管为
+研究对象，模拟了电磁感应加热方式下的电磁场 、温
+度场的分布情况 。根据表 2 所给出的 A335P92 钢的
+热物理及电磁属性 ，在 1500 Hz 的频率下按照式 (2)
+计算得到室温下的集肤深度为 1. 66 mm ，当温度升高
+到 740 ℃ 后集肤深度为 13. 12 mm ，距管道外表面越
+深磁场强度越小 。有限元模型计算所获得的管道局
+部磁场强度分布云图如图 4 所示，可以看出集肤效应
+现象明显 ，集肤效应层的深度距离外表层约 10 mm ，
+这与集肤效应层的原理及集肤效应层深度计算值基
+本一致。
+8 0 1
+===== PDF PAGE 4 =====
+第 10 期
+张建林等:A335P92 钢厚壁管局部感应加热温度场的数值模拟
+图 4 740 ℃ 下的局部磁场强度分布 (H)
+Fig． 4 Local magnetic field intensity distribution at 740 ℃
+图 5 钢管中心位置内外壁温度变化曲线
+Fig． 5 The temperature change curves of the inner
+and outer wall in the center of the steel pipe
+图 5 为 A335P92 钢
+管中心位置内外壁温度变化
+曲线，由图 5 可知，钢管在电磁感应加热下 ，当管道外
+壁温度达到 740 ℃ 时，出现了一段时间的温度平台 ，
+随之外壁温度在较长一段时间后温度上升缓慢至设
+定的 760 ℃ (到达 740 ℃ 时约需要加热 7. 2 h ，到达
+760 ℃ 时 约 需 要 加 热 8. 0 h ，即 用 时 0. 8 h 升 温
+20 ℃ )
+，此
+时的温度为材料的居里点温度附近 ，因此
+没有按照设定的升温速度升温 ，如图 5 所示。高温阶
+段不同时刻下 A335P92 钢管截面的温度分布云图如
+图 6 所示。感应加热计算的温度变化在升温结束阶
+段以及保温阶段波动较大 ，这是因为设定 A335P92
+钢的居里点温度为 740 ℃ ，此温度下的材料电磁感应
+效应弱，表层感应生热效应相应降低 ，温度升温较慢 ，
+而低于该温度下的材料因未达到居里温度点 ，受电磁
+感应影响升温迅速 ，故在该温度点电磁感应效应敏
+感，温度变化剧烈 ，相应受电磁感应的加热区域也向
+纵深移动。图 7 为恒温阶段时管道内外壁沿轴向不
+同 位 置处的温度分布曲线 ，外 壁 温 度 高 于740 ℃ 、
+720 ℃ 的宽度分别为 324 mm 、434 mm ，感应加热引起
+的内壁峰值温度为 721 ℃ ，稳态下内外壁温度差值为
+40 ℃ 。从图 7 中看出 ，恒温阶段内外表面的温度沿
+轴向分布呈现抛物线形式 ，在感应加热区域温度高 ，
+加热区域外温度迅速降低 。
+图 6 高温阶段温度分布云图
+Fig． 6 The distribution of temperature field in
+high- temperature stage
+图 7 恒温阶段内外壁轴向的温度分布曲线
+Fig． 7 The temperature distribution curves of the inner
+and outer wall along the axial during the holding stage
+4. 2 影响规律结果与分析
+对
+现场大径厚壁 A335P92 管道焊口热处理时 ，
+如何缩小内外壁温差直接决定热处理效果 ，本文以规
+格为 586 mm × 72 mm 的 A335P92 钢管为 研 究 对
+象，在保证升温速率 100 ℃ / h 与最高温度 760 ℃ 一
+致的条件下，研究不同外界条件对管道内外壁温差及
+温度场的影响规律 。
+图 8 为 A335P92 钢管感应加热稳态下加热宽
+度、线圈匝数、频率、内壁换热系数对焊缝中心内外壁
+温差的影响曲线 。可以看出 ，随着加热宽度的增加 ，
+9 0 1
+===== PDF PAGE 5 =====
+材 料 热 处 理 学 报
+第 39 卷
+图 8 不同参数对内外壁温差的影响 (a)加
+热宽度;
+(b)线
+圈匝数;
+(c)频
+率;
+(d)散
+热系数
+Fig． 8 Effect of different parameters on the temperature difference between the inner and outer wall
+(a)heating width ;
+(b)number of coils ; (c)frequency; (d)coefficient of heat transfer
+管
+道内外壁的温度差值有所减小 ，当 加 热 宽 度 增
+加到 600 mm 后，温 差 趋 于 平 缓 至 稳 定;保 证 加 热
+宽度不变时 ，增大线圈 间 隙 ，即调整感应线圈匝数
+由30 匝变 为 10 匝 时，管道内外壁温差变化不变
+(最大差距 1. 5 ℃ )
+，在线圈匝数减少时要想
+获得
+同样的加热效果 ，施加的电流密度应当增大 ，以 获
+得足够大的 磁 通 量 变 化;感应加热频率在 1000 ～
+3000 Hz 之间，管道内外壁温度分布几乎完全一致 ，
+内外壁温差 变 化 不 大(最 大 差 距 2. 1 ℃ )
+，频
+率 越
+低，需要施加更大的电流密度值来保证加热区域的
+外壁按照给定升温速率变化 ;内壁散热系数对感应
+加热稳定状态内外壁温差影响显著 ，内壁散热系数
+由0 W / (m
+2
+·℃ )增
+大 到60 W / (m
+2
+·℃ )时，内
+外 壁
+温差由 2. 3 ℃ 增 至 69. 1 ℃ ，故对管道焊口进行局
+部热 处 理 时，避免穿堂风对于热处理效果至关
+重要。
+5 结
+论
+1)电
+磁感应加热近管道外壁集肤效应现象明
+显，温 度 达 到A335P92 钢 的 居 里 点 时，温 度 波 动 明
+显，这与电磁感应集肤效应理论相一致 ;
+2)在加热宽度 (线圈布置宽度 )一定的前提下 ，
+改变线圈匝数 (n = 10 ～ 30 )、电磁频率 (H = 1000 ～
+3000 Hz )对管道内外壁温差影响不明显 ;内壁换热系
+数严重影响管道内壁温度 ，焊缝局部热处理过程时应
+避免穿堂风。
+参
+考 文 献
+［1 ］ Nemkov V S ，Goldstein Ｒ C． Computer simulation of induction heating processes ［J］． Tube Seam Annealing- SNＲ vs VL，2000:1 －
+7．
+［2 ］ Ｒudnev V． Unique computer modeling approaches for simulation of induction heating and heat- treating processes ［J］． Journal of
+Materials Engineering and Performance ，2013，22(7)
+:1899 － 1906．
+0 1 1
+===== PDF PAGE 6 =====
+第 10 期
+张建林等:A335P92 钢厚壁管局部感应加热温度场的数值模拟
+［3 ］ Yaghi A H ，Hyde T H ，Becker A A ，et al． Finite element simulation of welding and residual stresses in a P91 steel incorporating
+solid- state phase transformation and post- weld heat treatment［J］． The Journal of Strain Analysis for Engineering Design ，2008，43
+(5)
+:275 － 293．
+［4 ］ 胡
+磊，王学，孟庆云，等． 9% Cr 钢厚壁管道局部焊后热处理温度场的数值模拟 ［J］． 焊接学报，2015，36(12)
+:13 － 16．
+HU Lei ，WANG Xue ，MENG Qing- yun，et al． Numerical simulation of temperature field in 9% Cr steel thick- wall pipe in local
+PWHT［J］． Transactions of the China Welding Institution ，2015，36(12) :13 － 16．
+［5 ］ 王
+学，胡磊，陈东旭，等． 管内空气流动对大口径厚壁 P92 管道局部焊后热处理温度场的影响 ［J］． 焊 接 学 报，2016，37
+(11)
+:104 － 108．
+WANG Xue ，HU Lei ，CHEN Dong- xu，et al． Influence of internal air flow on temperature field of large diameter and thick wall P92
+pipe during local PWHT ［J］． Transactions of the China Welding Institution ，2016，37(11) :104 － 108．
+［6 ］ Xu L Y ，Miao Y ，Jing H Y ，et al． Experimental and numerical investigation of heated band width for local post weld heat treatment
+of ASME P92 steel pipe ［J］． Journal of Pressure Vessel Technology ，2014，136:1- 8．
+［7 ］ 苗
+艺． P92 管道焊后局部热处理的研究［D］． 天津:天津大学，2012．
+MIAO Yi． Study on post weld local heat treatment of P92 steel pipeline ［D］． Tianjin:Tianjin University ，2012．
+［8 ］ 杨廷璋． 基于计算机仿真的 SA335- P92钢管局部焊后热处理温度场研究 ［J］． 热加工工艺 ，2016，45(23)
+:248 － 251．
+YANG Ting- zhang． Study on temperature field during local PWHT process of SA335- P92 pipe based on computer simulation ［J］．
+Hot Working Technology ，2016，45(23) :248 － 251．
+［9 ］ Lu H ，Wang J H ，Hidekazu M． Mechanical behavior in local postweld heat treatment (report iii ) :criteria for heated band width
+based on through thickness temperature distribution ［J］． Transactions of JWＲI ，1998，27(2) :89 － 95．
+［10］ Lu H ，Wang J H ，Hidekazu M ，et al． Heated band width criterion based on stress relief in local post weld heat treatment of
+concurrent tubular joint ［J］． Transactions of JWＲI ，2002，31(1) :77 － 81．
+［11］ Karimian N ，Wilson J W ，Peyton A J ，et al． Differential permeability behaviour of P9 and T22 power station steels ［J］． Journal of
+Magnetism and Magnetic Materials ，2014，352:81 － 90．
+［12］ Jang J Y ，Chiu Y W． Numerical and experimental thermal analysis for a metallic hollow cylinder subjected to step- wise electro-
+magnetic induction heating［J］． Applied Thermal Engineering ，2007，27 (11 /12) :1883 － 1894．
+［13］ 周
+烨斌，王洪晖． 大口径厚壁 P92 管道不同形式现场热处理的比较及讨论 ［J］． 焊接技术，2011，40(s1)
+:8 － 13．
+ZHOU Ye- bin，WANG Hong- hui． Comparison and discussion of different types of field heat treatment for large diameter and thick
+wall P92 pipe ［J］． Welding Technology ，2011(s1) :8 － 13．
+［14］ Song M C ，Moon Y H． Coupled electromagnetic and thermal analysis of induction heating for the forging of marine crankshafts ［J］．
+Applied Thermal Engineering ，2016，98:98 － 109．
+［15］ 吴
+金富． 基于 ANSYS 的感应加热数值模拟分析［D］． 杭州:浙江工业大学 ，2004．
+WU Jin- fu． Numerical Simulation of Induction Heating Based on ANSYS ［D］． Hangzhou:Zhejiang University of Technology ，2004．
+［16］ Barglik J ，Smalcerz A． Influence of the magnetic permeability on modeling of induction surface hardening ［J］． COMPEL- The
+International Journal for Computation and Mathematics in Electrical and Electronic Engineering ，2017，36(2)
+:555 － 564．
+［17］ 储
+乐平，马 骏 ，刘玉君，等． 钢板感应加热机理及电磁 —热耦合场的数值模拟［J］． 中国造船，2005，46(1)
+:98 － 105．
+CHU Le- ping，MA Jun ，LIU Yu- jun，et． al． The mechanism of induction heating for steel plate and numerical simulation of
+electromagnetic- thermal coupling field［J］． Shipbuilding of China ，2005，46(1) :98 － 105．
+［18］ Luozzo N D ，Fontana M ，Arcondo B． Modelling of induction heating of carbon steel tubes :Mathematical analysis ，numerical
+simulation and validation［J］． Journal of Alloys and Compounds ，2012，536S:S564- S568．
+［19］ Cho K H． Coupled electro- magneto- thermal model for induction heating process of a moving billet ［J］． International Journal of
+Thermal Sciences ，2012，60:195 － 204．
+1 1 1

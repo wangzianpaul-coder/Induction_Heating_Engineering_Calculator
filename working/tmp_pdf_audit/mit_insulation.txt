@@ -1,0 +1,3305 @@
+
+===== PDF PAGE 1 =====
+PART 3
+INTRODUCTION TO ENGINEERING HEAT TRANSFER
+===== PDF PAGE 2 =====
+HT-1
+Introduction to Engineering Heat Transfer
+These notes provide an introduction to engineering heat transfer.  Heat transfer processes set limits
+to the performance of aerospace components and systems and the subject is one of an enormous
+range of application.  The notes are intended to describe the three types of heat transfer and provide
+basic tools to enable the readers to estimate the magnitude of heat transfer rates in realistic aerospace
+applications.  There are also a number of excellent texts on the subject; some accessible references
+which expand the discussion in the notes are listen in the bibliography.
+===== PDF PAGE 3 =====
+HT-2
+Table of Tables
+Table 2.1:  Thermal conductivity at room temperature for some metals and non-metals ............. HT-7
+Table 2.2:  Utility of plane slab approximation.......................................................................... HT-17
+Table 9.1:  Total emittances for different surfaces [from: A Heat Transfer Textbook, J. Lienhard ]HT-63
+===== PDF PAGE 4 =====
+HT-3
+Table of Figures
+Figure 1.1:  Conduction heat transfer ......................................................................................... H T-5
+Figure 2.1:  Heat transfer along a bar ......................................................................................... HT-6
+Figure 2.2:  One-dimensional heat conduction ........................................................................... HT-8
+Figure 2.3:  Temperature boundary conditions for a slab............................................................ HT-9
+Figure 2.4:  Temperature distribution through a slab ................................................................. HT-10
+Figure 2.5:  Heat transfer across a composite slab (series thermal resistance) ............................ HT-11
+Figure 2.6:  Heat transfer for a wall with dissimilar materials (Parallel thermal resistance)........HT-12
+Figure 2.7:  Heat transfer through an insulated wall .................................................................. HT-11
+Figure 2.8:  Temperature distribution through an insulated wall................................................ HT-13
+Figure 2.9:  Cylindrical shell geometry notation........................................................................ HT-14
+Figure 2.10:  Spherical shell.................................................................................................. ....HT-17
+Figure 3.1:  Turbine blade heat transfer configuration ............................................................... HT-18
+Figure 3.2:  Temperature and velocity distributions near a surface. ........................................... HT-19
+Figure 3.3:  Velocity profile near a surface................................................................................ HT-20
+Figure 3.4:  Momentum and energy exchange in turbulent flow. ............................................... HT-20
+Figure 3.5:  Heat exchanger configurations ............................................................................... HT-23
+Figure 3.6:  Wall with convective heat transfer ......................................................................... HT-25
+Figure 3.7:  Cylinder in a flowing fluid ..................................................................................... HT-26
+Figure 3.8:  Critical radius of insulation ....................................................................................H T-29
+Figure 3.9:  Effect of the Biot Number [hL / kbody] on the temperature distributions in the solid and in
+the fluid for convective cooling of a body.  Note that kbody is the thermal conductivity of the
+body, not of the fluid......................................................................................................... HT-31
+Figure 3.10:  Temperature distribution in a convectively cooled cylinder for different values of Biot
+number, Bi; r2 / r1 = 2 [from: A Heat Transfer Textbook, John H. Lienhard] ..................... HT-32
+Figure 4.1:  Slab with heat sources (a) overall configuration, (b) elementary slice..................... HT-32
+Figure 4.2:  Temperature distribution for slab with distributed heat sources .............................. HT-34
+Figure 5.1:  Geometry of heat transfer fin ................................................................................. HT-35
+Figure 5.2:  Element of fin showing heat transfer...................................................................... HT-36
+Figure 5.3:  The temperature distribution, tip temperature, and heat flux in a straight one-
+dimensional fin with the tip insulated. [From: Lienhard, A Heat Transfer Textbook, Prentice-
+Hall publishers]............................................................................................................... ..HT-40
+Figure 6.1:  Temperature variation in an object cooled by a flowing fluid ................................. HT-41
+Figure 6.2:  Voltage change in an R-C circuit............................................................................ HT-42
+Figure 8.1:  Concentric tube heat exchangers. (a) Parallel flow. (b) Counterflow....................... HT-44
+Figure 8.2:  Cross-flow heat exchangers. (a) Finned with both fluids unmixed. (b) Unfinned with one
+fluid mixed and the other unmixed .................................................................................... HT-45
+Figure 8.3:  Geometry for heat transfer between two fluids ....................................................... HT-45
+Figure 8.4:  Counterflow heat exchanger................................................................................... HT-46
+Figure 8.5:  Fluid temperature distribution along the tube with uniform wall temperature .........HT-46
+Figure 9.1:  Radiation Surface Properties .................................................................................. HT-52
+Figure 9.2:  Emissive power of a black body at several temperatures - predicted and observed..HT-53
+Figure 9.3:  A cavity with a small hole (approximates a black body)......................................... HT-54
+Figure 9.4:  A small black body inside a cavity ......................................................................... HT-54
+Figure 9.5:  Path of a photon between two gray surfaces ........................................................... HT-55
+===== PDF PAGE 5 =====
+HT-4
+Figure 9.6:  Thermocouple used to measure temperature........................................................... HT-59
+Figure 9.7:  Effect of radiation heat transfer on measured temperature. ..................................... HT-59
+Figure 9.8:  Shielding a thermocouple to reduce radiation heat transfer error ............................ HT-60
+Figure 9.9:  Radiation between two bodies................................................................................ HT-60
+Figure 9.10:  Radiation between two arbitrary surfaces ............................................................. HT-61
+Figure 9.11:  Radiation heat transfer for concentric cylinders or spheres ................................... HT-62
+Figure 9.12:  View Factors for Three - Dimensional Geometries [from: Fundamentals of Heat
+Transfer, F.P. Incropera and D.P. DeWitt, John Wiley and Sons]...................................... HT-64
+Figure 9.13:  Fig. 13.4--View factor for aligned parallel rectangles [from: Fundamentals of Heat
+Transfer, F.P. Incropera and D.P. DeWitt, John Wiley and Sons]...................................... HT-65
+Figure 9.14:  Fig 13.5--View factor for coaxial parallel disk [from: Fundamentals of Heat Transfer,
+F.P. Incropera and D.P. DeWitt, John Wiley and Sons] ..................................................... HT-65
+Figure 9.15:  Fig 13.6--View factor for perpendicular rectangles with a common edge ............. HT-66
+===== PDF PAGE 6 =====
+HT-5
+1.0 Heat Transfer Modes
+Heat transfer processes are classified into three types.  The first is conduction, which is defined
+as transfer of heat occurring through intervening matter without bulk motion of the matter.  Figure
+1.1 shows the process pictorially.  A solid (a block of metal, say) has one surface at a high
+temperature and one at a lower temperature.  This type of heat conduction can occur, for example,
+through a turbine blade in a jet engine. The outside surface, which is exposed to gases from the
+combustor, is at a higher temperature than the inside surface, which has cooling air next to it.  The
+level of the wall temperature is critical for a turbine blade.
+Thigh Tlow
+Solid
+Heat “flows” to right ( q&)
+Figure 1.1: Conduction heat transfer
+The second heat transfer process is convection, or heat transfer due to a flowing fluid.  The
+fluid can be a gas or a liquid; both have applications in aerospace technology.  In convection heat
+transfer, the heat is moved through bulk transfer of a non-uniform temperature fluid.
+The third process is radiation or transmission of energy through space without the necessary
+presence of matter.  Radiation is the only method for heat transfer in space.  Radiation can be
+important even in situations in which there is an intervening medium; a familiar example is the heat
+transfer from a glowing piece of metal or from a fire.
+Muddy points
+How do we quantify the contribution of each mode of heat transfer in a given situation?
+(MP HT.1)
+2.0 Conduction Heat Transfer
+We will start by examining conduction heat transfer.  We must first determine how to relate the
+heat transfer to other properties (either mechanical, thermal, or geometrical).  The answer to this is
+rooted in experiment, but it can be motivated by considering heat flow along a "bar" between two
+heat reservoirs at TA, TB as shown in Figure 2.1.  It is plausible that the heat transfer rate Q& , is a
+===== PDF PAGE 7 =====
+HT-6
+function of the temperature of the two reservoirs, the bar geometry and the bar properties.  (Are there
+other factors that should be considered?  If so, what?).  This can be expressed as
+Q&  = f1 (TA , TB , bar geometry, bar properties)           (2.1)
+It also seems reasonable to postulate that Q&  should depend on the temperature difference TA - TB.  If
+TA – TB is zero, then the heat transfer should also be zero.  The temperature dependence can therefore
+be expressed as
+Q&  = f2 [ (TA - TB), TA, bar geometry, bar properties]           (2.2)
+L
+TBTA
+Q&
+Figure 2.1: Heat transfer along a bar
+An argument for the general form of f2 can be made from physical considerations.  One
+requirement, as said, is f2 = 0 if TA = TB.  Using a MacLaurin series expansion, as follows:
+f( T) f(0) f
+(T ) T
+0
+∆ ∆ ∆=+ ∂
+∂ + L           (2.3)
+If we define ∆T = TA – TB and f = f2, we find that (for small TA – TB),
+f( T T ) Q f( 0 ) f
+(T T ) TT .2A B 2
+2
+AB T A TB 0
+AB−= = + ∂
+∂− −() +
+⋅
+−=
+L           (2.4)
+We know that f2(0) = 0 .  The derivative evaluated at TA = TB (thermal equilibrium) is a measurable
+property of the bar.  In addition, we know that QT T f
+TT
+AB
+2
+AB
+⋅
+>> ∂
+∂−()
+>00  if   or   .  It also seems
+reasonable that if we had two bars of the same area, we would have twice the heat transfer, so that
+we can postulate that Q&  is proportional to the area.  Finally, although the argument is by no means
+rigorous, experience leads us to believe that as L increases Q&  should get smaller.  All of these lead
+to the generalization (made by Fourier in 1807) that, for the bar, the derivative in equation (2.4) has
+the form
+===== PDF PAGE 8 =====
+HT-7
+∂
+∂−()
+=
+−=
+f
+TT
+kA
+L
+2
+AB T A TB 0
+.           (2.5)
+In equation (2.5), k is a proportionality factor that is a function of the material and the
+temperature, A is the cross-sectional area and L is the length of the bar.  In the limit for any
+temperature difference ∆T across a length ∆x as both L, TA - TB → 0, we can say
+() ()
+dx
+dTkAL
+TTkAL
+TTkAQ ABBA −=−−=−=& .           (2.6)
+A more useful quantity to work with is the heat transfer per unit area, defined as
+qA
+Q &
+&
+= .           (2.7)
+The quantity q&  is called the heat flux and its units are Watts/m2.  The expression in (2.6) can
+be written in terms of heat flux as
+dx
+dTkq −=& .          (2.8)
+Equation 2.8 is the one-dimensional form of Fourier's law of heat conduction.  The
+proportionality constant k is called the thermal conductivity.  Its units are W / m-K.  Thermal
+conductivity is a well-tabulated property for a large number of materials.  Some values for familiar
+materials are given in Table 1; others can be found in the references.  The thermal conductivity is a
+function of temperature and the values shown in Table 1 are for room temperature.
+Table 2.1: Thermal conductivity at room temperature for some metals and non-metals
+Metals Ag Cu Al Fe Steel
+k [W/m-K] 420 390 200 70 50
+Non-metals H 20 Air Engine oil H 2 Brick Wood Cork
+k [W/m-K] 0.6 0.026 0.15 0.18 0.4 -0 .5 0.2 0.04
+===== PDF PAGE 9 =====
+HT-8
+2.1   Steady-State One-Dimensional Conduction
+()xQ& () dxxQ +&
+dx
+x
+Insulated
+(no heat transfer)
+Figure 2.2: One-dimensional heat conduction
+For one-dimensional heat conduction (temperature depending on one variable only), we can
+devise a basic description of the process.  The first law in control volume form (steady flow energy
+equation) with no shaft work and no mass flow reduces to the statement that Q&Σ  for all surfaces = 0
+(no heat transfer on top or bottom of figure 2.2).  From equation (2.8), the heat transfer rate in at the
+left (at x) is
+˙Qx kA dT
+dx x
+() =− ⎛
+⎝
+⎞
+⎠ .  (2.9)
+The heat transfer rate on the right is
+˙˙ ˙
+Qx d x Qx dQ
+dx dx
+x
++() = () ++ L.         (2.10)
+Using the conditions on the overall heat flow and the expressions in (2.9) and (2.10)
+˙˙ ˙
+QQ Qxx d
+dx xd x 0() − () + () +⎛
+⎝
+⎜ ⎞
+⎠
+⎟=L .         (2.11)
+Taking the limit as dx approaches zero we obtain
+ dQ x
+dx
+˙() = 0 ,       (2.12a)
+or
+===== PDF PAGE 10 =====
+HT-9
+d
+dx kA dT
+dx 0⎛
+⎝⎜
+⎞
+⎠⎟ = .       (2.12b)
+If k is constant (i.e. if the properties of the bar are independent of temperature), this reduces to
+d
+dx A dT
+dx 0⎛
+⎝⎜
+⎞
+⎠⎟ =       (2.13a)
+or (using the chain rule)
+dT
+dx
+1
+A
+dA
+dx
+dT
+dx 0
+2
+2 +⎛
+⎝⎜
+⎞
+⎠⎟ = .       (2.13b)
+Equations (2.13a) or (2.13b) describe the temperature field for quasi-one-dimensional steady state
+(no time dependence) heat transfer.  We now apply this to some examples.
+Example 2.1: Heat transfer through a plane slab
+x
+T = T1 T = T2
+Slab
+x = 0 x = L
+Figure 2.3: Temperature boundary conditions for a slab
+For this configuration, the area is not a function of x, i.e. A = constant. Equation (2.13) thus became
+02
+2
+=dx
+Td .         (2.14)
+Equation (2.14) can be integrated immediately to yield
+adx
+dT =         (2.15)
+===== PDF PAGE 11 =====
+HT-10
+and baxT += .         (2.16)
+Equation (2.16) is an expression for the temperature field where a and b are constants of integration.
+For a second order equation, such as (2.14), we need two boundary conditions to determine a and b.
+One such set of boundary conditions can be the specification of the temperatures at both sides of the
+slab as shown in Figure 2.3, say T (0) = T1; T (L) = T2.
+The condition T (0) = T1 implies that b = T1.  The condition T2 = T (L) implies that T2 = aL + T1, or
+L
+TTa 12 −= .
+With these expressions for a and b the temperature distribution can be written as
+Tx T TT
+L x1
+21() =+ −⎛
+⎝⎜
+⎞
+⎠⎟ .         (2.17)
+This linear variation in temperature is shown in Figure 2.4 for a situation in which T1 > T2.
+T2
+T1
+T
+x
+Figure 2.4: Temperature distribution through a slab
+The heat flux q& is also of interest.  This is given by
+() constant12 =−−=−= L
+TTkdx
+dTkq& .         (2.18)
+Muddy points
+How specific do we need to be about when the one-dimensional assumption is valid? Is it
+enough to say that dA/dx is small? (MP HT.2)
+Why is the thermal conductivity of light gases such as helium (monoatomic) or hydrogen
+(diatomic) much higher than heavier gases such as argon (monoatomic) or nitrogen
+(diatomic)? (MP HT.3)
+===== PDF PAGE 12 =====
+HT-11
+2.2   Thermal Resistance Circuits
+There is an electrical analogy with conduction heat transfer that can be exploited in problem
+solving.  The analog of Q&  is current, and the analog of the temperature difference, T1 - T2, is voltage
+difference.  From this perspective the slab is a pure resistance to heat transfer and we can define
+R
+TTQ 21 −=&          (2.19)
+where R = L/kA, the thermal resistance.  The thermal resistance R increases as L increases, as A
+decreases, and as k decreases.
+The concept of a thermal resistance circuit allows ready analysis of problems such as a composite
+slab (composite planar heat transfer surface).   In the composite slab shown in Figure 2.5, the heat
+flux is constant with x.  The resistances are in series and sum to R = R1 + R2.  If TL is the temperature
+at the left, and TR is the temperature at the right, the heat transfer rate is given by
+21 RR
+TT
+R
+TTQ RLRL
++
+−=−=& .         (2.20)
+1 2
+TL
+Q&
+TR
+R1 R2
+x
+Figure 2.5: Heat transfer across a composite slab (series thermal resistance)
+Another example is a wall with a dissimilar material such as a bolt in an insulating layer.  In
+this case, the heat transfer resistances are in parallel.  Figure 2.6 shows the physical configuration,
+the heat transfer paths and the thermal resistance circuit.
+===== PDF PAGE 13 =====
+HT-12
+R2
+Q&
+k2
+k1
+k1
+R1
+model
+Figure 2.6: Heat transfer for a wall with dissimilar materials (Parallel thermal resistance)
+For this situation, the total heat flux Q&  is made up of the heat flux in the two parallel paths:
+21 QQQ &&& +=  with the total resistance given by:
+21
+111
+RRR +=  .         (2.21)
+More complex configurations can also be examined; for example, a brick wall with insulation
+on both sides.
+T2
+Brick
+0.1 m
+T1 = 150 °C T4 = 10 °C
+T2 T3
+Insulation
+0.03 m
+T3T1 T4
+R1 R2 R3
+Figure 2.7: Heat transfer through an insulated wall
+The overall thermal resistance is given by
+33
+3
+22
+2
+11
+1
+321
+Ak
+L
+Ak
+L
+Ak
+LRRRR ++=++= .         (2.22)
+Some representative values for the brick and insulation thermal conductivity are:
+===== PDF PAGE 14 =====
+HT-13
+kbrick = k2 = 0.7 W/m-K
+kinsulation = k1 = k3 = 0.07 W/m-K
+Using these values, and noting that A1 = A2 = A3 = A, we obtain:
+K/W m 0.42K  W/m0.07
+m 0.03 2
+1
+1
+31 ==== k
+LARAR
+K/W m 0.14K  W/m0.7
+m 0.1 2
+2
+2
+2 === k
+LAR .
+This is a series circuit so
+2
+2
+41  W/m142K/W m 0.98
+K 140 hroughout constant t ==−=== RA
+TT
+A
+Qq
+&
+&
+x
+41
+4
+TT
+TT
+−
+−
+0
+1.0
+1 2 3 4
+Figure 2.8: Temperature distribution through an insulated wall
+The temperature is continuous in the wall and the intermediate temperatures can be found
+from applying the resistance equation across each slab, since Q&  is constant across the slab.  For
+example, to find T2:
+2
+1
+21  W/m142=−= AR
+TTq&
+This yields T1 – T2 = 60 K or T2 = 90 °C.
+The same procedure gives T3 = 70 °C.  As sketched in Figure 2.8, the larger drop is across the
+insulating layer even though the brick layer is much thicker.
+Muddy points
+What do you mean by continuous? (MP HT.4)
+Why is temperature continuous in the composite wall problem? Why is it continuous at the
+interface between two materials? (MP HT.5)
+===== PDF PAGE 15 =====
+HT-14
+Why is the temperature gradient dT/dx not continuous? (MP HT.6)
+Why is ∆T the same for the two elements in a parallel thermal circuit? Doesn't the relative
+area of the bolt to the wood matter? (MP HT.7)
+2.3   Steady Quasi-One-Dimensional Heat Flow in Non-Planar Geometry
+The quasi one-dimensional equation that has been developed can also be applied to non-planar
+geometries.  An important case is a cylindrical shell, a geometry often encountered in situations
+where fluids are pumped and heat is transferred.  The configuration is shown in Figure 2.9.
+r1
+control volume
+r1
+r2
+r2
+Figure 2.9: Cylindrical shell geometry notation
+For a steady axisymmetric configuration, the temperature depends only on a single coordinate (r)
+and Equation (2.12b) can be written as
+k d
+dr Ar dT
+dr 0()⎛
+⎝⎜
+⎞
+⎠⎟ =         (2.23)
+or, since A = 2π r,
+d
+dr r dT
+dr 0⎛
+⎝⎜
+⎞
+⎠⎟ = .         (2.24)
+The steady-flow energy equation (no flow, no work) tells us that outin QQ && =  or
+0=dr
+Qd &
+(2.25)
+The heat transfer rate per unit length is given by
+Qk 2  r dT
+dr
+⋅
+=− ⋅ π .
+===== PDF PAGE 16 =====
+HT-15
+Equation (2.24) is a second order differential equation for T.  Integrating this equation once gives
+adr
+dTr = .         (2.26)
+where a is a constant of integration.  Equation (2.26) can be written as
+r
+dradT =         (2.27)
+where both sides of equation (2.27) are exact differentials.  It is useful to cast this equation in terms
+of a dimensionless normalized spatial variable so we can deal with quantities of order unity.  To do
+this, divide through by the inner radius, r1
+()
+() 1
+1
+/
+/
+rr
+rrdadT =         (2.28)
+Integrating (2.28) yields
+Ta r
+r b
+1
+= ⎛
+⎝⎜
+⎞
+⎠⎟ +ln .                     (2.29)
+To find the constants of integration a and b, boundary conditions are needed.  These will be taken to
+be known temperatures T1 and T2 at r1 and r2 respectively. Applying T = T1 at r = r1 gives T1 = b.
+Applying T = T2 at r = r2 yields
+1
+1
+2
+2 ln Tr
+raT += ,
+or
+() 12
+12
+/ln rr
+TTa −= .
+The temperature distribution is thus
+() ()
+()
+1
+12
+1
+12
+/ln
+/ln Trr
+rrTTT +−= .         (2.30)
+As said, it is generally useful to put expressions such as (2.30) into non-dimensional and
+normalized form so that we can deal with numbers of order unity (this also helps in checking
+whether results are consistent).  If convenient, having an answer that goes to zero at one limit is also
+useful from the perspective of ensuring the answer makes sense.  Equation (2.30) can be put in non-
+dimensional form as
+===== PDF PAGE 17 =====
+HT-16
+()
+() 12
+1
+12
+1
+/ln
+/ln
+rr
+rr
+TT
+TT =−
+− .         (2.31)
+The heat transfer rate, Q& , is given by
+()
+()
+()
+() 12
+21
+112
+12
+1
+/ln21
+/ln2 rr
+TTk
+rrr
+TTkrdr
+dTkAQ −=−−=−= ππ&
+per unit length.  The thermal resistance R is given by
+()
+k
+rrR π2
+/ln 12=                     (2.32)
+R
+TTQ 21 −=& .
+The cylindrical geometry can be viewed as a limiting case of the planar slab problem.  To
+make the connection, consider the case when 1
+1
+12 <<−
+r
+rr .  From the series expansion for ln (1 + x)
+we recall that
+ln 1+ x  x -  x
+2  + x
+3 + 
+23
+() ≈ K         (2.33)
+(Look it up, try it numerically, or use the binomial theorem on the series below and integrate term by
+term. K++−=+
+211
+1 xxx )
+The logarithms in Equation (2.31) can thus be written as
+ln ln1 rr
+r
+rr
+r
+r
+r
+rr
+r
+1
+1
+1
+1
+2
+1
+21
+1
++ −⎛
+⎝⎜
+⎞
+⎠⎟ ≅ − ≅ −   and            (2.34)
+in the limit of (r2 – r1) << r1.  Using these expressions in equation (2.30) gives
+() ()
+()
+1
+12
+1
+12 Trr
+rrTTT +−
+−−= .         (2.35)
+With the substitution of r – r1 = x, and r2 – r1 = L we obtain
+()
+L
+xTTTT 121 −+=         (2.36)
+===== PDF PAGE 18 =====
+HT-17
+which is the same as equation (2.17).  The plane slab is thus the limiting case of the cylinder if (r -
+r1) / r << 1, where the heat transfer can be regarded as taking place in (approximately) a planar slab.
+To see when this is appropriate, consider the expansion ()
+x
+x+1ln , which is the ratio of heat flux for a
+cylinder and a plane slab.
+Table 2.2: Utility of plane slab approximation
+x .1 .2 .3 .4 .5
+()
+x
+x+1ln .95 .91 .87 .84 .81
+For < 10% error, the ratio of thickness to inner radius should be less than 0.2, and for 20% error, the
+thickness to inner radius should be less than 0.5.
+A second example is the spherical shell with specified temperatures T (r1) = T1 and T (r2) =
+T2, as sketched in Figure 2.10.
+r1
+T2T1
+r2
+Figure 2.10: Spherical shell
+The area is now 24)( rrA π= , so the equation for the temperature field is
+d
+dr r dT
+dr 0
+2⎛
+⎝⎜
+⎞
+⎠⎟ = .         (2.37)
+Integrating equation (2.37) once yields
+2/ radr
+dT = .                     (2.38)
+Integrating again gives
+===== PDF PAGE 19 =====
+HT-18
+br
+aT +−=
+or, normalizing the spatial variable
+() brr
+aT +′=
+1/         (2.39)
+where a′  and b are constants of integration.  As before, we specify the temperatures at r = r1 and r =
+r2. Use of the first boundary condition gives () baTrT +′== 11 .  Applying the second boundary
+condition gives
+() () brr
+aTrT +′==
+12
+22
+/
+Solving for a′ and b,
+./1
+/1
+21
+21
+1
+21
+21
+rr
+TTTb
+rr
+TTa
+−
+−−=
+−
+−=′
+        (2.40)
+In non-dimensional form the temperature distribution is thus:
+()
+() 21
+1
+21
+1
+/1
+/1
+rr
+rr
+TT
+TT
+−
+−=−
+−         (2.41)
+===== PDF PAGE 20 =====
+HT-19
+3.0 Convective Heat Transfer
+The second type of heat transfer to be examined is convection, where a key problem is
+determining the boundary conditions at a surface exposed to a flowing fluid.  An example is the wall
+temperature in a turbine blade because turbine temperatures are critical as far as creep (and thus
+blade) life.  A view of the problem is given in Figure 3.1, which shows a cross-sectional view of a
+turbine blade.  There are three different types of cooling indicated, all meant to ensure that the metal
+is kept at a temperature much lower than that of the combustor exit flow in which the turbine blade
+operates.  In this case, the turbine wall temperature is not known and must be found as part of the
+solution to the problem.
+Figure 3.1: Turbine blade heat transfer configuration
+To find the turbine wall temperature, we need to analyze convective heat transfer, which means we
+need to examine some features of the fluid motion near a surface.  The conditions near a surface are
+illustrated schematically in Figure 3.2.
+T
+c∞
+Ve l oci t y
+distribution;
+c = 0 at surface
+c (velocity)
+δ′
+TwT∞
+y y
+Figure 3.2: Temperature and velocity distributions near a surface.
+    
+      
+===== PDF PAGE 21 =====
+HT-20
+In a region of thickness δ′, there is a thin "film" of slowly moving fluid through which most of the
+temperature difference occurs.  Outside this layer, T is roughly uniform (this defines δ′).  The heat
+flux can thus be expressed as
+q Q
+A
+kT T
+d
+w⋅
+⋅
+∞
+==
+−()
+′           (3.1)
+It cannot be emphasized enough that this is a very crude picture.  The general concept, however, is
+correct, in that close to the wall, there is a thin layer in which heat is transferred basically by
+conduction.  Outside of this region is high mixing.  The difficulty is that the thickness of the layer is
+not a fluid property.  It depends on velocity (Reynolds number), structure of the wall surface,
+pressure gradient and Mach number.  Generally δ′ is not known and needs to be found and it is
+customary to calculate the heat transfer using [kfluid / δ′].  This quantity has the symbol h and is
+known as the convective heat transfer coefficient.  The units of h are W/m2K.  The convective heat
+transfer coefficient is defined by
+q Q
+A hT Tw
+⋅
+⋅
+∞== − ()           (3.2)
+Equation 3.2 is often called Newton’s Law of Cooling.  For many situations of practical interest, the
+quantity h is still known mainly through experiments.
+Muddy points
+How do we know that δ' is not a fluid property? (MP HT.8)
+3.1   The Reynolds Analogy
+We describe the physical mechanism for the heat transfer coefficient in a turbulent boundary layer
+because most aerospace vehicle applications have turbulent boundary layers.  The treatment closely
+follows that in Eckert and Drake (1959).  Very near the wall, the fluid motion is smooth and laminar,
+and molecular conduction and shear are important.  The shear stress, τ, at a plane is given by
+τµ =dy
+dc (where µ is the dynamic viscosity), and the heat flux by 
+dy
+dTkq −=& .  The latter is the same
+expression that was used for a solid.  The boundary layer is a region in which the velocity is lower
+than the free stream as shown in Figures 3.2 and 3.3.  In a turbulent boundary layer, the dominant
+mechanisms of shear stress and heat transfer change in nature as one moves away from the wall.
+===== PDF PAGE 22 =====
+HT-21
+plane
+Figure 3.3: Velocity profile near a surface
+As one moves away from the wall (but still in the boundary layer), the flow is turbulent.  The fluid
+particles move in random directions and the transfer of momentum and energy is mainly through
+interchange of fluid particles, shown schematically in Figure 3.4.
+2 2
+a a
+1 1
+m′ cp T′
+m′ cp T
+Figure 3.4: Momentum and energy exchanges in turbulent flow.
+With reference to Figure 3.4, because of the turbulent velocity field, a fluid mass m′ penetrates the
+plane aa per unit time and unit area.  In steady flow, the same amount crosses aa from the other side.
+Fluid moving up transports heat m′ cp T.  Fluid moving down transports m′ cp T′ downwards.  If T >
+T′, there is a turbulent downwards heat flow, ˙qt , given by ˙qm c T Ttp= ′′ −()  that results.
+Fluid moving up also has momentum m′ c and fluid moving down has momentum m′ c′.   The net
+flux of momentum down per unit area and time is therefore m′ (c′ - c).  This net flux of momentum
+per unit area and time is a force per unit area or stress, given by
+tm ' c ct = ′−()           (3.3)
+Based on these considerations, the relation between heat flux and shear stress at plane aa is
+===== PDF PAGE 23 =====
+HT-22
+˙qt = ′−
+′−
+⎛
+⎝
+⎞
+⎠τtpc TT
+cc               (3.4)
+or (again approximately)
+˙qtt p c dT
+dc=τ           (3.5)
+since the locations of planes 1-1 and 2-2 are arbitrary.  For the laminar region, the heat flux towards
+the wall is
+˙q=τµ
+kd T
+dc
+The same relationship is applicable in laminar or turbulent flow if pck =µ
+ or, expressed slightly
+differently,
+1/
+/ === α
+υ
+ρ
+ρµ
+p
+p
+ckk
+c
+where υ  is the kinematic viscosity, and α is the thermal diffusivity.
+The quantity µcp/k is known as the Prandtl number (Pr), after the man who first presented the idea of
+the boundary layer and was one of the pioneers of modern fluid mechanics.  For gases, Prandtl
+numbers are in fact close to unity and for air Pr = 0.71 at room temperature.  The Prandtl number
+varies little over a wide range of temperatures; approximately 3% from 300-2000 K.
+We want a relation between the values at the wall (at which T = Tw and c = 0) and those in the free
+stream.  To get this, we integrate the expression for dT from the wall to the free stream
+dT 1
+c dc
+p
+= ˙q
+τ           (3.6)
+where the relation between heat transfer and shear stress has been taken as the same for both the
+laminar and the turbulent portions of the boundary layer.  The assumption being made is that the
+mechanisms of heat and momentum transfer are similar.  Equation (3.6) can be integrated from the
+wall to the freestream (conditions "at ∞"):
+dT c dc
+pww
+1
+∞∞
+∫∫ = ⎛
+⎝
+⎞
+⎠
+˙q
+τ           (3.7)
+where ˙q
+τ  and cp are assumed constant.
+===== PDF PAGE 24 =====
+HT-23
+Carrying out the integration yields
+TT c
+cw w
+wp
+∞ ∞−= ˙q
+τ           (3.8)
+where c∞ is the velocity and cp is the specific heat.   In equation (3.8), wq&  is the heat flux to the wall
+and τw is the shear stress at the wall.  The relation between skin friction (shear stress) at the wall and
+heat transfer is thus
+˙qw
+pw
+w
+2cT Tc cρ
+τ
+ρ∞∞ ∞ ∞∞−() = .           (3.9)
+The quantity τ
+ρ
+w
+2
+1/2 c∞∞
+ is known as the skin friction coefficient and is denoted by Cf .  The skin
+friction coefficient has been tabulated (or computed) for a large number of situations.  If we define a
+non-dimensional quantity
+˙qw
+pw
+w
+pw pcT Tc
+hT T
+cT Tc
+h
+ccρρρ∞∞ ∞
+∞
+∞∞ ∞∞ ∞−() = −()
+−() =   = St,
+known as the Stanton Number,  we can write an expression for the heat transfer coefficient, h as
+hc c C
+2p
+f≈ ∞∞ρ .         (3.10)
+Equation (3.10) provides a useful estimate of h, or wq& , based on knowing the skin friction, or drag.
+The direct relationship between the Stanton Number and the skin friction coefficient is
+St= C
+2
+f
+The relation between the heat transfer and the skin friction coefficient
+˙qw
+wp wcT T
+c≈ −() ∞
+∞
+τ
+is known as the Reynolds analogy  between shear stress and heat transfer.  The Reynolds analogy is
+extremely useful in obtaining a first approximation for heat transfer in situations in which the shear
+stress is "known".
+===== PDF PAGE 25 =====
+HT-24
+An example of the use of the Reynolds analogy is in analysis of a heat exchanger.  One type of heat
+exchanger has an array of tubes with one fluid flowing inside and another fluid flowing outside, with
+the objective of transferring heat between them.  To begin, we need to examine the flow resistance
+of a tube.  For fully developed flow in a tube, it is more appropriate to use an average velocity c  and
+a bulk temperature TB .  Thus, an approximate relation for the heat transfer is
+˙qww p Bwc TT
+c≈ −τ .         (3.11)
+The fluid resistance (drag) is all due to shear forces and is given by τw Aw = D, where Aw is the tube
+“wetted” area (perimeter x length).  The total heat transfer, Q& , is Aqw& w, so that
+c
+TTcDQ WB
+p
+−=&                     (3.12)
+The power, P, to drive the flow through a resistance is given by the product of the drag and the
+velocity, cD , so that
+˙Q
+P
+cT T
+c
+pB w
+= −()
+2         (3.13)
+The mass flow rate is given by Acm ρ=& where A is the cross sectional area.  For given mass flow
+rate and overall heat transfer rate, the power scales as c2 or as 1/A2, i.e.
+P
+cT T A2 pB w 2∝
+−()
+˙ ˙Qm2 1
+ρ
+        (3.14)
+Equations (3.13) and (3.14) show that to decrease the power dissipated, we need to decrease c ,
+which can be accomplished by increasing the cross-sectional area.  Two possible heat exchanger
+configurations are sketched in Figure 3.5; the one on the right will have a lower loss.
+heat exchangerheat exchanger
+high loss
+lower loss
+m⋅ diffuser
+Figure 3.5: Heat exchanger configurations
+===== PDF PAGE 26 =====
+HT-25
+To recap, there is an approximate relation between skin friction (momentum flux to the wall) and
+heat transfer called the Reynolds analogy that provides a useful way to estimate heat transfer rates in
+situations in which the skin friction is known.  The relation is expressed by
+St= C
+2
+f       (3.15a)
+or
+flux momentum convected
+ wallflux to momentum
+fluxheat  convected
+ wallflux toheat =       (3.15b)
+or
+˙qw
+pw
+w
+2cc T T cρ
+τ
+ρ∞∞ ∞ ∞∞−() ≈       (3.15c)
+The Reynolds analogy can be used to give information about scaling of various effects as well as
+initial estimates for heat transfer.  It is emphasized that it is a useful tool based on a hypothesis about
+the mechanism of heat transfer and shear stress and not a physical law.
+Muddy points
+What is the "analogy" that we are discussing? Is it that the equations are similar? (MP HT.9)
+In what situations does the Reynolds analogy "not work"? (MP HT.10)
+3.2   Combined Conduction and Convection
+We can now analyze problems in which both conduction and convection occur, starting with a wall
+cooled by flowing fluid on each side.  As discussed, a description of the convective heat transfer can
+be given explicitly as
+˙
+˙Q qA hT Tw== − () ∞         (3.16)
+This could represent a model of a turbine blade with internal cooling.  Figure 3.6 shows the
+configuration.
+===== PDF PAGE 27 =====
+HT-26
+T1
+T2
+Tw1
+Tw2
+L
+1δ′ 2δ′
+T
+Figure 3.6: Wall with convective heat transfer
+The heat transfer in fluid 1 is given by
+˙Q
+A hT T1w 11=− () ,
+which is the heat transfer per unit area to the fluid.  The heat transfer in fluid (2) is similarly given by
+˙Q
+A hT T22 w 2=− () .
+Across the wall, we have
+˙Q
+A
+k
+L TTw2 w1=− () .
+The quantity Q& /A is the same in all of these expressions.  Putting them all together to write the
+known overall temperature drop yields a relation between heat transfer and overall temperature drop,
+T2 – T1 :
+TT TT T T T T A
+1
+h
+L
+k
+1
+h21 2w 2 w 2w 1 w 11
+12
+−= −() +−() +−() =+ +⎡
+⎣⎢
+⎤
+⎦⎥
+˙Q .         (3.17)
+We can define a thermal resistance, R, as before, such that
+˙Q= −()TT
+R
+21 ,
+===== PDF PAGE 28 =====
+HT-27
+where R is given by
+R 1
+hA
+L
+Ak
+1
+hA12
+=++ .         (3.18)
+Equation (3.18) is the thermal resistance for a solid wall with convection heat transfer on each side.
+For a turbine blade in a gas turbine engine, cooling is a critical consideration.  In terms of Figure 3.6,
+T2 is the combustor exit (turbine inlet) temperature and T1 is the temperature at the compressor exit.
+We wish to find T w2 because this is the highest metal temperature.  From (3.17), the wall
+temperature can be written as
+Tw2 = T2 - 
+˙Q
+Ah2
+ =− −T TT
+R
+1
+Ah2 21
+2
+        (3.19)
+Using the expression for the thermal resistance, the wall temperatures can be expressed in terms of
+heat transfer coefficients and wall properties as
+12
+1
+2
+12
+22
+++
+−−=
+k
+Lh
+h
+h
+TTTTw         (3.20)
+Equation (3.20) provides some basic design guidelines.  The goal is to have a low value of T w2 .
+This means h1/h2 should be large, k should be large (but we may not have much flexibility in choice
+of material) and L should be small.  One way to achieve the first of these is to have h2 low (for
+example, to flow cooling air out as in Figure 3.1 to shield the surface).
+A second example of combined conduction and convection is given by a cylinder exposed to a
+flowing fluid.  The geometry is shown in Figure 3.7.
+c∞
+T∞
+r1
+r2
+r1
+Figure 3.7: Cylinder in a flowing fluid
+===== PDF PAGE 29 =====
+HT-28
+For the cylinder the heat flux at the outer surface is given by
+˙
+˙
+q Q== − () =∞A hT T     r rw 2at
+The boundary condition at the inner surface could either be a heat flux condition or a temperature
+specification; we use the latter to simplify the algebra. Thus, 11 at  rrTT == .  This is a model for the
+heat transfer in a pipe of radius r1 surrounded by insulation of thickness r2 - r1.  The solution for a
+cylindrical region was given in Section 2.3 as
+Tr a r
+r b() l n=+
+1
+Use of the boundary condition T (r1) = T1 yields b = T1.
+At the interface between the cylinder and the fluid, r = r2, the temperature and the heat flow are
+continuous. (Question: Why is this?  How would you argue the point?)
+˙q=− =− = + ⎛
+⎝
+⎜ ⎞
+⎠
+⎟−⎡
+⎣⎢
+⎤
+⎦⎥∞k dT
+dr k a
+r h aln r
+r TT
+2
+2
+1
+1         (3.21)
+Plugging the form of the temperature distribution in the cylinder into Equation (3.21) yields
+−+⎛
+⎝
+⎜ ⎞
+⎠
+⎟=−() ∞a k
+r hln r
+r hT T
+2
+2
+1
+1 .
+The constant of integration, a, is
+a
+hT T
+k
+r h r
+r
+TT
+k
+hr
+r
+r
+1
+2
+2
+1
+1
+2
+2
+1
+=
+−−()
++
+=−
+−()
++
+∞∞
+ln ln
+,
+and the expression for the temperature is, in normalized non-dimensional form
+TT
+TT
+r/r
+k
+hr r/ r
+1
+1
+1
+2
+21
+−
+− = ()
++ ()∞
+ln
+ln
+.         (3.22)
+heat flux just inside cylinder surface heat flux to fluid
+===== PDF PAGE 30 =====
+HT-29
+The heat flow per unit length, ˙Q, is given by
+˙Q= −()
++ ()
+∞2T Tk
+k
+hr r/ r
+ 1
+2
+21
+π
+ln
+        (3.23)
+The units in Equation (3.23) are W / m-s.
+A problem of interest is choosing the thickness of insulation to minimize the heat loss for a fixed
+temperature difference T1 - T∞  between the inside of the pipe and the flowing fluid far away from
+the pipe.  (T1 - T∞ is the driving temperature distribution for the pipe).  To understand the behavior of
+the heat transfer we examine the denominator in Equation (3.23) as r2 varies.  The thickness of
+insulation that gives maximum heat transfer is given by
+d
+dr
+k
+hr
+r
+r 0
+22
+2
+1
++⎛
+⎝⎜
+⎞
+⎠⎟ =ln         (3.24)
+(Question:  How do we know this is a maximum?)
+From Equation (3.24), the value of r2 for maximum Q&  is thus
+(r2)maximum heat transfer = k/h.         (3.25)
+If r2 is less than this, we can add insulation and increase heat loss.  To understand why this occurs,
+consider Figure 3.8, which shows a schematic of the thermal resistance and the heat transfer.  As r2
+increases from a value less than r2 = k/h, two effects take place.  First, the thickness of the insulation
+increases, tending to drop the heat transfer because the temperature gradient decreases.  Secondly,
+the area of the outside surface of the insulation increases, tending to increase the heat transfer.  The
+second of these is (loosely) associated with the k/hr2 term, the first with the ln(r2/r1) term.  There are
+thus two competing effects which combine to give a maximum ˙Q at r2 = k/h.
+===== PDF PAGE 31 =====
+HT-30
+R
+Q⋅
+r2
+ln r
+r
+2
+1
+k
+hr2
+k
+h
+Figure 3.8: Critical radius of insulation
+Muddy points
+In the expression 1
+h.A , what is A? (MP HT.11)
+It seems that we have simplified convection a lot. Is finding the heat transfer coefficient, h,
+really difficult? (MP HT.12)
+What does the "K" in the contact resistance formula stand for? (MP HT.13)
+In the equation for the temperature in a cylinder (3.22), what is "r"? (MP HT.14)
+3.3   Dimensionless Numbers and Analysis of Results
+Phenomena in fluid flow and heat transfer depend on dimensionless parameters.  The Mach number
+and the Reynolds number are two you have already seen.  These parameters give information as to
+the relevant flow regimes of a given solution.  Casting equations in dimensionless form helps show
+the generality of application to a broad class of situations (rather than just one set of dimensional
+parameters).  It is generally good practice to use non-dimensional numbers, forms of equations, and
+results presentation whenever possible.  The results for heat transfer from the cylinder are already in
+dimensionless form but we can carry the idea even further.  For the cylinder:
+T-T
+TT
+r/r
+k/hr r /r
+1
+1
+1
+22 1' < = ()
++ ()
+ln
+ln
+        (3.26)
+The parameter 
+hr
+k
+2
+ or hL
+k
+, where L is a relevant length for the particular problem of interest, is
+called the Biot number denoted by Bi.  In terms of this parameter,
+===== PDF PAGE 32 =====
+HT-31
+T-T
+TT
+r/r
+1
+Bi r/ r
+1
+1
+1
+21
+∞ − = ()
++ ()
+ln
+ln
+        (3.27)
+The size of the Biot number gives a key to the regimes in which different features are dominant.  For
+Bi  >> 1 the convection heat transfer process offers little resistance to heat transfer.  There is thus
+only a small ∆T outside (i.e. T (r2) close to T∞) compared to the ∆T through the solid with a limiting
+behavior of
+TT
+TT
+r/r
+r/ r
+11
+21
+−
+− =
+∞
+ln
+ln
+as Bi goes to infinity.  This is much like the situation with an external temperature specified.
+For Bi << 1 the conduction heat transfer process offers little resistance to heat transfer.  The
+temperature difference in the body (i.e. from r1 to r2) is small compared to the external temperature
+difference, T1 - T∞ .  In this situation, the limiting case is
+TT
+TT Bi r/r1
+1
+1
+−
+− = ()
+∞
+ln
+In this regime there is approximately uniform temperature in the cylinder.  The size of the Biot
+number thus indicates the regimes where the different effects become important.
+Figure 3.9 shows the general effect of Biot number on temperature distribution.  Figure 3.10 is a plot
+of the temperature distribution in the cylinder for values of Bi = 0.1, 1.0 and 10.0.
+===== PDF PAGE 33 =====
+HT-32
+Figure 3.9: Effect of the Biot Number [hL / kbody] on the temperature distributions in the solid
+and in the fluid for convective cooling of a body.  Note that kbody is the thermal conductivity of
+the body, not of the fluid.
+[adapted from: A Heat Transfer Textbook, John H. Lienhard, Prentice-Hall Publishers, 1980]
+===== PDF PAGE 34 =====
+HT-33
+Figure 3.10: Temperature distribution in a convectively cooled cylinder for different values of
+Biot number, Bi; r2 / r1 = 2 [from: A Heat Transfer Textbook, John H. Lienhard]
+4.0 Temperature Distributions in the Presence of Heat Sources
+There are a number of situations in which there are sources of heat in the domain of interest.
+Examples are:
+1) Electrical heaters where electrical energy is converted resistively into heat
+2) Nuclear power supplies
+3) Propellants where chemical energy is the source
+These situations can be analyzed by looking at a model problem of a slab with heat sources α (W/m3)
+distributed throughout.  We take the outside walls to be at temperature Tw. and we will determine the
+maximum internal temperature.
+Tw Tw
+(a)
+heat
+sources
+3m
+Wα
+x x      x + dx
+q& dxdx
+qdq &&+
+Slice at x, x+dx
+(b)
+Figure 4.1: Slab with heat sources (a) overall configuration, (b) elementary slice
+With reference to Figure 4.1(b), a steady-state energy balance yields an equation for the heat flux, q& .
+===== PDF PAGE 35 =====
+HT-34
+q adx q dq
+dx dx 0
+⋅⋅
+⋅
++− +
+⎛
+⎝
+⎜
+⎜
+⎞
+⎠
+⎟
+⎟
+=           (4.1)
+or dq
+dx
+⋅
+=α .           (4.2)
+There is a change in heat flux with x due to the presence of the heat sources.  The equation for the
+temperature is
+0/2
+2
+=+ kdx
+Td α           (4.3)
+Equation (4.3) can be integrated once,
+axkdx
+dT +−= α           (4.4)
+and again to give
+baxxkT ++−= 2
+2
+α           (4.5)
+where a and b are constants of integration.  The boundary conditions imposed are () () wTLTT ==0 .
+Substituting these into Equation (4.5) gives wTb=  and 
+k
+La 2
+α= .  The temperature distribution is thus
+WTLxkk
+xT ++−= 22
+2 αα .           (4.6)
+Writing (4.6) in a normalized, non-dimensional fashion gives a form that exhibits in a more useful
+manner the way in which the different parameters enter the problem:
+TT
+L/ k
+1
+2
+x
+L
+x
+L
+W
+2
+2
+2
+− =−
+⎛
+⎝⎜
+⎞
+⎠⎟α
+          (4.7)
+This distribution is sketched in Figure 4.2.  It is symmetric about the mid-plane at 
+2
+Lx= , with half
+the energy due to the sources exiting the slab on each side.
+===== PDF PAGE 36 =====
+HT-35
+TT
+aL /k
+W
+2
+−⎛
+⎝⎜
+⎞
+⎠⎟
+0.125
+X
+L0  0.5         1.0
+Figure 4.2:Temperature distribution for slab with distributed heat sources
+The heat flux at the side of the slab, x = 0, can be found by differentiating the temperature
+distribution and evaluating at x = 0 :  < = < £
+¤²
+¥
+¦´ = <
+=
+k dT
+dx k L
+2K
+1
+L L/2
+   x 0
+2
+_ _ .
+This is half of the total heat generated within the slab.  The magnitude of the heat flux is the same at
+x = L, although the direction is opposite.
+A related problem would be one in which there were heat flux (rather than temperature) boundary
+conditions at x = 0 and x = L, so that Tw is not known.  We again determine the maximum
+temperature.  At x = 0 and L, the heat flux and temperature are continuous so
+< = <() ='k dT
+dx hT T   x 0 , Lat .           (4.8)
+Referring to the temperature distribution of Equation (4.6) gives for the two terms in Equation (4.8),
+k dT
+dx k- x
+k ax k a=+ £
+¤
+¥
+¦ = < +()_ _           (4.9)
+hT T h x
+k xbT
+2
+<() = < ++ <
+£
+¤²
+¥
+¦´''
+_ _         (4.10)
+Evaluating (4.10) at x = 0 and L allows determination of the two constants a and b.  This is left as an
+exercise for the reader.
+Muddy points
+For an electric heated strip embedded between two layers, what would the temperature
+distribution be if the two side temperatures were not equal? (MP HT.15)
+===== PDF PAGE 37 =====
+HT-36
+5.0 Heat Transfer From a Fin
+Fins are used in a large number of applications to increase the heat transfer from surfaces.
+Typically, the fin material has a high thermal conductivity.  The fin is exposed to a flowing fluid,
+which cools or heats it, with the high thermal conductivity allowing increased heat being conducted
+from the wall through the fin.  The design of cooling fins is encountered in many situations and we
+thus examine heat transfer in a fin as a way of defining some criteria for design.
+A model configuration is shown in Figure 5.1.  The fin is of length L.  The other parameters of the
+problem are indicated.  The fluid has velocity c∞ and temperature T∞.
+y
+x
+Fin
+x = 0
+(wall) x = L
+T0 (wall)
+T∞ , c∞
+Figure 5.1: Geometry of heat transfer fin
+We assume (using the Reynolds analogy or other approach) that the heat transfer coefficient for the
+fin is known and has the value h.  The end of the fin can have a different heat transfer coefficient,
+which we can call hL.
+The approach taken will be quasi-one-dimensional, in that the temperature in the fin will be assumed
+to be a function of x only.  This may seem a drastic simplification, and it needs some explanation.
+With a fin cross-section equal to A and a perimeter P, the characteristic dimension in the transverse
+direction is A / P (For a circular fin, for example, A / P = r / 2).  The regime of interest will be taken
+to be that for which the Biot number is much less than unity, () 1/ <<= k
+PAhBi , which is a realistic
+approximation in practice.
+The physical content of this approximation can be seen from the following.  Heat transfer per unit
+area out of the fin to the fluid is roughly of magnitude ~ h(Tw - T∞ ) per unit area .  The heat transfer
+per unit area within the fin in the transverse direction is (again in the same approximate terms)
+===== PDF PAGE 38 =====
+HT-37
+PA
+TTk w
+/
+)( 1 − , where T1 is an internal temperature.  These two quantities must be of the same
+magnitude. If 1/ <<k
+PAh , then TT
+TT 11w
+w
+−
+− <<
+∞
+.  In other words, if Bi << 1, there is a much larger
+capability for heat transfer per unit area across the fin than there is between the fin and the fluid, and
+thus little variation in temperature inside the fin in the transverse direction.  To emphasize the point,
+consider the limiting case of zero heat transfer to the fluid i.e., an insulated fin.  Under these
+conditions, the temperature within the fin would be uniform and equal to the wall temperature.
+If there is little variation in temperature across the fin, an appropriate model is to say that the
+temperature within the fin is a function of x only, T = T(x), and use a quasi-one-dimensional
+approach.  To do this, consider an element, dx, of the fin as shown in Figure 5.2.  There is heat flow
+of magnitude 
+inQ&  at the left-hand side and heat flow out of magnitude dxdx
+QdQQ inout
+&&& +=  at the
+right hand side.  There is also heat transfer around the perimeter on the top, bottom, and sides of the
+fin.  From a quasi-one-dimensional point of view, this is a situation similar to that with internal heat
+sources, but here, for a cooling fin, in each elemental slice of thickness dx there is essentially a heat
+sink of magnitude Pdxh T T− ∞() , where Pdx is the area for heat transfer to the fluid.
+inQ&
+x      x+dx
+outQ&
+Figure 5.2:Element of fin showing heat transfer
+The heat balance for the element in Figure 5.2 can be written in terms of the heat flux using AqQ && = ,
+for a fin of constant area:
+˙˙ ˙qq qAP h TTd x A d
+dx dxA=− () ++⎛
+⎝
+⎞
+⎠∞ .           (5.1)
+From Equation (5.1) we obtain
+A d
+dx Ph T T 0˙q +− () =∞ .           (5.2)
+In terms of the temperature distribution, T(x):
+dT
+dx
+Ph
+Ak TT 0
+2
+2 −− () =∞ .           (5.3)
+===== PDF PAGE 39 =====
+HT-38
+The quantity of interest is the temperature difference (T - T∞ ), and we can change variables to put
+Equation (5.3) in terms of this quantity using the substitution
+d
+dx (T T ) dT
+dx−=∞ .           (5.4)
+Equation (5.3) can therefore be written as
+d
+dx
+(T T ) hP
+Ak (T T ) 0
+2
+2 −− −=∞∞ .           (5.5)
+Equation (5.5) describes the temperature variation along the fin.  It is a second order equation and
+needs two boundary conditions.  The first of these is that the temperature at the end of the fin that
+joins the wall is equal to the wall temperature.  (Does this sound plausible?  Why or why not?)
+(T T ) T Tx0 0−= −∞= ∞ .           (5.6)
+The second boundary condition is at the other end of the fin.  We will assume that the heat transfer
+from this end is negligible1.  The boundary condition at x = L is
+d
+dx TT 0 xL−() =∞ = .            (5.7)
+The last step is to work in terms of non-dimensional variables to obtain a more compact description.
+In this we define T-T
+TT T
+0
+~
+∞
+∞−   as ∆ , where the values of ∆T
+~
+ range from zero to one and Lx /=ξ ,
+where ξ  also ranges over zero to one.  The relation between derivatives that is needed to cast the
+equation in terms of ξ  is
+ξξ
+ξ
+d
+d
+Ld
+d
+dx
+d
+dx
+d 1== .
+1Equation (5.5) can be written in this dimensionless form as
+dT
+d
+hP
+kA LT
+2 ~
+2
+2 ~∆ ∆ξ − ⎛
+⎝
+⎞
+⎠ = 0.           (5.8)
+There is one non-dimensional parameter in Equation (5.8), which we will call m and define by
+                                                  
+1 Note: We don’t need to make this assumption, and if we were looking at the problem in detail we would solve it
+numerically and not worry about whether an analytic solution existed.  In the present case, developing the analytic
+solution is useful in presenting the structure of the solution as well as the numbers, so we resort to the mild fiction
+of no heat transfer at the fin end.  We need to assess, after all is said and done, whether this is appropriate or not.
+===== PDF PAGE 40 =====
+HT-39
+kA
+LhPLm
+2
+22 = .           (5.9)
+The equation for the temperature distribution we have obtained is
+dT
+d
+mL T
+22
+2
+2 0∆ ∆
+~
+~
+ξ
+−= .         (5.10)
+This second order equation has the solution
+∆T
+~
+ae be
+mL mL
+=+
+−ξξ
+.         (5.11)
+(Try it and see).  The boundary condition at ξ  = 0 is
+∆T(0) a b 1
+~
+=+= .        (5.12a)
+ The boundary condition at ξ  = 1 is that the temperature gradient is zero or
+dT
+d (L) mLae mLbe
+~
+mm∆
+ξ =− =
+−
+0.       (5.12b)
+Solving the two equations given by the boundary conditions for a and b gives an expression for ∆T
+~
+in terms of the hyperbolic cosine or cosh: cosh x ee
+2
+xx
+= +⎛
+⎝⎜
+⎞
+⎠⎟
+−
+∆T
+mL
+mL
+~
+=
+−()cosh 
+cosh 
+1 ξ
+        (5.13)
+This is the solution to Equation (5.8) for a fin with no heat transfer at the tip.  In terms of the actual
+heat transfer parameters it is written as
+TT
+TT
+1 x
+L
+hP
+kA L
+hP
+kA L
+0
+−
+− =
+−⎛
+⎝
+⎞
+⎠
+⎛
+⎝⎜
+⎞
+⎠⎟
+⎛
+⎝⎜
+⎞
+⎠⎟
+∞
+∞
+cosh
+cosh
+.         (5.14)
+===== PDF PAGE 41 =====
+HT-40
+The amount of heat removed from wall due to the fin, which is the quantity of interest, can be found
+by differentiating the temperature and evaluating the derivative at the wall, x = 0:
+Qk A d
+dx TT x0
+⋅
+∞==− − ()         (5.15)
+or
+QL
+kA T T
+dDT
+d0
+~
+0
+⋅
+∞ =−()
+=− ξ ξ
+  = mLmLmL
+mLmL  tanh cosh 
+sinh =         (5.16)
+Q
+kAhP T T
+mL
+0
+⋅
+∞−()
+=  tanh       (5.16a)
+The solution is plotted in Figure 5.3, which is taken from the book by Lienhard.  Several features of
+the solution should be noted.  First, one does not need fins which have a length such that m is much
+greater than 3.  Second, the assumption about no heat transfer at the end begins to be inappropriate
+as m gets smaller than 3, so for very short fins the simple expression above would not be a good
+estimate.  We will see below how large the error is.
+===== PDF PAGE 42 =====
+HT-41
+                                                         
+                  Dimensionless axial position ξ= xL/
+Figure 5.3:The temperature distribution, tip temperature, and heat flux in a straight one-
+dimensional fin with the tip insulated. [Adapted from: Lienhard, A Heat Transfer Textbook, Prentice-
+Hall publishers]
+Muddy points
+Why did you change the variable and write the derivative dT
+dx
+2
+2 as dT - T
+dx
+2
+2
+∞()  in the equation
+for heat transfer in the fin? (MP HT.16)
+What types of devices use heat transfer fins? (MP HT.17)
+Why did the Stegosaurus have cooling fins? Could the stegosaurus have "heating fins"?
+(MP HT.18)
+Dimensionless
+temperature
+(T - T∞ ) / (T0 - T∞ )
+Dimensionless heat
+flow into the fin,
+Q
+hPkA T T0 −() ∞
+Dimensionless
+temperature
+at tip
+(T - T∞ ) / (T0 - T∞ )
+mL = 5
+(a long "over
+designed" fin)
+mL = 3
+mL = 2
+mL - 1 (a very stumpy fin)
+tanh mL
+The temperature
+excess at the tip
+is less than 1.4%,
+beyond L = 5 / m
+Heat flow cannot be noticeably
+improved by lengthening the
+fin beyond L = 3 / m
+1
+cosh mL
+===== PDF PAGE 43 =====
+HT-42
+6.0 Transient Heat Transfer (Convective Cooling or Heating)
+All the heat transfer problems we have examined have been steady state, but there are often
+circumstances in which the transient response to heat transfer is critical.  An example is the heating
+up of gas turbine compressors as they are brought up to speed during take-off.  The disks that hold
+the blades are large and take a long time to come to temperature, while the casing is thin and in the
+path of high velocity compressor flow and thus comes to temperature rapidly.  The result is that the
+case expands away from the blade tips, sometimes enough to cause serious difficulties with
+aerodynamic performance.
+To introduce the topic as well as to increase familiarity with modeling of heat transfer problems, we
+examine a lumped parameter analysis of an object cooled by a stream.  This will allow us to see
+what the relevant non-dimensional parameters are and, at least in a quantitative fashion, how more
+complex heat transfer objects will behave.  We want to view the object as a "lump" described by a
+single parameter.  We need to determine when this type of analysis would be appropriate.  To
+address this, consider the temperature difference T1 - Tw between two locations in the object, as
+shown in Figure 6.1.
+c∞
+T∞
+T1
+Tw
+object
+Figure 6.1:Temperature variation in an object cooled by a flowing fluid
+If the heat transfer within the body and from the body to the fluid are of the same magnitude,
+hT T k
+L TTw1 w−() ≈− ()∞           (6.1)
+where L is a relevant length scale, say half the thickness of the object.  The ratio of the temperature
+difference is
+TT
+TT
+hL
+k
+1w
+w
+−
+− ≈
+∞
+          (6.2)
+If the Biot number is small the ratio of temperature differences described in Equation (6.2) is also
+TT
+TT
+1
+1w
+w
+−()
+−()
+<<
+∞
+.  We can thus say TT T T1w w−() << − ∞  and neglect the temperature non-uniformity
+within the object.
+===== PDF PAGE 44 =====
+HT-43
+The approximation made is to view the object as having a spatially uniform temperature that is a
+function of time only.  Explicitly, T = T(t).  The first law applied to the object is (using the fact that
+for solids cp = cv = c)
+QV c dT
+dtin
+⋅
+=ρ           (6.3)
+where ρ is the density of the object and V is its volume.  In terms of heat transferred to the fluid,
+dt
+dTVcQout ρ−=& .  The rate of heat transfer to the fluid is Ah (T - T∞), so the expression for the time
+evolution of the temperature is
+Ah T T Vc dT
+dt−() =−∞ ρ .           (6.4)
+The initial temperature, T(0),  is equal to some known value, which we can call Ti .  Using this,
+Equation (6.4) can be written in terms of a non-dimensional temperature difference TT
+TTi
+−
+−
+⎛
+⎝⎜
+⎞
+⎠⎟
+∞
+∞
+,
+d
+dt
+TT
+TT
+hA
+Vc
+TT
+TTii
+−
+−
+⎛
+⎝⎜
+⎞
+⎠⎟ + −
+−
+⎛
+⎝⎜
+⎞
+⎠⎟ =∞
+∞
+∞
+∞ρ 0           (6.5)
+At time t = 0, this non-dimensional quantity is equal to one.  Equation (6.5) is an equation you have
+seen before, dx
+dt
+x 0+=⎛
+⎝⎜
+⎞
+⎠⎟τ  which has the solution xa e t= − / τ .  For the present problem the form is
+TT
+TT ae
+i
+hAt/pVc−
+− =∞
+∞
+−
+.           (6.6)
+The constant a can be seen to be equal to unity to satisfy the initial condition.  This form of equation
+implies that the solution has a heat transfer "time constant" given by 
+hA
+Vcρτ = .
+The time constant,τ, is in accord with our "intuition"; high density, large volume, or high specific
+heat all tend to increase the time constant, while high heat transfer coefficient and large area will
+tend to decrease the time constant.  This is the same form of equation and the same behavior you
+have seen for the R-C circuit, as shown schematically below.  The time dependence of the voltage in
+the R-C circuit when the switch is opened suddenly is given by the equation 0=+ RC
+E
+dt
+dE .  There
+are, in fact, a number of physical processes which have (or can be modeled as having) this type of
+exponentially decaying behavior.
+===== PDF PAGE 45 =====
+HT-44
+E0 C
+R
+Figure 6.2: Voltage change in an R-C circuit
+Muddy points
+In equation Q .V.c. dT
+dtin
+•
+= ρ (6.3), what is c? (MP HT.19)
+In the lumped parameter transient heat transfer problem, does a high density "slow down"
+heat transfer? (MP HT.20)
+7.0 Some Considerations in Modeling Complex Physical Processes
+In Sections 5 and 6, a number of assumptions were made about the processes that we were
+attempting to describe.  These are all part of the general approach to modeling of physical systems.
+The main idea is that for engineering systems, one almost always cannot compute the process
+exactly, especially for fluid flow problems.  At some level of detail, one generally needs to model,
+i.e. to define some plausible behavior for attributes of the system that will not be computed.
+Modeling can span an enormous range from the level of our assumption of uniform temperature
+within the solid object to a complex model for the small scale turbulent eddies in the flow past a
+compressor blade.  In carrying out such modeling, it is critical to have a clear idea of just what the
+assumptions really mean, as well as the fidelity that we ascribe to the descriptions of actual physical
+phenomena, and we thus look at the statements we have made in this context.
+One assertion made was that because hL
+k
+<< 1 and on the basis of a heat balance,
+k
+L TT h T Tcw W−() ≈− () ∞
+we could assume
+(T T )
+(T T ) 1w
+w
+body interior −
+− <<
+∞
+===== PDF PAGE 46 =====
+HT-45
+Based on this, we said that Tbody is approximately uniform and TTw ≈ body interior.  Another aspect is
+that setting 1<<Pk
+hA  erases any geometrical detail of the fin cross section.  The only place where P
+and A enter the problem is in a non-dimensional combination.  A third assumption, made in the fin
+problem, was that the heat transfer at the far end can be neglected.  The solution including this
+effect, where 
+hL
+k
+L
+ is an axial Biot number is given as Equation (7.1).  If the quantity 
+hL
+k
+L
+ is small,
+you can see that Equation (7.1) reduces to the previous result (5.13).
+TT
+TT
+mL Bi m mL
+mL Bi mL mL0
+−
+− =
+−() + () −()
++ ()
+∞
+∞
+cosh sinh 
+cosh  sinh 
+11 ξξ axial
+axal
+/
+/
+          (7.1)
+and
+Q
+kAhP T T
+Bi /mL  mL
+1 Bi
+mL   mL0
+axial
+axial
+⋅
+∞−()
+= () +
++
+tanh
+tanh
+          (7.2)
+8.0 Heat Exchangers
+The general function of a heat exchanger is to transfer heat from one fluid to another.  The basic
+component of a heat exchanger can be viewed as a tube with one fluid running through it and
+another fluid flowing by on the outside.  There are thus three heat transfer operations that need to be
+described:
+1)  Convective heat transfer from fluid to the inner wall of the tube
+2)  Conductive heat transfer through the tube wall
+3) Convective heat transfer from the outer tube wall to the outside fluid
+Heat exchangers are typically classified according to flow arrangement and type of construction.
+The simplest heat exchanger is one for which the hot and cold fluids move in the same or opposite
+directions in a concentric tube (or double-pipe) construction.  In the parallel-flow arrangement of
+Figure 8.1a, the hot and cold fluids enter at the same end, flow in the same direction, and leave at the
+same end.  In the counterflow arrangement of Figure 8.1b, the fluids enter at opposite ends, flow in
+opposite directions, and leave at opposite ends.
+Alternatively, the fluids may be in cross flow (perpendicular to each other), as shown by the
+finned and unfinned tubular heat exchangers of Figure 8.2.  The two configurations differ according
+to whether the fluid moving over the tubes is unmixed or mixed.  In Figure 8.2a, the fluid is said to
+be unmixed because the fins prevent motion in a direction (y) that is transverse to the main-flow
+direction (x).  In this case the fluid temperature varies with x and y.  In contrast, for the unfinned tube
+bundle of Figure 8.2b, fluid motion, hence mixing, in the transverse direction is possible, and
+temperature variations are primarily in the main-flow direction.  Since the tube flow is unmixed,
+===== PDF PAGE 47 =====
+HT-46
+both fluids are unmixed in the finned exchanger, while one fluid is mixed and the other unmixed in
+the unfinned exchanger.
+      
+(a) (b)
+Figure 8.1: Concentric tubes heat exchangers. (a) Parallel flow. (b) Counterflow
+Cross flow
+T = f(x,y)
+Cross flow
+T = f(x)
+Tube flow Tube flow
+x
+y
+(a) (b)
+Figure 8.2: Cross-flow heat exchangers. (a) Finned with both fluids unmixed. (b) Unfinned
+with one fluid mixed and the other unmixed
+To develop the methodology for heat exchanger analysis and design, we look at the problem of heat
+transfer from a fluid inside a tube to another fluid outside.
+===== PDF PAGE 48 =====
+HT-47
+r2
+r1
+TA
+T1
+T2
+TB
+Figure 8.3: Geometry for heat transfer between two fluids
+We examined this problem before in Section 3.2 and found that the heat transfer rate per unit length
+is given by
+()
+221
+2
+11
+ln
+2
+hr
+k
+r
+r
+hr
+k
+TTkQ BA
+++
+−= π&           (8.1)
+It is useful to define an overall heat transfer coefficient h0 per unit length as
+() BA TThrQ −= 022π& .           (8.2)
+From (8.1) and (8.2) the overall heat transfer coefficient, h0 , is
+21
+22
+11
+2
+0
+1ln1
+hr
+r
+k
+r
+hr
+r
+h ++= .           (8.3)
+We will make use of this in what follows.
+A schematic of a counterflow heat exchanger is shown in Figure 8.4.  We wish to know the
+temperature distribution along the tube and the amount of heat transferred.
+===== PDF PAGE 49 =====
+HT-48
+Tb2
+Ta2
+Ta1
+Tb1
+Figure 8.4: Counterflow heat exchanger
+To address this we start by considering the general case of axial variation of temperature in a tube
+with wall at uniform temperature T0 and a fluid flowing inside the tube.
+T2
+x = L
+dx
+x=  0
+T1
+cooling
+heating
+T2
+∆T2
+T0
+T1
+∆T1
+Figure 8.5: Fluid temperature distribution along the tube with uniform wall temperature
+The objective is to find the mean temperature of the fluid at x, T(x), in the case where fluid comes in
+at x = 0 with temperature T1 and leaves at x = L with temperature T2 .  The expected distribution for
+heating and cooling are sketched in Figure 8.5.
+For heating (T0 > T), the heat flow from the pipe wall in a length dx is
+q Ddx h D(T T)dx0
+⋅
+=−ππ
+ where D is the pipe diameter.  The heat given to the fluid (the change in enthalpy)  is given by
+ρ πuc D cd Tmp
+2
+p4 dT m=
+⋅
+===== PDF PAGE 50 =====
+HT-49
+where ρ is the density of the fluid, um is the mean velocity of the fluid, cp is the specific heat of the
+fluid and m
+⋅
+ is the mass flow rate of the fluid.
+Setting the last two expressions equal and integrating from the start of the pipe, we find
+dT
+TT
+4h
+ucD dx
+0m p 0
+x
+T1
+T
+− = ∫∫ ρ .           (8.4)
+Carrying out the integration,
+4hx
+ucD
+dT
+TT
+dT T
+TT TT
+mp 0
+0
+0
+0 T1
+T
+T1
+T
+T1
+T
+ρ = − =−
+−()
+− =− − ()∫∫ ln ,           (8.5)
+i.e.
+ln TT
+TT
+4hx
+ucD
+0
+01 m p
+−
+−
+⎛
+⎝⎜
+⎞
+⎠⎟ =− ρ .              (8.6)
+Equation (8.6) can be written as
+xeTT
+TT  
+10
+0 β−=−
+−           (8.7)
+where
+β ρ
+π== ⋅
+4h
+ucD
+hD
+mcmp
+p
+.           (8.8)
+This is temperature distribution along the pipe.  The exit temperature at x = L is
+pcm
+hDL
+eTT
+TT &
+π−
+=−
+−
+10
+20
+          (8.9)
+The total heat transfer to the wall all along the pipe is
+Qm c TTp1 2
+⋅⋅
+=− () .
+From Equation (8.9),
+===== PDF PAGE 51 =====
+HT-50
+mc hD L
+TT
+TT
+p
+01
+02
+⋅
+=
+−
+−
+⎛
+⎝⎜
+⎞
+⎠⎟
+π
+ln
+.
+The total rate of heat transfer is therefore
+Q
+hD L T T
+TT
+TT
+Qh D L T
+12
+10
+20
+LM
+⋅
+⋅
+=
+−()
+−
+−
+=
+π
+π
+ln
+, 
+ or   ∆
+         (8.10)
+where ∆TLM is the logarithmic mean temperature difference, defined as
+∆ ∆∆
+∆
+∆
+T TT
+TT
+TT
+TT
+T
+T
+LM
+21
+02
+01
+1
+1
+2
+= −
+−
+−
+= −
+⎛
+⎝⎜
+⎞
+⎠⎟ln
+2
+ln
+.         (8.11)
+The concept of a logarithmic mean temperature difference is useful in the analysis of heat
+exchangers.  We can define a logarithmic mean temperature difference for a counterflow heat
+exchanger as follows.  With reference to Figure 8.4, an overall heat balance between the two
+counterflowing streams is
+Qm cT T m cT Ta pa a1 a2 b pb b2 b1
+⋅⋅ ⋅
+=− () =− () .         (8.12)
+From a local heat balance, the heat given up by stream a in length dx is −
+⋅
+mc d Ta pa a . (There is a
+negative sign since Ta decreases).  The heat taken up by stream b is −
+⋅
+mc d Tb pb b .  (There is a
+negative sign because Tb decreases as x increases).  The local heat balance is:
+−= −= =
+⋅⋅ ⋅ ⋅
+m c dT m c dT q dA q Ddxa pa a bp b b π         (8.13)
+Solving (8.13) for dTa and dTb, we find:
+dT qd A
+mc
+;   dT qd A
+mc
+a
+a pa
+b
+b pb
+=− =−
+⋅
+⋅
+⋅
+⋅         (8.14)
+===== PDF PAGE 52 =====
+HT-51
+dT T d T 1
+mc
+1
+mc
+qd A 1
+W
+1
+W q Ddxab
+a pa b pb
+ab
+−() == − −
+⎛
+⎝
+⎜
+⎜
+⎞
+⎠
+⎟
+⎟ =− −⎛
+⎝⎜
+⎞
+⎠⎟⋅⋅
+⋅⋅
+∆π          (8.15)
+where pcmW &= . Also, q& = h0 ∆T where h0 is the overall heat transfer coefficient.  We can then say:
+dT
+T hD 1
+W
+1
+W dx0
+ab
+∆
+∆ =− − ⎛
+⎝⎜
+⎞
+⎠⎟π .
+Integrating from x = 0 to x = L gives
+ln TT
+TT hD L 1
+W
+1
+W
+a2 b1
+a1 b2
+0
+ab
+−
+−
+⎛
+⎝⎜
+⎞
+⎠⎟ =− − ⎛
+⎝⎜
+⎞
+⎠⎟π .         (8.16)
+Equation (8.16) can also be written as:
+α−=−
+− eTT
+TT
+ba
+ba
+21
+12           (8.17)
+where
+απ=− ⎛
+⎝⎜
+⎞
+⎠⎟hD L 1
+W
+1
+W0
+ab
+We know that
+Ta1 - Ta2  = Q
+⋅
+/ Wa          Tb2 - Tb1  = Q
+⋅
+/ Wb .           (8.18)
+Thus
+TT TT 1
+W
+1
+Wa1 b2 a2 b1
+ab
+−() −−() =− ⎛
+⎝⎜
+⎞
+⎠⎟
+⋅
+Q .         (8.19)
+Solving for the total heat transfer:
+Q
+TT TT
+1
+W
+1
+W
+a1 b2 a2 b1
+ab
+⋅
+=
+−() −−()
+−⎛
+⎝⎜
+⎞
+⎠⎟
+        (8.20)
+Rearranging (8.16) allows us to express 1
+W
+1
+Wab
+−⎛
+⎝⎜
+⎞
+⎠⎟  in terms of other parameters as
+===== PDF PAGE 53 =====
+HT-52
+1
+W
+1
+W
+TT
+TT
+hD Lab
+a2 b2
+a1 b2
+0
+−⎛
+⎝⎜
+⎞
+⎠⎟ =−
+−
+−
+⎛
+⎝⎜
+⎞
+⎠⎟ln
+π .         (8.21)
+Substituting (8.21) into (8.20) we obtain a final expression for the total heat transfer for a
+counterflow heat exchanger:
+Qh D L
+TT TT
+TT
+TT
+0
+a1 b2 a2 b1
+a1 b2
+a2 b1
+⋅
+=
+−() −−()
+−
+−
+⎛
+⎝⎜
+⎞
+⎠⎟
+π
+ln
+        (8.22)
+or
+Q h DL T0L M
+⋅
+=π ∆         (8.23)
+8.1   Efficiency of a Counterflow Heat Exchanger
+Suppose we know the two inlet temperatures Ta1, Tb1, and we need to find the outlet temperatures.
+From (8.17)
+Ta2 - Tb1 = (Ta1 - Tb2) e-α
+Ta2 - Ta1 = Tb1 - Ta1 + (Ta1 - Tb2 ) e-α
+Rearranging (8.18),
+() 2112 aa
+b
+a
+bb TTW
+WTT −+=
+Thus
+Ta2 - Ta1 = Tb1 - Ta1 + (Ta1 - Tb1 ) e-α - W
+W TT ea
+b
+a1 a2−()
+−α
+TT1 W
+W eT T 1 ea1 a2
+a
+b
+a1 b1−() −⎛
+⎝⎜
+⎞
+⎠⎟ =−() −()
+−−αα
+or
+() () 1121 baaa TTTT −=− η         (8.24)
+where η is the efficiency of a counterflow heat exchanger:
+===== PDF PAGE 54 =====
+HT-53
+η
+α
+α
+α
+α
+= −
+−
+= −
+−
+−
+−
+−
+⋅
+⋅
+−
+1
+1
+e
+W
+W e
+e
+m
+m
+c
+c e
+a
+b
+a
+b
+pa
+pb
+1
+1
+        (8.25)
+From (8.24) and (8.25) we can find outlet temperatures Ta2 and Tb2:
+TT mc
+mc
+TT mc
+mc
+TTb2 b1
+a pa
+b pb
+a1 a2
+a pa
+b pb
+a1 b2−= − () =− ()
+⋅
+⋅
+⋅
+⋅ η
+We examine three examples.
+i) mc mcb pb a pa
+⋅⋅
+>
+∆T can approach zero at cold end
+ηπ→−
+⎛
+⎝
+⎜
+⎜
+⎞
+⎠
+⎟
+⎟⋅⋅1 h DLh 1
+mc
+1
+mc
+00
+a pa b pb
+ as  ,  surface area , 
+Maximum value of ratio 1
+11
+21 =−
+−
+ba
+aa
+TT
+TT
+Maximum value of ratio TT
+TT
+mc
+mc
+b2 b1
+a1 b1
+a pa
+b pb
+−
+− =
+⋅
+⋅
+ii) mc mc  b pb a pa
+⋅⋅
+<
+αη is negative  ,  mc
+mc
+ as 
+b pb
+a pa
+→ [] →∞
+⋅
+⋅ () ab WW <
+Maximum value of TT
+TT
+mc
+mc
+a1 a2
+a1 b1
+b pb
+a pa
+−
+− =
+⋅
+⋅
+1  of  valueMaximum
+21
+12 =−
+−
+ba
+bb
+TT
+TT
+iii) mc mca pa b pb
+⋅⋅
+=
+0)( =− ba TTd
+temperature difference remains uniform,  η = 1
+===== PDF PAGE 55 =====
+HT-54
+9.0 Radiation Heat Transfer (Heat transfer by thermal radiation)
+All bodies radiate energy in the form of photons moving in a random direction, with random phase
+and frequency.  When radiated photons reach another surface, they may either be absorbed, reflected
+or transmitted.  The behavior of a surface with radiation incident upon it can be described by the
+following quantities:
+α= absorptance - fraction of incident radiation absorbed
+ρ = reflectance - fraction of incident radiation reflected
+τ  = transmittance – fraction of incident radiation transmitted
+Figure 9.1 shows these processes graphically.
+Incident radiation
+Radiation absorbed, α
+Radiation transmitted, τ
+Radiation reflected, ρ
+Figure 9.1: Radiation Surface Properties
+From energy considerations the three coefficients must sum to unity
+α + ρ + τ = 1           (9.1)
+Reflective energy may be either diffuse or specular (mirror-like).  Diffuse reflections are
+independent of the incident radiation angle.  For specular reflections, the reflection angle equals the
+angle of incidence.
+9.1   Ideal Radiators
+An ideal thermal radiator is called a "black body".  It has several properties:
+1) It has α  = 1, and absorbs all radiation incident on it.
+2) The energy radiated per unit area is Eb = σT4 where σ  is the Stefan-Boltzmann constant,
+σ  = 5.67 x 10-8 W
+mK
+24
+          (9.2)
+===== PDF PAGE 56 =====
+HT-55
+The units of Eb are therefore W
+m
+2 .
+The energy of a black body, E b , is distributed over a range of wavelengths of radiation.  We can
+define e dE
+d
+Ebb
+λ λλ=≈ ∆
+∆ , the energy radiated per unit area for a range of wavelengths of width ∆λ .
+The behavior of eλ is given in Figure 9.2.
+Figure 9.2: Emissive power of a black body at several temperatures - predicted and observed
+()
+maxλλ eT = 0.2898 cm K [adapted from: A Heat Transfer Textbook by Lienhard, J.]
+The distribution of eλ varies with temperature.  The quantity λT at the condition where eλ is a
+maximum is given by ()
+maxλλ eT = 0.2898 cm K.  As T increases, the wavelength for maximum energy
+emission shifts to shorter values. The frequency of the radiation, f, is given by f = c/λ so high energy
+means short wavelengths and high frequency.
+Monochromatic emissive power, eλ kW/m
+  -micron
+===== PDF PAGE 57 =====
+HT-56
+Figure 9.3: A cavity with a small hole (approximates a black body)
+A physical realization of a black body is a cavity with a small hole.  There are many reflections and
+absorptions.  Very few entering photons (light rays) will get out.  The inside of the cavity has
+radiation which is homogeneous and isotropic (the same in any direction, uniform everywhere).
+Suppose we put a small black body inside the cavity as seen in Figure 9.4.  The cavity and the black
+body are both at the same temperature.
+Black body
+Temperature T
+Cavity
+Figure 9.4: A small black body inside a cavity
+The radiant energy absorbed by the black body per second and per m2 is αΒH, where H is the
+irradiance, the radiant energy falling on any surface inside the cavity.  The radiant energy emitted by
+the black body is EB.  Since αB = 1 for a black body, H = EB.  The irradiance within a cavity whose
+walls are at temperature T is therefore equal to the radiant emittance of a black body at the same
+temperature and irradiance is a function of temperature only.
+9.2      Kirchhoff's Law and "Real Bodies"
+Real bodies radiate less effectively than black bodies.  The measurement of this is the emittance, ε ,
+defined by
+===== PDF PAGE 58 =====
+HT-57
+Emittance:     ε = E
+Eb
+Values of emittance vary greatly for different materials.  They are near unity for rough surfaces such
+as ceramics or oxidized metals, and roughly 0.02 for polished metals or silvered reflectors.   A table
+of emittances for different substances is given at the end of this section as Table 9.1, taken from the
+book by Lienhard.
+The level of the emittance can be related to the absorptance using the following arguments.  Suppose
+we have a small non-black body in the cavity.  The power absorbed per unit area is equal to αH.
+The power emitted is equal to E.  An energy balance gives E = Ebε = α H =α Eb..  Thus
+εα ==
+bE
+E           (9.3)
+Equation (9.3), the relation α = ε , is known as Kirchhoff's Law.  It implies that good radiators are
+good absorbers.  It was derived for the case when Tbody = Tsurroundings (cavity) and is not strictly true
+for all circumstances when the temperature of the body and the cavity are different, but it is true if αλ
+= α ,ελ = ε, so the absorptance and emittance are not functions of λ .  This situation describes a
+"gray body".  Also, since αλ , ελ are properties of the surface, αλ =  ελ .
+9.3      Radiation Heat Transfer Between Planar Surfaces
+E1
+ρ21E
+ρρ1 21E
+ρρ12
+2
+1E
+α21E
+αρ1 21E
+ρρα12 2 E1
+ρρ1
+2
+2
+2
+1E
+ρρ α12
+2
+21E Surface 1
+Surface 2
+Figure 9.5: Path of a photon between two gray surfaces
+Consider the two infinite gray surfaces shown in Figure 9.5.  We suppose that the surfaces are thick
+enough so that, α + ρ = 1 (no radiation transmitted so transmittance = 0).  Consider a photon emitted
+from Surface 1 (remembering that the reflectance ρ = 1 - α):
+Surface 1 emits E1
+Surface 2 absorbs E12α
+← radiation from real body at T
+← radiation from black body at T
+===== PDF PAGE 59 =====
+HT-58
+Surface 2 reflects () 21 1 α−E
+Surface 1 absorbs () 121 1 αα−E
+Surface 1 reflects () () 121 11 αα −−E
+Surface 2 absorbs () () 2121 11 ααα −−E
+Surface 2 reflects () () () 2121 111 ααα −−−E
+Surface 1 absorbs () () () 12121 111 αααα −−−E
+The same can be said for a photon emitted from Surface 2:
+Surface 2 emits 2E
+Surface 1 absorbs 12αE
+Surface 1 reflects () 12 1 α−E
+Surface 2 absorbs () 212 1 αα−E
+Surface 2 reflects () () 212 11 αα −−E
+etc……
+We can add up all the energy E1 absorbed in 1 and all the energy E2  absorbed in 2.  In doing the
+bookkeeping, it is helpful to define () () 21 11 ααβ −−= .  The energy E1 absorbed in 1 is
+() () () () K+−−−+− 12121121 1111 αααααα EE
+This is equal to
+() () ...11 2
+121 +++− ββααE .
+However
+() +++=−=−
+− 21
+111
+1 ββββ
+....
+We thus observe that the radiation absorbed by surface 1 can be written as ()
+β
+αα
+−
+−
+1
+1 121E .
+Likewise ()
+β
+αα
+−
+−
+1
+1 212E  is the radiation generated at 2 and absorbed there as well.
+Putting this all together we find that
+E
+E1
+1
+E
+12
+21 2
+−
+−()
+−
+⎛
+⎝⎜
+⎞
+⎠⎟ = −
+αα
+β
+α
+β
+21
+is absorbed by 1.  The net heat flux from 1 to 2 is
+===== PDF PAGE 60 =====
+HT-59
+qE
+E E EE E E E
+net 1  to 2 1
+11 1⋅
+=−
+−()
+− − − =
+−− − +() −+ −
+−− − +()
+1
+11
+1
+11
+21 21 1 2 12 11 112 21
+121 2
+αα
+β
+α
+β
+ααα α α α α α
+ααα α
+or
+q EE⋅
+= −
++−net 1  to 2
+12 21
+121 2
+αα
+ααα α .           (9.4)
+If 21 TT = , we would have q& = 0, so from Equation (9.4)
+ 
+2
+2
+1
+1
+αα
+EE = = f (T) .
+If body 2 is black, α2 = 1, and E2 = σT4.
+4
+1
+1 TE σα =
+4
+1
+4
+1 TT σα
+σε =
+Therefore, again, 11 αε =  for any gray surface (Kirchhoff's Law).
+Using Kirchhoff's Law we find,
+q
+⋅
+= −
++−net 1  to 2
+εσ ε εσ ε
+εεε ε
+11
+4
+22 2
+4
+1
+121 2
+TT
+or, as the final expression for heat transfer between gray, planar, surfaces:
+q
+TT1
+4
+2
+4
+⋅
+=
+−⎛
+⎝
+⎞
+⎠
++−
+net 1  to 2
+σ
+εε
+11 1
+12
+.           (9.5)
+===== PDF PAGE 61 =====
+HT-60
+Example 1: Use of a thermos bottle to reduce heat transfer
+ε1 = ε2 = 0.02 for silvered walls
+T1 = 100 °C = 373 K
+ T2 = 20 °C = 293 K
+q
+TT W
+m
+2
+⋅
+=
+−⎛
+⎝
+⎞
+⎠
++−
+= − =1 to 2 1
+0.02
+1
+0.02 1
+1100 420
+99 6.9
+σ 1
+4
+2
+4
+For the same ∆T, if we had cork insulation with k = 0.04, what thickness would be needed?
+q kT
+L
+⋅
+= ∆  so a thickness L kT
+q
+m== () ( ) =⋅
+∆ 0.04 80
+6.9 47 0. would be needed.  The thermos is indeed a
+good insulator.
+Example 2: Temperature measurement error due to radiation heat transfer
+Thermocouples (see Figure 9.6) are commonly used to measure temperature.  There can be errors
+due to heat transfer by radiation.  Consider a black thermocouple in a chamber with black walls.
+1 2
+Silvered Walls
+Outside of thermos
+(Cold)
+Inside of thermos
+(hot fluid)
+===== PDF PAGE 62 =====
+HT-61
+metal 1 metal 2
+T1
+T2
+Measured Voltage
+Note: The measured voltage is related to the difference between T1 and T2
+(the latter is a known temperature).
+Figure 9.6: Thermocouple used to measure temperature
+Suppose the air is at 20 °C, the walls are at 100 °C, and the convective heat transfer coefficient is
+h1 5 W
+mK
+2= .
+What temperature does the thermocouple read?
+We use a heat (energy) balance on the control surface shown in Figure 9.7.  The heat balance states
+that heat convected away is equal to heat radiated into the thermocouple in steady state.
+(Conduction heat transfer along the thermocouple wires is neglected here, although it would be
+included for accurate measurements.)
+Heat in (radiation)
+Control volume
+Heat out (convection)Heat out (convection)
+Twall
+Tair
+Ttc
+Figure 9.7: Effect of radiation heat transfer on measured temperature.
+===== PDF PAGE 63 =====
+HT-62
+The heat balance is
+hA T T A T Ttc air wall
+4
+tc
+4
+−() =− ⎛
+⎝
+⎞
+⎠σ           (9.6)
+where A is the area of the thermocouple.  Substituting the numerical values gives
+15 T 293 5.67 x 10  373 Ttc
+-8 4
+tc
+4
+−() =− ⎛
+⎝
+⎞
+⎠
+from which we find Ttc = 51 °C = 324 K.  The thermocouple thus sees a higher temperature than the
+air.  We could reduce this error by shielding the thermocouple as shown in Figure 9.8.
+Radiation shield
+< 100 ϒ C
+100 ϒ C
+Figure 9.8: Shielding a thermocouple to reduce radiation heat transfer error
+Muddy points
+Which bodies does the radiation heat transfer occur between in the thermocouple?(MP
+HT.21)
+Still muddy about thermocouples. (MP HT.22)
+Why does increasing the local flow velocity decrease the temperature error for the
+thermocouple? (MP HT.23)
+9.4   Radiation Heat Transfer Between Black Surfaces of Arbitrary Geometry
+In general, for any two objects in space, a given object 1 radiates to object 2, and to other places as
+well, as shown in Figure 9.9.
+===== PDF PAGE 64 =====
+HT-63
+Qnet T2
+elsewhere
+Figure 9.9: Radiation between two bodies
+We want a general expression for energy interchange between two surfaces at different temperatures.
+This is given by the radiation shape factor or view factor, Fi - j.  For the situation in Figure 9.10
+F12-   = fraction of energy leaving 1 which reaches 2
+F21-   = fraction of energy leaving 2 which reaches 1
+FF12 2 1--  ,  are functions of geometry only
+radiation
+A2, T2
+A1, T1
+Body 1
+Body 2
+Figure 9.10: Radiation between two arbitrary surfaces
+For body 1, we know that Eb is the emissive power of a black body, so the energy leaving body 1 is
+Eb1 A1.  The energy leaving body 1 and arriving (and being absorbed) at body 2 is Eb1 A1 F1-2.  The
+energy leaving body 2 and being absorbed at body 1 is Eb2 A2 F2-1.  The net energy interchange from
+body 1 to body 2 is
+Eb1 A1 F1-2 - Eb2 A2 F2-1 = Q12
+⋅
+− .           (9.7)
+Suppose both surfaces are at the same temperature so there is no net heat exchange.  If so,
+Eb1 A1 F1-2 - Eb2 A2 F2-1 = 0, but also Eb1 = Eb2.  Thus
+A1 F1-2 = A2 F2-1.           (9.8)
+===== PDF PAGE 65 =====
+HT-64
+Equation (9.7) is the shape factor reciprocity relation.  The net heat exchange between the two
+surfaces is
+Q A F E E       A F E E12 1 1 2 b1 b2 2 2 1 b1 b2
+⋅
+− −−=− () −()[]or
+Example:  Concentric cylinders or concentric spheres
+T1
+T2
+Figure 9.11: Radiation heat transfer for concentric cylinders or spheres
+The net heat transfer from surface 1 to surface 2 is
+QA F E E  12 112 b 1 b 2
+⋅
+− −=− () .
+We know that F1-2 = 1, i.e. that all of the energy emitted by 1 gets to 2.  Thus
+QA E E12 1b 1 b 2
+⋅
+− =− ()
+This can be used to find the net heat transfer from 2 to 1.
+Q A FE E A FE E A E E21 2 2 1 b2 b1 1 1 2 b2 b1 1 b2 b1
+⋅
+− −−=− () =− () =− ()
+View factors for other configurations can be found analytically or numerically.  Shape factors are
+given in textbooks and reports (they are tabulated somewhat like Laplace transforms), and examples
+of the analytical forms and numerical values of shape factors for some basic engineering
+configurations are given in Figures 9.12 through 9.15, taken from the book by Incropera and DeWitt.
+===== PDF PAGE 66 =====
+Surface Temperature ( o C) H Surface Temperature ( o C) H
+Aluminum Asbestos 40 0.93 - 0.97
+Polished, 98% pure 200 - 600 0.04 - 0.06 Brick
+Commercial sheet 90 0.09 Red, Rough 40 0.93
+Heavily oxidized 90 - 540 0.2 - 0.33 Silica 980 0.8 - 0.85
+Brass Fireclay 9980 0.75
+Highly polished 260 0.03 Ordinary refractory 1090 0.59
+Dull plate 40 - 260 0.22 Magnesite refractory 980 0.38
+Oxidized 40 - 260 0.46 - 0.56 White refractory 1090 0.29
+Copper Carbon
+Highly polished electrolytic 90 0.02 Filament 1040 - 1430 0.53
+Slightly polished, to dull 40 0.12 - 0.15 Lampsoot 40 0.95
+Black oxidized 40 0.76 Concrete, rough 40 0.94
+Gold: pure, polished 90 - 600 0.02 - 0.035 Glass
+Iron and Steel Smooth 40 0.94
+Mild steel, polished 150 - 480 0.14 - 0.32 Quartz glass (2mm) 260 - 540 0.96 - 0.66
+Steel, polished 40 - 260 0.07 - 0.1 Pyrex 260 - 540 0.94 - 0.74
+Sheet steel, rolled 40 0.66 Gypsum 40 0.8 - 0.9
+Sheet steel, strong rough oxide 40 0.8 Ice 0 0.97 - 0.98
+Cast iron, oxidized 40 - 260 0.57 - 0.66 Limestone 40 - 260 0.95 - 0.83
+Iron, rusted 40 0.61 - 0.85 Marble 40 0.93 - 0.95
+Wrought iron, smooth 40 0.35 Mica 40 0.75
+Wrought iron, dull oxidized 20 - 360 0.94 Paints
+Stainless, polished 40 0.07 - 0.17 Black gloss 40 0.9
+Stainless, after repeated heating 230 - 900 0.5 - 0.7 White paint 40 0.89 - 0.97
+Lead Lacquer 40 0.8 - 0.95
+Polished 40 - 260 0.05 - 0.08 Various oil paints 40 0.92 - 0.96
+Oxidized 40 - 200 0.63 Red lead 90 0.93
+Mercury: pure, clean 40 - 90 0.1 - 0.12 Paper
+Platinum White 40 0.95 - 0.98
+Pure, polished plate 200 - 590 0.05 - 0.1 Other colors 40 0.92 - 0.94
+Oxidized at 590
+oC 260 - 590 0.07 - 0.11 Roofing 40 0.91
+Drawn wire and strips 40 - 1370 0.04 - 0.19 Plaster, rough lime 40 - 260 0.92
+Silver 200 0.01 - 0.04 Quartz 100 - 1000 0.89 - 0.58
+Tin 40 - 90 0.05 Rubber 40 0.86 - 0.94
+Tungsten Snow 10 - 20 0.82
+Filament 540 - 1090 0.11 - 0.16 Water, thickness  0.1mm 40 0.96
+Filament 2760 0.39 Wood 40 0.8 - 0.9
+Oak, planed 20 0.9
+Metals Nonmetals
+Table 9.1:Total emittances for different surfaces [Adapted from: A Heat Transfer Textbook, 
+J. Lienhard]
+===== PDF PAGE 67 =====
+HT-66
+Figure 9.12: View Factors for Three - Dimensional Geometries 
+Figure 9.15: Fig 13.6--View factor for perpendicular rectangles with a common edge
+[from: Fundamentals of Heat Transfer, F.P. Incropera and D.P. DeWitt, John Wiley and Sons]
+Figure 9.13: Fig. 13.4--View factor for aligned parallel rectangles
+Figure 9.14: Fig 13.5--View factor for coaxial parallel disk 
+===== PDF PAGE 68 =====
+HT-67
+Heat Transfer References
+Eckert, E. R. G. and Drake, R. M., Heat and Mass Transfer, McGraw Hill Book Company, 1959.
+Eckert, E. R. G. and Drake, R. M., Analysis of Heat and Mass Transfer, Hemisphere Pub. Corp.,
+1987.
+Incropera, F. P. and Dewitt, D. P., Fundamentals of Heat and Mass Transfer, Wiley, 1990.
+Lienhard, J. H., A Heat Transfer Textbook, Prentice-Hall, 1987.
+Mills, A. F., Heat Transfer, Irwin, 1992.
+===== PDF PAGE 69 =====
+Muddiest points on heat transfer
+HT.1 How do we quantify the contribution of each mode of heat transfer in a given
+situation?
+Developing the insight necessary to address the important parts of a complex situation
+(such as turbine heat transfer) and downplay (neglect or treat approximately) the other
+aspects is part of having a solid working knowledge of the fundamentals.   This is an
+important issue, because otherwise every problem will seem very complex.  One way to
+sort out what is important is to make order of magnitude estimates (similar to what we
+did to answer when the one-dimensional heat transfer approximation was appropriate) to
+see whether all three modes have to be considered.  Sometimes one can rule out one or
+two modes on the basis of the problem statement. For example if there were a vacuum
+between the two surfaces in the thermos bottle, we would not have to consider
+convection, but often the situation is more subtle.
+HT.2 How specific do we need to be about when the one-dimensional assumption is
+valid? Is it enough to say that dA/dx is small?
+The answer really is “be specific enough to enable one to have faith in the analysis or at
+least some idea of how good the answer is”.  This is a challenge that comes up a great
+deal.   For now, if we say that A is an area defined per unit depth normal to the
+blackboard then saying dA/dx is small, which is a statement involving a non-dimensional
+parameter, is a reasonable criterion.
+HT.3 Why is the thermal conductivity of light gases such as helium (monoatomic) or
+hydrogen (diatomic) much higher than heavier gases such as argon (monoatomic)
+or nitrogen (diatomic)?
+To answer this, we need some basics of the kinetic theory of gases.  A reference for this
+is Castellan, Physical Chemistry , Benjamin/Cummings Publishers, 1986.  Two factor
+contribute, the collision cross section and the average molecular velocity.  For the gases
+mentioned above the dominant factor appears to be the velocity.  The kinetic energy per
+molecule at a given temperature is the same and so the lower the molecular weight the
+higher the average molecular velocity.
+HT.4 What do you mean by continuous?
+The meaning is similar to the definition you have seen in the math subjects.  A way to
+state it is that the function at a given location has the same value as we approach the
+location independent of the direction we approach from.  To say this in a more physical
+manner, the temperature as a function of x has the same value at x = a, say, whether we
+approach location a from the left or from the right.  In terms of what the function looks
+like, it will have no “jumps”  or discontinuous (step) changes in value.
+===== PDF PAGE 70 =====
+HT.5 Why is temperature continuous in the composite wall problem? Why is it continuous
+at the interface between two materials?
+We can argue this point by supposing T were not continuous, i.e., there was a different
+temperature on the two sides of an interface between two materials, with the interface
+truly a sharp plane.   If so, there would be a finite temperature difference across an
+infinitesimal distance, leading to a very large (infinite in the limit) heat flux which would
+immediately erase the temperature difference.  This argument could also be applied to
+any location inside a solid of uniform composition, guaranteeing that the temperature is
+continuous in each material.
+HT.6 Why is the temperature gradient dT/dx not continuous?
+As derived in class, across an interface the heat flux is continuous.  From the first law, for
+a thin control volume that encloses the interface the net heat flow into the control volume
+is zero.   As sketched below, the contribution from the heat flux at the upper and lower
+ends of the control volume is negligible so the heat flux in one side must be the same as
+the flux out of the other.  The heat flux, however, is related to the temperature gradient by
+rqk T=− ∇ , or, for one-dimension, qk dT
+dxx =− ⎛
+⎝
+⎞
+⎠ .  If the heat flux is continuous, and if
+the thermal conductivity, k, is not the same in the two materials, then dT/dx  is not
+continuous.
+Material
+A
+Material
+B
+Interface
+Control volume
+qin qout
+HT.7 Why is ∆T the same for the two elements in a parallel thermal circuit? Doesn't the
+relative area of the bolt to the wood matter?
+In terms of the bolt through the wood wall, the approximation made is that the bolt and
+the wood are both exposed to the same conditions at the two sides of the wall.  The
+relative areas of the bolt and the wood indeed do matter.  Suppose we consider a square
+meter area of wood without bolts.  It has a certain heat resistance.  If we now add bolts to
+===== PDF PAGE 71 =====
+the wall, the resistance of each bolt is R L
+kAbolt
+bolt
+bolt bolt
+= .   If there are n bolts, they will be
+in parallel, and the effective area will be n times the area for one bolt.  The thermal
+resistance of the wood will be increased by a factor of AAwithout
+bolts
+with
+n bolts
+/⎛
+⎝⎜
+⎞
+⎠⎟ , which is larger
+than unity.
+In summary, the amount by which the heat transfer is increased depends on the fractional
+area with low thermal resistance compared to the fractional area with high thermal
+resistance.
+HT.8 How do we know that δ' is not a fluid property?
+The term ′⎛
+⎝⎜ ⎞
+⎠⎟δ
+k  represents the resistance to heat transfer for a unit area.  The resistance to
+heat transfer per unit area (1/heat transfer coefficient) can be computed for cases of
+laminar flow, or measured experimentally where we cannot compute it, and it is found
+that for the same state variables, it can have a range of values of several orders of
+magnitude depending on the parameters I described (Reynolds number, surface condition,
+surface shape…). Put another way, if the value of the resistance is affected by the surface
+condition (smooth, bumpy, corrugated, etc.) how can the resistance be just a property of
+the fluid?
+HT.9 What is the "analogy" that we are discussing? Is it that the equations are similar?
+While the equations are similar, the concepts are deeper than that.  The analogy is drawn
+between the heat transfer process (transfer of heat represented by heat flux) and the
+momentum transfer process (transfer of momentum represented by shear stress)
+HT.10 In what situations does the Reynolds analogy "not work"?
+The Reynolds Analogy is just that.  It is not a law of nature, but rather a plausible
+hypothesis that allows useful estimation of the  heat transfer coefficients in many
+situations in which little or no explicit heat transfer information exists.  In the form we
+have derived it, the Reynolds Analogy is appropriate for use in air, but it is not strictly
+applicable if there are pressure gradients, or if the Prandtl number ( Pr = µc
+k
+p ) is not
+unity.   However, the conceptual framework provided by the analogy has been found
+useful enough that the analogy has been extended (in a more complex form, as briefly
+discussed in class) for application to these situations.
+===== PDF PAGE 72 =====
+HT.11 In the expression 1
+h.A , what is A?
+A is the area normal to the heat flow.  For a turbine blade, for example, it would be the
+outer surface area of the blade.
+HT.12 It seems that we have simplified convection a lot. Is finding the heat transfer
+coefficient, h, really difficult?
+We have indeed “simplified convection a lot”.  We will look at heat transfer by
+convection in more depth in a few lectures, but to answer the question in a few sentences,
+finding the heat transfer coefficient is a difficult problem, because it necessitates
+determining the fluid dynamics; the latter is key to predictions of heat transfer.  Even
+with present computational power, calculating the flow around aerospace devices with
+the accuracy needed to be confident about heat transfer coefficients is not by any means a
+“standard” calculation.  For some circumstances, it is still beyond the state of the art.  We
+will concentrate on describing (i) the basic mechanisms  of convective heat transfer and
+(ii) ways of estimating  the heat transfer coefficient from known fluid dynamic
+information.
+HT.13 What does the "K" in the contact resistance formula stand for?
+The definition of the resistance comes out of 
+thermal
+driving
+R
+TQ ∆=& .  The units of Q&  are
+Watts/meter2, so the units of Rthermal are [degrees x meters 2/Watts].  The K is thus the
+symbol for Kelvin, or  degree centigrade.
+HT.14 In the equation for the temperature in a cylinder (3.22), what is "r"?
+The variable r denotes the radial coordinate, in other words the location of the point at
+which we want to know the temperature.
+HT.15 For an electric heated strip embedded between two layers, what would the
+temperature distribution be if the two side temperatures were not equal?
+If the two temperatures on the outer surfaces of the composite layer were TT12 and , the
+heat flux from the two sides of the electrical heater would be different, but the sum of the
+two heat fluxes would still be equal to the heat generated per unit area and unit time.   In
+fact heat could be coming into one side of the heater if one of the temperatures were high
+enough.  (Sketch this out and prove it to yourself.)   The temperature distribution would
+be linear from the heater temperature to the two surface temperatures.   If this example is
+not clear, please come and see me.
+===== PDF PAGE 73 =====
+HT.16 Why did you change the variable and write the derivative dT
+dx
+2
+2 as dT - T
+dx
+2
+2
+∞()  in
+the equation for heat transfer in the fin?
+The heat balance and derivation of the equation for temperature (5.3) is given in Section
+5.0 of the notes.  This is
+dT
+dx
+Ph
+Ak TT
+2
+2 0−− () =∞     (5.3)
+It is not necessary to change variables, and one could solve (5.3) as is
+(or in the form dT
+dx
+Ph
+Ak TT
+2
+2 −= ∞ ).   However, since: (1) the reference temperature is T∞,
+and what is of interest is the difference TT− ∞ ,  (2) making the substitution results in a
+simpler form of the equation to be solved, and (3) the derivative of TT− ∞  is the same as
+the derivative of T , I found it convenient to put it the equation in the form of Eq. (5.5),
+dTT
+dx
+Ph
+Ak TT
+2
+2 0−() −− () =∞
+∞ .     (5.5)
+HT.17 What types of devices use heat transfer fins?
+A number of types of heat exchangers use fins.  Examples of the use of fins you may
+have seen are cooling fins on motorcycle engine heads, cooling fins on electric power
+transformers, or cooling fins on air conditioners.
+HT.18 Why did the Stegosaurus have cooling fins? Could the stegosaurus have "heating
+fins"?
+My knowledge of this issue extends only to reading about it in the text by Lienhard (see
+reference in notes).  The journal article referenced in that text is:
+Farlow, J. O., Thompson, C. V., and Rosner, D.E., “Plates of the Dinosaur Stegosaurus:
+Forced Convection Heat Loss Fins?, Science, vol. 192, no. 4244, 1976, pp. 1123-1125
+and cover.
+HT.19 In equation Q .V.c. dT
+dtin
+•
+= ρ (6.3), what is c?
+c is the specific heat for a unit mass.  We don’t have to differentiate between the two
+specific heats for a solid because the volume changes are very small, unlike a gas.
+HT.20 In the lumped parameter transient heat transfer problem, does a high density
+"slow down" heat transfer?
+It doesn’t.  The high density slows down the rate at which the object changes
+temperature; high density means more “heat capacity”.
+===== PDF PAGE 74 =====
+HT.21 Which bodies does the radiation heat transfer occur between in the thermocouple?
+The radiation heat transfer was between the walls (or more generally the boundaries of
+the duct) and the thermocouple.  The boundaries may not be at the same temperature of
+the flowing fluid, for example in a turbine.   If the boundaries are not at the same
+temperature as the fluid, and they radiate to the thermocouple, there can be an error in the
+temperature that the thermocouple reads.  The discussion was about different possible
+sources of  this type of error.
+HT.22 Still muddy about thermocouples.
+I didn’t mean to strew confusion about these.  As on page 59 of the notes, if we take a
+pair of dissimilar wires (say copper and constantan (an alloy of tin and several other
+metals) or platinum and rhodium) which are joined at both ends and subject the two
+junctions to a temperature difference, it is found that a voltage difference will be created.
+If we know the temperature of one junction (say by use of an ice bath) and we know the
+relation between voltage and temperature difference (these have been measured in detail)
+we can find the temperature of the other junction from measurement of the voltage.  The
+assumption is that the temperature of the junction is the temperature that is of interest; the
+possible error in this thinking is the subject of muddy point 1.
+HT.23 Why does increasing the local flow velocity decrease the temperature error for the
+thermocouple?
+The heat transferred by convection is () fluidlethermocoupconvection TThQ −=& .    If we neglect
+conduction from the wire junction (in other words assume the thermocouple wires are
+thin and long), the heat balance is between convection heat transfer and radiation heat
+transfer.  For a fixed convectionQ&  if the heat transfer increases the temperature difference
+between the thermocouple and the fluid decreases.  We have seen, however, that the heat
+transfer may be estimated using the Reynolds analogy (Section 3.1).  For fixed skin
+friction coefficient the higher the velocity the higher the heat transfer coefficient.

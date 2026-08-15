@@ -1,0 +1,344 @@
+
+===== PDF PAGE 1 =====
+24 /DH /A6 2014 /A2 5 /AB
+/BL/BY /CM/DH /AC 1672-8785(2014)05-0024-05
+/DI/DB /A4/A0 /DG/DC/D8 /A7 /D9 /A5 /DA/DF
+/D8 /A7/A9/A1 /DD Ꜳ/A8
+/BN/A5 /CR /BZ /DF /BI /CN /B0 /DA/CX /AX
+( /B8 /A2 /AS /BZ/CG /D9 /D5 /AS /AS /BZ /D9 Ꜽ /A9 /BK /AM /CA /B9 430033 )
+/BX /A0 /BS /AB /AK /CW /BG/B1/A0 /D2/D3/CD /C7 /CM /BV /CP /A8/AB/CU/CC/A0 /D2/D3/CD /C7/CF/A2 /A8 /CH /AB /DG /BP/A0 /D2 /A3 /AL/AZ/B2
+/CD /C7 /CM /BV /CP /B8/CG /A8 /CL /CV/CX/CA/C2/AD /D8 /AH/BW/B2/D2 /BC/A0 /D2/CD /C7 /CM /BV /CP /A8 /D3 /C7 /D5/CN/DD /CJ /CRÆ /C5
+/CG /B6 /D3 /C7 /D5 /A1 /CU /BG/C0/BL /BY /CD /C7 /CM /BV /CP /A7 /D5/CE Ꜳ /D3 /BD/BU /A3 /AN/A2 /CG /B7 /A8 /CJ /D4/CD /C7 /CK /B3/A8 /A8
+/D0 /BV /CP /A7 /D5/CZ /D1 20 mm /BO/C7 /D5 /AS/AB /CO/CF /A3 /D7 /CY/CB/C4/A7 /D5/D3 /BV /CP /BE/CZ /A8 Ꜹ/C5 /CG /B6/D0/AQ /A8
+/C5 /CG /B6 /D3 /C7 /D5 /AS/D0 /DH /A3 /AN /A2/AM/BR /B2/D7/A3 /CD /C7 /CM /C5 /CG /B6 /DC /A9 /D3 /D4/CO/CI /A8 /CH /C6/A6 /C5 /BG /CS /CE
+/D1 /D6 /C1 /DJ /B2/CQ/AT /A3
+/DD /AC /CX /AB /CD /C7 /CM /AD /BG/B1/A0 /D2 /AD /CX/CA/C2/AD /D8 /AD /A6/C5/BG/D1 /D6
+/C3/BF /D8 /AM /DG /AB TK124 /BK/BN /CN /B4Ꜵ /AB A DOI: 10.3969/j.issn.1672-8785.2014.05.005
+Eﬀect of Damped Heat Insulation Layer of Ship
+Steam Pipeline on Heat Presevation
+SHI Hong-chen, SUN Feng-rui, YANG Li, FAN Chun-li
+(College of Power Engineering, Naval University of Engineering, Wuhan 430033, China)
+Abstract: When the heat insulation layer of ship thermodynamic pipeline is damped, its heat insulation
+eﬀectiveness can be reduced and the pipeline can be corroded. A model of damped heat insulation layer
+is established. The ﬁnite volume method is used to calculate the variation of temperature ﬁeld, outer
+surface temperature and heat transfer loss of the heat insulation layer of a vapor pipeline with the damp
+thickness of the layer. The result shows that when the damp thickness is up to 20 mm, the temperature
+of the heat insulation layer will exceed its standard. For a damp area with same thickness, the nearer
+the outer surface is, the higher its temperature is. This reveals the importance of protecting the outer
+surface of a heat insulation layer and provides the basis for infrared thermal imaging diagnosis of heat
+insulation layers.
+Key words: heat insulation layer; heat pipe; ﬁnite volume method; infrared thermal diagnosis
+0 /CS/CM
+/CW/AR /AZ /CO /AH /CM /C8 /DD /CC /BP /AI /CR /DG /AN/A3 /CT /AK /BA
+/D0 /AZ /CO/C5 /AP Ꜹ /BA /CR /AR /CE/C4 /B9 /A8/B8 /D3 /A7 /A4 /CV /BV /CQ
+/BB /A8 /DG /CI/A7 /A4 /AK /B7 /CM /C8 /BC /CY /AW /CR/AF /CR /A8 /DC /BQ /CM /C8
+/CR /AF /A5 /AL /BP /A8 /BE /AK /BC/DC /CR /B6 /D6 /AR /A3 /AZ /CO/AK /C4 /BK/AP
+/BD /CE/C5 /AT/A8 /AK /C4 /BE /B0 /AF /C3 /B8 /BE/AL /A8 /BY /AM /CN /BT /D0 /B5
+/DC /CT/D7 /AN /A7/BV /A9 /AW /A9 /CR /DJ/D4 /DG/CL /BQ /BE /B0 /AM /BT/A8
+/AF /CR /AZ /CO/CR/AK /C4/CY /B5 /A3/AK /C4 /BK /BU /CR /AW /A9 /D7 /BQ /C9
+/B5 /DA /AX/AS /AC 2014–03–18
+/A4/AH/BP/AR /AC /A1/AJ/D6/BFꜶ/CK/AC/AP/CD/BA (50906099)
+/C5/BZ/AB/AG /AC /BM/A4 /CQ (1978 /A5 ) /A9 /BB /A9 /CI /BS/CL/AR/BJ /A9 /DI/CT /BK /A9 /D5/CP /CY /BT /CV /BH /A2 /CV /D3 /A2 /BH/B4/C3/CK/AF/CT/CW /A4
+E-mail: shihongchenbobo@163.com
+Infrared (monthly)/Vol.35, No.5, May 2014 http://journal.sitp.ac.cn/hw
+===== PDF PAGE 2 =====
+/DE 35 /DJ /A9 /DE 5 /A3 /DH /A6 25
+/BT /B2 /B3 /AZ Ꜷ /BT /A8 /BW/AG /A8 /AZ /CO
+[1]
+/A8/B6 /BW/AP /DG /AN /BC
+/BJ /AW /CH /AF /AF /CR /AB /BU /A3 /A9 /CB/A8 /C2 /A6 /DH /CJ /AZ /CO /AM /BT/BC
+/C3 /B6 /C2 /DD /AM /BT/BY/D8 /D4 /D4 /C3 /AW /CI /CQ /AK /C0 /BX /DH /A3
+/BF /BT /BW /CU /C6 /AR/AH /A1/BW Ꜳ/A6 /A1 /AC /B0 /BC /C4 /D8 /A9
+/AZ /B9 /AK /CR /A8/CT /C4/CF /A1 /BZ/CJ /CI /CH /BI /AK /DA/A8 /A7 /B3 /B8
+/BI /C0 /A1 /B8 /CP /DG /A1 /B8 /CZ /BF /CR /CJ/AD /CG /B3 /CP /CE /BI /DG /AN/CR
+/B7 /CW /AX /B7 /A3 /BT/CG /BF /BT /BI /C4 /C6 /AR /A3 /AP /B1/A3 /AC/AI/AP
+/D8 /DF /D4/DJ /A8 /B6 /CP /CQ /CS/BA /CY /B5 /A3 /A9 /CB/A8 /DD /CW/AR /AZ /CO
+/AK /C4 /BK Ꜳ/A4 /BF /BT /CE /BI /BC /DB /AH /A7 /D4 /CR/A3 /AZ /CO/AK /C4
+/BK/C2 /CJ /AX /B7 /A6 /A8 /AK /C4/CY /B5/BW/CQ /CV/A8 /DG /AX /B7 /C5/CR /B3
+/BK /C4 /D8 /DD/BW/AK /AP/BG /BP /CJ/AD /CG /CR /C4 /D8/A3 /BA /AN/AX /B7
+/DD/BW /B3 /BF /BT /CW /CU/BP /BU /BF/CJ /C2 /AF /A3 /C6/CL [2] /AI/AN /CO
+Ꜷ /DI/DD /BD /CE /AZ /CO/CR /AM /BT /BC /C6 /B5 /CJ/AD /D4 /D4 /AZ /A9 /CC
+/BC /BC /BB /AD /C6/CL [3] /AM /AI CFD /D5 /CL /DD /BD /CW /AZ /CO/AK /C4
+/A2/CY /CG /BJ /CR /C4 /D8/BN /D4 /D4 /AZ Ꜷ /BL /BQ/BX /B6 /D4 /D4 /AZ /DD
+/AR /A9 /CC /AD /C6/CL [4] /BK /B7 Ꜳ/DD/DA /DB /AZ/CS /CN /BC /B7 /D1 /CR
+/A7 /CH /BI /D5 /AD /C6/CL [5] /AI Ꜳ Ꜵ /AX /BN/AZ /AK /C4 /BK /AM /BT/CR
+/CH /BI /A4 /DI /C2 /AM /BT/CR /BF /BT/BP /C8 /A3/CJ /C6/CL [2] /BF /AN /A5
+/B8 /AM /BT /CM /AS /CR /C3 /BR /AX /BP /DD/B3 /BK /C4 /D8/CR /AF /CR /A8 /C6
+/CL [4] /BC [5] /BH /BX/AP Ꜳ/DD/DD /BH /BC /D3 /D5 /A9 /CC /A8 /B8 /DG /AN
+/C7 /B0 /D5 /A3
+/AQ /C6 /C0 /DH/DA /DB /AK /C4 /BK /CC /BP /CK /CR /AM /BT /CJ/CX /A3
+/B2 /C8 /AM /BT/BY/D8/CR /AI /AX/A8 /AK /C4 /BK/CR/B3 /BK /C4 /D8 /DI /BW
+/AX /BP /A8 /B6 /BW /BX /CJ /C2 /A1 /D3/CR /DD /AC Ꜽ /CE /A3 /B7 /A4 /A8 /AQ/DF
+/BI Ꜽ /CQ/CN/CR/AK /C4 /BK /BT /B3 /BK /C4 /D8 /A7 /A4 /A0 /BS /AZ /CO/AK
+/C4 /BK/CR /AM /BT /CJ/AD /A3 /BK /B7 Ꜷ /BL /A7 /BB /CK /C2 /AZ /CO/AK /C4 /BK
+/B3 /B8 /BM/AM /BT /CJ/AD /CG /CR /BT /B3 /BK /C4 /D8/BN /A8 /A7 /A4 /BX /CQ
+/AZ /CO/AK /C4 /BK /BT /B3 /BK /CR /CW /CU/BD /BF /A8 /C0 /AZ /CO/AK /C4 /BK
+/BF /BT /CE /BI /BC /DB /BE /AT /A2 /DF /A3
+1 /C8/AW/B9/CH/AG/AI/BX /DB/D9
+1.1 /CI /BJ /CQ /B6 /CS /BM/AN/AQ/BQ
+/AZ /CO/AK /C4 /BK /AM /BT/CR Æ /A6 /BP /D3 /BP 1 /B7Æ /A8 /C0
+/AZ /BC /BB /A4 /AW/A8 /CC /DG /AM /BT /CM /AS /C0 /A1 /B2 /B5 /CM /AS /A8 Ꜳ /D8
+/C0 β /A8 /AR /AZ /CO /BT Ꜷ/CR /DH /AJ /C0 xd
+/A8 /AR /AK /C4 /BK /BT Ꜷ
+/CR /DH /AJ /C0 yd
+/A8 /BH /D8 /C0 d /A8 /BZ /CW /BQ/D8 /C0 Ld
+/A3 r1
+/A1
+r2
+/A1 r3
+/A9 /B5 /C0 /AZ /CO /BU /DA /A1 /BT /DA/BC /AK /C4 /BK /BT /DA /A3
+/BQ 1 /B0 /CP/AL /C5 /BL /AN /BU /AF /A7 /BQ
+1.2 /A3 /CK ꜲꜼ/A7/AL/C2 /D6/CT
+/C0 /CJ/BP /BQ /D2 /A1 /AW /AP /A9 /CC /A8 /CE/A4 /CG /BE /AK /CC /DG /AB
+(1) /C8 /D3 /B9/BG /CL /AD
+(2) /D8 /C2 /CL /CW /AD
+(3) /CB/D5/C0 /BP Ꜷ /AD
+(4) /BD /CE /AR /AZ /CO /BU /B3 /BK /BT /CW /CEꜶ /A3/BI /AD
+(5) /AZ /CO /B7 /C5 /BS/D9 /C4 /D8/B8 /AX /A8 /AD /B0/C0 0 /A3
+/BZ /AP /DD /AT /BZ /AQ /CC /DG /DD /AZ /CO /C2 /AK /C4 /BK /CN /AP/D8
+/C2 /C1/CF /B1 /CE/CG /CR /C8/B9 /CL /CW /A4 /BY/AB
+1
+r × ∂
+∂r (kr ∂T
+∂r )+ 1
+r2 × ∂
+∂θ (k∂T
+∂θ )+ ∂
+∂z (k∂T
+∂z )=0 ( 1 )
+1.3 /B8/C0 /D6/D4
+/B3 Ꜷ /BL /C8 /B1 /B7 /BY /BU /A8 /A7 /A4 /BG /AI/AN /CO/BF /C1 /DI
+/C8/B9 /CL /CW /CR /AJ/D9 /A4 /DI /BC /BM /A9/AL /AD /AF /BS /CL /D8 /C2/C8
+/B9 /CL /CW /CR /AJ/D9 /D3/AD /A8 /B6 /AI /BR Ꜽ /C0/D2 /CI/DI /CK /CZ/A4 /BY
+/CB/A4 /CB /AC /AJ Ꜷ /B0 /D8/A3 /B2/AI/AN /CO/BF /C1 /DI/DD /AD (1) /AD
+/D4 /D4 /AJ/D9
+[6]
+/AB
+∫
+△ V
+[ 1
+r × ∂
+∂r (kr ∂T
+∂r )+ 1
+r2 × ∂
+∂θ (k∂T
+∂θ )+ ∂
+∂z (k∂T
+∂z )]
+rdr·dz·dθ =0 ( 2 )
+/BS /CL/CQ/CN /A1 /AH /D5 /CR /AJ/D9 /A4 /BY/AB
+αP TP = αETP + αW TW + αN TN + αSTS + αT TT
++ αBTB + Su (3)
+/AD /BU /A8 αE = λe ·dr·dz/(rp ·dθ) /A8 αW = λw ·dr·dz/(rp ·
+dθ) /A8 αN = λn ·dθ·rn ·dz/dr /A8 αS = λs ·dθ·rs ·dz/dr /A8
+http://journal.sitp.ac.cn/hw Infrared (monthly)/Vol.35, No.5, May 2014
+===== PDF PAGE 3 =====
+26 /DH /A6 2014 /A2 5 /AB
+αB = λb · dθ · rp · dr/dz /A8 αT = λt · dθ · rp · dr/dz /A8
+αP = αE + αW + αN + αS + αT + αB − SP
+Su
+/A1 Sp
+/AR Ꜹ /D0 /BG /CL /AN Ꜽ /A8 dz /A1 dr /BC r · dθ /A9
+/B5 /C0 /BZ /CW /A1 /DA /CW /BC /AX/BY /CW/BX /AL /BQ/D8/A8 λe
+/A1 λw
+/A1
+λn
+/A1 λs
+/A1 λb
+/A1 λt
+/C0 /D0 /BK/DD /CR/CK Ꜽ /CL /CW /CEꜶ /A8
+/AM /AI /D1 /BC /C2/A1 /DI /D4 /D4 /C8 /B1
+[7]
+/A3 /BK /B7 /CK /CZ/A4 /BY/A8
+/A7 /CQ/CN /CK /CZ /CM /AS /CR /C4 /D8/BN/A3
+1.4 /BI /DB /A1 /D8/DI/CL /AF/BD/AD
+/AZ /CO /C2 /AK /C4 /BK /AM /BT /BJ /A8 /AL/AP Ꜵ /CB /BW/BE /B0 /CR
+/CW /CB/D5 /B8 /BM /A8 /CL /CW /CEꜶ /BW /DH /A0 /CU /B0 /AX /BP /A3 /B3 /AM /AI
+/AN /CO/BF /C1 /DI/DD/AK /C4 /BK /D4 /D4 /C6 /CW Ꜷ /BL /C8 /B1/A6 /A8 /BX /AL
+/BO/A9 /DH/AC /CV /D0 /BG /BA /BC /B3 /BE /B0 (/CM /AS ) /CR /A9/D0 /BK/DD
+[7]
+/A3
+/B3 /C8 /B1 /B7 /BY /BU /A8 /CK /BX /AL /CF /AP 40×27×40 /A6 /A8
+/BX /AL /CR /AP /BI /BY/D8/B8 /BW /AF /CR /C8 /B1 /CY/B5 /A3/AQ /C6 /BG /AI
+/CR /CYꜸ /BX /AL /C0 /C1/CF /B1 /CE /BU /CR 3D /BQ /D2 /B6/BK /BF /A8 /BG
+/AI 40×27×40 /CR /BX /AL /A3 /BX /AL/BO/A9 Æ /A6 /BP /D3 /BP 2 /B7
+Æ /A3
+/BQ 2 /DE /BD /BY /AM /AF /A7 /BQ
+/AZ /CO /D4 /C2 /A9 /C0 /DJ /CW Ꜹ /D0 /A8 /AZ /CO /BU /B3 /BK /BC /AK
+/C4 /BK /BT /B3 /BK /C0 /CY /D8/AI Ꜹ /D0 /BG /CL /A3Ꜹ /D0 /BG /CL /C0
+k∂T
+∂z ,z =0 ,z = Lz
+− k∂T
+∂r + hin(T − Tin)=0 ,r = r1
+− k∂T
+∂r + hout(T − Tout)=0 ,r = r3 (4)
+/AD /BU /A8 hin
+/C0 /BD /CE /AR /AZ /CO /BU Ꜷ/CR/DD /B4 /BT /CW /CEꜶ /A8
+hout
+/C0 /AK /C4 /BK/B3 /BK /CR /BT /CW /CEꜶ /A8 Tin
+/C0 /BD /CE /CR /C4
+/D8/A8 Tout
+/C0 /BS/D9 /C4 /D8/A3
+2 /BQꜼ/AI/BX/AG /DE /C9
+/AZ /CO/CR /BU /DA r1
+/C0 0.3 m /A8 /BT /DA r2
+/C0 0.32 m /A8
+/AK /C4 /BK/CR /BT /DA r3
+/C0 0.42 m( /C4 /AK /C4 /BK/CR /BH /D8 /C0 0.1
+m) /A8 /AZ /BQ Lz
+/C0 1m /A3 /B4 /BF /AR Ꜷ /BK /CR/DD /B4 /BT /CW /CE
+Ꜷ/C0 1000 W · m−2 · K−1
+/A3/AK /C4 /BK /BT /BK /BR /AN /CA /AB
+/AK /BM /BK/A8 /CB Æ /DE/B9 /C0 0.41 /A3 /AZ /CO /BU/B4 /BF/C4 /D8 Tin
+/C0 300◦C /A8 /BS/D9 /C4 /D8 Tout
+/C0 25◦C /A3 /B3/BG /BP /C8 /D3
+/B2 /D4 /BJ /A8 /AK /C4 /BK/CR/B3 /BK /C4 /D8 Ts
+/C0 50◦C /A3 /BE /B0 /CR
+/CW /CB/D5
+[8]
+/CK /B3 1 /A3
+/C6 1 /C7/C9/C8/CA/CB/CC
+/BJ /D9 /CX /CM /BA /AS /CX/D2
+ρ/kg· m− 3 λ/W· m− 1·K− 1 cp/J· kg− 1 · K− 1
+/B9 /D6 /AJ/B0 /CP 7820 15.2 460
+/C0/BS /B7 /AT 160 0.06 1000
+/AN /BU /CN /AT 800 0.2 3000
+/AZ /CO /BT /B3 /BK /AR /CF /CD/A8 /CG /CR /BT /CW /B7 /BY/AJ Æ /DD
+/B4 /BCÆ /DE /A3 /DD /B4 /BT /CW /AJ Æ /C9 /CV /DD /B4 /BC /CH /BS /DD /B4 /A3
+/B3 /BK /BT /CW /CEꜶ hout
+/C8 /B1 /A4 /DI /D3 /CG
+[9]
+/AB
+hout = αr + αc (5)
+(1) /C8 /B1 Æ /DE /BT /CW /CEꜶ αr
+/AB
+αr = ε · σ( (Ts + 273)4 − (Tout + 273)4
+Ts − Tout
+)( 6 )
+/AD /BU /A8 σ=5.670×10−8 W· m−2 · K−4
+/A3
+(2) /C8 /B1 /C9 /CV /DD /B4 /BT /CW /CEꜶ /AB
+αc =1 .32(Ts − Tout
+D )0.25 (7)
+/AD /BU /A8 D /C0 /AK /C4 /BK/CR /BK /DA /A3
+2.1 /CI /BJ /CQ /B6 /CS Ꜷ/BW/BE/AI/BG /CO /AP/B2 /D1 /BJ /D3/CR /A7
+/CV Ꜹ/BB/B0/A9/BA
+/CK/AK /C4 /BK /BT /BC/AK /BM /BK /C6 /B5/A6 /A8 /BT /D0 /AW /A9/D6
+/D4 /AK /C4 /BK/A8 Ꜳ /CC /AK /C4 /BK /AM /BT/A3 /CB /A6/AM /BT /CM /AS /D2 /BH
+/AK /C4 /BK /BT /B3 /BK (yd=0) /A8 /AL /BT/CW /BU/DJ /BO /A3 /BP 3 /B7Æ
+/CO /CP /BU /A8 /AX /CQ /B1 /AB/C0 /AK /C4 /BK /AM /BT /CM /AS /CR /BT /B3 /BK
+/C4 /D8 /B2/AM /BT /BH /D8/CR /AF /CR /A3 /AM /BT/CR /BH /D8 /AZ /CF/A8 /C4 /D8
+/DD /A1 /DD /AZ /AC /A3 /A4 /AB /B1 /AB/C0 /B3 /BK /C4/A1 /B2/AM /BT /BH /D8
+/CR /AF /CR /A8 Ꜳ /CA /DD /C4/A1/AH /AK /C4 /CYꜸ /BT /B3 /BK /C4 /D8 /AR
+Infrared (monthly)/Vol.35, No.5, May 2014 http://journal.sitp.ac.cn/hw
+===== PDF PAGE 4 =====
+/DE 35 /DJ /A9 /DE 5 /A3 /DH /A6 27
+/BS/D9 /C4 /D8 /BJ /BM/A8 /A9 /CB /AX /B9 /CR y /BZ Ꜷ /BL /BM /C0 /BS/D9
+/C4 /D8/A3 /BP /BU /B1/C2 /AZ/AX /AN/CV /D0/CR Ꜷ /DF /A3 /A7 /A4 /A4 /C2/A8
+/CK/AK /C4 /BK/CR /AM /BT /BH /D8 d /C0 24.44 mm /A6 /A8 /C4 /D8 /C0
+51.63◦C /A8 /C4/A1/C0 26.63◦C /A3
+/BQ 3 /AN /BU /CN /AT /BU /B4 /C5 /D9 /B3/AN /BU /BI /D9/CSꜼ /BQ
+/BQ 4 /AN /BU /CN /AT /DA/CX /B6/A3/B3/AN /BU /BI /D9/CSꜼ /BQ
+/BP 4 /C0 /AK /C4 /BK /AM /BT /CM /AS /BT /B3 /D9/CW /B5/A2 /B2/AM
+/BT /BH /D8/AX /BP /CR Ꜽ /CE /CO /CP /A3 /BP /BU /DI /B1/C2 /AZ/AX /AN/CV
+/D0/CR Ꜷ /DF /A3 /A7 /A4 /A4 /C2/A8 /B3 /AK /C4 /BK /AM /BT /BH /D8 /C0 24.44
+mm /A6 /A8/DD /AC /CR /CW/B4 /B5/A2/C0 167.9 W · m−2
+/A3 /BP 3
+/CO /CP /BC /BP 4 /CO /CP /CR /D3 /C4 /BZ /AQ /A1/BQ /A8 /BA /AH /AL /B8 /BG /BJ
+/CG /CR /BG /AR Ꜽ /CE /DI /D3/CR /A3
+/AQ/DF/B3 /B1
+[10−11]
+/A8 /CK /AZ /CO/AK /C4 /CYꜸ /CR /BT /B3 /BK
+/C4 /D8 /AK /AP 323 K(50 ◦C) /BY/AZ /CO/AK /C4 /BJ /B1 /D8 /CC /CF
+/D9/CW /B5/A2 /CF /AP (/BP /BZ /B2 /D4 /AR /AD /A8 /AZ /CO/B3 /BK /C4 /D8 /C0
+573 K(300 ◦C) /A6 )167 W · m−2
+/A8 /BY /B3 /BK /C4/A1 /CF /AP
+26.7 ◦C /A6 /A7/D0 /C0 /CD /B3 /AX /B7 /A3 /BP 3 /B3 /BN /A8 /B3 /AZ /CO/AK
+/C4 /BK /AM /BT /BH /D8 /C0 20 mm /CDꜴ /A6 /A8/AK /C4 /BK/B3 /BK /C4
+/D8 /BC /C4/A1 /A1 /A3 /D8 /BR/C2 /B3 /B1/A3 /BP 4 /B3 /BN /A8 /B3 /AK /C4 /BK
+/CR /AM /BT /BH /D8 /C0 24 mm /A6 /A8/B3 /BK/D9/CW /B5/A2/DI /A3 /D8
+/BR/C2 /B3 /B1/A3 /CA /BE /A4 /DD/D8 /CT /BN /B1/A8 /B3 /AK /C4 /BK /AM /BT /BH
+/D8 /C0 20 mm /A6 /A8 /AK /C4 /BK /A3 /CE/B8/CN/AK /C4/CY /B5 /A3 /BP 5
+/C0 /AK /C4 /BK /AM /BT /BH /D8 /C0 33 mm /A6 /CR /C4 /D8/BN/A8 /CB /BU
+/BU /DE /BF /DB/CM /AS /C0/AM /BT/BC /A9 /CR /C4 /D8/BN/A8 /BY /BZ /CF /C1/AG
+/DB/CM /AS /C0 /BG /BP/CR /C4 /D8/BN /A3 /CC /BP /BU /A7 /A4 /A4 /C2/A8 /BF /DB
+/CM /AS /BC /A9 /CR /C4 /D8 /A3 /D8 /BR /B7 /AZ 50 ◦C /A3 /BP 6 /C0/AM /BT
+/BH /D8 /C0 33 mm /A6 /CR /CW/B4/BI /D8/BN/A8 /BM/DG /BU /DE /BF /DB
+/CM /AS /C0/AM /BT/BC /A9 /CR /CW/B4 /BI /D8/BN/A3 /CC /BP /BU /A7 /A4 /A4
+/C2/A8 /BF /DB/CM /AS /BC /A9 /CR /CW/B4/BI /D8 /A3 /D8 /BR /B7 /AZ 167W·
+m−2
+/A3
+/BQ 5 /AN /BU /BI /D9 /C1 33 mm /A7 /CS /C5 /D9/BO
+/BQ 6 /AL /C5 /BL /AN /BU /BI /D9 /C1 35 mm /A7 /CS /CX/B5/BJ /D9/BO
+2.2 /CI /BJ /CQ /B6 /CS Ꜷ/BW/BE/AI /DE/D0/CO /AP/B2 /D1 /BJ /D3/CR
+/A7 /CV Ꜹ/BB/B0/A9/BA
+/AK /C4 /BK /BT /B3 /BV /BA /A8 /AL/AP /AZ /CO /AG /A8 /CT Ꜹ/A9Ꜳ
+/CC /AZ /CO /DJ/B7 /A8 /CC/DG /CL /BQ /AK /C4 /BK /AM /BT/A3 /CB /A6/AM /BT /CM
+/AS /D2 /BH /AZ /CO /BT /B3 /BK (xd =0) /A8 /AL /BU /CW/BT /A3
+/AR /CS /BP 3 /BC /BP 7 /A1 /BP 4 /BC /BP 8 /A8 /A7 /A4 /A4 /CN/AX
+/BP /CL /AG /BZ /AQ /CQ/BM /A3 /CJ /AQ/DF /A4 /DD /B1 /C6 /A9 /CC /A8 /B3 /BP 7
+/BU /CK /AM /BT /BH /D8 /C0 26 mm /CDꜴ /A6 /A8/AK /C4 /BK/CR /BT /B3
+/BK /C4 /D8 /A3 /D8 /BR/C2 /B3 /B1/AD /BH /D8 /C0 35 mm /CDꜴ /A6 /A8 /C4
+http://journal.sitp.ac.cn/hw Infrared (monthly)/Vol.35, No.5, May 2014
+===== PDF PAGE 5 =====
+28 /DH /A6 2014 /A2 5 /AB
+/BQ 7 /AN /BU /CN /AT /CS /BU /B4 /C5 /D9 /B3/AN /BU /BI /D9/CSꜼ /BQ
+/BQ 8 /AN /BU /CN /AT /CS /DA/CX /B6/A3/B3/AN /BU /BI /D9/CSꜼ /BQ
+/BQ 9 /AN /BU /BI /D9 /C1 45 mm /A7 /CS /C5 /D9 Ꜳ /BB
+/A1 /BR/C2 /B3 /B1/AD /CC /BP 8 /BU /A7 /A4 /A4 /C2/A8 /CK /AM /BT /BH /D8/CE
+/CN 35 mm /A6 /A8 /D9/CW /B5/A2/DI /A3 /D8 /BR/C2 /B3 /B1/A3 /A9 /CB/A8
+/B3/BA/BW /CJ/AD /CG /A8 /CK /AM /BT /BH /D8 /C0 26 mm /A6 /A8 /AK /C4 /BK
+/A3 /C2 /CJ /AX /B7 /A8 /D7 /D4 /D4 /C5 /AK /A3 /CY/B5 /AR /AM /BT /CM /AS /A6 /D5
+/BT /B3 /BK /CR /CJ/AD /AN /D0 /B8 /BM /A8 /DI/AX /BN/AZ /DD /BM/DG /CR /AM /BT
+/BH /D8/A8 /AL/AP /C5 /AP /AK /C4 /BK/CR/B8 /BM/C3 /BR /BY /B9 /CN/AK /C4
+/BE /B0 /B3 /BK /CR /DH /AJ /B8 /A1 /DG /A8 /B3 /B3 /BK/DD /BW /CIÆ /C2/B8
+/BM /CR /C4 /D8 /A9 /BA/A3
+/BP 9 /AH/AM /BT /BH /D8 /C0 45 mm /A6 /CR /C4 /D8/BN/A8 /D3/CX
+/CW /A0 /AH /AZ /AK /C4 /BK /AM /BT /BJ /B3 /BK /C4 /D8/CR /A9 /BA /CJ/AD /A3
+3 Ꜵ/B5
+/AQ /C6 /BG /AI/AN /CO/BF /C1 Ꜷ /BL /C8 /B1 /A4 /DI/DD /AZ /CO/AK
+/C4 /BK /AM /BT /CJ/AD /CG /CR /C4 /D8/BN /D4 /D4 /AZ Ꜷ /BL /A7 /BB /A8/CQ
+/CN /AZ /AZ /CO/AK /C4 /BK/B3 /BK /CR /BF /BT /CW /BD /BF /A8 /C0 /BF /BT /CH /BI
+/C6 /AR /B3 /AZ /CO/AK /C4 /BK /AX /B7/BC /DB /BU /CR /AC/AI /BE /AT /AZ /A2
+/DF /A3 /CY /BB/D3 /CG /AB
+(1) /AK /C4 /BK /AM /BT /BJ /A8 /AM /BT /CM /AS /CR /BT /B3 /BK /C4 /D8
+/C2 /CJ /A8 /BP/A8 /AK /AP/BG /BP /CM /AS /C4 /D8/A8 /C4/A1 /BC /D9/CW /B5/A2
+/AR /AM /BT /BH /D8/CD /B3/BG /AR Ꜽ /CE /A3 /B3 /AM /BT /BH /D8/CE /CN 20
+mm /CDꜴ /A6 (yd=0) /BY 26 mm /CDꜴ /A6 (y=0) /A8 /AK /C4
+/BK/CR /BT /B3 /BK /C4 /D8 /C5/D8 /BR/C2 /B3 /B1/A8 /CJ /C4/A1 /BC /D9/CW /B5
+/A2 /D1 /AN/AQ Ꜽ /A3
+(2) /AK /C4 /BK /AM /BT /CM /AS/BP /B3 /BK /CR /DH /AJ /B8 /BM /BW /AF
+/CR /B3 /BK /CR /C4 /D8 /A9 /BA/A3 /AJ /B3 /BK /AZ /D5 /A8 /BM/DG /BH /D8/CR /AM
+/BT /CM /AS /DD/B3 /BK /C4 /D8/CR /A9 /BA /AF /CR/DI /AZ /CF/A3 /B7 /A4 /A8 /DH
+/C2/A6 /A5/BM /AK /C4 /BK /BT /BK/A8 /A5 /BO /CB/C6 /B5/AM /BT/A8 /AF /CR /AK
+/C4/CY /B5 /A3
+/CP /AJ/BK/BN
+[1] /CP Æ /CX /A9 Ꜷ/CO /BO /A9 /BA /CO /CU Ꜳ /AL /C5 /BL /CH /D1 /AQ /BF /B1 /AH /A9
+/CS /DB /DC /CK /C5 [J]. /D9 /B3/AK/BR/BV /D7 /A0/A8/B7 , 2011,23 (05):
+381–386.
+[2] /B3 /BV /A3 /A9 /DF /AQ /A9 /B4 /AC /D6 /A9 /CUꜲ /AL /C5 /BL /AN /BU /BD /BD Ꜳ /B6
+/BR /DE /BE /CF /B0 /CP/C7 /CX /CS /AG /CS [J]./A6 /DF /BV /DJ /BH , 2005,35
+(01): 26–28.
+[3] /B8 /BL /A9 /BW/C1 /BM /A9 /BW /AH /A9 /CUꜲ /BS/C1 /AM /BE /CX /CX Ꜵ /B0 /CP/AL /C5
+/A3/CZ /CS Ꜹ /BM /BR/BY [J]./CZ/CY /A2 /DC , 2012,41(01): 85–87.
+[4] /A2 /CA /AN /A9 /DI/AQ /BN /A9 /AL/BH/AW /A9 /CUꜲ /C9 /AJ Ꜵ /CX /B0 /CP /C3 /AL /C5
+/BL/CS /BG /BU /CX /CV/C9/B6 /CI /BJ /DB /DC [J]./D2 /C4/ATÆ , 2006,29
+(04): 1367–1371.
+[5] /B3 /CG /A9 /BV /B4/BN Ꜳ /BG /BU /CX /CV /CI /BJ /C7 /AS /B4 /A5 /BQ/AS /A0/BV /CS
+/AD/AJ [J]./B1/BT/A2 /DC /AZ /CJ , 2010,39(01): 47–53.
+[6] /AL/CZ /CM Ꜳ /BU/BO/BC/A5 /D5 /A4 /CU [M]. /B4/A6/AS /A0 /C3/AI /DF /A9
+2008.
+[7] /BB/C7 /CH Ꜳ /B9/C1 /CW /AW/BR [M]/A6/CZ 2 /AI/A7 Ꜳ /CD /AG/A7 /AC /CD /AG
+/CR /BL /CG /D9 /C3/AI /DF /A9 2010, 86–89.
+[8] Incropera F P, Dewitt D P, Bergan T L, et al. Fun-
+damentals of Heat and Mass Transfer(Sixth Edition)
+[M]. Beijing: Chemical Industry Press, 2007.
+[9] GB/ T 17357–2008,
+/DH Ꜵ /C3/B0 /CP /A0/CX /BL/B4 /BL/CX /B6/A3
+/CK /BO/BJ /D4 /CX/B5 /C9 /DJ /BD /B4 /BL /C5 /D9/DJ [S]. /AM /D7 Æ /BV /B4 /B2
+/C7 /C3/AI /DF /A9 2008.
+[10] GB/T 8174–2008 /DH Ꜵ /C3/B0 /CP /A0/CX /CZ /B6 /CS/BJ /AI /C3 /C4
+/CD [S]. /AM /D7 Æ /BV /B4 /B2 /C7 /C3/AI /DF /A9 2008.
+[11] GB/T 15910–2009 /CX/AS Ꜵ/AZ/CF/BN /CW /BW /CF /BJ [S]. /AM
+/D7 /AC /BV /B4 /B2 /C7 /C3/AI /DF /A9 2010.
+Infrared (monthly)/Vol.35, No.5, May 2014 http://journal.sitp.ac.cn/hw

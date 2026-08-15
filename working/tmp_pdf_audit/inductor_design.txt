@@ -1,0 +1,2171 @@
+
+===== PDF PAGE 1 =====
+Design and Fabrication of Inductors for
+Induction Heat Treating
+Rob Goldstein, Fluxtrol
+William Stuehr, Induction Tooling
+Micah Black, Tucker Induction Systems
+FOR INDUCTION MELTING AND MASS
+HEATING, the early induction heating coils
+were manufactured from copper tubing wrapped
+in multiple turns around a mandrel. The ﬁrst
+induction heat treating coils were developed for
+crankshaft hardening in the 1930s (Fig. 1, 2)
+(Ref 1–4). Unlike the melting and mass heating
+coils, the heat treating induction coils were
+machined. These inductors consisted of two
+parts with a hinge on one side that would open
+and shut around the crankshaft journal. Quench
+holes were drilled on the inner diameter of the
+induction coil to deliver quench to the part after
+heating. This pioneering development was the
+culmination of many years of hard work by a
+large team and clearly demonstrated the different
+requirements for induction heat treating as com-
+pared to melting and mass heating.
+During the infancy of induction heat treating
+coil development, the speciﬁc features of the in-
+duction coil primarily were determined through
+an analytical-, experience-, and experimental-
+based method. Concepts for induction coils were
+created by physicists. Calculations of coil para-
+meters were determined by manually solving
+complex equations. Induction coil designs initi-
+ally were made by draftsmen on blueprints.
+Most inductors were manufactured by crafts-
+men using a combination of copper tubing,
+manually machined components, and copper
+plates brazed together. Coil optimization was
+made based on experimental results through
+the trial-and-error method, because tests and
+modiﬁcations took much less time than the
+calculations did (Ref 1, 5).
+While many induction heat treating coils are
+still manufactured in this way, the tools for
+the design and fabrication of complex induction
+heat treating inductors have evolved greatly
+over the years. For many types of applications,
+the preferred induction coil style already is
+known based on years of empirical data. In
+many cases, comparisons to known results can
+even determine induction coil dimensions that
+will lead to a successful heat treating pattern,
+greatly limiting experimental testing times and
+shortening development cycles (Ref 1, 5–9).
+For newer applications or optimization of
+existing ones, computer modeling tools are being
+incorporated into the induction coil design
+procedure. Sophisticated software running on
+personal computers is capable of making cal-
+culations in seconds, minutes, or hours that
+would have taken days, weeks, or months to
+solve manually. In many cases, no analytical
+formula exists for complex coils, and the only
+way to make calculations prior to tests is with
+a computer modeling program. Induction coil
+designs and process recipes are “virtually”
+tested to determine resulting heat patterns. In
+many cases today (2013), virtual tests and eva-
+luations can be made more quickly and at a
+lower cost than physical ones (Ref 10–12).
+The process of mechanical induction coil
+design also has evolved over the years. While
+the initial drawings were made by hand, induction
+coils now are drawn and detailed using computer-
+aided design (CAD) packages. Over the past sev-
+eral years, CAD packages have increased their
+interactivity with computer-aided manufacturing
+(CAM) software packages. In many instances,
+induction coil drawings can be transferred from
+a CAD drawing to a CAM program into the com-
+puter numerically controlled machine. This cre-
+ates the possibility for greater repeatability of
+complex machined induction coils (Ref 13, 14).
+Methods of Induction Heat Treating
+Today (2014), there are many different types
+of induction heat treating coils. The induction
+heat treating coil style depends on the induction
+heat treating process. All induction heat treating
+processes can be classiﬁed in two categories:
+single shot and scanning, based on whether the
+induction coil is moving (excluding rotation)
+relative to the part during the heating process.
+A brief description is given subsequently, because
+more in-depth information on induction heat
+treating equipment is discussed in other sections
+in this article.
+In single-shot (Fig. 3) induction heat treating
+applications, the position of the induction
+coil relative to the heated length of the part
+does not move. In many single-shot heating
+ASM Handbook , Volume 4C, Induction Heating and Heat Treatment
+V. Rudnev and G.E. Totten, editors
+Copyright # 2014 ASM International W
+All rights reserved
+www.asminternational.org
+Fig. 1 Tocco coil. Source: Ref 1
+ Fig. 2 Vologdin coil
+===== PDF PAGE 2 =====
+applications, the part rotates while heating and
+quenching occur to ensure uniformity of pattern.
+Within the family of single-shot heat treating
+applications, there are several varieties of in-
+duction coil conﬁgurations, depending on the
+quench-delivery mechanism.
+Machined integral quench (MIQ) installations
+have quench integrated right into the induction
+coil itself. The most common method is for the
+quench to be delivered through the coil copper
+itself. These inductors typically have separate
+pockets for water cooling and quench delivery.
+In some other cases, the quench may be deliv-
+ered through a magnetic ﬂux concentrator.
+Another type of single-shot heat treating instal-
+lation is quenching in place (Fig. 4). Quenching in
+place is similar to MIQ, because the quench ring is
+a part of the induction coil assembly. What differ-
+entiates quenching in place from MIQ installa-
+tions is that the quench is not designed to be an
+active component of the induction circuit.
+The ﬁnal single-shot induction heat treating
+coil style is separate quenching (Fig. 5). In
+these installations, the quench is not part of
+the induction coil assembly. In separate-quench
+installations, the quenching often is delivered in
+a different station or position in the machine.
+These systems are common when a delay
+between heating and quenching for heat soak-
+ing is desirable.
+Besides single shot, the other type of induc-
+tion machine is scanning (Fig. 6) (Ref 5, 9). In
+scan-hardening applications, the induction coil
+moves relative to the part. Similar to single-shot
+inductors, scanning inductors can be either MIQ
+or quenching in place. They also may be sepa-
+rate quenching, but this is less common.
+Considerations for Inductor Design
+Induction heat treating coils are available in
+many shapes and sizes and must perform a vari-
+ety of tasks in a given induction heat treating
+application. Depending on the application, the
+induction coil design requirements include:
+/C15 Meet heat treatment speciﬁcations in desired
+production rates
+/C15 Be robust enough to tolerate manufacturing
+variations
+/C15 Mount into the induction machine
+/C15 Have electrical parameters that match the
+induction power supply
+/C15 Deliver quench
+/C15 Have a satisfactory lifetime
+/C15 Have satisfactory efﬁciency
+/C15 Be repeatable from inductor to inductor
+In developing a new induction heat treating
+coil and process, the ﬁrst question is whether
+the component will be produced on an existing
+system or if a new machine must be built. In
+many cases, the part producer’s desire is to
+develop new tooling for an existing machine
+with spare capacity. This reduces the degree
+of freedom and can make the induction coil
+design procedure more complicated, because
+a less-than-optimal frequency or coil style will
+be necessitated to ﬁt the existing machine
+(Ref 16).
+To determine the ability to use existing
+equipment, it is necessary to make an analysis
+of the part to be heat treated. Part material,
+prior processing, geometry, production rate,
+and heat treatment speciﬁcations all play roles.
+The part material and prior processing deter-
+mine what the minimum heat treatment temper-
+ature should be, along with how much time is
+allowed for cooling. The part geometry and
+heat treatment speciﬁcations indicate how
+much energy is required, what the preferred
+frequency ranges are, and what type of induc-
+tion method (i.e., single shot, scanning) is best
+suited for the application. Finally, the produc-
+tion rate determines how much power and/or
+how many spindles or stations are required.
+More details on this topic are given later in
+this and other articles in this Volume. The dis-
+cussion in this article is limited to the relation-
+ship between these factors and the induction
+coil design.
+Current Flow in the Part
+Eddy currents are the primary source of
+power dissipation in most induction heat treat-
+ing applications. Eddy currents, just like all
+other electrical currents, must form a closed
+contour. In most cases, the current ﬂow in the
+workpiece follows the shape of the induction
+heating coil, due to the proximity effect. The
+power density in a given section of the work-
+piece depends on the current density. The
+current density can be inﬂuenced by electro-
+magnetic effects (end effect, edge effect, etc.),
+the presence of magnetic ﬂux concentrators,
+the width of the copper, the geometry of the
+part, and the distance between the coil and the
+workpiece (coupling gap).
+The next step in the coil design process is
+determining how the current will ﬂow in the
+part. This is critical, especially in cases where
+the geometry changes. Some common geometry
+changes encountered in induction heat treating
+are ﬁllets, undercuts, corners, shoulders, cham-
+fers, splines, keyways, and oil holes. The heat-
+ing of these critical areas relative to adjacent
+ones is strongly dependent on the induction coil
+style and frequency of heating.
+The ﬁrst primary choices for current ﬂow,
+either in the plane of the geometry change or
+perpendicular to the geometry change, are dis-
+cussed here. When current ﬂow is perpendicu-
+lar to the direction of a geometry change, the
+natural tendency is for the current to concen-
+trate on the part surface that is closer to the
+Fig. 3 Single-shot induction heat treating application
+Fig. 4 Quench-in-place inductor for hardening of a spindle
+Fig. 6 Machined integral quench scanning inductor
+with magnetic ﬂux concentrator
+Fig. 5 Separate quenching. Source: Ref 15
+590 / Equipment
+===== PDF PAGE 3 =====
+induction coil, due to the proximity effect. An
+additional consideration is that near the ends of
+the closer section to where the distance increases,
+there is either a decrease or an increase in heat-
+ing, depending on whether the part is magnetic
+or nonmagnetic due to the electromagnetic end
+effect. For hardening applications, there is some
+increase, and for tempering there is a decrease.
+The magnitude of the change depends on the
+frequency (Fig. 7) (Ref 12).
+When the current ﬂow is in the direction of a
+geometry change, the current ﬂows under the
+inductor in a width approximating that of the
+induction coil. When the dimension change
+occurs, the current ﬂow follows the contour of
+the part through this dimensional change. At
+the point of the dimension change, the change
+in heating is governed by the electromagnetic
+edge effect. The edge effect tends to be smaller
+than the end effect, hence meaning a smaller
+temperature differential in this area. As the dis-
+tance between the coil and part increases, the
+amount of current remains nearly the same,
+but the current begins to ﬂow over a wider
+length. The less concentrated heating leads to
+lower power densities (Fig. 8). The difference
+between the power densities tends to be smaller
+than when current ﬂow is in the direction of the
+geometry change than when it is perpendicular.
+To illustrate the concept, consider the case of
+a simple spindle with one bearing race and a
+shoulder (Fig. 9). The heat treating pattern is
+the light-gray area. This part could be heated
+either by scanning or single shot. The scanning
+inductor almost certainly would be an encir-
+cling inductor with a length less than the pat-
+tern length. Within single shot, it also could
+be hardened by a machined encircling inductor
+or a so-called encircling/nonencircling inductor.
+For an encircling inductor (scanning or single
+shot), the current ﬂow in the coil and part tend
+to take the shortest path and ﬂow along the
+inductor inside diameter and bearing surface
+diameter. To compensate for this tendency,
+it is necessary to vary the gap between the
+coil and part to use the proximity effect to
+compensate for the shorter length for current
+ﬂow. In the area of the radius, there is a transi-
+tion from the smaller gaps on the ﬂange to the
+larger gaps on the diameter. For a single-turn
+machined inductor, the coil design in this area
+involves a delicate balance to achieve sufﬁcient
+depth in the ﬁllet without heating too deeply in
+the bearing area just above the ﬁllet. For case
+depths that are large relative to the cross sec-
+tion, this becomes more difﬁcult because core
+temperatures increase, resulting in reduced con-
+ductive heat extraction. For a shorter scanning
+coil, this task is made easier by using a mag-
+netic ﬂux concentrator to drive current down
+from the shaft and into the radius of the part
+(Fig. 10).
+Encircling/nonencircling inductors consist of
+multiple partial loops connected by copper rails
+that are contoured to the part surface (Fig. 11).
+For these inductors, the part must rotate to
+ensure even heating. For a simple part such as
+this, likely only one top and one bottom partial
+loop would be required. In this case, current
+ﬂows under the coil turns and follows the con-
+tour of the coil in the part. In this way, the top
+and bottom of the pattern are controlled by the
+end loops, and the rails determine the pattern in
+the central area. By following the rails along the
+part surface, the current ﬂows through the radius.
+Fig. 7 End-effect drawing
+Fig. 8 Edge-effect drawing
+Fig. 9 Heat pattern for spindle
+Fig. 10 Encircling drawing for spindle
+Design and Fabrication of Inductors for Induction Heat Treating / 591
+===== PDF PAGE 4 =====
+This makes achieving a more uniform contour
+easier with a linear inductor than with an encir-
+cling one for this type of part (Fig. 12).
+The Inﬂuence of Frequency
+The frequency of the induction heating cur-
+rent has a strong inﬂuence on the induction coil
+and process design. It affects the power
+required, heating time, coil losses, local distri-
+bution of power in the part, and the structural
+support required. A brief overview of the effect
+of frequency is given in this section, because it
+is covered in more depth in other articles in this
+Volume.
+Often, the same case depth can be achieved
+over a wide range of frequencies. For large
+parts in either the completely magnetic (cold
+steel) or nonmagnetic (hot steel) state, current
+density is highest at the surface and falls off
+exponentially in depth. There is a value used
+by induction heating practitioners called the
+reference or skin depth related to this behavior.
+The formula for reference depth is:
+d ¼ k
+ﬃﬃﬃﬃﬃr
+mf
+r
+(Eq 1)
+where d is the reference depth, k is a constant
+depending on units, r is the electrical resis-
+tivity, m is the magnetic permeability, and f is
+frequency.
+In large bodies, 63% of the current and 86%
+of the power reside in the ﬁrst reference depth
+(Fig. 13) (Ref 6, 17). This leads to the assump-
+tion commonly made in estimating parameters
+that all of the power is generated in the d layer.
+In induction hardening applications, the
+distribution of current and power density is dif-
+ferent than that predicted by the reference
+depth, because the magnetic steel below the
+Curie point still interacts with the magnetic
+ﬁeld behind the nonmagnetic hot surface layer
+(Ref 17). To achieve the same case depth on
+parts with lower frequencies, one can expect
+higher power levels, shorter heating times, and
+lower surface temperatures. As the frequency
+is increased, power levels must be decreased
+and heating times increased to achieve the same
+case depth without overheating the surface. The
+amount of energy required depends on the bal-
+ance between thermal losses (heat soaking), coil
+efﬁciency, and power induced in the subcase-
+depth material.
+Besides the process, the frequency also inﬂu-
+ences how the current is ﬂowing in the induc-
+tion coil itself. In practice, the most effective
+thickness of the conductive part of the tubing
+wall ( d
+1) is assumed to be d1 ﬃ 1.6d1. This
+ratio is based on solution of a one-dimensional
+problem. An induction coil tubing wall smaller
+than 1.6 d1 results in reduction in coil efﬁ-
+ciency; furthermore, in some cases the tubing
+wall can be much thicker compared to the
+aforementioned ratio. This is because it may
+not be mechanically practical to use a tubing
+wall thickness of 0.25 mm (0.01 in.). Some
+guidelines for wall thickness are shown in
+Table 1 (Ref 9).
+The frequency also affects the electrody-
+namic forces, which inﬂuence the mechanical
+design of the induction coil. Electrodynamic
+forces in induction heating have two compo-
+nents: static and dynamic. The static component
+initially pulls the inductor in toward the part in
+the cold magnetic state and then pushes it away
+from the part when it is nonmagnetic. The
+dynamic component oscillates around the static
+component at double the electric frequency
+(Fig. 14). The level of force in the system is
+proportional to the square of the coil current;
+that is, the forces are directly proportional to
+the power (Ref 17).
+When the part is electrically thick (i.e., the
+diameter or thickness is much greater than
+the reference depth), the current required for
+the same power is proportional to the inverse
+fourth root of the ratio of frequencies (Eq 2).
+From this equation, it can be seen that the cur-
+rent required for the same amount of power
+decreases with increasing frequency:
+I2 ¼ I1
+ﬃﬃﬃ ﬃ
+f1
+f2
+4
+s
+(Eq 2)
+Fig. 11 Encircling/nonencircling drawing for spindle
+Fig. 12 Linear/single-shot drawing for spindle
+Fig. 13 Distribution of current (S) and power density
+(Pv) in the depth of a large workpiece.
+Source: Ref 17
+Table 1 Standard wall thickness of copper
+tubing
+Copper wall thickness
+Frequency, kHzmm in.
+0.75–1 0.032–0.048 450–50
+1–2 0.048–0.090 25–8.3
+1.5–4 0.062–0.156 10–3
+4–6.5 0.156–0.250 3–1
+Source: Ref 7
+592 / Equipment
+===== PDF PAGE 5 =====
+Due to this, the electrodynamic forces are
+higher at lower frequencies. Additionally,
+power levels generally tend to be higher at
+lower frequencies, increasing the electrody-
+namic forces even more. Therefore, the lower
+the frequency, the more robust the mechanical
+design of the induction coil should be. In addi-
+tion to heavier copper wall thicknesses, the coil
+supporting structure also must be stronger to
+withstand the mechanical loading to which
+the coil is exposed. This is especially true on
+single-shot coils.
+Control of Heating in Different
+Areas of the Part
+In many induction heat treating applications,
+there is a requirement to selectively harden
+some areas of the workpiece and not harden
+others. In other instances, different case depths
+are desired in different areas of the part. Often,
+it is necessary to achieve these various targets
+in the same induction heat treating operation.
+For scan hardening applications, these varia-
+tions typically are compensated for by adjusting
+the power and scan speed as the part traverses
+through the induction coil. For single-shot
+induction coils, it is necessary to accommodate
+these changes in the coil design. There are three
+main tools for adjustment of the coil design:
+coupling gap, coil copper proﬁle, and magnetic
+ﬂux controllers.
+The coupling gap is the most straightforward
+way to control the heat pattern. The closer the
+coil is to the part, the greater the intensity of heat-
+ing in this area relative to other areas. This is
+because the current in the part ﬂows in a nar-
+rower band more closely approximating that in
+the induction heating coil. With increasing cou-
+pling gap, the current spreads out over a longer
+length, resulting in lower current density and
+power density.
+Another method to control the heat pattern is
+to change the cross-sectional proﬁle of the cop-
+per coil. The section(s) of the coil turn that
+faces the part and carries the majority of the
+current is referred to as the heat face of the
+coil. For induction coils with a single heat
+face, power proﬁling is achieved by varying
+the geometry of the heat face (Fig. 15). For
+instance, to shorten the transition zones at the
+ends of the coil, it is common to have a larger
+gap in the middle of the coil than on the ends.
+This method is commonly used for controlling
+the end of a heat treating pattern where it is de-
+sirable to keep the pattern out of an undercut or
+a snap ring groove. This helps to compensate
+for the divergence of magnetic ﬂux and the
+additional thermal losses near the end of the
+coil.
+An example of this is hardening the bearing
+of a crankshaft using an encircling coil (clam-
+shell or sharp-C technology, Ref 9). Using the
+Flux 2D computer simulation program, it is
+possible to make a comparison to see the effect
+of the copper proﬁling on the temperature dis-
+tribution. Figure 16 shows a simpliﬁed example
+of a coil for this technology. The lines on the
+part represent the minimum and maximum case
+depth. The frequency for this comparison is
+50 kHz. The coupling gap is 2 mm (0.08 in.),
+and the coil has thin plates of Fluxtrol 50 con-
+centrator on both sides to prevent coupling with
+the sidewalls. At 2.5 mm (0.10 in.) from each
+end of the coil, the copper is recessed 1 mm
+(0.04 in.). This coil is compared to a coil with
+the exact same geometry, except the central
+section of the inductor is not recessed. The
+heating time for both cases is 4 s.
+The temperature distribution in the coil
+without proﬁling is shown in Fig. 17. The area
+of high temperature begins to taper off well
+before the end of the heat face and the mini-
+mum required length of the pattern. The surface
+temperature already is high, so it is not possible
+to increase heating to lengthen the pattern.
+Figure 18 shows the temperature distribution
+for the coil with a proﬁled face. It is clear from
+this image that the area of high temperature
+extends signiﬁcantly longer than for the coil
+without proﬁling. The minimum heat treatment
+width is met with a lower maximum surface
+temperature. For better comparison between
+the two cases, Fig. 19 compares the surface
+temperature in length.
+For coils with multiple heat faces or sec-
+tions, in addition to the coupling gap, the heat
+pattern also can be controlled by changing the
+width of the heat face from section to section.
+Power density in the part is proportional to
+the current density squa red. If it is assumed
+that all of the current in the coil is transferred
+to the part and is ﬂowing directly under the
+heat face of the induction coil, then the cur-
+rent density will be inversely proportional
+to the width of the heat face. This means
+Fig. 15 Drawing showing inductor heat face
+Fig. 16 Nonrotational inductor cross section used for simulation
+Fig. 14 Diagram showing relationship between current
+(i), static component of force ( Fc), and dynamic
+force (F ). Source: Ref 17
+Design and Fabrication of Inductors for Induction Heat Treating / 593
+===== PDF PAGE 6 =====
+that power density will be proportional to the
+inverse square of the width of the heat face.
+The real effect is signiﬁcantly less, because
+not all of the current is on the heat face, and
+some of the ﬂux outside the coil couples with
+the part.
+For heating of a round part with a linear coil,
+the effect is not as strong due to the nonuniform
+gap between the rectangular coil and the round
+part.
+To demonstrate the effect of the heat face
+width, a comparison is made for heating a
+12.7 mm (0.5 in.) thick plate with a 9.5 by
+12.7 mm ( ⅜ by 0.5 in.) tube and a 12.7 mm
+(0.5 in.) square copper tube. Computer simula-
+tion program Flux 2D is used for calculation
+of the electromagnetic problem. The top half
+of the plate has the properties of steel above
+the Curie point, and the bottom half has
+the properties of cold steel. The frequency is
+10 kHz, and the coupling gap is set to 3.2 mm
+(⅛ in.). The same current, 3000 A, is used for
+both coils. The magnetic ﬁeld and power den-
+sity distributions for both cases are shown in
+Fig. 20. Ideally, the power density would be
+78% higher for the 9.5 mm ( ⅜ in.) heat face
+compared to the 12.7 mm (0.5 in.) one. In real-
+ity, this difference in maximum power density
+is only approximately 17%. This is due to the
+large amount of current that is ﬂowing in the
+part outside the heat face of the coil.
+A more effective way to control the distribu-
+tion of heat in the length of an inductor is to use
+magnetic ﬂux controllers. For induction heat
+treating applications, the most common materi-
+als used as magnetic ﬂux controllers are silicon
+steel laminations and soft magnetic composite
+materials. Magnetic ﬂux concentrators provide
+a low reluctance path for the magnetic ﬁeld to
+ﬂow. The result is that the magnetic ﬁeld goes
+from being widely distributed in space to being
+concentrated around the coil. This causes nearly
+all of the current ﬂowing on the sidewalls of the
+copper coil to be pushed down to the heat face.
+This results in the current in the part being con-
+centrated more strongly underneath the heat
+face of the coil.
+To demonstrate the effect of the concentrator,
+a comparison is made for heating a 12.7 mm
+(0.5 in.) thick plate with a 12.7 mm (0.5 in.)
+square copper tube, with and without a C-shaped
+concentrator applied. The ﬂux-concentrating
+material used is Fluxtrol A. The other condi-
+tions are the same as in the case for the heat
+face variation study. The magnetic ﬁeld and
+power density distributions for the coil with
+concentrator are shown in Fig. 21.
+The magnetic ﬁeld and power density are
+much more concentrated when the magnetic
+ﬂux controller is applied. The surface power
+density curves from the left to the right side
+of the part are shown in Fig. 22 for all three
+cases. It is clear that the application of a mag-
+netic ﬂux controller is a stronger method of
+controlling the heat pattern in the length of a
+coil than the use of copper proﬁling. It also is
+possible to more smoothly distribute the pattern
+between different areas by proﬁling the poles of
+the concentrator rather than having steps in the
+induction coil. For linear coils heating a round
+part, the inﬂuence of both heat face width and
+a magnetic ﬂux controller is less dramatic than
+in the case of a ﬂat plate, due to the divergence
+of the part from the coil. More information on
+magnetic ﬂux controller selection and uses is
+contained in the article “Magnetic Flux Con-
+trollers in Induction Heating and Melting” in
+this Volume.
+Presentation of the Part to the
+Inductor
+During the initial inductor design, a method of
+holding the part and presenting it to the inductor
+must be addressed. Some considerations are:
+/C15 What is the part size and weight?
+/C15 What is the process hardening or tempering?
+/C15 Is it to be scanned or single shot?
+Color Shade Results
+Quantity : Temperature Deg. Celsius
+Time (s.) : 4 Phase (Deg): 0
+Scale / Color
+20.06464 / 86.92299
+86.92299 / 153.78134
+153.78134 / 220.63969
+220.63969 / 287.49805
+287.49805 / 354.35638
+354.35638 / 421.21478
+421.21478 / 488.07312
+488.07312 / 554.93146
+554.93146 / 621.78986
+621.78986 / 688.64819
+688.64819 / 755.50653
+755.50653 / 822.36487
+822.36487 / 889.22321
+889.22321 / 956.0816
+956.0816 / 1.02294E3
+1.02294E3 / 1.0898E3
+Fig. 17 Temperature distribution with a nonproﬁled heat face
+Color Shade Results
+Quantity : Temperature Deg. Celsius
+Time (s.) : 4 Phase (Deg): 0
+Scale / Color
+20.08923 / 83.79922
+83.79922 / 147.50919
+147.50919 / 211.21918
+211.21918 / 274.92917
+274.92917 / 338.63913
+338.63913 / 402.34912
+402.34912 / 466.05911
+466.05911 / 529.7691
+529.7691 / 593.47913
+593.47913 / 657.18909
+657.18909 / 720.89905
+720.89905 / 784.60907
+784.60907 / 848.31903
+848.31903 / 912.02905
+912.02905 / 975.73901
+975.73901 / 1.03945E3
+Fig. 18 Temperature distribution with a proﬁled heat face
+594 / Equipment
+===== PDF PAGE 7 =====
+/C15 Is the part to be rotated during processing?
+/C15 What is the rate of production?
+/C15 What type of materials handling equipment
+is needed?
+/C15 How and where on the part can it be held?
+/C15 What is the kilowatt requirement and power
+supply frequency?
+/C15 How is it to be loaded into the inductor:
+manually or mechanically?
+/C15 What is the quench method: spray, dunk,
+agitated bath, still air, or air blast?
+/C15 What types of holding devices are to be used:
+centers, chuck, or special grippers?
+Depending on the process, there could be
+several mechanical methods to grip and present
+a part to the inductor. In high-production appli-
+cations, an entire machine may be designed and
+built for a speciﬁc materials handling process.
+In limited-production runs, however, a simple
+lift-and-rotate device within a quench tank may
+be employed. Either way, a decision must be
+made on how to hold the part.
+Part holding and presentation can be as easy
+as chucking the part or as complicated as hav-
+ing to hold and rotate the part while it is heated
+entirely. In any scenario, the electromagnetic
+ﬁelds from the induction coil should be consid-
+ered in the design of the holding device and its
+effect on the part. Magnetic steels in close pro-
+ximity to the inductor will heat; therefore, sufﬁ-
+cient air space around the inductor is prudent.
+Common nonmagnetic part-holding materials,
+such as 300-series stainless steels, aluminum,
+and brass, can be heated when in close prox-
+imity to the inductor, but with a less signiﬁcant
+effect. When designed speciﬁc to an applica-
+tion, certain ceramics also make excellent part-
+holding devices.
+For example, typical to induction hardening
+applications is the lift-and-rotate method within
+a quench tank. A part of reasonable size and
+shape, such as an automotive wheel spindle, is
+mounted onto a part holder made from nonmag-
+netic stainless steel. An upper center of the
+same material is used to stabilize the part dur-
+ing rotation. An inductor designed to heat treat
+the wheel spindle is installed onto the power
+supply mounting foot within the tank. A spray
+quench is integral to the inductor. The wheel
+spindle is loaded in the holder and raised to
+the inductor. Rotation starts, the induction
+power is applied, the wheel spindle is heated
+and then immediately quenched, and the spin-
+dle is lowered and unloaded. This entire process
+takes less than 30 s. In a high-production appli-
+cation, throughput would be multiplied with
+additional heating stations employing various
+materials handling systems.
+While many examples of heat treating are
+typical, when parts are large and/or geometri-
+cally difﬁcult, the presentation to the inductor
+may require engineering. For many induction-
+hardened parts, rotation during heating equalizes
+the heat treating pattern. Some parts, such
+as truck steering arms in the shape of the letter
+“J,” cannot be rotated 360
+/C14 due to the J-hook
+Fig. 19 Comparison of temperature distributions with and without proﬁling for nonrotational heating of a crankshaft
+Color Shade Results
+(a) (b)
+Quantity : Power density W/(cubic m)
+Scale / Color
+0 / 35.01103E6
+Phase (Deg) 0
+35.01103E6 / 70.02206E6
+70.02206E6 / 105.03309E6
+105.03309E6 / 140.04411E6
+140.04411E6 / 175.05515E6
+175.05515E6 / 210.06618E6
+210.06618E6 / 245.0772E6
+245.0772E6 / 280.08822E6
+280.08822E6 / 315.09923E6
+315.09923E6 / 350.11027E6
+350.11027E6 / 385.12131E6
+385.12131E6 / 420.13232E6
+420.13232E6 / 455.14336E6
+455.14336E6 / 490.15437E6
+490.15437E6 / 525.16541E6
+525.16541E6 / 560.17645E6
+Color Shade Results
+Quantity : Power density W/(cubic m)
+Scale / Color
+0 / 29.92064E6
+Phase (Deg) 0
+29.92064E6 / 59.84129E6
+59.84129E6 / 89.76194E6
+89.76194E6 / 119.68258E6
+119.68258E6 / 149.60323E6
+149.60323E6 / 139.52387E6
+139.52387E6 / 209.44451E6
+209.44451E6 / 239.36515E6
+239.36515E6 / 269.28579E6
+269.28579E6 / 299.20643E6
+299.20643E6 / 329.1271E6
+329.1271E6 / 359.04774E6
+359.04774E6 / 388.96830E6
+388.96830E6 / 418.88902E6
+418.88902E6 / 448.80966E6
+448.80966E6 / 478.7303E6
+10 / 865.19256E-6
+11 / 970.83917E-6
+12 / 1.07649E-3
+  
+8 / 03383339E-6
+  9 / 759.54595E-6
+Fig. 20 Comparison of (a) 9.5 mm ( ⅜ in.) and (b) 12.7 mm (0.5 in.) heat faces for heating of a ﬂat plate
+Design and Fabrication of Inductors for Induction Heat Treating / 595
+===== PDF PAGE 8 =====
+interfering with the inductor; yet, to equalize the
+hardened pattern, some form of rotation is needed
+to equally heat the bearing journal on the end of
+the J-hook. To accomplish this, a part holder is
+connected to a crank and made to oscillate
+through 210
+/C14 during the hardening cycle, closely
+mimicking full rotation.
+Large, heavy parts may be application spe-
+ciﬁc as to their presentation to the inductor,
+requiring thoughtful design, materials selection,
+and testing to verify the heating results. In some
+installations, it is necessary to present the induc-
+tor to the part. Complex designs involve robots
+moving the inductor along the path to be hard-
+ened. The inductor and transformer sometimes
+are robotically moved together, while other
+times, depending on the power and frequency,
+a ﬂexible cable connected to the inductor may
+be employed. Other heating applications may
+use a handheld induction heating apparatus.
+All applications are dependent on the power
+required, the size of the part, and the areas to
+be heated.
+Inductor Structure
+For low-frequency and/or high-power-den-
+sity induction heat treating applications, the
+electrodynamic forces are strong and the induc-
+tion coil requires a supplemental mechanical
+support structure. A mechanical support struc-
+ture also is required if the induction coil is
+heavy or manufactured from thin-walled cop-
+per tubing. Some common types of inductors
+where mechanical supports are used include
+single-shot inductors for heating shafts or
+stems, multiturn induction coils, induction
+coils without rotational symmetry, and applica-
+tions where the inductor is heating a surface
+that is perpendicular to the buss mounting
+plates.
+For induction heat treating coils, the
+mechanical support components include stud
+boards, retainer rings, mounting plates, and
+components to connect the coil to quench rings.
+In the vast majority of cases, the materials used
+for the inductor structure are made from high-
+temperature ﬁber-reinforced plastic compo-
+nents. In some extreme cases, such as long sin-
+gle-shot coils for axle shaft hardening, a ﬁber-
+reinforced stud board may be additionally sup-
+ported by an aluminum housing or channel. In
+this case, care should be taken to insulate the
+inductor and any studs from the conductive
+support housing.
+One of the more challenging induction appli-
+cations that requires a strong mechanical sup-
+port system is rotational crankshaft hardening
+with U-shaped inductors (Fig. 23). The distance
+from the output of the transformer to the heat-
+ing area of the coil must be relatively long to
+ensure that the counterweights of the crankshaft
+will not hit the transformer. This is a challenge,
+because in this style of coil the electrodynamic
+forces are high and act in multiple directions.
+There also is a mechanical load placed on the
+induction coil, because the inductor assembly
+is in contact with the part during rotation.
+When the crankshaft is cold, the turns are
+pulled toward the bearing journal and the side-
+walls of the crankshaft. Once the part is above
+the Curie point, the forces are reversed, and
+the inductor is pushed away from the sidewalls
+and away from the bearing diameter.
+Due to these multiple challenges, the struc-
+ture consists of several parts. Outside the
+Color Shade Results
+Quantity : Power density W/(cubic m)
+Phase (Deg): 0
+Scale/Color
+0   /   115.86056E6
+115.86056E6   /   231.72114E6
+231.72114E6   /   347.5817E6
+347.5817E6   /   463.44224E6
+463.44224E6   /   579.30285E6
+579.30285E6   /   695.16339E6
+695.16339E6   /   811.02394E6
+811.02394E6   /   926.88448E6
+926.88448E6   /   1.04275E9
+1.04275E9   /   1.15861E9
+1.15861E9   /   1.27447E9
+1.27447E9   /   1.39033E9
+1.39033E9   /   1.50619E9
+1.50619E9   /   1.62205E9
+1.62205E9   /   1.73791E9
+1.73791E9   /   1.85377E9
+Fig. 21 Magnetic ﬁeld and power density distribution for a 12.7 mm (0.5 in.) heat face with Fluxtrol A for heating of
+a ﬂat plate
+Fig. 22 Surface power density curves for all three cases of ﬂat plate heating
+596 / Equipment
+===== PDF PAGE 9 =====
+inductor there typically are two brass or alumi-
+num side plates. All of the components are
+anchored to the side plates, including the induc-
+tion coil. To prevent contact of the inductor
+with the part, ceramic or carbide guide shoes
+are placed in three places (just after the ends
+of the loops and between the two loops) around
+the perimeter on both sides of the inductor. The
+ceramic guide shoes typically are mounted to
+brass or aluminum side plates.
+In addition to the guide shoes, the side plates
+also help to keep the induction coil in position.
+The inductor typically is held in at least three
+places: the ends of each loop by a stud and
+G-11 component, and the leads area by a G-11
+component. Other components that may be a
+part of the structure in crankshaft coils include
+leaders to facilitate the coil loading, quench
+heads, and side support composites to increase
+the rigidity of the assembly.
+Coil Leads/Busswork and Contacts
+With induction coils, there is an intermediate
+body between the coil head (the part where the
+induction heat treating process is conducted)
+and the heat station, power supply, or quick-
+change adapter. This section of the inductor is
+referred to as the coil leads or busswork. The
+role of the coil leads or busswork is to mechan-
+ically and electrically connect the induction coil
+head to the power supply. Often, the cooling
+water for the coil head also is supplied through
+the leads.
+Good design practice is that the leads should
+be close together, with a piece of synthetic
+ﬂuorine-containing resin between them to
+electrically separate the two leads from one
+another. It also is good practice to make the
+height of the busswork signiﬁcantly longer than
+the length of the heat face of the induction coil.
+In most cases, the coil leads or busswork
+must carry the same current that is in the induc-
+tion coil head itself. Because the coil leads/
+busswork carry a high-frequency current, the
+coil leads generate heat from eddy currents.
+The current is drawn to the side of the bussbar
+that faces the opposing bussbar by the proxim-
+ity effect. The current density in the leads is
+inversely proportional to the length of the inter-
+face, and hence, the losses are approximately
+proportional to the length squared. The proxim-
+ity of the two leads to each other primarily inﬂu-
+ences the voltage drop in the leads. The closer
+the leads are, the lower the inductance of the
+leads and hence the lower the voltage drop.
+The coil contacts range from simple ﬂared or
+compression ﬁttings to machined blocks with
+keys to ensure location, depending on the mat-
+ing surface. For heat treating environments,
+the machined blocks with keys are preferred
+for high-power-density and low- or medium-
+frequency environments. Compression or ﬂared
+ﬁttings should be used only in the case of high-
+frequency, lower-power-density applications or
+long solenoids with high turn numbers and
+low currents.
+For the machined block contacts, these sys-
+tems can be separated into two classes: standard
+bolting connections and quick-change adapters.
+For standard bolting connections, there are two
+main contact styles: ﬁshtails or Jackson type,
+and ﬂat plate. Fishtails consist of a slotted cop-
+per bar for adjustment of the vertical height,
+with a female key on the back to ﬁx the hori-
+zontal position (Fig. 24a). This type of contact
+is common for the frequency range of 1 to 30 kHz
+in heat treating applications where the coil is
+mounted to a transformer. For this style, water
+typically is fed from separate water lines to the
+induction coil rather than through the heat station
+electrical contacts, because the vertical height of
+the coil is not always in the same place.
+Flat plate contacts typically consist of a ﬂat
+plate with two holes for bolts and a hole between
+the two bolts for water (Fig. 24b). The water-
+cooling hole commonly is slightly recessed
+for placement of an O-ring. Flat plate contacts
+typically are used for mounting to power supply
+or heat station outputs for higher frequencies
+(50 to 450 kHz).
+Besides bolting contacts, there are several
+types of quick-change adapters used in industry
+(Fig. 25). All of these systems involve the use
+of mechanical keys and a lever to press the con-
+tacts ﬂush and ﬁx the position of the coil in a
+quick motion. Coil water cooling may or may
+not be incorporated into the quick-change
+adapter. Separate water cooling typically is
+provided to the induction coil in the case of
+high power densities or where the quick-change
+adapter allows for a variable vertical position.
+Quenching Considerations in
+Induction Coil Design
+In many cases, quenching is done to ﬁnalize
+the hardening process of steel components,
+and it typically is done with water that has a
+small percentage of a quench medium. This is
+the second half of heat treating; this stage is just
+as important as heating. After the part surface is
+raised above the austenitizing temperature, it
+should be quenched (or rapidly cooled). In most
+cases, this should be done immediately after the
+austenitizing temperature is reached. The time
+before quenching can vary depending on the
+composition of the steel. The quench design
+must not only remove heat rapidly but uni-
+formly as well. The results of nonuniform or
+slow quench are nonuniform hardness and
+possible overall distortion in the part (or work-
+piece). Nonuniform hardness can lead to pre-
+mature part failure or cracking. Because of the
+importance of uniformity when quenching,
+round or symmetrical parts almost always are
+Fig. 23 U-shaped crankshaft hardening coil components and assembly
+Fig. 24 (a) Fishtail-type and (b) ﬂat plate machined
+coil contact types
+Design and Fabrication of Inductors for Induction Heat Treating / 597
+===== PDF PAGE 10 =====
+rotated during the quenching process. Other
+important considerations for quench design are
+the part geometry and how the part is presented
+to the quench (i.e., horizontal, vertical, etc.). In
+some irregular-shaped parts, rotation is not pos-
+sible, or the rotation rate is slowed to help con-
+trol the quench. When quenching for surface
+hardness, a vigorous or intensive quench usu-
+ally is required. Because of this, the quench
+usually is done with a series of relatively small
+holes. These holes usually have a staggered pat-
+tern. The small holes and staggered pattern
+result in an intense quenching that helps to
+avoid the development of steam pockets. If a
+submerge (or dunk) quench is used, a ﬁne layer
+of steam usually is developed on the surface;
+this steam can act as a barrier or insulator, caus-
+ing a slower quench. The size of the individual
+quench holes can vary from 1.5 to 5 mm (
+1=16 to
+3=16 in.) diameter, depending on the part size
+and geometry. It usually is desirable to keep
+these holes as small as possible to keep the
+quenching pressure higher, which helps reduce
+the steam pocket described earlier. This also
+helps to lock in the hardness by fully transform-
+ing the martensite. One disadvantage to small
+quench holes is that they are more likely to ﬁll
+with debris or quench residue; for this reason,
+many quench designs for heat treating have
+quench holes between 2.5 and 3.2 mm (
+3=32
+and ⅛ in.) diameter.
+Figure 26 shows a typical scanning quench
+hole arrangement. The hole size is related to the
+shaft or workpiece diameter, as well as a quench-
+ing area, and the air gap between the quench
+block and the workpiece surface (Table 2)
+(Ref 9).
+The quench design, like the inductor design,
+should conform around the part. In some cases,
+the quench can be incorporated into the induc-
+tor design; in other cases, it is in a separate
+quench ring or quench block. This is further
+discussed in the section “Styles of Heat Treat-
+ing Inductors” in this article. With regard to
+the duration of quenching time, quenching typ-
+ically takes longer than heating; a rule of thumb
+is that the quench should be 1.5 the time of
+the heating. With static heating or single-shot
+heating, this can be controlled by a timer, either
+in the heating station or moved to a quenching
+station. To save cycle time, some equipment
+has a short quench in the heating station fol-
+lowed by another station to ﬁnalize the quench-
+ing process. With regard to scan heating, the
+quench should be designed to have direct
+impingement for at least 1.5 the distance of
+the heating face of the inductor. When scan-
+ning, the quench holes are angled away from
+the coil in the same direction that the part is
+traveling. This helps to keep the water from
+washing back into the inductor, and allows the
+water to stay on the part as long as possible.
+In either case (static heating or scanning), the
+quenching should be done before the surface
+of the part falls below the hardening tem-
+perature, to ensure that the material is fully
+transformed.
+Induction Coil Cooling
+As discussed earlier, induction heating uses
+high currents and high power levels. Because
+of this, most heat treating inductors are water
+cooled. Some inductors are constructed of
+copper tubing that the water ﬂows through.
+Other types of inductors are constructed from
+machined copper details, with cooling passages
+integrated within them. In either case, the pas-
+sages must be designed for the intended power
+levels and must have maximum water ﬂow with
+minimal restrictions.
+Thermal degradation is caused by local or
+total overheating of the coil head due to eddy
+current losses in the copper, magnetic losses
+in the ﬂux concentrator, and heat transfer from
+the hot surface of the part via convection and
+radiation. Overheating can result in copper
+cracking or deformation as well as concentrator
+material degradation. Copper cracking usually
+occurs in heat treating coils with a short cycle
+due to thermomechanical stresses, while a grad-
+ual coil deformation is more typical for contin-
+uous processes (Ref 13, 14, 18, 19). Thermal
+effects can strongly increase the effects of elec-
+tromagnetic forces and accelerate electrical insu-
+lation aging.
+Copper overheating is the leading cause of
+failure in heavy-loaded heat treating inductors;
+this section focuses mainly on this mode of fail-
+ure. For consistently manufactured inductors,
+copper cracks occur in nearly the same place
+on an inductor each time in a certain range of
+parts produced. There are several approaches
+to increasing coil life: provide additional cooling,
+reduce the density of heat sources, or change the
+coil design completely.
+Additional cooling can be obtained by
+increasing the water ﬂow rate, reducing the water
+cooling temperature, adjusting the water pocket,
+or introducing additional cooling circuits. Water
+ﬂow rate is the ﬁrst step, and it is increased
+until the pump output limit is reached. Inductor
+manufacturers generally have internal guidelines
+related to best practices for water pocket and
+cooling circuit design, which have been devel-
+oped over the years (Table 1). These guidelines
+generally are based on frequency and power
+density. Once these standard options have been
+exhausted, the next step is to replace the existing
+pump with a larger one or to introduce a booster
+pump to the system.
+Sometimes on very high-power-density coils,
+a limit is reached where, even with the best
+cooling circuit design and very large pumps,
+coil lifetime is still unsatisfactory. At this point,
+it is necessary to try to minimize the localized
+power density in the weak point of the inductor.
+This often is challenging in complex inductors,
+Fig. 25 Styles of quick-change adapters. Courtesy of Capital Induction
+Fig. 26 Quench hole arrangement for scanning coil.
+Source: Ref 9
+Table 2 As workpiece diameter increases,
+oriﬁce size should increase to help provide
+a more uniform quench
+Shaft diameter Oriﬁce size
+mm in. mm in.
+6.5–13 0.25–0.50 1–1.5 0.046–0.063
+13–38 0.50–1.50 1.5–2.5 0.063–0.094
+>38 >1.50 3.5–4 0.125–0.156
+Source: Ref 9
+598 / Equipment
+===== PDF PAGE 11 =====
+because changing this section may have some
+effect on the heat pattern in this area of the part,
+as well as in the rest of the part.
+To determine what high power density is, it is
+important to consider the cause of the failure.
+The failure mode that can be resolved with water
+cooling in high-power induction heat treating
+coils is mechanical fatigue caused by thermal
+cycling. During each heat treating cycle, the
+copper temperature rises as the power is turned
+on, primarily due to current in the induction coil.
+As the copper temperature increases, the copper
+expands. When the power is turned off, the cop-
+per rapidly cools and contracts.
+Because the eddy currents are distributed non-
+uniformly in the copper cross section, the tem-
+perature distribution in the copper coil is also
+nonuniform. Water in the induction coil removes
+heat through forced convection. This means that
+the rate of heat removal is directly proportional
+to the heat-transfer coefﬁcient and the tempera-
+ture difference between the copper and the bulk
+water. The heat-transfer coefﬁcient depends on
+the velocity of the water, the pressure of the
+water (in addition to the effect of pressure on
+water ﬂow), and the temperature of the water.
+In recent years, computer simulation has pro-
+ven an effective tool for estimating thermal
+cycles in induction coils during a heat treating
+process (Ref 19–21). These recent studies were
+made using some combination of electromag-
+netic, thermal, and ﬂuid dynamics codes or cor-
+relations. With this method, the temperatures
+that are the source of the dimensional movement
+and stress are predicted. Certain guidelines for
+maximum allowable temperatures are used to
+ensure good life. It is envisioned that in the
+future, these codes could be coupled with struc-
+tural, stress, and distortion simulation.
+Case Study: Single-Shot Coil Copper
+Temperature Prediction
+A case study using computer simulation to show
+typical temperature distributions in a single-shot
+induction hardening coil is discussed in this sec-
+tion. Flux 2D is used for electromagnetic and
+thermal simulation, and analytical calculations
+are made for the heat-transfer coefﬁcients. The
+inﬂuence of pressure (high and low), wall thick-
+ness (1, 1.5, and 3 mm, or 0.048, 0.062, and
+0.125 in.), current in the coil (5,000, 7,500, and
+10,000 A), and frequency (1, 3, and 10 kHz) is con-
+sidered. The correlations for heat-transfer coefﬁ-
+cient hold only to approximately 250
+/C14 C( 4 8 0/C14 F)
+on the interface of the copper wall with the cooling
+water, so if this consideration is not met, the tem-
+perature in the coil will be less accurate.
+The geometry for the study is a 19 mm
+(
+3/4 in.) square copper tube with Fluxtrol A mag-
+netic ﬂux concentrator for heating of a 38 mm
+(1.5 in.) diameter shaft. The coupling gap used
+for the study is 3.2 mm ( ⅛ in.). To limit the
+number of variables, the part is not simulated
+during the study. The part is approximated by
+a nonmagnetic layer 6.3 mm (¼ in.) thick, with
+the properties of steel above the Curie point and
+the 25 mm (1 in.) diameter core, which has the
+properties of cold low-carbon steel.
+Figure 27 shows the temperature distribution
+in the coil cross section if the current is 5000 A
+at 10 kHz with low pressure and a wall thickness
+of 1 mm (0.048 in.) after 10 s of heating. The
+temperature is highest in the corners of the heat
+face and somewhat lower in the center of the turn.
+The concentrator is at a signiﬁcantly lower tem-
+perature, and the localized higher-temperature
+areas are due to conduction through the glue to
+the concentrator. The maximum temperature is
+117
+/C14 C( 2 4 3/C14 F). Figure 28 shows the tempera-
+tures in the corner and center of the tube versus
+time for this case. Nearly the entire temperature
+rise in the copper occurs in the ﬁrst 2 s.
+If pressure is doubled, the temperature distri-
+bution is that shown in Fig. 29(a). The maxi-
+mum temperature in the corner is reduced
+to 99
+/C14 C (210 /C14 F). The difference between the
+temperature in the corner of the copper and the
+center of the heat face is signiﬁcantly higher.
+Figure 29(b) shows the temperature distribution
+if the wall thickness is increased to 1.5 mm
+(0.062 in.). The maximum copper temperature
+is slightly higher, 102
+/C14 C( 2 1 6 /C14 F). If the wall
+thickness is increased to 3 mm (0.125 in.), the
+maximum temperature increases to approxi-
+mately 111
+/C14 C( 2 3 2/C14 F) (Fig. 29c).
+All of these temperatures are what could
+be considered reasonable, and a long copper
+lifetime would be expected based on the tem-
+peratures. If the current is increased to 7500 A,
+the differences between the results are much
+more apparent. Figure 30 shows the tempera-
+ture distributions for the same cases shown in
+Fig. 27 and 29 with the higher current. Now
+the temperature of the copper wall contacting
+the water for the low-pressure, 1 mm (0.048 in.)
+wall (Fig. 30a) is above the threshold where the
+correlations hold. This means that there is danger
+of vapor blanket formation and very short coil
+lifetime. It also is important to note that the
+maximum temperature shifts to the center of
+the tube instead of the corners. This is a sign that
+there is insufﬁcient cooling, and increasing the
+water pressure can signiﬁcantly increase the
+coil lifetime.
+When pressure is increased, the temperature
+on the internal walls of the copper tubing
+drops to manageable levels (Fig. 30b). The max-
+imum temperature again is in the corners of the
+copper tube instead of the center. However, the
+level of the copper temperature in the corners
+remains elevated (225
+/C14 C, or 437 /C14 F). For the
+thicker walls, the temperatures are 230 and 263/C14 C
+(446 and 505 /C14 F), respectively (Fig. 30c, d).
+This means that in each cycle, the copper in the
+corners of the tubing expands more than twice as
+much as for the case of the lower current. When
+power is turned off, the tubing contracts to its
+original shape. At these temperatures, there is
+the potential that the coil lifetime may not be
+satisfactory.
+Color Shade Results
+Quantity : Temperature Deg. Celsius
+Time (s.) : 10 Phase (Deg): 0
+Scale / Color
+22.72733 / 28.59668
+28.59668 / 34.46604
+34.46604 / 40.3354
+40.3354 / 46.20475
+46.20475 / 52.0741
+52.0741 / 57.94347
+57.94347 / 63.81282
+63.81282 / 69.68217
+69.68217 / 75.55153
+75.55153 / 81.42089
+81.42089 / 87.29025
+87.29025 / 93.1596
+93.1596 / 99.02896
+99.02896 / 104.89832
+104.89832 / 110.76767
+110.76767 / 116.63702
+Fig. 27 Temperature distribution in the induction coil with 1 mm (0.048 in.) wall thickness, 10 kHz frequency, 5000 A
+current, and low-pressure cooling
+Design and Fabrication of Inductors for Induction Heat Treating / 599
+===== PDF PAGE 12 =====
+If frequency is reduced but the current re-
+mains 7500 A, the coil temperatures are reduced
+signiﬁcantly (Fig. 31). For the case of the 1 mm
+(0.048 in.) wall with low pressure, the maximum
+temperature is reduced to 178
+/C14 C (352 /C14 F)
+(Fig. 31a). The temperature in the corners is
+signiﬁcantly lower than in the center. If pres-
+sure is increased, the copper temperature is
+reduced to 133
+/C14 C (271 /C14 F) (Fig. 31b). How-
+ever, the maximum temperature is still in the
+central sections of the copper rather than
+the corners. This is due to the wall thickness
+of the copper being less than optimal (1.6 d).
+The low copper thickness increases resistance
+and losses in the central section of the coil.
+When the wall thickness is increased to
+1.5 mm (0.062 in.), the copper temperature is
+reduced to 114
+/C14 C (237 /C14 F) (Fig. 31c). The
+central temperature of the winding also is
+reduced relative to the corners. The maximum
+in temperature lies just inside the edge of the
+water cooling, implying slightly less than opti-
+mal wall thickness. For the case of the 3 mm
+(0.125 in.) wall, the maximum temperature
+goes up again to 125
+/C14 C (257 /C14 F) (Fig. 31d).
+The maximum now is clearly in the corners.
+The temperature in the center of the tube
+actually is lower for this case. The rise in max-
+imum temperature is due to it being a farther
+distance from the water cooling.
+The losses in the copper tubing are nearly the
+same for these two cases (3 kHz; 1.5 and 3 mm,
+or 0.062 and 0.125 in., wall thickness) and just
+under 20% lower than for the 1 mm (0.048 in.)
+wall thickness. The optimal wall thickness and
+hence the maximum current-carrying capacity for
+3 kHz would lie between these two thicknesses.
+At 1 kHz, 10,000 A was used for compari-
+son, because at lower frequencies it is natural
+to have higher currents (Fig. 32). For the
+1 mm (0.048 in.) wall thickness and low pres-
+sure, temperature in the copper clearly is exces-
+sive, and there is a signiﬁcant gradient from the
+center to the corners (Fig. 32a). As pressure is
+increased, the temperature is marginal (230
+/C14 C,
+or 446 /C14 F, wall temperature), and there is still
+a signiﬁcant gradient from center to edge
+(Fig. 32b). This is because the wall thickness
+is signiﬁcantly less than optimal.
+For the 1.5 mm (0.062 in.) wall thickness, the
+maximum temperature declines to approxi-
+mately 144
+/C14 C (291 /C14 F) (Fig. 32c). Losses in
+the copper are nearly 40% lower than for the
+1 mm (0.048 in.) wall thickness. The tempera-
+ture distribution across the face is nearly ﬂat,
+implying that the wall thickness is less than
+optimal. For the 3 mm (0.125 in.) wall thick-
+ness, the maximum temperature is only 100
+/C14 C
+(212 /C14 F), and the location is the corners
+(Fig. 32d). The losses in the 3 mm (0.125 in.)
+wall thickness are approximately 30% lower
+than for the 1.5 mm (0.062 in.) wall thickness.
+Another factor related to water cooling of
+induction coils is the water temperature. The
+temperature of the induction coil is inﬂuenced
+in two ways by the water temperature. It is clear
+that the lower the water temperature, the cooler
+the induction coil, because the cooling method
+is convection. If the water temperature was
+lowered by 10
+/C14 C (18 /C14 F), then it would be
+expected that the maximum temperature in the
+copper also would be 10 /C14 C (18 /C14 F) lower.
+Because the temperature change ( DT) of the
+copper would be the same, one would expect
+that the magnitude of the copper movement
+would be the same, and coil lifetime would be
+also. However, this is not true, because the
+coefﬁcient of thermal expansion of copper is
+not constant with temperature (Fig. 33). As
+temperature rises, the coefﬁcient of thermal
+expansion of copper continues to rise (Ref 22).
+This means that the higher the temperature, the
+larger the movement for the same DT.
+In reality, the DT of the copper is not the
+same. It actually is slightly less, because the cop-
+per electrical resistivity rises with temperature.
+Therefore, the losses in the copper are lower,
+and the resulting DT smaller. This overrides the
+fact that the heat-transfer coefﬁcient of water is
+slightly lower at lower temperature (Ref 23).
+The last factor to consider with water cooling
+of inductors is the water quality. The best ﬂuid
+for cooling induction coils in heat treating
+applications is pure, demineralized water. Pure
+water has a naturally high heat-transfer coefﬁ-
+cient. Almost all additives have a negative
+effect on the heat-transfer capability.
+Minerals are especially bad. Over time, they
+tend to fall out of solution and build up on the
+wall of the copper tubing. This has two nega-
+tive effects. First, the mineral layer reduces
+the cross section for water ﬂow. The mineral
+layer also creates a barrier for heat transfer,
+causing the temperature of the copper to rise.
+If water containing minerals is used, over time
+the copper temperature continues to rise and
+reach a critical level, resulting in an inductor
+failure. With this type of cooling ﬂuid, the
+induction coil must be cleaned and ﬂushed on
+a regular interval.
+Styles of Heat Treating Inductors
+As stated previously, induction heat treating
+coils come in many shapes and sizes. An excel-
+lent source for photos of induction heat treat-
+ing coils is the book Practical Induction Heat
+Treating by Richard Haimbaugh (Ref 5). These
+photos are included in Steel Heat Treating Fun-
+damentals and Processes , Volume 4A of ASM
+Handbook, 2013, so they are not repeated here.
+Skills for Heat Treating Inductor
+Construction
+Copper is a unique metal associated with
+an ancient skills trade—coppersmithing. While
+training as either a craftsman or an artisan, a
+student coppersmith would apprentice under a
+journeyman to learn the character and manipu-
+lation of this metal. Although the United States
+has assimilated the coppersmith into other skilled
+trades, coppersmithing is still a recognized trade
+throughout the industrialized world.
+The tools and skills of a coppersmith are ide-
+ally matched to the metal; however, is a copper-
+smith by trade needed to build a copper
+inductor? The answer is no; yet, the skills of a
+coppersmith must be learned in the process of
+building heat treating inductors, along with a
+familiarity of high-power electrical circuits.
+Basic Skills
+Because copper has a characteristic of being
+easily formed into complex shapes, a craftsman
+handy with tools, a soldering iron, and a propane
+torch is able to build a good basic inductor. In
+the process of forming, copper work hardens;
+yet, when heated to a dull red and quenched in
+water, it again forms easily. Basic inductors are
+made of readily available copper tubing wound
+Fig. 28 Temperature dynamics during heating at critical points with 1 mm (0.048 in.) wall thickness, 10 kHz frequency,
+5000 A current, and high-pressure cooling
+600 / Equipment
+===== PDF PAGE 13 =====
+around a forming mandrel. Copper tubing pro-
+vides a convenient path necessary to cool the
+copper. Depending on the induction power supply
+conﬁguration, simple electrical connections may
+be brass pipe ﬁttings—either ﬂair or compres-
+sion, although ﬂair is preferred—or copper tabs
+that are soldered to the tube, as mentioned
+previously. Electrical soft solder is sufﬁcient
+at power requirements of 10 kW or less.
+Advanced Skills
+A classically trained machinist is the usual
+tradesman employed to build heat treating
+inductors. A suitable candidate has the ability,
+dexterity, and patience for modelmaking. Most
+will have difﬁculty machining copper unless
+instruction is provided in the use of special
+cutting tools, speeds, feeds, and coolant speciﬁc
+to this metal. Much of the work in building
+complex inductors involves a quantity of small
+parts and various materials that require machin-
+ing, forming, silver brazing, and assembly. Heat
+treating inductors usually are built one at a
+time, and one machinist may do all of the work.
+A simple machine shop consisting of a ﬂoor
+model milling machine, lathe, band-type table
+saw, a ventilated brazing table with torches,
+and assembly bench with a variety of hand tools
+makes a suitable work area.
+Most inductors are best built from design
+prints. A good print package has a bill of material,
+details of all components, and an assembly and
+inspection form. In some cases, the inductor may
+be built by reverse engineering the original. The
+following should be considered during the con-
+struction of heat treating inductors:
+/C15 Machining: Most of the raw material in a
+typical heat treating inductor is in the form
+of electrolytic copper sheet, plate or round.
+Due to the gummy nature of the metal, cutters,
+feeds, speeds, and coolant speciﬁcally design-
+ed for copper are advised for milling, drilling,
+and turning operations.
+/C15 Fabrication: Many parts may be needed
+to complete a heat treating inductor as-
+sembly. Some of these parts are ﬁt to provide
+Color Shade Results
+Quantity : Temperature Deg. Celsius
+Time (s.) : 10 Phase (Deg): 0
+Scale / Color
+21.3703 / 26.22846
+26.22846 / 31.08662
+31.08662 / 35.94477
+35.94477 / 40.80293
+40.80293 / 45.66109
+45.66109 / 50.51925
+50.51925 / 55.37741
+55.37741 / 60.23556
+60.23556 / 65.09372
+65.09372 / 69.95189
+69.95189 / 74.81004
+74.81004 / 79.6682
+79.6682 / 84.52635
+84.52635 / 89.38452
+89.38452 / 94.24268
+94.24268 / 99.10083
+Color Shade Results
+Quantity : Temperature Deg. Celsius
+Time (s.) : 10 Phase (Deg): 0
+Scale / Color
+22.26987 / 27.27455
+27.27455 / 32.27923
+32.27923 / 37.28391
+37.28391 / 42.28858
+42.28858 / 47.29326
+47.29326 / 52.29794
+52.29794 / 57.30262
+57.30262 / 62.3073
+62.3073 / 67.31197
+67.31197 / 72.31666
+72.31666 / 77.32133
+77.32133 / 82.32601
+82.32601 / 87.3307
+87.3307 / 92.33537
+92.33537 / 97.34005
+97.34005 / 102.34473
+Color Shade Results
+Quantity : Temperature Deg. Celsius
+Time (s.) : 10 Phase (Deg): 0
+Scale / Color
+29.39038 / 34.47861
+34.47861 / 39.56684
+39.56684 / 44.65507
+44.65507 / 49.74329
+49.74329 / 54.83152
+54.83152 / 59.91975
+59.91975 / 65.00798
+65.00798 / 70.09621
+70.09621 / 75.18443
+75.18443 / 80.27267
+80.27267 / 85.36089
+85.36089 / 90.44912
+90.44912 / 95.53735
+95.53735 / 100.62558
+100.62558 / 105.71381
+105.71381 / 110.80203
+(a) (b)
+(c)
+Fig. 29 Temperature distribution in the induction coil with wall thicknesses of (a) 1 mm (0.048 in.), (b) 1.5 mm (0.062 in.), and (c) 3 mm (0.125 in.) with 10 kHz frequency, 5000
+A current, and high-pressure cooling
+Design and Fabrication of Inductors for Induction Heat Treating / 601
+===== PDF PAGE 14 =====
+covers for cooling chambers and ancillary con-
+nections that involve cooling or quench or
+both. Integrity of ﬁt is necessary to provide
+watertight and quality electrical connections.
+/C15 Silver brazing: While some fuel gases are
+best suited for silver brazing, choosing an
+appropriate fuel, such as methyl-acetylene-
+propadiene gas, to mix with compressed
+oxygen may be subject to limited availabil-
+ity. Torch heat must be sufﬁcient to maintain
+silver brazing temperatures throughout the
+copper mass. A variety of torch tips are
+needed, along with ﬂux and 1.5 mm (0.06 in.)
+silver brazing rod. The silver content of the
+brazing rod best suited for inductor construc-
+tion is at 5 to 45%. Silver brazing is a skill
+that can be difﬁcult; however, with practice,
+patience, and perseverance, the technique can
+be mastered.
+Repair Skills
+Copper inductors sometimes are subjected to
+the extreme conditions of induction heat treat-
+ing: electromagnetic stress, intense heat, oily
+smoke, steam, dirt, and grime. The effects on
+copper can be severe, resulting in deterioration
+and fatigue of the inductor and, ultimately, the
+heat treating process. Inductor maintenance
+is essential. Cleaning the inductor with soap,
+water, and a soft plastic brush, along with regu-
+lar inspection of the copper and components,
+alerts the induction operator to deterioration
+and performance issues.
+Repair skills are advanced. The inductor is
+cleaned, disassembled, and inspected for deterio-
+ration of copper as well as for leaks and cracks.
+Cosmetic repairs such as straightening bent com-
+ponents usually can be made without annealing
+the copper. Ancillary components such as ﬂux
+intensiﬁers, brackets, guides, and quench units
+are cleaned and inspected for damage and are
+repaired or replaced.
+Cracks in a copper inductor can result from
+any of the following: cyclic fatigue, differen-
+tial cooling of the copper, resistive braze
+joints, and abuse. Cracks often are repaired
+with silver braze. Although this patch may be a
+Color Shade Results
+Quantity : Temperature Deg. Celsius
+Time (s.) : 10 Phase (Deg): 0
+Scale / Color
+26.80051 / 42.98555
+42.98555 / 59.17058
+59.17058 / 75.35562
+75.35562 / 91.54066
+91.54066 / 107.72571
+107.72571 / 123.91074
+123.91074 / 140.09578
+140.09578 / 156.28082
+156.28082 / 172.46587
+172.46587 / 188.65089
+188.65089 / 204.83594
+204.83594 / 221.02098
+221.02098 / 237.20601
+237.20601 / 253.39107
+253.39107 / 269.57611
+269.57611 / 285.76114
+Color Shade Results
+Quantity : Temperature Deg. Celsius
+Time (s.) : 10 Phase (Deg): 0
+Scale / Color
+23.08636 / 35.74352
+35.74352 / 48.40069
+48.40069 / 61.05785
+61.05785 / 73.715
+73.715 / 86.37217
+86.37217 / 99.02933
+99.02933 / 111.68649
+111.68649 / 124.34365
+124.34365 / 137.00079
+137.00079 / 149.65796
+149.65796 / 162.31512
+162.31512 / 174.97227
+174.97227 / 187.62944
+187.62944 / 200.28659
+200.28659 / 212.94376
+212.94376 / 225.60092
+Color Shade Results
+(a) (b)
+(d)(c)
+Quantity : Temperature Deg. Celsius
+Time (s.) : 10 Phase (Deg): 0
+Scale / Color
+22.30582 / 35.28288
+35.28288 / 48.25994
+48.25994 / 61.2361
+61.2361 / 74.21406
+74.21406 / 87.19112
+87.19112 / 100.16818
+100.16818 / 113.14524
+113.14524 / 126.12231
+126.12231 / 139.09935
+139.09935 / 152.07642
+152.07642 / 165.05348
+165.05348 / 178.03053
+178.03053 / 191.0076
+191.0076 / 203.98465
+203.98465 / 216.96172
+216.96172 / 229.93878
+Color Shade Results
+Quantity : Temperature Deg. Celsius
+Time (s.) : 10 Phase (Deg): 0
+Scale / Color
+38.29016 / 52.3344
+52.3344 / 66.37862
+66.37862 / 80.42286
+80.42286 / 94.46709
+94.46709 / 108.51132
+108.51132 / 122.55556
+122.55556 / 136.59979
+136.59979 / 150.64403
+150.64403 / 164.68826
+164.68826 / 178.7325
+178.7325 / 192.77672
+192.77672 / 206.82095
+206.82095 / 220.86519
+220.86519 / 234.90942
+234.90942 / 248.95366
+248.95366 / 262.99789
+Fig. 30 Temperature distribution in the induction coil with (a) 1 mm (0.048 in.) wall thickness, 10 kHz frequency, 7500 A current, and low-pressure cooling; (b) 1 mm (0.048 in.)
+wall thickness, 10 kHz frequency, 7500 A current, and high-pressure cooling; (c) 1.5 mm (0.062 in.) wall thickness, 10 kHz frequency, 7500 A current, and high-pressure
+cooling; and (d) 3 mm (0.125 in.) wall thickness, 10 kHz frequency, 7500 A current, and high-pressure cooling
+602 / Equipment
+===== PDF PAGE 15 =====
+cost-effective repair, it is seldom permanent. In
+a robust process, the copper inductor should be
+replaced at an appropriate time/life interval.
+Attachment of Magnetic Flux
+Controllers
+It has been explained that ﬂux controllers are
+needed to direct the current ﬂow for speciﬁc
+induction heating applications. Attaching them
+to the inductor requires careful handling so
+that they are properly placed and secure.
+Misplacement or loss of any portion of a magnetic
+ﬂux controller may result in a nonconforming
+processed part. Magnetic ﬂux controllers are fre-
+quency dependent and made from either a silicon
+steel, soft magnetic ferrite, or a soft magnetic
+composite. Attaching these materials to an induc-
+tor can present a challenge to the designer/builder.
+The following are a few examples.
+Silicon Steel Laminations
+This material is supplied in a variety of
+grades, thicknesses, and ﬁnishes. Its usual form
+is a thin sheet with an insulating layer on both
+sides. It is ﬁrst designed to a speciﬁc shape, then
+die stamped or machined and to ﬁt the inductor.
+The most common shape is a rectangular or
+square “C” form. The laminations are stacked
+side by side onto the inductor in such a way as
+to expose that portion of the copper to the part
+being heated. Copper tabs of the same shape
+are silver brazed onto the inductor at various
+intervals in order to support the stack. Securing
+the stack is achieved by either gluing with a
+high-temperature epoxy or by mechanically
+clamping it to the inductor. Various clamping
+methods are used. The most common is the
+use of a semirigid glass epoxy circuit board
+(a) (b)
+(d)(c)
+Color Shade Results
+Quantity : Temperature Deg. Celsius
+Time (s.) : 10 Phase (Deg): 0
+Scale / Color
+23.992 / 33.64118
+33.64118 / 43.29035
+43.29035 / 52.93953
+52.93953 / 62.58871
+62.58871 / 72.23788
+72.23788 / 81.88705
+81.88705 / 91.53623
+91.53623 / 101.18541
+101.18541 / 110.83459
+110.83459 / 120.48376
+120.48376 / 130.13293
+130.13293 / 139.78212
+139.78212 / 149.43129
+149.43129 / 159.08047
+159.08047 / 168.72964
+168.72964 / 178.37881
+Color Shade Results
+Quantity : Temperature Deg. Celsius
+Time (s.) : 10 Phase (Deg): 0
+Scale / Color
+21.77783 / 28.7492
+28.7492 / 35.72057
+35.72057 / 42.69193
+42.69193 / 49.6633
+49.6633 / 56.63467
+56.63467 / 63.60603
+63.60603 / 70.5774
+70.5774 / 77.54877
+77.54877 / 84.52013
+84.52013 / 91.4915
+91.4915 / 98.46287
+98.46287 / 105.43423
+105.43423 / 112.4056
+112.4056 / 119.37697
+119.37697 / 126.34834
+126.34834 / 133.3197
+Color Shade Results
+Quantity : Temperature Deg. Celsius
+Time (s.) : 10 Phase (Deg): 0
+Scale / Color
+22.64523 / 28.33354
+28.33354 / 34.02185
+34.02185 / 39.71016
+39.71016 / 45.39847
+45.39847 / 51.08678
+51.08678 / 56.77509
+56.77509 / 62.46339
+62.46339 / 68.1517
+68.1517 / 73.84001
+73.84001 / 79.52832
+79.52832 / 85.21663
+85.21663 / 90.90494
+90.90494 / 96.59325
+96.59325 / 102.28156
+102.28156 / 107.96986
+107.96986 / 113.65817
+Color Shade Results
+Quantity : Temperature Deg. Celsius
+Time (s.) : 10 Phase (Deg): 0
+Scale / Color
+29.76266 / 35.69722
+35.69722 / 41.63177
+41.63177 / 47.56632
+47.56632 / 53.50088
+53.50088 / 59.43542
+59.43542 / 65.36998
+65.36998 / 71.30453
+71.30453 / 77.23909
+77.23909 / 83.17365
+83.17365 / 89.10819
+89.10819 / 95.04275
+95.04275 / 100.9773
+100.9773 / 106.91185
+106.91185 / 112.84641
+112.84641 / 118.78096
+118.78096 / 124.71552
+Fig. 31 Temperature distribution in the induction coil with (a) 1 mm (0.048 in.) wall thickness, 3 kHz frequency, 7500 A current, and low-pressure cooling; (b) 1 mm (0.048 in.)
+wall thickness, 3 kHz frequency, 7500 A current, and high-pressure cooling; (c) 1.5 mm (0.062 in.) wall thickness, 3 kHz frequency, 7500 A current, and high-pressure
+cooling; and (d) 3 mm (0.125 in.) wall thickness, 3 kHz frequency, 7500 A current, and high-pressure cooling
+Design and Fabrication of Inductors for Induction Heat Treating / 603
+===== PDF PAGE 16 =====
+material, such as G-10, that is cut and ﬁt to
+the back of the stack and is fastened at both ends.
+It is practical to stack laminations around
+the outside or inside of an inductor loop. Installed
+onto circular inductors, the laminations radiate
+from the center point, leaving noticeable gaps,
+especially on small, circular inductors; yet, with
+careful design, this can be minimized.
+Soft Magnetic Composites and
+Sintered Ferrites
+These products are engineered and manufac-
+tured for speciﬁc induction applications. Because
+sintered ferrites are brittle and difﬁcult to
+machine, their use mainly has been limited to
+transformer applications. Soft magnetic compo-
+sites, however, have been designed speciﬁcally
+for the induction heating industry. These products
+are engineered to be used at the common power-
+supply frequencies. They are manufactured in
+various block sizes, are easily machined, and
+ﬁt to the inductor. Both iron ferrites and
+soft magnetic composites are attached to the
+inductor, either mechanically with bolts and
+screws or with glue. The product literature
+describes their use in induction heating applica-
+tions (Ref 13).
+Integrity Procedures prior to
+Production
+This section includes discussion on ﬂux and
+oxide removal, leak and ﬂow checking, silver
+plating, and electrical parameter measurement.
+Flux and Oxide Removal
+After brazing, the induction coil copper has ﬂux
+near the braze joints, along with oxidation from
+the high-temperature brazing process. Prior to
+assembly, the ﬂux and oxides should be removed.
+(a) (b)
+(d)(c)
+Color Shade Results
+Quantity : Temperature Deg. Celsius
+Time (s.) : 10 Phase (Deg): 0
+Scale / Color
+28.14111 / 49.29983
+49.29983 / 70.45855
+70.45855 / 91.61726
+91.61726 / 112.77598
+112.77598 / 133.93469
+133.93469 / 155.0934
+155.0934 / 176.25212
+176.25212 / 197.41084
+197.41084 / 218.56955
+218.56955 / 239.72827
+239.72827 / 260.88699
+260.88699 / 282.04572
+282.04572 / 303.20441
+303.20441 / 324.36313
+324.36313 / 345.52185
+345.52185 / 366.68057
+Color Shade Results
+Quantity : Temperature Deg. Celsius
+Time (s.) : 10 Phase (Deg): 0
+Scale / Color
+23.12088 / 36.80721
+36.80721 / 50.49354
+50.49354 / 64.17987
+64.17987 / 77.8662
+77.8662 / 91.55252
+91.55252 / 105.23886
+105.23886 / 118.92519
+118.92519 / 132.61151
+132.61151 / 146.29784
+146.29784 / 159.98418
+159.98418 / 173.6705
+173.6705 / 187.35683
+187.35683 / 201.04317
+201.04317 / 214.72949
+214.72949 / 228.41582
+228.41582 / 242.10214
+Color Shade Results
+Quantity : Temperature Deg. Celsius
+Time (s.) : 10 Phase (Deg): 0
+Scale / Color
+23.82666 / 31.32733
+31.32733 / 38.8271
+38.8271 / 46.32866
+46.32866 / 53.82932
+53.82932 / 61.32999
+61.32999 / 68.83066
+68.83066 / 76.33132
+76.33132 / 83.83199
+83.83199 / 91.33265
+91.33265 / 98.83332
+98.83332 / 106.33398
+106.33398 / 113.83465
+113.83465 / 121.33532
+121.33532 / 128.83597
+128.83597 / 136.33664
+136.33664 / 143.83731
+Color Shade Results
+Quantity : Temperature Deg. Celsius
+Time (s.) : 10 Phase (Deg): 0
+Scale / Color
+29.53604 / 34.54433
+34.54433 / 39.5526
+39.5526 / 44.56089
+44.56089 / 49.56918
+49.56918 / 54.57746
+54.57746 / 59.58574
+59.58574 / 64.59402
+64.59402 / 69.60231
+69.60231 / 74.6106
+74.6106 / 79.61887
+79.61887 / 84.62716
+84.62716 / 89.63544
+89.63544 / 94.64372
+94.64372 / 99.65201
+99.65201 / 104.66029
+104.66029 / 109.66858
+Fig. 32 Temperature distribution in the induction coil with (a) 1 mm (0.048 in.) wall thickness, 1 kHz frequency, 10,000 A current, and low-pressure cooling; (b) 1 mm (0.048 in.)
+wall thickness, 1 kHz frequency, 10,000 A current, and high-pressure cooling; (c) 1.5 mm (0.062 in.) wall thickness, 1 kHz frequency, 10,000 A current, and high-pressure
+cooling; and (d) 3 mm (0.125 in.) wall thickness, 1 kHz frequency, 10,000 A current, and high-pressure cooling
+604 / Equipment
+===== PDF PAGE 17 =====
+The ﬁrst step in the process is to place the
+induction coil under hot (70 to 80 /C14 C, or 150 to
+180 /C14 F) running water. Hot water helps to
+remove the bulk of the ﬂux remaining from the
+brazing process. It also is recommended to ﬂow
+the hot water through the water-cooling passages
+of the inductor to remove ﬂux that could be built
+up on the inside of the tube and obstructing the
+passage.
+After the hot water cleaning, the next step
+in the process is to sandblast the inductor to
+remove the oxides. The sandblasting process
+also removes the remaining ﬂux from the induc-
+tor. After sandblasting, a ﬁne glass beading pro-
+cess should be used to improve the surface
+condition of the inductor.
+After glass beading, the copper is clean. If left
+this way, the inductor oxidizes in air and change
+color. It is good practice to spray the surface of
+the induction coil (with the exception of the
+electrical contacts) with a clear coat varnish.
+The varnish inhibits copper oxidation.
+In some cases with heavily loaded heat treat-
+ing inductors, a low-temperature tempering at
+200
+/C14 C (400 /C14 F) for several hours or a higher-
+temperature annealing process in air is per-
+formed. This tempering process removes the
+stresses from manufacturing and oxidizes the
+copper to a dark orange (tempering) or a dark
+brown (annealing). From this state, the copper
+does not oxidize further, and it is not necessary
+to apply a clear coat varnish.
+Leak and Flow Checking
+After cleaning the induction coil, it is neces-
+sary to ensure that it is leaktight and that the
+water passages are not clogged. Leak checking
+of the induction coil typically is done by sub-
+merging the induction coil in a tank of water
+and applying high-pressure shop air. The test
+should be conducted for several minutes. If
+bubbles appear, the coil must be sent back to the
+coil builder to repair the leak. In some special
+atmosphere heat treating applications, a water
+leak is especially dangerous. In these instances,
+helium leak checking should be performed.
+After leak checking, the induction coil
+should be connected to water lines. With a spe-
+ciﬁc pressure applied, the ﬂow rate of the water
+through the induction coil should be measured.
+For every induction coil, a minimum ﬂow rate
+should be deﬁned. If the ﬂow rate does not meet
+this minimum level, it means that the cooling
+channel is obstructed. The obstruction must be
+removed before the induction coil can be
+shipped; therefore, the induction coil should
+be sent back to the coil builder.
+Silver Plating
+Silver plating of the induction coil contacts
+typically is done after cleaning. The main role
+of silver plating is to act as a corrosion inhibitor
+for the electrical contacts. Corrosion increases
+the contact resistance and can lead to premature
+induction coil failure.
+Silver plating materials can come in liquid,
+paste, or powder form. Liquid silver plating solu-
+tion from HM Products Inc. is most commonly
+used in the trade. The solution is either brushed
+or rubbed onto the contact area. After application,
+the contact area is ﬂushed with water. If the sur-
+face is not ﬂushed with water shortly after applica-
+tion, the silver carrier corrodes the contacts, and a
+green oxide formation occurs. Care should be
+taken while using the silver plating materials,
+because most of them contain sodium cyanide,
+which is a toxic material.
+Electrical Parameter Measurement
+On some induction coils, such as cast or
+potted inductors, it is not possible to physically
+see or mechanically inspect all of the critical
+dimensions of the induction coil. Also, on induc-
+tion coils with magnetic ﬂux controllers, it is not
+practical to count the number of laminations, or
+it may be difﬁcult to determine if the correct soft
+magnetic composite material grade was used.
+To ensure that the induction coil perfor-
+mance is consistent with other induction coils
+built to that print, coil electrical parameter mea-
+surements should be made prior to shipping.
+The best inspection method involves measur-
+ing the inductance or impedance and the resis-
+tance of the induction coil with the component
+it is designed to heat at the frequency of the
+heating. If this is not possible, valuable informa-
+tion can be obtained about the coil consistency
+from a measurement of the inductance without
+ap a r t .
+Devices capable of measuring coil inductance
+or impedance and resistance (LCR meters) at a
+selectable frequency typically cost several thou-
+sand dollars and are available from a number
+of manufacturers. For inductance measurement
+only, less-expensive devices are available. At
+the time of this writing, one such device that
+works well, the L/C Meter IIB, is manufactured
+by Almost All Digital Electronics and costs
+under $200 (Ref 24). Over time, new devices
+will come to the market with even better charac-
+teristics for induction coil quality control.
+REFERENCES
+1. A. Muhlbauer, History of Induction Heat-
+ing and Melting, Vulcan Verlag GmbH,
+Huyssenallee, Essen, Germany, 2008
+2. H.B. Osborne, Jr., Induction Heating and
+Hardening, Part A, American Society for
+Metals, Metals Park, OH, 1977
+3. V.P. Vologdin and B.N. Romanov, Device
+for Hardening Crankshafts Using HF Cur-
+rents, USSR Patent 48416, ﬁled Dec 16,
+1935, issued 1936
+4. V.P. Vologdin, Induction Surface Harden-
+ing, Oborongiz, Moscow, 1947
+5. R.E. Haimbaugh, Practical Induction Heat
+Treating, ASM International, Materials
+Park, OH, 2001
+6. C.A. Tudbury, Basics of Induction Heating ,
+Vol 1, John F. Rider, New York, NY, 1960
+7. S.L. Semiatin and D.E. Stutz, Induction
+Heat Treatment of Steel , American Society
+for Metals, Metals Park, OH, 1986
+8. M.G. Lozinskiy, Industrial Applications
+of Induction Heating , Pergamon Press,
+Oxford, London, New York, 1969
+9. V. Rudnev et al., Handbook of Induction Heat-
+ing, Marcel Dekker, New York, NY, 2003
+10. R.C. Goldstein et al., “Virtual Prototyping
+of Induction Heat Treating,” 25th ASM
+Heat Treating Society Conference, Sept
+14–17, 2009 (Indianapolis, IN)
+0
+20
+200 400
+Temperature, K
+600 800
+15
+10
+Coefficient of thermal expansion
+Thermal expansion of copper data
+5
+0
+Fig. 33 Temperature dependence of the coefﬁcient of thermal expansion of copper. Source: Ref 22
+Design and Fabrication of Inductors for Induction Heat Treating / 605
+===== PDF PAGE 18 =====
+11. J. Cai et al., Integration of Induction Heat
+Treat Simulation into Manufacturing Cycle,
+J. Heat Treat. Prog., Vol 3 (No. 2), 2003
+12. V.S. Nemkov, Modeling of Induction
+Hardening Processes, Handbook of Ther-
+mal Process Modeling of Steel , C.H. Gur
+and J. Pan, Ed., CRC Press, 2009
+13. W.I. Stuehr and D. Lynch, “How to
+Improve Inductor Life,” 23rd ASM Heat
+Treating Society Conference, Sept 25–28,
+2005 (Pittsburgh, PA)
+14. W.I. Stuehr and D. Lynch, “How to
+Improve Inductor Life, Part II,” 24th ASM
+Heat Treating Society Conference, Sept
+17–19, 2007 (Detroit, MI)
+15. Ajax Tocco Magnethermic, http://www.
+ajaxtocco.com/default.asp?ID=134
+16. V.S. Nemkov and R.C. Goldstein, Design
+Principles for Induction Heating and
+Hardening, Chap. 15, Handbook of Metal-
+lurgical Process Design , G. Totten, K.
+Funatani, and L. Xie, Ed., Marcel Dekker,
+New York, NY, 2004
+17. V.S. Nemkov, Resource Guide for Induction
+Heating, CD-R, Fluxtrol Inc., 2006
+18. V.I. Rudnev, Systematic Analysis of Induc-
+tion Coil Failure, Parts 1–11, Heat Treat.
+Prog. Mag ., Aug 2005–Sept/Oct 2007
+19. H. Svendsen and S.T. Hagen, “Thermo-
+Mechanical Fatigue Life Estimation of
+Induction Coils,” International Scientiﬁc
+Colloquium on Modeling of Electromagnetic
+Processing, Oct 27–29, 2008 (Hannover,
+Germany)
+20. R.C. Goldstein and V.S. Nemkov, “Inﬂu-
+ence of Cooling Conditions on Induction
+Coil Temperatures,” International Sympo-
+sium on Heating by Internal Sources
+(Padua, Italy), 2007
+21. H. Svendsen and S.T. Hagen, “Temperature
+Distribution in Selected Cross-Sections of
+Induction Heating Coils,” International
+Symposium on Heating by Internal Sources
+(Padua, Italy), 2007
+22. Case Studies in Process Modeling, Engi-
+neering Statistics Handbook ,N I S T /
+SEMATECH, http://www.itl.nist.gov/div898/
+handbook/pmd/section6/pmd6.htm
+23. Fluxtrol, Inc. internal documents
+24. L/C Meter IIB, Almost All Digital Elec-
+tronics, http://aade.com/lcmeter.htm
+606 / Equipment

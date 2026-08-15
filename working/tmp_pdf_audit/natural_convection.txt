@@ -1,0 +1,494 @@
+
+===== PDF PAGE 1 =====
+INT. J. NUM. METH. HEAT FLUID FLOW, VOL. 6, NO. 7, 31-46 (1996) 
+A NUMERICAL STUDY OF NATURAL CONVECTION IN 
+A VERTICAL ANNULUS WITH CONSTANT HEAT FLUX 
+ON THE INNER WALL 
+J.G.WEI AND W.Q. TAO 
+School of Energy and Power Engineering, Xi'an Jiaotong University, Xi'an Shaanxi 710049, China 
+ABSTRACT 
+A numerical study of natural convection of air in a vertical annulus has been conducted, where the inner wall 
+is heated with constant heat flux at its inner side, the outer wall of the annulus being maintained at constant 
+temperature, and the top and bottom plates are assumed to be insulated. The cases of radius ratio К = 3, aspect 
+ratio A = 10-30, and Ra* = 103~1.7 x 107 have been simulated. Both axial conduction and surface radiation 
+are taken into account to reveal their effects on the distributions of inner wall temperature and local Nusselt 
+number. Emphasis is on the comparison between the numerical results and the relevant experimental data, 
+and the comparison between numerical solutions with and without considering the surface radiation. The 
+numerical results of heat transfer are found to be in good agreement with the corresponding experimental 
+results in the literature. The dependence of average relative conductivity on aspect ratio and the effect of 
+imperfection in top and bottom insulation on the inner wall temperature are also discussed. 
+KEYWORDS Natural convection Vertical annulus Numerical study Constant heat flux 
+NOMENCLATURE 
+a 
+aE,W,N,S' 
+A 
+g 
+J 
+k К 
+Keq 
+Ksf L 
+L1 
+M1 N 
+Nu 
+Ρ 
+Pr 
+q 
+r 
+R 
+Ra* 
+Τ 
+T Tm 
+= Thermal diffusivity 
+ap = Coefficients in discretization equation 
+= Aspect ratio L/δ 
+= Gravitational acceleration 
+= Radiosity 
+= Thermal conductivity 
+= Radius ratio ro/ri 
+= Average relative conductivity 
+= Conductivity ratio of solid to liquid Ks/Kf 
+= Length of annulus 
+= Grid number in χ direction 
+= Grid number in r direction 
+= Number of radiative surfaces divided 
+= Local Nusselt number 
+= Dimensionless pressure 
+= Prandtl number v/a 
+= Heat flux 
+= Radial co-ordinate 
+= Dimensionless radial co-ordinate r/δ 
+= Modified Rayleigh number ßg{qδ/kf)δ3/av) 
+= Dimensionless temperature (T1 - To)/(qδ/kf) 
+= Dimensional temperature 
+= Dimensionless average temperature on the 
+inner wall 
+и 
+U 
+ν 
+V 
+χ 
+Χ 
+xij β 
+Γ 
+δ 
+ΔΤ 
+ε 
+ν 
+σ 
+Subscripts 
+e 
+f і 
+о 
+r 
+s 
+= Velocity in x direction 
+= Dimensionless velocity in x direction uδ/v 
+= Velocity in r direction 
+= Dimensionless velocity in r direction νδ/ν 
+= Vertical co-ordinate 
+= Dimensionless vertical co-ordinate χ/δ 
+= View factor of ith to jth radiative surface 
+= Thermal expansion coefficient 
+= Nominal diffusion coefficient 
+= Gap width ro - ri - w 
+= Mean temperature difference between inner 
+and outer wall 
+= Emissivity 
+= Kinematic viscosity 
+= Stefan-Boltzmann constant 
+= Eastern interface 
+= Fluid 
+= Inner wall 
+= Outer wall 
+= Radiation 
+= Solid 
+0961-5539 Received J une 1995 
+© 1996 MCB University Press Ltd Revised October 1995 
+Downloaded by University Libraries | Virginia Tech At 06:59 25 February 2018 (PT)
+
+===== PDF PAGE 2 =====
+32 J.G. WEI AND W.Q. TAO 
+INTRODUCTION 
+This paper presents results of a numerical study of natural convection in a vertical annulus where 
+the inner wall is of finite thickness and heated with constant heat flux at its inner side, the outer 
+wall of the annulus being at constant temperature and the top and bottom plates are adiabatic. 
+Natural convection heat transfer in a vertical annulus is an important method of energy transfer 
+and numerous applications are found in different engineering fields such as energy conversion, 
+storage and transmission systems. Examples of using the natural convection in vertical annulus 
+include the heat transfer from a nuclear reactor fuel rod bundle to the interior of its canister and 
+the cooling of isolated phase buses in power plants. Many experimental and/or numerical 
+investigations on this problem have been performed in the past. Only those which are closely 
+related to the present study are briefly reviewed here. The thermal boundary conditions in the 
+works conducted by Sheriff1, Keyhani et al.2, Bhushan et al.3, Shang et al.4 and Khan and Kumar5 
+are of the same type as the present study. For this type of thermal boundary condition, accurate 
+subtraction of the radiation heat transfer rate in the enclosure from the total power input at the 
+inner side is crucial in the test data reduction. When numerical method is used, the radiative heat 
+transfer between inner and outer surfaces must be taken into account since the surface temperature 
+of the inner wall cannot be specified a priori. Sheriff1 conducted experiments with CO2-filled 
+vertical annuli of radius ratios К = 1.03, 1.11, and 1.23 for aspect ratio A = 38, 76, and 228 with 
+Rayleigh numbers ranging from 105 to 108. In order to correct for the thermal radiation, he 
+performed some preliminary experiments at low pressure to ensure that the heat transferred was 
+only by conduction and radiation. By subtraction of the axial and radial heat conduction, he 
+obtained the thermal radiant heat transfer rate. Keyhani et al.2 performed experiments with air and 
+helium as test fluid for К = 4.33 and A = 27.6 for a range of Rayleigh numbers from 103 to 2.3 χ 
+106. It is reported that energy transferred by the thermal radiation varies according to Rayleigh 
+number, and working fluid. For air, radiation can account for up to 50 per cent, and for helium, 30 
+per cent of the total heat transfer. The temperature distribution on the heated wall presented by 
+Keyhani et al.2 shows that, at a high Rayleigh number, the inner wall temperature distribution is 
+quite uneven; it increases from the bottom to the midsection and then decreases significantly from 
+midsection to the top. In their Rayleigh number range studied, the maximum local wall 
+temperature difference may be as large as 50°C. Bhushan et al.3 extended the work of Keyhani et 
+al.2 for two other combinations of aspect and diameter ratio, A = 52.82, К = 2.77 and A = 38.38, К 
+= 8.28. The temperature distribution along the heated inner wall has the same pattern as observed 
+in Keyhani et al.2 with a better smoothness. Shang et al.4 obtained temperature data and heat 
+transfer results experimentally using air for К = 3, A = 22.5 and 103 ≤ Ra* ≤ 1.7 x 107. Their 
+temperature distribution data on the inner surface exhibit rather a flat character, with a maximum 
+difference from the bottom to the top of about 10°C. Khan and Kumar5 obtained numerical results 
+for 1 ≤ К ≤ 15, 1 ≤; A ≤ 10 and 100 < Ra* < 107 by solving the Navier-Stokes equations with the 
+vorticity-stream function method. They found that the inner wall temperature distribution was 
+dependent on the diameter ratio and the aspect ratio. The numerically predicted wall temperature 
+distributions were characterized by the smooth increase of wall temperature from the bottom to 
+the top. It should be noted that, in their computation, the radiative heat transfer between the inner 
+surface and the outer one was not taken into account. 
+From the above brief review of the literature, it can be seen that the investigations, especially 
+the numerical ones, pertinent to the above boundary conditions, are rather limited. In addition, 
+there are two kinds of temperature profile on the inner wall observed in the experiments or 
+predicted by the numerical method. One was obtained by Keyhani et al.2 and Bhushan et al.3 Their 
+results are characterized by the existence of a higher temperature region in the midsection of the 
+annulus and two rapid decrease regions towards the two ends of the annulus. The results obtained 
+by Shang et al.4 and Khan and Kumar5 are of the other type, which shows a smooth and almost 
+monotonie increase in wall temperature from the bottom to the top for high Rayleigh number 
+cases. However, the variation of inner wall temperature from the bottom to top obtained by Khan 
+Downloaded by University Libraries | Virginia Tech At 06:59 25 February 2018 (PT)
+
+===== PDF PAGE 3 =====
+NATURAL CONVECTION IN A VERTICAL ANNULUS WITH CONSTANT HEAT FLUX 33 
+and Kumar5 seems to be more significant than that observed in the experiments of Shang et al.4 In 
+the numerical study of Khan and Kumar5, the radiative heat transfer between the inner and outer 
+surfaces was not considered, which, in the authors' expectation, may partly account for this 
+difference. 
+Thus, in order to enhance our understanding of the effects of radiation on natural convection 
+heat transfer in the annulus, especially on the temperature distribution along the inner wall, and to 
+extend further the geometric parameters of numerical data, the present work deals with the 
+numerical computations of natural convection in a vertical annulus with constant heat flux on the 
+inner wall for К = 3 and A = 22.5, and 103 ≤ Ra* ≤ 1.7 x 107. These parameters are copied from the 
+experimental work conducted by Shang et al.4, so that the numerical results can be compared with 
+their experimental ones. Both axial conduction and radiation are taken into account in the 
+calculations to reveal their effects on the inner wall temperature distribution. In addition, the 
+aspect ratio is varied systematically from 10 to 30, and the dependence of average relative 
+conductivity on aspect ratio is then evaluated. 
+PROBLEM FORMULATION 
+Consider an air-filled annular space bounded by two vertical concentric cylinders of radii ri and 
+ro, with the inner cylinder having a thickness of w. As shown in Figure 1, the inner surface of the 
+inner cylinder is maintained at constant heat flux and the outer cylinder of the annulus at constant 
+temperature To. Assuming that the Boussinesq approximation is valid, the dimensionless 
+equations governing the steady, axisymmetric laminar fluid flow with negligible viscous 
+dissipation may be reduced to: 
+Downloaded by University Libraries | Virginia Tech At 06:59 25 February 2018 (PT)
+
+===== PDF PAGE 4 =====
+34 JG. WEI AND W.Q. TAO 
+The dimensionless quantities are defined as follows: 
+The boundary conditions can be written as: 
+This set of boundary conditions was adopted for the computation domain shown by the solid line 
+in Figure 1, where the top and bottom surfaces were assumed to be perfectly insulated. To 
+examine the imperfection in top and bottom insulation, the computation domain was extended 
+axially to the regions H and D confined by the dashed line. The thermal conductivity of these two 
+extended regions was taken as 0.037W/m·°C, which was obtained from the direct measurement of 
+the insulating materials used in the test of Shang et al.4 The thicknesses of the Я and D were 
+50mm and 40mm respectively, which were the same as Shang's work. For these extended regions, 
+the surface temperatures at the top and bottom were assumed to be the same temperature as the 
+cooling medium surrounding the annulus, which was also consistent with the condition in Shang's 
+test, where a circulating cooling water was used to cool the outside surface of the test apparatus. 
+Downloaded by University Libraries | Virginia Tech At 06:59 25 February 2018 (PT)
+
+===== PDF PAGE 5 =====
+NATURAL CONVECTION IN A VERTICAL ANNULUS WITH CONSTANT HEAT FLUX 35 
+In order to take the thermal radiation into account, the annulus is regarded as a radiative 
+network consisting of N isothermal surfaces. The equations concerning the radiation heat transfer 
+are6: 
+The entire computation domain includes both fluid and solid regions. Thus, the present study is 
+actually a coupled conduction and convection heat transfer problem with radiation on solid 
+surfaces. 
+NUMERICAL METHOD 
+For the computational domain shown in Figure 1, the temperature fields in both solid and gas 
+regions are obtained by solving equations (1)-(4) with appropriate values Ksf, Г, and Ra* as 
+given in Table 1. The number of radiative surfaces, N, in equation (7) and equation (8) is taken to 
+be 16 in the present study. 
+The differential equations were discretized with the finite volume integration method. The 
+convective-diffusive terms were approximated by the power-law scheme. The SIMPLEC 
+algorithm was employed to deal with the linkage between pressure and velocity, and the resulting 
+linear system of algebraic equations was solved by the SLUR method. More details may be found 
+in the book by Tao7. The method proposed by Yang et al.8 was used to treat the thermal radiation 
+at the interface of solid and gas regions, i.e. the outer surface of the inner cylinder. In this method, 
+the radiative heat flux at inner surfaces is treated as an additional source term for the control 
+volumes neighbouring with the inner surfaces. It can be shown that for any control volume in the 
+solution domain, the discretized energy equation can be written in the following form: 
+where the additional source term, Sc,ad, comes from the surface radiation heat flux and can be 
+determined by the following equations. 
+For the air-side control volume {Figure 2) 
+and for the solid-side control volume 
+The net radiative heat flux, qr, at the solid-gas surface can be calculated from equation (7). The 
+average interfacial temperature of surface i, T(i), is interpolated from neighbouring grid points 
+Table 1 Values of Ksf, Γ, Ra* and Pr in various regions 
+Region 
+Fluid 
+Tube wall 
+End insulation 
+H and D 
+Ksf 
+1.0 
+6,100.0 
+1.48 
+Γ 
+1.0 
+1030 
+1030 
+Ra Pr 
+As is 0.7 
+0 -
+0 -
+Downloaded by University Libraries | Virginia Tech At 06:59 25 February 2018 (PT)
+
+===== PDF PAGE 6 =====
+36 J.G. WEI AND W.Q. TAO 
+according to the flux continuity condition. For example, the temperature of e-interface in Figure 
+2 is 
+Because of the strong nonlinearity of radiative heat transfer, the solution procedure is iterative in 
+nature. To avoid divergence of iteration, the value of qr should be under-relaxed. For details, Zhao 
+and Tao9 may be consulted. 
+Grid independence of results was checked and ensured. The problem of pure convection for air 
+in the annulus without considering the axial conduction and surface radiation was used for this 
+purpose. Several different sized grids were used in this work as part of grid independence 
+investigation: L1 χ M1 = 33 χ 32, 53 χ 42, 63 χ 62,103 χ 102. The results of a grid independence 
+investigation for К = 3, A = 22.5 and Ra* = 2 χ 107 are given in Table 2. A mesh of 53 χ 42 nodal 
+points leads to a value of the average relative conductivity 1.2 per cent larger than that given by a 
+mesh of 103 χ 102. Furthermore, to reveal the effect of surface number of radiative exchange on 
+the inner wall and local Nusselt number distributions, two preliminary cases were computed. In 
+one case the total enclosure was divided into eight radiative surfaces while in the other 16 surfaces 
+were divided. The differences in wall temperature and local Nusselt number were not appreciable, 
+with a maximum deviation of 1.5 per cent. To keep the convergence time to a minimum without 
+losing accuracy, a grid of 53 χ 42 nodes and 16 radiative exchange surfaces were used for most 
+cases investigated in the present study. 
+The following criterion was used for checking convergence at each point: 
+Table 2 Grid number test results 
+L1 χ M1 
+33 x 32 
+53 x 42 
+63 x 62 
+103 χ 102 
+Keq 
+5.233 
+5.197 
+5.147 
+5.134 
+Note: Κ = 3, A = 22.5, Ra* = 2 χ 107 
+Downloaded by University Libraries | Virginia Tech At 06:59 25 February 2018 (PT)
+
+===== PDF PAGE 7 =====
+NATURAL CONVECTION IN A VERTICAL ANNULUS WITH CONSTANT HEAT FLUX 37 
+where φ was the general variable being tested and Є was a prespecified constant, usually set at 
+10-5. The agreement between the energy input at the inner cylinder and the energy output at the 
+outer cylinder was also used to check the convergency of the iteration process. The deviation 
+between the input and output energy was usually less than 1.0 per cent. 
+RESULTS AND DISCUSSION 
+The presentation will start with the numerical solution for the case of A = 22.5, К=3 and 103 ≤ 
+Ra* ≤ 1.7 χ 107. Isotherms, streamlines and the local and average Nusselt numbers will be 
+presented. Emphasis will be focused on the comparison between the numerical results and the 
+relevant test data, and the comparison between numerical solutions with and without considering 
+the surface radiation. Then, the effect of the aspect ratio on the overall heat transfer result will be 
+discussed. Finally, the numerical results obtained from the computation considering the 
+imperfection in top and bottom insulation will be briefly introduced. 
+Temperature and local Nusselt number distributions on the outer surface of the inner cylinder 
+The local temperature values and the local Nusselt numbers along the outer surface of inner 
+cylinder (r = ri + w) are plotted as a function of Rayleigh numbers for the cases with and without 
+considering radiation in Figures 3 and 4, respectively. For the simplicity of later writing, the outer 
+surface of the inner cylinder will simply be called inner wall hereafter. A typical temperature 
+profile along the inner wall for Ra* = 1.17 χ 105 obtained experimentally by Shang et al.4 is also 
+shown in Figure 3. As can be seen there, at low Rayleigh number, such as Ra* - 1.02 χ 104, the 
+difference between the two temperature profiles is rather small, indicating that the effect of 
+radiation on the inner wall temperature at low Rayleigh numbers is not appreciable. As the 
+Rayleigh number is increased up to Ra* = 105 and further, the effect of radiation becomes 
+Downloaded by University Libraries | Virginia Tech At 06:59 25 February 2018 (PT)
+
+===== PDF PAGE 8 =====
+38 J.G. WEI AND W.Q. TAO 
+Downloaded by University Libraries | Virginia Tech At 06:59 25 February 2018 (PT)
+
+===== PDF PAGE 9 =====
+NATURAL CONVECTION IN A VERTICAL ANNULUS WITH CONSTANT HEAT FLUX 39 
+Downloaded by University Libraries | Virginia Tech At 06:59 25 February 2018 (PT)
+
+===== PDF PAGE 10 =====
+40 J.G. WEI AND W.Q. TAO 
+appreciable. The wall temperature distribution for the case with radiation considered is greatly 
+evened compared with that without radiation considered. The temperature profile without 
+radiation considered varies strongly with the distance from the bottom. The numerical results with 
+radiation considered for Rα* = 1.17 χ 105 agrees well with the experimental profile obtained by 
+Shang et al.4 This reveals that thermal radiation has a role of flattening the temperature profile on 
+the inner wall. 
+Similar to the situation of temperature profile, the effect of radiation on the local Nusselt number 
+distribution on the inner wall at a low Rayleigh number is not appreciable, while it becomes 
+significant at higher Rayleigh numbers. The consideration of thermal radiation makes the local 
+Nusselt number decrease at the upper part of the inner wall and increase at its lower part compared 
+with the case without consideration of radiation. In other words, thermal radiation has a function of 
+evening the natural convection heat transfer rate in the middle part of the vertical inner wall. This 
+is consistent with the variation in the inner wall temperature distribution shown in Figure 3. 
+Thus it can be concluded that for the thermal boundary conditions studied in this paper, the 
+surface thermal radiation of the inner wall should be taken into account. Therefore, in the 
+discussion of contour maps of streamlines and isotherms, only the results with surface radiation 
+considering will be presented. 
+Isotherms and streamlines 
+Isotherms and streamlines for the cases of К = 3 and A = 22.5 with surface radiation considered 
+are shown in Figure 5 for Ra* = 1.02 χ 104, 1.17 χ 105 and 1.04 χ 106. As can be seen there, at Ra* 
+= 1.02 χ 104, the fluid motion takes the form of a single cell. The centre of the recirculating flow 
+is almost in the middle of the annulus. The isotherms are a group of vertical straight lines except 
+at the two ends. This indicates that the heat transfer is dominated by conduction, in spite of the 
+occurrence of convection in this case. 
+Downloaded by University Libraries | Virginia Tech At 06:59 25 February 2018 (PT)
+
+===== PDF PAGE 11 =====
+NATURAL CONVECTION IN A VERTICAL ANNULUS WITH CONSTANT HEAT FLUX 41 
+As the Rayleigh number is increased (for example, up to 1.17 χ 105), the convective effects 
+become more pronounced. The centre of the circulating flow moves towards the top wall and the 
+isotherms start to cluster near the inner wall. As the Rayleigh number increases to 106, a secondary 
+Downloaded by University Libraries | Virginia Tech At 06:59 25 February 2018 (PT)
+
+===== PDF PAGE 12 =====
+42 J.G. WEI AND W.Q. TAO 
+flow appears at the top zone of the annulus, a severe temperature reverse takes place, and the flow 
+near the inner wall exhibits some character of boundary layer type, characterized by a larger 
+temperature gradient normal to the wall. In this case, the heat transfer is dominated by convection. 
+Overall heat transfer results 
+For the presentation of the overall heat transfer results, two parameters may be used, i.e. the 
+average Nusselt number, Nu, and the equivalent relative thermal conductivity, Κeq , which is 
+defined as 
+where AT is the average temperature difference between inner and outer wall of the enclosure. 
+The values of Nu and К are related by the following equation: 
+where the gap width (δ = ro — ri - w) is adopted as the characteristic length in Nu. For comparison 
+purposes, Кeq will be used to present the numerical results. 
+In the comparison of the overall heat transfer character obtained from numerical solutions with 
+and without considering surface heat transfer, one must pay attention to following subtle 
+difference between the two solutions. For the solutions without considering surface radiation, the 
+total heat input, q, at the inner surface of the inner cylinder is fully transferred by the natural 
+convection in the enclosure, while for the solutions with considering the surface radiation, a minor 
+part of the input heat flux q is transferred from the inner wall to the outer wall by radiation. Let the 
+average heat flux of radiation be qr, then the convective heat transfer rate is only (q - qr). Since it 
+is the convective heat transfer rate and the related correlation that we are now searching for, the 
+Downloaded by University Libraries | Virginia Tech At 06:59 25 February 2018 (PT)
+
+===== PDF PAGE 13 =====
+NATURAL CONVECTION IN A VERTICAL ANNULUS WITH CONSTANT HEAT FLUX 43 
+value of (q - qr) should be used to determine the related Rayleigh number Ra* for the solution 
+considering radiation. In Figure 6, the results of the two numerical solutions are presented in 
+terms of Keq versus Ra*. It can be seen that when the above-mentioned subtle difference in Ra* of 
+the two solutions is taken into account, the overall heat transfer character of the two situations 
+behaves almost identically. This implies that, although the surface radiation have a rather 
+significant effect on the distributions of the inner wall temperature and the local Nusselt number, 
+the overall heat transfer character by natural convection is not affected for the cases studied. 
+In Figure 6, a solid line is drawn which represents the empirical correlation obtained by Shang 
+et al.4 It should be noted that in their experiments, a technique quite similar to that of Sheriff1 was 
+adopted to subtract the radiation and conduction heat transfer from the total power input, i.e. the 
+heat flux in the definition of Ra* is purely transferred by natural convection. This is consistent 
+with the above-mentioned data reduction method. It can be seen that the agreement between the 
+experimental and numerical results is quite good, with a maximum deviation of 11 per cent 
+accuracy at Ra* = 1.7 χ 107. 
+Dependence of Кeq on A 
+The heat transfer results have also been obtained numerically for the combinations of radius ratio 
+and aspect ratio, К = 3, A = 10, 15, 20, 25, 30, as shown in Figure 7. As can be seen in the figure, 
+the average relative conductivity increases with Ra* for all aspect ratios investigated, while the 
+dependence of Keq on A is not all the same for the Rayleigh numbers investigated. At low Rayleigh 
+number , the dependence of Кeq on A is very weak. This is because, in the low Rayleigh 
+number region, the dominating heat transfer mechanism is the radial heat conduction, which is not 
+dependent on the length of the cylinder. While at high Rayleigh numbers, the effect of A on Кeq 
+becomes appreciable and Кeq decreases with the increase in A. Thus, the dependence of Кeq on A 
+also depends on Rayleigh numbers. This result seems not to support the usual practice adopted in 
+the literature where the dependence of Кeq or average Nusselt number on A was incorporated by a 
+constant exponent in A term for the whole Ra* range investigated. 
+Effect of insulation imperfection on the inner wall temperature distribution 
+As mentioned above, to investigate the imperfection in insulation the computation domain was 
+extended to the region confined by the dashed line shown in Figure 1. The numerical results of 
+Downloaded by University Libraries | Virginia Tech At 06:59 25 February 2018 (PT)
+
+===== PDF PAGE 14 =====
+44 J.G. WEI AND W.Q. TAO 
+Downloaded by University Libraries | Virginia Tech At 06:59 25 February 2018 (PT)
+
+===== PDF PAGE 15 =====
+NATURAL CONVECTION IN A VERTICAL ANNULUS WITH CONSTANT HEAT FLUX 45 
+inner wall temperature distribution are presented in Figure 8, where the results obtained for the 
+perfect insulation are also presented for comparison purposes. Both computations were conducted 
+without considering surface radiation. It can be seen that, for the two situations compared, the 
+imperfection in top-and-bottom insulation only has a very weak effect on the inner wall 
+temperature distribution. In addition, from a practical point of view, the insulation technique used 
+in Shang's4 experiment may be considered perfect enough to neglect the end loss through heat 
+conduction. Therefore, all the computational results presented above were obtained with adiabatic 
+boundary conditions at top and bottom surfaces. 
+CONCLUSIONS 
+Numerical analysis has been conducted for natural convection of air in a vertical annulus with the 
+inner surface of the inner cylinder maintained at constant heat flux. The outer cylinder is 
+maintained at constant temperature and the top and bottom plates are assumed to be insulated. The 
+effect of the inner wall radiation has been examined in detail. The parameter range investigated is 
+K = 3, 10 ≤ A ≤ 30, and 103 ≤ Ra* ≤. 1.7 χ 107. The following conclusions can be drawn: 
+(1) The effect of radiation on temperature profile and local Nusselt number on the inner wall 
+is significant in a high Rayleigh number region. The surface radiation effect tends to 
+flatten the local temperature and Nusselt number on the major part of the inner wall. The 
+temperature profile calculated for the case with considering radiation is in very good 
+agreement with the measured profile in the literature. 
+(2) The agreement between the numerical heat transfer results and the experimental results is 
+quite satisfactory, with the maximum difference of less than 11 per cent. In the Rayleigh 
+number range studied, the incorporation of surface radiation on the inner wall does not 
+have an appreciable effect on the overall convective heat transfer character. 
+Downloaded by University Libraries | Virginia Tech At 06:59 25 February 2018 (PT)
+
+===== PDF PAGE 16 =====
+46 J.G. WEI AND W.Q. TAO 
+(3) The effect of aspect ratio on the average relative conductivity depends on the Rayleigh 
+number, and gradually becomes significant with the increase in Rayleigh numbers. 
+ACKNOWLEDGEMENT 
+This work was supported by National Natural Science Foundation of China. 
+REFERENCES 
+1 Sheriff, N., Experimental investigation of natural convection in single and multiple vertical annuli with high pressure 
+carbon dioxide, Proceedings of 3rd International Heat Transfer Conference, Chicago, IL, 2, 132-138 (1966) 
+2 Keyhani, M., Kulacki, F.A. and Chrisensen, R.N., Free convection in a vertical annulus with constant heat flux on the 
+inner wall, ASME Journal of Heat Transfer, 105, 454-459 (1983) 
+3 Bhushan, R., Keyhani, M., Christensen, R.N. and Kulacki, F.A., Correlation equations for free convection in a vertical 
+annulus with constant heat flux on the inner wall, ASME Journal of Heat Transfer, 105, 910-912 (1983) 
+4 Shang, H.M., Wu, Q.J. and Tao, W.Q., Experimental and numerical investigations of natural convection in vertical 
+annuli, Journal of XI'an Jiaotong University, 23, 1, 9-20 (1989) 
+5 Khan, J.A. and Kumar, R., Natural convection in vertical annuli: a numerical study for constant heat flux on the inner 
+wall, ASME Journal of Heat Transfer, 111, 909-915 (1989) 
+6 Sparrow, E.M. and Cess, R.D., Radiation Heat Transfer, Augmented Ed., McGraw-Hill, NY (1978) 
+7 Tao, W.Q., Numerical Heat Transfer, Xi'an Jiaotong University Press, Xi 'an, China (1988) 
+8 Yang, M., Wang, Y.Q., Fu, Y.H. and Tao, W.Q., A numerical method for coupled conduction and convection heat 
+transfer with surface radiation, Journal of Xi'an Jiaotong University, 26, 6, 25-31 (1992) 
+9 Zhao, C.Y. and Tao, W.Q., Natural convection in conjugated single and double enclosures, Wārme-und 
+Stoffübertragung, 30, 175-182 (1995) 
+Downloaded by University Libraries | Virginia Tech At 06:59 25 February 2018 (PT)
+
+===== PDF PAGE 17 =====
+This article has been cited by:
+1. Mahshid Mirzaie, Esmail Lakzian. 2016. Natural convection of Cu–water nanofluid near water
+density inversion in horizontal annulus with different arrangements of discrete heat source – Sink
+pair. Advanced Powder Technology 27:4, 1337-1346. [Crossref]
+2. Chahinez Ghernoug, Mahfoud Djezzar, Hassane Naji, Abdelkarim Bouras. 2016. Towards numerical
+computation of double-diffusive natural convection within an eccentric horizontal cylindrical annulus.
+International Journal of Numerical Methods for Heat & Fluid Flow 26:5, 1346-1364. [Abstract] [Full
+Text] [PDF]
+3. Y.B. Tao, Y.L. He. 2010. Numerical study on coupled fluid flow and heat transfer process in parabolic
+trough solar collector tube. Solar Energy 84:10, 1863-1872. [Crossref]
+4. He Ya‐Ling, Ding Wen‐Jing, Tao Wen‐Quan. 2004. The effect of tube wall heat conduction on
+the natural convection in a long cylindrical envelope with an adiabatic lateral surface. International
+Journal of Numerical Methods for Heat & Fluid Flow 14:8, 918-952. [Abstract] [Full Text] [PDF]
+5. Y.L He, W.Q Tao, Z.G Qu, Z.Q Chen. 2004. Steady natural convection in a vertical cylindrical
+envelope with adiabatic lateral wall. International Journal of Heat and Mass Transfer  47:14-16,
+3131-3144. [Crossref]
+6. Y. L. He, W. Q. Tao, T. S. Zhao, Z. Q. Chen. 2003. STEADY NATURAL CONVECTION IN
+A TILTED LONG CYLINDRICAL ENVELOPE WITH LATERAL ADIABATIC SURFACE,
+PART 1: THEORETICAL MODELING AND NUMERICAL TREATMENTS. Numerical
+Heat Transfer, Part A: Applications 44:4, 375-397. [Crossref]
+7. E.R.G. Eckert, R.J. Goldstein, W.E. Ibele, T.W. Simon, T.H. Kuehn, P .J. Strykowski, K.K. Tamma,
+A. Bar-Cohen, J.V.R. Heberlein, J.H. Davidson, J. Bischof, F. Kulacki, U. Kortshagen. 2000. Heat
+transfer — a review of 1996 literature. International Journal of Heat and Mass Transfer  43:8,
+1273-1371. [Crossref]
+Downloaded by University Libraries | Virginia Tech At 06:59 25 February 2018 (PT)

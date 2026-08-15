@@ -1,0 +1,733 @@
+
+
+===== PDF PAGE 1 =====
+
+Australasian Universities Power Engineering Conference, AUPEC 2013, Hobart, TAS, Australia, 29 September – 3 October 2013          1 
+ 
+ 
+Low Frequency Modelling of Induction Heaters using 
+Series Equivalent Circuit, Transformer Equivalent 
+Circuit and Finite Element Analysis 
+ 
+Lisiate Takau and Pat Bodger 
+Department of Electrical and Computer Engineering 
+University of Canterbury 
+Christchurch, New Zealand 
+ 
+ 
+Abstract—Induction heating is a process where a varying 
+magnetic field is used to heat a conductor or workpiece. When a 
+piece of metal or conductor i s placed near a magnetic field 
+created by energising a coil of wire, the magnetic field transfers 
+energy into the conductor, thus heating it up. This paper presents 
+three methods  for modelling induction heaters at mains 
+frequency. These models are known as  the series equivalent 
+circuit (SEC) model, the transformer equivalent circuit (TEC) 
+model and finite element analysis (FEA). The performances of 
+these models are compared with experimental results  for a 
+demonstration induction heater. The FEA gives the be st fit to the 
+measured values and the TEC model gives be tter results than the 
+SEC model.  
+Keywords—induction heating ; workpiece; series equivalent 
+circuit; transformer equivalent circuit; finite element analysis 
+I. INTRODUCTION 
+Induction heating is the heating of electrical conducting 
+parts in a varying magnetic field. It involves electromagnetic 
+induction, skin effect and heat transfer. 
+Electromagnetic induction describes the generation of a 
+voltage in a conductor. It can happen in two entirely differen t 
+ways; motional induction, where a conductor moves in a 
+magnetic field, or transformer induction, where the circuit is 
+stationary and the field varies with time [1]. Faraday's law of 
+electromagnetic induction, which relates the generated voltage 
+to the rate of change of flux, can take account of both effects. 
+Modelling an induction heater involves developing 
+mathematical relationships of the physical proces s of 
+electromagnetic induction. There are a number of models [2-7] 
+which are considered valid at high frequencies only. However, 
+at mains frequency, the SEC  model [7] is often used . This 
+looks at the flow of magnetic flux through the coil, airgap and 
+workpiece of an induction heater and converts these into an 
+equivalent electrical circuit, where all compo nents are in 
+series. The circuit components of the coil and workpiece 
+resistance, and coil, airgap and workpiece reactances, cannot 
+be interpreted as being actual values that can be measured. It 
+is their combined series impedance that yields appropriate 
+terminal current, power and power factor for a given applied 
+voltage that is most important. 
+An alternative presented in this paper is the transformer 
+equivalent circuit (TEC). This models the induction heater as a 
+single turn secondary transformer. Its adva ntage is that the 
+currents and voltages associated with components of the 
+induction heater are what you would expect to measure on 
+components of an actual induction heater. It thus allows better 
+insight to the design and operation of the heater. 
+This paper  presents the low frequency modelling of 
+induction heaters using both the SEC and TEC models. 
+Results from these two models are compared with those using 
+FEA. The performance testing of an actual induction heater is 
+then used to ascertain which model gives the best prediction of 
+real performance. 
+II. SEC MODEL OF INDUCTION HEATER 
+This model of an induction heater is based on the series 
+equivalent circuit depicted in Fig. 1[ 7]. This equivalent circuit 
+has the resistance of the coil and workpiece and the reactanc es 
+of the workpiece, air gap and coil (                and   ) all 
+in series. 
+ 
+Fig. 1. Series equivalent circuit of induction heater [7]. 
+The SEC method requires the induction heater  to be 
+designed by obtaining the values of the resistances and 
+reactances of the coil, workpiece  and the air gap between 
+them, and then solving the circuit. 
+The series impedance is 
+             +               
+ 
+where the components are 
+ workpiece resistance 
+
+
+===== PDF PAGE 2 =====
+
+Australasian Universities Power Engineering Conference, AUPEC 2013, Hobart, TAS, Australia, 29 September – 3 October 2013          2 
+ 
+ 
+                  
+ 
+coil resistance 
+         
+        
+      
+ 
+air gap resistance 
+               
+ 
+workpiece reactance 
+                   
+ 
+coil reactance 
+         
+        
+      
+ 
+and 
+      
+        
+  
+   
+ 
+In these equations,    is the relative permeability of the 
+workpiece,    is the cross -section of the workpiece,    is the 
+coil inner diameter,    is the skin depth of the coil,    is the air 
+gap between the coil and the workpiece,    is the permeability 
+of free space (4π×    ),    is the coil turns, and    is the coil 
+length. 
+In the equation for the coil resistance and reactance,    is a 
+correction factor, allowing for the spacing between the turns 
+(   lies between 1 and 1.5, with 1.15 being a typical value) . 
+The expression (3) for the coil resistance is dependent on 
+relative permeability and do no t appear dimensionally correct.  
+However, this is an expression of the model that allows 
+terminal condition s to be calculated. The individual 
+component value calculated should not be interpreted as what 
+you would measure in practice. 
+The   and   factors in the equation for the workpiece 
+resistance and reactance can be estimated from graphs or 
+calculated from analytical expressions [7]. 
+This set of equations is most relevant for long coils [ 8].  
+However, for short coils, a modification i s suggested [ 8] 
+whereby an external reactance Xe is placed in parallel with the 
+series combination of Rw, Xw, Xg, and Xc. This reactance 
+represents the impedance of the end effects of the external flux 
+path. It can be calculated from 
+         
+  
+  
+     
+ 
+where    is given in [8] as 
+ 
+         
+    
+  
+    
+ 
+and    is an empirical factor which is assumed to be 1, and    
+is the coil perimeter.  
+On the basis of the change in inductance of a cylindrical 
+solenoid with length, it is possible to show that its external 
+reluctance is practically independent of the length a nd equal 
+approximately to 0.57/   where    is the coil diameter [8].  
+For an unknown reason, the addition of the  short coil 
+external reactance ha s since been regarded as “an ill -defined 
+quantity” and “manifestly wrong” [7]. 
+Hence, the long co il model is used in this paper.  The 
+addition of the short coil reactance would increase the current 
+drawn from the supply and decrease the power factor. 
+III. TEC MODEL OF INDUCTION HEATER 
+An induction heater can be  regarded as a special type of 
+transformer with a single shorted turn secondary winding. The 
+coil is the equivalent of a multiple turn primary winding, and 
+the workpiece is the  single turn secondary winding.  The 
+workpiece also performs the function of  the transformer core, 
+which the magnetic field genera ted by the coil passes throug h. 
+Hence, a transformer equivalent circuit model is used to 
+calculate the performance of the induction heater. 
+A. Transformer equivalent circuit 
+The TEC method determines the components of the circuit 
+using the reverse design method [ 9]. It also calculates th e 
+performance of the induction heater. 
+The model of the induction heater is based on the 
+transformer equivalent circuit depicted in Fig. 2. This circuit is 
+based on an ideal transformer, with additional circuit elements 
+to represent the practical deviation s from the ideal. The TEC 
+circuit in Fig.  2 is relevant for low frequency modelling of 
+induction heaters. 
+ 
+Fig. 2. Transformer equivalent circuit of induction heater [9]. 
+The transformer equivalent circuit in Fig. 2 is more 
+complicated than the series equivalent circuit in Fig. 1. The 
+parallel impedance of the workpiece resistance and leakage 
+reactance with the magnetizing reactance is  
+      
+             
+                 
+ 
+and the total impedance is the complex value 
+                      
+ 
+The performance of the induction heater is then obtained 
+by applying a voltage to the coil and measuring the current, 
+apparent power, real power and power factor. 
+In this model,    represents the eddy current losses in the 
+workpiece, which would normally be accounted for in the core 
+of a transformer,    is the resistance of the coil, and     is the 
+magnetizing reactance which accounts for the current require d 
+to magnetize the core. Moreover, hysteresis losses, also 
+normally a component of core losses in a transformer, are 
+
+
+===== PDF PAGE 3 =====
+
+Australasian Universities Power Engineering Conference, AUPEC 2013, Hobart, TAS, Australia, 29 September – 3 October 2013          3 
+ 
+ 
+insignificant in induction heating.  Hence the losses in the 
+workpiece become resistance losses of the secondary winding. 
+The leakage reacta nce for each winding can be split 
+between the coil and the workpiece as    and   . The leakage 
+reactances account for the imperfect magnetic field coupling 
+between the coil and the workpiece. 
+The parameters of the equivalent circuit in Fig.  2 are 
+calculated using the basic dimensions and physical 
+characteristics of materials used, as per  the reverse design 
+method [ 9]. These are entered as known data and then the 
+individual circuit components are calculated using magnetic 
+and electric circuit component models. 
+Fig. 3 shows a cross -sectional profile of a multi -layer coil 
+induction heater with a tube workpiece.  All the symbols 
+represent dimensions of the materials used in the construction 
+of the heater, including the workpiece, insulation and the coil, 
+where LW is the length of the workpiece, DW is the diameter 
+of the workpiece, TW is the thickness of the workpiece, IWC 
+is the workpiece/coil insulation thickness, WC is the diameter 
+of the coil wire, WIC is the coil interlayer insulation, and 
+DOC is the outside diameter of the coil. 
+The equivalent circ uit components in Fig.  2 need to be 
+modified as the flux path is open and not entirely constra ined 
+to be inside the core.  Thus modifications to the  calculation of 
+reactance     is required as the core i s no longer a closed  
+loop. These are based on those derived for partial core 
+transformers [ 10-11]. The winding resistance models    and 
+   are maintained as they are not affected by the partial core 
+configuration. 
+ 
+Fig. 3. Cross-section of a multi -layer coil induction heater with a tube 
+workpiece. 
+B. Coil resistance 
+If    is t he length of the coil wire and    is its cross -
+sectional area, then the primary winding  or coil resistance is 
+given by  
+         
+  
+  
+    
+ 
+where    is the resistivity of the coil material. The value of the 
+resistivity depends on the coil temperature as 
+               -           
+ 
+where      is the resistivity at 20 ,    is the coil temperature, 
+and    is the t hermal resistivity coefficient.  The resistivity of 
+all metals is considered to vary linearly with temperature. 
+The calculation of the winding resistance    also takes into 
+account the coil skin depth and its effective cross sectional 
+area. For the coil, the eddy current skin depth gives its 
+effective thickness 
+        
+   
+          
+ 
+where     is the relative permea bility of the coil, and   is the 
+angular frequency (2πf). The coil effective cross sectional area 
+is calculated using the diameter of the coil  and its effective 
+thickness. 
+C. Workpiece magnetizing reactance 
+The magnetizing reactance     for an open core  induction 
+heater is given in [11] as 
+        
+           
+  
+    
+ 
+where   is the angular frequency,    is the number of turns on 
+the coil,    is the permeability of free space (4π×     ), and 
+    is the effective permeability of the magnetic flux path 
+which includes the series combination of the workpiece and 
+the return path, usually through air.    is the effective cross -
+sectional area of the workpiece, calculated u sing the skin 
+depth   , and    is the length of the workpiece. 
+D. Coil/workpiece leakage reactance 
+The coil and workpiece leakage reactances are calculated 
+from the total leakage reactance which  embodies the effects of 
+both the coi l and workpiece together. The total induction 
+heater leakage reactance is given in [11] as 
+       
+      
+  
+ 
+           
+           
+ 
+where   is the angular frequency,    is the mean 
+circumferential length of the coil,    is the mean 
+circumferential l ength of the workpiece,     is the mean 
+circumferential len gth of the space between the coil and the 
+workpiece, and    is the workpiece/coil insulation thickness. 
+The calculation of     does not separate the values of the 
+coil and workpiece leakage reactances and they are usually 
+assumed to be the same.  Each of them is half of the total 
+leakage reactance. 
+E. Workpiece eddy current resistance 
+The workpiece eddy current resistance referred to the coil 
+is calculated using 
+         
+   
+   
+  
+     
+ 
+
+
+===== PDF PAGE 4 =====
+
+Australasian Universities Power Engineering Conference, AUPEC 2013, Hobart, TAS, Australia, 29 September – 3 October 2013          4 
+ 
+ 
+where    is the resistivity of the workpiece,     is the effective 
+length of the eddy current flowing around the circumfe rence 
+of the workpiece,     is the effective cross -sectional area of 
+the eddy current path, and     is the number of coil turns. 
+The effective length and cross -sectional area of the eddy 
+current path takes into account the skin depth in the workpiece 
+       
+   
+          
+ 
+Thus 
+            -        
+ 
+and 
+                 
+F. Equivalent circuit performance for an experimental heater 
+A coil of a small induction heater was constructed with the 
+following parameters dimensions 
+TABLE I.  COIL DIMENSIONS 
+Material Copper Unit 
+Resistivity 1.72 (Ωm×10-8) 
+Length 208 mm 
+Outside diameter 114 mm 
+Inside diameter 83 mm 
+Wire diameter 1.7 mm 
+Wire area 2.27 mm2 
+Number of layers 9 - 
+Turns per layer 111 - 
+Number of turns 999 - 
+Length of wire 309 m 
+Calculated resistance 2.34 Ω 
+Measured resistance 2.15 Ω 
+ 
+A number of mild steel tubes of various diameters and 
+thicknesses were cut to provide workpieces that fitted inside 
+the coil. The dimensions of the workpiece s are listed in Table  
+II. 
+TABLE II.  WORKPIECE DIMENSIONS 
+Work- 
+piece Material Length 
+(mm) 
+Diameter 
+(mm) 
+Thickness 
+(mm) 
+1 Mild steel 250 44.3 solid 
+2 Mild steel 250 44.5 12.6 
+3 Mild steel 250 44.2 6.3 
+4 Mild steel 250 48.3 3.3 
+5 Mild steel 250 54.0 2.6 
+6 Mild steel 250 70.0 2.0 
+7 Mild steel 250 73.0 solid 
+G. Material properties 
+For the sake of calculation, t he physical characteristics of 
+the copper coil and mild steel workpieces were taken as given 
+in Table III. These are generic values as the actual values were  
+unknown. There may be differences due to the metallurgy of 
+their manufacture. 
+TABLE III.  PHYSICAL PROPERTIES OF COPPER AND MILD STEEL 
+Material Copper Mild steel 
+Resistivity (Ωm×10-8) 1.72 16 
+Relative permeability 1 750 
+Skin depth at 50Hz (mm) 9.3 1.0 
+ 
+Having obtained all the parameters of the equivalent 
+circuits from the material characteristics and dimensions , the 
+performance of the heater c ould be calculated by solving the 
+equivalent circuit equations and determining the current, 
+power and power factor for a  given applied voltage . In 
+addition, efficiencies, voltage gradients, voltages per turn and 
+current densities could be calculated. 
+IV. CALCULATED PERFORMANCE 
+To check the performance of the induction heaters, two  
+programs were written in Matlab for the SEC long coil and the 
+TEC models to perform all the above calculations. The various 
+components of the SEC and TEC are given in Table IV. 
+TABLE IV.  COMPONENT VALUES FOR THE SEC AND TEC MODELS 
+Circuit component Value(Ω) 
+SEC TEC SEC TEC 
+Rc Rc 0.241 2.372 
+Rw Rw 9.346 47.753 
+Xc Xc 0.241 2.513 
+Xw Xw 9.510 2.513 
+Xg Xmw 2.321 31.873 
+ 
+The value of the coil resistance sho uld not be taken too 
+literally. Indeed, for the actual as -build induction heater of t he 
+dimensions listed in Table I , the coil resis tance was measured 
+to be 2.15Ω. Rather, it is the total circuit that gives rise to 
+terminal conditions that is of importance. 
+By contrast, the component values  of the TEC are very 
+different from those of the SEC.  This is beca use the TEC is 
+very different. 
+The coil resistance is about 10 ti mes that previously 
+calculated. It is a better indication of what was measured using 
+a resistance meter applied to the coil conductor. 
+The workpiece resistance (referred to the coil) is also much 
+larger (5 times) than that  calculated from the SE C model. The 
+actual resistance is very low  4.8 µΩ.  Again the value should 
+be a reasonable indication of what you could measure.  The 
+workpiece resistance is much larger than the coil resistance 
+and hence the efficiency should be high. 
+For this example, th e leakage reactances are relatively 
+small, which indicates that there is good coupling betwe en the 
+coil and the workpiece. A relatively long coil length and small 
+coil/workpiece interspace ensures this.  Thus the TEC model 
+gives a useful measure of this fea ture. The value is about the 
+same as the air gap reactance used in the series model, 
+although here the value is used twice, for both the coil and the 
+workpiece, as only the com bined effect can be calculated.  The 
+TEC model is less dominated by the leakage ( air gap) 
+reactance. 
+The workpiece magnetizing reactance is much larger than 
+the w orkpiece reactance used before.  There is no direct 
+correlation between this and the workpiece reactance 
+calculated from the SEC model. 
+
+===== PDF PAGE 5 =====
+
+Australasian Universities Power Engineering Conference, AUPEC 2013, Hobart, TAS, Australia, 29 September – 3 October 2013          5 
+ 
+ 
+Tables V and V I show the calculated perf ormances of the 
+induction heaters at a 100V supply. 
+TABLE V.  CALCULATED PERFORMANCE USING SEC LONG COIL MODEL 
+Work
+-piece 
+Voltage 
+(V) 
+Current 
+(A) 
+Flux 
+density(T) 
+Coil 
+loss(W) 
+Workpiece 
+loss(W) 
+Apparent 
+power(VA) 
+Power 
+factor 
+1 100 6.9 3.2 7.6 438.6 692.1 0.6 
+2 100 6.9 3.2 7.6 438.3 691.7 0.6 
+3 100 6.9 3.2 7.6 438.8 692.3 0.6 
+4 100 6.9 2.9 7.9 431.7 685.1 0.6 
+5 100 6.8 2.6 8.5 422.2 675.8 0.6 
+6 100 6.5 2.0 9.9 397.6 652.7 0.6 
+7 100 6.5 1.9 10.2 393.3 648.7 0.6 
+TABLE VI.  CALCULATED PERFORMANCE USING TEC MODEL 
+Work
+-piece 
+Voltage 
+(V) 
+Current 
+(A) 
+Flux 
+density(T) 
+Coil- 
+loss(W) 
+Workpiece 
+loss(W) 
+Apparent 
+power(VA) 
+Power 
+factor 
+1 100 3.9 3.2 26.7 100.9 397.2 0.3 
+2 100 3.9 3.2 26.6 100.5 396.3 0.3 
+3 100 3.9 3.2 26.7 101.2 397.7 0.3 
+4 100 3.8 2.9 25.8 92.2 380.2 0.3 
+5 100 3.6 2.6 24.8 81.9 359.7 0.3 
+6 100 3.2 2.0 23.1 62.3 317.0 0.3 
+7 100 3.1 1.9 22.9 59.6 310.7 0.3 
+ 
+The calculated performances from the SEC model are 
+significantly higher than the TEC model in terms of current , 
+apparent power and workpiece loss. The same is not true for 
+the coil loss. The power factors from the SEC model are twice 
+those calculated from the TEC model.  Both models yield the 
+same flux density, but in all cases this is calculated to be a 
+value significantly above that of the likely saturation value for 
+mild steel. 
+For the SEC model, the short coil reactance, as suggested 
+by Baker [8]  was calculated to be 57.4 Ω. This is much higher 
+than any of the other components and therefore had little 
+effect on the results, in creasing the current by about 0.1A and 
+insignificantly changing the power factor.  
+As a modification to the TEC model, the permeability of 
+the workpiece is reduced until the flux density is below the 
+saturation point. This means that the skin depth increas es. The 
+magnetizing reactance and the workpiece eddy current 
+resistance are adjusted to account for this. 
+If the flux penetrates beyond the thickness of the 
+workpiece, then part of the flux flows inside the workpiece. 
+The parallel combination of this reluctance and that of the 
+workpiece must be taken into account in calculating the 
+workpiece magnetization reactance. Table VII shows the 
+calculated performance of the induction heater for operation at 
+the saturation point set at a realistic 1.7T. The work piece 
+losses are hig her than those given in Table V I but still 
+significantly lower than those calculated using the SEC model.  
+The power factors have, in general, increased. 
+TABLE VII.  CALCULATED PERFORMANCE USING TEC MODEL BELOW THE 
+SATURATION POINT 
+Work
+-piece 
+Voltage 
+(V) 
+Current 
+(A) 
+Flux 
+density(T) 
+Coil 
+loss(W) 
+Workpiece 
+loss(W) 
+Apparent 
+power(VA) 
+Power 
+factor 
+1 100 4.3 1.7 30.8 190.9 397.2 0.5 
+2 100 4.3 1.7 30.6 189.2 396.3 0.5 
+3 100 4.3 1.7 30.9 191.9 397.7 0.5 
+4 100 3.9 1.7 27.6 159.5 380.2 0.5 
+5 100 3.6 1.7 24.9 126.5 359.7 0.4 
+6 100 3.1 1.7 22.3 73.6 311.7 0.3 
+7 100 3.1 1.7 22.3 67.4 306.3 0.3 
+V. FINITE ELEMENT ANALYSIS 
+MagNet software [ 12] was then used to create a 2D FEA 
+model of the actual heater. The coil and workpiece were 
+modelled using axial symmetry. Because of its circular 
+symmetry, only a quarter model of the coil and workpiece 
+were required. The coil dimensions provided are internal 
+diameter, outside diameter and length. Each coil was model led 
+as a block of solid copper that covers all the  turns of that 
+winding. The workpiece was created using its inside and 
+outside diameters and length as well. The workpiece was 
+modelled as a single block of isotropic linear material with 
+relative permeability of 7 50 and a resistivity of 16× 10-8 Ωm. 
+Fig. 4(a) shows a quarter model of the coil and workpiece of 
+the heater for workpiece 1. 
+      (a)                                  (b) 
+Fig. 4. Quarter model of workpiece 1(a); flux plot of workpiece 1(b). 
+A quarter -model of the flux plot of the heater using 
+workpiece 1 is shown in Fig. 4(b). The coil is energised with a 
+100V supply. The maximum flux  density in the workpiece is 
+1.7T which is equal to the set value for the TEC model.  A 
+small amount of fringing can be seen at both ends of the 
+workpiece. Most of  the flux is concentrated  in the skin d epth 
+of the workpiece, which is about 1 mm for mild steel. 
+Table VIII shows the performance of the experimental 
+heater at 100V supply, calculated using FEA. All the  
+workpiece maximum flux densities are at the assumed knee 
+point of the B-H curve. The coil current and coil and 
+workpiece losses are, in general, lower than those given in 
+Tables V and VII. 
+TABLE VIII.  CALCULATED PERFORMANCE USING FEA 
+Work
+-piece 
+Voltage 
+(V) 
+Current 
+(A) 
+Flux 
+density(T) 
+Coil 
+loss(W) 
+Workpiece 
+loss(W) 
+Apparent 
+power(VA) 
+Power 
+factor 
+1 100 2.3 1.7 8.6 55.5 230 0.3 
+2 100 2.3 1.7 8.4 55.4 230 0.3 
+3 100 2.3 1.7 8.6 55.9 230 0.3 
+4 100 2.1 1.7 7.1 49.4 210 0.3 
+5 100 1.9 1.7 6.1 42.0 190 0.3 
+6 100 1.5 1.7 3.9 28.0 150 0.2 
+7 100 1.5 1.7 3.5 26.2 150 0.2 
+
+===== PDF PAGE 6 =====
+
+Australasian Universities Power Engineering Conference, AUPEC 2013, Hobart, TAS, Australia, 29 September – 3 October 2013          6 
+ 
+ 
+VI. MEASURED PERFORMANCE 
+The test set -up consisted of a variac, power meter, current 
+clamp and a multimeter , with a thermocouple to monitor th e 
+temperature of the workpiece.  
+The perfomance of the experimenta l heater is given in 
+Table IX. The ambient temperat ure during th e test was 
+between 20  to 25 . 
+TABLE IX.  MEASURED PERFORMANCE OF INDUCTION HEATERS 
+Work- 
+piece 
+Voltage 
+(V) 
+Current 
+(A) 
+Coil 
+loss(W) 
+Workpiece 
+loss(W) 
+Apparent 
+power(VA) 
+Power 
+factor 
+1 100 1.9 7.8 84.2 199 0.5 
+2 100 1.6 5.5 62.5 167 0.4 
+3 100 1.6 5.5 62.5 170 0.4 
+4 100 1.9 7.8 91.2 196 0.5 
+5 100 1.7 6.2 81.8 174 0.5 
+6 100 1.1 2.6 48.4 117 0.4 
+7 100 1.0 2.2 46.9 109 0.5 
+ 
+The flux density cannot be measured. The coil loss is 
+calculated using the measured coil resis tance and the 
+measured current.  The workpiece loss is then calculated by 
+subtracting the coil loss from the measured real power. 
+The currents are lower than those calculated by any of the 
+three models. The measured coil losses are close to those 
+calculated from the SEC and FEA models, b ut quite dissimilar 
+to those from the TEC model because of the current 
+differences. 
+The workpiece losses are between those calculated using 
+the TEC and FEA models, and much less than those calculated 
+by the SEC model. 
+The power factors are close to those f rom the TEC and 
+FEA models and slightly less than those from the SEC model. 
+VII. DISCUSSION 
+The SEC and TEC models give very disparate results for 
+this design. The SEC model does not accommodate workpiece 
+saturation, while the TEC model can allow for this. Even  so, 
+the TEC model results, while much closer to the measured 
+values for the workpieces tested, are still significantly higher 
+than the measured values. 
+These differences may be explained by the materials 
+having different physical characteristics than the generic 
+values chosen, but also the applicability of using lumped 
+circuit equivalents of open core devices.  
+The SEC and TEC models are seen to be useful closed 
+form analytical expressions which can easily be programmed 
+using readily available advanced cal culators or spreadsheet 
+software. However, their accuracies are such that they yield 
+design guides only rather than definitive performance results. 
+The Finite Element Analysis yields results much closer to 
+those measured and is preferred. However, such mod elling 
+relies on proprietary software which may be more difficult to 
+access, making it less amenable for teaching purposes. 
+However, it does provide more accurate modelling, at least for 
+the case presented. 
+One of the purposes of this model comparison is t o justify 
+the selection of both the TEC and FEA models to predict the 
+performance of Transduction heaters, a combination of 
+transformer and induction heaters, to be introduced in a 
+separate paper.  Transduction heaters have not been modelled 
+using the SEC approach. 
+VIII. CONCLUSION 
+This paper presents the low frequency modelling of 
+induction heaters using the SEC and TEC models and also 
+FEA. The performances of the induction heaters from these 
+models are compared to the measured performances of an 
+experimental he ater for a variety of sizes of mild steel 
+workpieces.  
+The calculated performances of the TEC model shows 
+significantly lower values in terms of the current and 
+workpiece losses compared to the SEC model. However, both 
+the SEC and TEC models yield performa nce measures 
+significantly different from those measured and need 
+refinement to improve their performance predictions.  
+The FEA model gives much closer values to those 
+measured. 
+REFERENCES 
+[1] J.D.Edwards  “Course in Electromechanics”  Infolytica Corporation  
+Montreal, 2004. 
+[2] C.V. Dodd and W.E. Deeds  “Analytical Solutions to Eddy -Current 
+Probe-Coil Problems”  Journal of Applied Physics  vol. 39  no 6  pp 
+2829-2838, May 1968. 
+[3] C.V. Dodd  C.C. Cheng  W.E. Deed  “Induction Coils Coaxial with an 
+arbitrary number of cylindrical conductors”  Journal of Applied Physics  
+vol. 45, no 2, pp 638-647, Feb. 1974. 
+[4] K.V. Namjoshi  J.D. Lavers  P.K. Jain  “Vector potential due to a 
+circular loop in a toroidal cavity in a high -permeability core”  IEEE 
+Transactions on Magnetics, vol. 37, no 6, pp 3900-3906, Nov. 2001. 
+[5] K.V. Namjoshi  P.P. Biringer  “Current distribution in exciting coil 
+conductors in cross -field heating systems”  IEEE Transactions on 
+Magnetics, vol. 29, no 2, pp 1570-1573, Mar. 1993. 
+[6] A.M. Hussein, P.P. Biringer, “Closed-form solution for the induction 
+heating problem with rotational symmetry”  Journal of Applied Physics  
+vol. 72, no. 1, pp 265-269, July 1992. 
+[7] J. Davies  and P.Simpson “ Induction Heating Handbook”  McGraw-Hill 
+Book Company (UK) Ltd, Maidenhead, Berkshire, England, 1979. 
+[8] R.M. Baker  “Design and calculation of induction heating coils”  
+Transactions of the American Institute of Electrical Engineers, March 
+1957, pp. 31-40. 
+[9] Bodger, P.S., and Liew M.C., "Reverse as -built transformer design 
+method", Int. J. Elect. Enging. Educ., v39, n1, January 2002, pp. 42-53. 
+[10] Liew  M.C. and Bodger P.S.  “Partial core transformer design using 
+reverse modelling techniques”  IEE Proceedings - Electric Power 
+Applications, v148(6), 2001, pp. 513-519 
+[11] Liew, M.C. and Bodger, P.S ., "Applying a reverse design modelling 
+technique to partial core transformers", J. Electrical and Electronics 
+Engineering, Australia, v22, n1, 2002, pp. 85-92. 
+[12] MagNet 7.3 (2012), Finite -element package for electromagnetic 
+analysis, Infolytica Corporation, Montreal. 
+ 
+ 

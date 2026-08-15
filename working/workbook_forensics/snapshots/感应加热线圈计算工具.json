@@ -1,0 +1,1820 @@
+{
+    "path":  "C:\\Users\\王小明\\OneDrive - UNSW\\桌面\\职称论文\\电磁感应项目\\感应加热线圈计算工具.xlsx",
+    "name":  "感应加热线圈计算工具.xlsx",
+    "date1904":  false,
+    "precisionAsDisplayed":  false,
+    "calculation":  {
+                        "mode":  "xlCalculationAutomatic",
+                        "iteration":  false,
+                        "maxIterations":  100,
+                        "maxChange":  0.001,
+                        "calculationVersion":  191029,
+                        "forceFullCalculation":  false
+                    },
+    "links":  [
+
+              ],
+    "names":  [
+
+              ],
+    "connections":  [
+
+                    ],
+    "sheets":  [
+                   {
+                       "name":  "Sheet1",
+                       "index":  1,
+                       "visible":  -1,
+                       "usedRange":  "A1:D27",
+                       "usedRows":  27,
+                       "usedColumns":  4,
+                       "protection":  {
+                                          "contents":  false,
+                                          "drawings":  false,
+                                          "scenarios":  false
+                                      },
+                       "hiddenRows":  [
+
+                                      ],
+                       "hiddenColumns":  [
+
+                                         ],
+                       "cells":  [
+                                     {
+                                         "address":  "A1",
+                                         "value":  "类别",
+                                         "text":  "类别",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "B1",
+                                         "value":  "参数名称",
+                                         "text":  "参数名称",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "C1",
+                                         "value":  "数值/公式示例",
+                                         "text":  "数值/公式示例",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "D1",
+                                         "value":  "单位",
+                                         "text":  "单位",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "A2",
+                                         "value":  "输入参数",
+                                         "text":  "输入参数",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "B2",
+                                         "value":  "额定功率 (P)",
+                                         "text":  "额定功率 (P)",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "C2",
+                                         "value":  133,
+                                         "text":  "133",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "D2",
+                                         "value":  "kW",
+                                         "text":  "kW",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "A3",
+                                         "value":  "输入参数",
+                                         "text":  "输入参数",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "B3",
+                                         "value":  "工作频率 (f)",
+                                         "text":  "工作频率 (f)",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "C3",
+                                         "value":  10000,
+                                         "text":  "10000",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "D3",
+                                         "value":  "Hz",
+                                         "text":  "Hz",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "A4",
+                                         "value":  "输入参数",
+                                         "text":  "输入参数",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "B4",
+                                         "value":  "线圈内径 (D1)",
+                                         "text":  "线圈内径 (D1)",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "C4",
+                                         "value":  888,
+                                         "text":  "888",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "D4",
+                                         "value":  "mm",
+                                         "text":  "mm",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "A5",
+                                         "value":  "输入参数",
+                                         "text":  "输入参数",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "B5",
+                                         "value":  "炉料外径 (D2)",
+                                         "text":  "炉料外径 (D2)",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "C5",
+                                         "value":  766,
+                                         "text":  "766",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "D5",
+                                         "value":  "mm",
+                                         "text":  "mm",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "A6",
+                                         "value":  "输入参数",
+                                         "text":  "输入参数",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "B6",
+                                         "value":  "线圈总匝数 (N)",
+                                         "text":  "线圈总匝数 (N)",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "C6",
+                                         "value":  4,
+                                         "text":  "4",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "D6",
+                                         "value":  "匝",
+                                         "text":  "匝",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "A7",
+                                         "value":  "输入参数",
+                                         "text":  "输入参数",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "B7",
+                                         "value":  "线圈总高度 (L1)",
+                                         "text":  "线圈总高度 (L1)",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "C7",
+                                         "value":  300,
+                                         "text":  "300",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "D7",
+                                         "value":  "mm",
+                                         "text":  "mm",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "A8",
+                                         "value":  "输入参数",
+                                         "text":  "输入参数",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "B8",
+                                         "value":  "铜管高度 (h_cu)",
+                                         "text":  "铜管高度 (h_cu)",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "C8",
+                                         "value":  60,
+                                         "text":  "60",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "D8",
+                                         "value":  "mm",
+                                         "text":  "mm",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "A9",
+                                         "value":  "输入参数",
+                                         "text":  "输入参数",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "B9",
+                                         "value":  "炉料高度 (L2)",
+                                         "text":  "炉料高度 (L2)",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "C9",
+                                         "value":  300,
+                                         "text":  "300",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "D9",
+                                         "value":  "mm",
+                                         "text":  "mm",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "A10",
+                                         "value":  "输入参数",
+                                         "text":  "输入参数",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "B10",
+                                         "value":  "炉料电阻率 (rho_w)",
+                                         "text":  "炉料电阻率 (rho_w)",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "C10",
+                                         "value":  3E-06,
+                                         "text":  "0.000003",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "D10",
+                                         "value":  "Ω·m",
+                                         "text":  "Ω·m",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "A12",
+                                         "value":  "常量",
+                                         "text":  "常量",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "B12",
+                                         "value":  "铜电阻率 (rho_cu)",
+                                         "text":  "铜电阻率 (rho_cu)",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "C12",
+                                         "value":  2E-08,
+                                         "text":  "2E-08",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "D12",
+                                         "value":  "Ω·m",
+                                         "text":  "Ω·m",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "A13",
+                                         "value":  "常量",
+                                         "text":  "常量",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "B13",
+                                         "value":  "真空磁导率 (mu0)",
+                                         "text":  "真空磁导率 (mu0)",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "C13",
+                                         "value":  1.2566E-06,
+                                         "text":  "1.26E-06",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "D13",
+                                         "value":  "H/m",
+                                         "text":  "H/m",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "A14",
+                                         "value":  "常量",
+                                         "text":  "常量",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "B14",
+                                         "value":  "进出水温差 (deltaT)",
+                                         "text":  "进出水温差 (deltaT)",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "C14",
+                                         "value":  20,
+                                         "text":  "20",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "D14",
+                                         "value":  "°C",
+                                         "text":  "°C",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "A16",
+                                         "value":  "中间计算",
+                                         "text":  "中间计算",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "B16",
+                                         "value":  "铜管肌肤深度 (delta_cu)",
+                                         "text":  "铜管肌肤深度 (delta_cu)",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "C16",
+                                         "value":  -2146826273,
+                                         "text":  "#VALUE!",
+                                         "hasFormula":  true,
+                                         "formula":  "=SQRT(B11/(PI()*B2*B12))",
+                                         "formulaR1C1":  "=SQRT(R[-5]C[-1]/(PI()*R[-14]C[-1]*R[-4]C[-1]))",
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+                                                            "Sheet1!B2",
+                                                            "Sheet1!B11:B12"
+                                                        ],
+                                         "dependents":  [
+
+                                                        ],
+                                         "cachedBefore":  -2146826273,
+                                         "valueChangedAfterCalculation":  null
+                                     },
+                                     {
+                                         "address":  "D16",
+                                         "value":  "m",
+                                         "text":  "m",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "A17",
+                                         "value":  "中间计算",
+                                         "text":  "中间计算",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "B17",
+                                         "value":  "炉料肌肤深度 (delta_w)",
+                                         "text":  "炉料肌肤深度 (delta_w)",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "C17",
+                                         "value":  -2146826273,
+                                         "text":  "#VALUE!",
+                                         "hasFormula":  true,
+                                         "formula":  "=SQRT(B9/(PI()*B2*B12))",
+                                         "formulaR1C1":  "=SQRT(R[-8]C[-1]/(PI()*R[-15]C[-1]*R[-5]C[-1]))",
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+                                                            "Sheet1!B9",
+                                                            "Sheet1!B2",
+                                                            "Sheet1!B12"
+                                                        ],
+                                         "dependents":  [
+
+                                                        ],
+                                         "cachedBefore":  -2146826273,
+                                         "valueChangedAfterCalculation":  null
+                                     },
+                                     {
+                                         "address":  "D17",
+                                         "value":  "m",
+                                         "text":  "m",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "A18",
+                                         "value":  "中间计算",
+                                         "text":  "中间计算",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "B18",
+                                         "value":  "线圈电阻 (Rc)",
+                                         "text":  "线圈电阻 (Rc)",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "C18",
+                                         "value":  -2146826273,
+                                         "text":  "#VALUE!",
+                                         "hasFormula":  true,
+                                         "formula":  "=B11*(PI()*(B3/1000)*B5)/((B7/1000)*B15)",
+                                         "formulaR1C1":  "=R[-7]C[-1]*(PI()*(R[-15]C[-1]/1000)*R[-13]C[-1])/((R[-11]C[-1]/1000)*R[-3]C[-1])",
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+                                                            "Sheet1!B11",
+                                                            "Sheet1!B3",
+                                                            "Sheet1!B5",
+                                                            "Sheet1!B7",
+                                                            "Sheet1!B15"
+                                                        ],
+                                         "dependents":  [
+
+                                                        ],
+                                         "cachedBefore":  -2146826273,
+                                         "valueChangedAfterCalculation":  null
+                                     },
+                                     {
+                                         "address":  "D18",
+                                         "value":  "Ω",
+                                         "text":  "Ω",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "A19",
+                                         "value":  "中间计算",
+                                         "text":  "中间计算",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "B19",
+                                         "value":  "等效电感 (Leq) - 估算",
+                                         "text":  "等效电感 (Leq) - 估算",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "C19",
+                                         "value":  "12.38e-6",
+                                         "text":  "12.38e-6",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "D19",
+                                         "value":  "H",
+                                         "text":  "H",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "A20",
+                                         "value":  "中间计算",
+                                         "text":  "中间计算",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "B20",
+                                         "value":  "等效电阻 (Req)",
+                                         "text":  "等效电阻 (Req)",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "C20",
+                                         "value":  "0.035048",
+                                         "text":  "0.035048",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "D20",
+                                         "value":  "Ω",
+                                         "text":  "Ω",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "A21",
+                                         "value":  "中间计算",
+                                         "text":  "中间计算",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "B21",
+                                         "value":  "品质因数 (Q)",
+                                         "text":  "品质因数 (Q)",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "C21",
+                                         "value":  -2146826273,
+                                         "text":  "#VALUE!",
+                                         "hasFormula":  true,
+                                         "formula":  "=(2*PI()*B2*B18)/B19",
+                                         "formulaR1C1":  "=(2*PI()*R[-19]C[-1]*R[-3]C[-1])/R[-2]C[-1]",
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+                                                            "Sheet1!B2",
+                                                            "Sheet1!B18:B19"
+                                                        ],
+                                         "dependents":  [
+
+                                                        ],
+                                         "cachedBefore":  -2146826273,
+                                         "valueChangedAfterCalculation":  null
+                                     },
+                                     {
+                                         "address":  "D21",
+                                         "value":  "-",
+                                         "text":  "-",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "A23",
+                                         "value":  "最终结果",
+                                         "text":  "最终结果",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "B23",
+                                         "value":  "线圈电流 (I)",
+                                         "text":  "线圈电流 (I)",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "C23",
+                                         "value":  -2146826273,
+                                         "text":  "#VALUE!",
+                                         "hasFormula":  true,
+                                         "formula":  "=SQRT(B1*1000/B19)",
+                                         "formulaR1C1":  "=SQRT(R[-22]C[-1]*1000/R[-4]C[-1])",
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+                                                            "Sheet1!B1",
+                                                            "Sheet1!B19"
+                                                        ],
+                                         "dependents":  [
+
+                                                        ],
+                                         "cachedBefore":  -2146826273,
+                                         "valueChangedAfterCalculation":  null
+                                     },
+                                     {
+                                         "address":  "D23",
+                                         "value":  "A",
+                                         "text":  "A",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "A24",
+                                         "value":  "最终结果",
+                                         "text":  "最终结果",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "B24",
+                                         "value":  "线圈损耗 (P_loss)",
+                                         "text":  "线圈损耗 (P_loss)",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "C24",
+                                         "value":  -2146826273,
+                                         "text":  "#VALUE!",
+                                         "hasFormula":  true,
+                                         "formula":  "=B22^2*B17/1000",
+                                         "formulaR1C1":  "=R[-2]C[-1]^2*R[-7]C[-1]/1000",
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+                                                            "Sheet1!B22",
+                                                            "Sheet1!B17"
+                                                        ],
+                                         "dependents":  [
+
+                                                        ],
+                                         "cachedBefore":  -2146826273,
+                                         "valueChangedAfterCalculation":  null
+                                     },
+                                     {
+                                         "address":  "D24",
+                                         "value":  "kW",
+                                         "text":  "kW",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "A25",
+                                         "value":  "最终结果",
+                                         "text":  "最终结果",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "B25",
+                                         "value":  "线圈电压 (V_coil)",
+                                         "text":  "线圈电压 (V_coil)",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "C25",
+                                         "value":  -2146826273,
+                                         "text":  "#VALUE!",
+                                         "hasFormula":  true,
+                                         "formula":  "=B22*2*PI()*B2*B18",
+                                         "formulaR1C1":  "=R[-3]C[-1]*2*PI()*R[-23]C[-1]*R[-7]C[-1]",
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+                                                            "Sheet1!B22",
+                                                            "Sheet1!B2",
+                                                            "Sheet1!B18"
+                                                        ],
+                                         "dependents":  [
+
+                                                        ],
+                                         "cachedBefore":  -2146826273,
+                                         "valueChangedAfterCalculation":  null
+                                     },
+                                     {
+                                         "address":  "D25",
+                                         "value":  "V",
+                                         "text":  "V",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "A26",
+                                         "value":  "最终结果",
+                                         "text":  "最终结果",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "B26",
+                                         "value":  "冷却水流量 (W)",
+                                         "text":  "冷却水流量 (W)",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "C26",
+                                         "value":  -2146826273,
+                                         "text":  "#VALUE!",
+                                         "hasFormula":  true,
+                                         "formula":  "=(B23 + 0.2*(B1-B23))*860/(60*B13)",
+                                         "formulaR1C1":  "=(R[-3]C[-1] + 0.2*(R[-25]C[-1]-R[-3]C[-1]))*860/(60*R[-13]C[-1])",
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+                                                            "Sheet1!B1",
+                                                            "Sheet1!B23",
+                                                            "Sheet1!B13"
+                                                        ],
+                                         "dependents":  [
+
+                                                        ],
+                                         "cachedBefore":  -2146826273,
+                                         "valueChangedAfterCalculation":  null
+                                     },
+                                     {
+                                         "address":  "D26",
+                                         "value":  "L/min",
+                                         "text":  "L/min",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "A27",
+                                         "value":  "最终结果",
+                                         "text":  "最终结果",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "B27",
+                                         "value":  "变压器匝数比",
+                                         "text":  "变压器匝数比",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     },
+                                     {
+                                         "address":  "C27",
+                                         "value":  -2146826273,
+                                         "text":  "#VALUE!",
+                                         "hasFormula":  true,
+                                         "formula":  "=B22/(B1*1000/513)",
+                                         "formulaR1C1":  "=R[-5]C[-1]/(R[-26]C[-1]*1000/513)",
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+                                                            "Sheet1!B22",
+                                                            "Sheet1!B1"
+                                                        ],
+                                         "dependents":  [
+
+                                                        ],
+                                         "cachedBefore":  -2146826273,
+                                         "valueChangedAfterCalculation":  null
+                                     },
+                                     {
+                                         "address":  "D27",
+                                         "value":  "比值",
+                                         "text":  "比值",
+                                         "hasFormula":  false,
+                                         "formula":  null,
+                                         "formulaR1C1":  null,
+                                         "numberFormat":  "G/通用格式",
+                                         "style":  "System.__ComObject",
+                                         "merged":  false,
+                                         "locked":  true,
+                                         "precedents":  [
+
+                                                        ],
+                                         "dependents":  [
+
+                                                        ]
+                                     }
+                                 ],
+                       "comments":  [
+
+                                    ],
+                       "validations":  [
+
+                                       ],
+                       "shapes":  [
+
+                                  ],
+                       "conditionalFormats":  0,
+                       "tables":  0,
+                       "queryTables":  0,
+                       "pivotTables":  0
+                   }
+               ]
+}

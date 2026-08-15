@@ -1,0 +1,129 @@
+{
+  "path": "C:\\Users\\王小明\\OneDrive - UNSW\\桌面\\职称论文\\电磁感应项目\\长冈系数计算表.xlsx",
+  "bytes": 39101,
+  "mtime": 1774340021.0,
+  "sha256": "E2F88265E3EE04764E1D51D60E122B9916C1A42B5B290630D1780CABE06E337A",
+  "parts": [
+    {
+      "name": "xl/workbook.xml",
+      "size": 736,
+      "compressed": 318
+    },
+    {
+      "name": "xl/styles.xml",
+      "size": 5768,
+      "compressed": 862
+    },
+    {
+      "name": "xl/theme/theme1.xml",
+      "size": 3277,
+      "compressed": 751
+    },
+    {
+      "name": "xl/sharedStrings.xml",
+      "size": 115,
+      "compressed": 101
+    },
+    {
+      "name": "xl/worksheets/sheet1.xml",
+      "size": 2776,
+      "compressed": 1052
+    },
+    {
+      "name": "xl/worksheets/sheet2.xml",
+      "size": 194111,
+      "compressed": 31766
+    },
+    {
+      "name": "xl/worksheets/sheet3.xml",
+      "size": 4796,
+      "compressed": 1246
+    },
+    {
+      "name": "xl/worksheets/sheet4.xml",
+      "size": 1641,
+      "compressed": 803
+    },
+    {
+      "name": "_rels/.rels",
+      "size": 296,
+      "compressed": 296
+    },
+    {
+      "name": "xl/_rels/workbook.xml.rels",
+      "size": 1231,
+      "compressed": 320
+    },
+    {
+      "name": "[Content_Types].xml",
+      "size": 1262,
+      "compressed": 290
+    }
+  ],
+  "workbook": {
+    "calcPr": null,
+    "workbookPr": null,
+    "defined_names": [],
+    "sheets": [
+      {
+        "name": "说明",
+        "sheetId": "1",
+        "state": "visible",
+        "relationship_id": "R7231dd5ca3974f1a",
+        "part": "//xl/worksheets/sheet1.xml"
+      },
+      {
+        "name": "长冈系数计算",
+        "sheetId": "2",
+        "state": "visible",
+        "relationship_id": "R0ecc7ed5fdd04b98",
+        "part": "//xl/worksheets/sheet2.xml"
+      },
+      {
+        "name": "表格校验",
+        "sheetId": "3",
+        "state": "visible",
+        "relationship_id": "R7dcb3ddee59a4503",
+        "part": "//xl/worksheets/sheet3.xml"
+      },
+      {
+        "name": "公式出处",
+        "sheetId": "4",
+        "state": "visible",
+        "relationship_id": "R64053bf4642f4450",
+        "part": "//xl/worksheets/sheet4.xml"
+      }
+    ],
+    "external_relationships": []
+  },
+  "sheets": [
+    {
+      "name": "说明",
+      "part": "//xl/worksheets/sheet1.xml",
+      "error": "missing XML"
+    },
+    {
+      "name": "长冈系数计算",
+      "part": "//xl/worksheets/sheet2.xml",
+      "error": "missing XML"
+    },
+    {
+      "name": "表格校验",
+      "part": "//xl/worksheets/sheet3.xml",
+      "error": "missing XML"
+    },
+    {
+      "name": "公式出处",
+      "part": "//xl/worksheets/sheet4.xml",
+      "error": "missing XML"
+    }
+  ],
+  "media": [],
+  "external_link_parts": [],
+  "custom_xml_parts": [],
+  "macros": [],
+  "embedded_objects": [],
+  "docProps/core.xml": null,
+  "docProps/app.xml": null,
+  "docProps/custom.xml": null
+}

@@ -1,0 +1,1166 @@
+{
+  "path": "C:\\Users\\王小明\\OneDrive - UNSW\\桌面\\职称论文\\电磁感应项目\\感应加热线圈计算工具.xlsx",
+  "bytes": 6502,
+  "mtime": 1773886060.0,
+  "sha256": "025222F7B1206AFFB08700BAB27AADC8D662FD3EB3CCCE2DFC5389322AA2EF22",
+  "parts": [
+    {
+      "name": "[Content_Types].xml",
+      "size": 1167,
+      "compressed": 335
+    },
+    {
+      "name": "_rels/.rels",
+      "size": 587,
+      "compressed": 233
+    },
+    {
+      "name": "xl/_rels/workbook.xml.rels",
+      "size": 697,
+      "compressed": 232
+    },
+    {
+      "name": "xl/worksheets/sheet1.xml",
+      "size": 4169,
+      "compressed": 958
+    },
+    {
+      "name": "xl/workbook.xml",
+      "size": 550,
+      "compressed": 328
+    },
+    {
+      "name": "xl/sharedStrings.xml",
+      "size": 1528,
+      "compressed": 643
+    },
+    {
+      "name": "xl/styles.xml",
+      "size": 1341,
+      "compressed": 507
+    },
+    {
+      "name": "xl/theme/theme1.xml",
+      "size": 6994,
+      "compressed": 1456
+    },
+    {
+      "name": "docProps/core.xml",
+      "size": 592,
+      "compressed": 293
+    },
+    {
+      "name": "docProps/app.xml",
+      "size": 784,
+      "compressed": 375
+    }
+  ],
+  "workbook": {
+    "calcPr": {
+      "calcId": "124519",
+      "fullCalcOnLoad": "1"
+    },
+    "workbookPr": {
+      "defaultThemeVersion": "124226"
+    },
+    "defined_names": [],
+    "sheets": [
+      {
+        "name": "Sheet1",
+        "sheetId": "1",
+        "state": "visible",
+        "relationship_id": "rId1",
+        "part": "xl/worksheets/sheet1.xml"
+      }
+    ],
+    "external_relationships": []
+  },
+  "sheets": [
+    {
+      "name": "Sheet1",
+      "part": "xl/worksheets/sheet1.xml",
+      "dimension": "A1:D27",
+      "cells": [
+        {
+          "ref": "A1",
+          "type": "s",
+          "style_id": 1,
+          "numFmtId": "0",
+          "value": "类别",
+          "cached_raw": "0",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "B1",
+          "type": "s",
+          "style_id": 1,
+          "numFmtId": "0",
+          "value": "参数名称",
+          "cached_raw": "1",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "C1",
+          "type": "s",
+          "style_id": 1,
+          "numFmtId": "0",
+          "value": "数值/公式示例",
+          "cached_raw": "2",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "D1",
+          "type": "s",
+          "style_id": 1,
+          "numFmtId": "0",
+          "value": "单位",
+          "cached_raw": "3",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "A2",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "输入参数",
+          "cached_raw": "4",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "B2",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "额定功率 (P)",
+          "cached_raw": "8",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "C2",
+          "type": null,
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": 133,
+          "cached_raw": "133",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "D2",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "kW",
+          "cached_raw": "33",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "A3",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "输入参数",
+          "cached_raw": "4",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "B3",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "工作频率 (f)",
+          "cached_raw": "9",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "C3",
+          "type": null,
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": 10000,
+          "cached_raw": "10000",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "D3",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "Hz",
+          "cached_raw": "34",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "A4",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "输入参数",
+          "cached_raw": "4",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "B4",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "线圈内径 (D1)",
+          "cached_raw": "10",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "C4",
+          "type": null,
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": 888,
+          "cached_raw": "888",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "D4",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "mm",
+          "cached_raw": "35",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "A5",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "输入参数",
+          "cached_raw": "4",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "B5",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "炉料外径 (D2)",
+          "cached_raw": "11",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "C5",
+          "type": null,
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": 766,
+          "cached_raw": "766",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "D5",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "mm",
+          "cached_raw": "35",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "A6",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "输入参数",
+          "cached_raw": "4",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "B6",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "线圈总匝数 (N)",
+          "cached_raw": "12",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "C6",
+          "type": null,
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": 4,
+          "cached_raw": "4",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "D6",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "匝",
+          "cached_raw": "36",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "A7",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "输入参数",
+          "cached_raw": "4",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "B7",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "线圈总高度 (L1)",
+          "cached_raw": "13",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "C7",
+          "type": null,
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": 300,
+          "cached_raw": "300",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "D7",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "mm",
+          "cached_raw": "35",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "A8",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "输入参数",
+          "cached_raw": "4",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "B8",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "铜管高度 (h_cu)",
+          "cached_raw": "14",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "C8",
+          "type": null,
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": 60,
+          "cached_raw": "60",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "D8",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "mm",
+          "cached_raw": "35",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "A9",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "输入参数",
+          "cached_raw": "4",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "B9",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "炉料高度 (L2)",
+          "cached_raw": "15",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "C9",
+          "type": null,
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": 300,
+          "cached_raw": "300",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "D9",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "mm",
+          "cached_raw": "35",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "A10",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "输入参数",
+          "cached_raw": "4",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "B10",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "炉料电阻率 (rho_w)",
+          "cached_raw": "16",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "C10",
+          "type": null,
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": 3e-06,
+          "cached_raw": "3E-06",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "D10",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "Ω·m",
+          "cached_raw": "37",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "A12",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "常量",
+          "cached_raw": "5",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "B12",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "铜电阻率 (rho_cu)",
+          "cached_raw": "17",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "C12",
+          "type": null,
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": 2e-08,
+          "cached_raw": "2E-08",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "D12",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "Ω·m",
+          "cached_raw": "37",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "A13",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "常量",
+          "cached_raw": "5",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "B13",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "真空磁导率 (mu0)",
+          "cached_raw": "18",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "C13",
+          "type": null,
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": 1.2566e-06,
+          "cached_raw": "1.2566E-06",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "D13",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "H/m",
+          "cached_raw": "38",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "A14",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "常量",
+          "cached_raw": "5",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "B14",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "进出水温差 (deltaT)",
+          "cached_raw": "19",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "C14",
+          "type": null,
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": 20,
+          "cached_raw": "20",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "D14",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "°C",
+          "cached_raw": "39",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "A16",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "中间计算",
+          "cached_raw": "6",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "B16",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "铜管肌肤深度 (delta_cu)",
+          "cached_raw": "20",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "C16",
+          "type": null,
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": 0,
+          "cached_raw": "0",
+          "formula": "SQRT(B11/(PI()*B2*B12))",
+          "formula_attrs": {}
+        },
+        {
+          "ref": "D16",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "m",
+          "cached_raw": "40",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "A17",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "中间计算",
+          "cached_raw": "6",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "B17",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "炉料肌肤深度 (delta_w)",
+          "cached_raw": "21",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "C17",
+          "type": null,
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": 0,
+          "cached_raw": "0",
+          "formula": "SQRT(B9/(PI()*B2*B12))",
+          "formula_attrs": {}
+        },
+        {
+          "ref": "D17",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "m",
+          "cached_raw": "40",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "A18",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "中间计算",
+          "cached_raw": "6",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "B18",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "线圈电阻 (Rc)",
+          "cached_raw": "22",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "C18",
+          "type": null,
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": 0,
+          "cached_raw": "0",
+          "formula": "B11*(PI()*(B3/1000)*B5)/((B7/1000)*B15)",
+          "formula_attrs": {}
+        },
+        {
+          "ref": "D18",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "Ω",
+          "cached_raw": "41",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "A19",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "中间计算",
+          "cached_raw": "6",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "B19",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "等效电感 (Leq) - 估算",
+          "cached_raw": "23",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "C19",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "12.38e-6",
+          "cached_raw": "31",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "D19",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "H",
+          "cached_raw": "42",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "A20",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "中间计算",
+          "cached_raw": "6",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "B20",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "等效电阻 (Req)",
+          "cached_raw": "24",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "C20",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "0.035048",
+          "cached_raw": "32",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "D20",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "Ω",
+          "cached_raw": "41",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "A21",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "中间计算",
+          "cached_raw": "6",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "B21",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "品质因数 (Q)",
+          "cached_raw": "25",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "C21",
+          "type": null,
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": 0,
+          "cached_raw": "0",
+          "formula": "(2*PI()*B2*B18)/B19",
+          "formula_attrs": {}
+        },
+        {
+          "ref": "D21",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "-",
+          "cached_raw": "43",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "A23",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "最终结果",
+          "cached_raw": "7",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "B23",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "线圈电流 (I)",
+          "cached_raw": "26",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "C23",
+          "type": null,
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": 0,
+          "cached_raw": "0",
+          "formula": "SQRT(B1*1000/B19)",
+          "formula_attrs": {}
+        },
+        {
+          "ref": "D23",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "A",
+          "cached_raw": "44",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "A24",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "最终结果",
+          "cached_raw": "7",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "B24",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "线圈损耗 (P_loss)",
+          "cached_raw": "27",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "C24",
+          "type": null,
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": 0,
+          "cached_raw": "0",
+          "formula": "B22^2*B17/1000",
+          "formula_attrs": {}
+        },
+        {
+          "ref": "D24",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "kW",
+          "cached_raw": "33",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "A25",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "最终结果",
+          "cached_raw": "7",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "B25",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "线圈电压 (V_coil)",
+          "cached_raw": "28",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "C25",
+          "type": null,
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": 0,
+          "cached_raw": "0",
+          "formula": "B22*2*PI()*B2*B18",
+          "formula_attrs": {}
+        },
+        {
+          "ref": "D25",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "V",
+          "cached_raw": "45",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "A26",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "最终结果",
+          "cached_raw": "7",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "B26",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "冷却水流量 (W)",
+          "cached_raw": "29",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "C26",
+          "type": null,
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": 0,
+          "cached_raw": "0",
+          "formula": "(B23 + 0.2*(B1-B23))*860/(60*B13)",
+          "formula_attrs": {}
+        },
+        {
+          "ref": "D26",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "L/min",
+          "cached_raw": "46",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "A27",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "最终结果",
+          "cached_raw": "7",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "B27",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "变压器匝数比",
+          "cached_raw": "30",
+          "formula": null,
+          "formula_attrs": {}
+        },
+        {
+          "ref": "C27",
+          "type": null,
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": 0,
+          "cached_raw": "0",
+          "formula": "B22/(B1*1000/513)",
+          "formula_attrs": {}
+        },
+        {
+          "ref": "D27",
+          "type": "s",
+          "style_id": 0,
+          "numFmtId": "0",
+          "value": "比值",
+          "cached_raw": "47",
+          "formula": null,
+          "formula_attrs": {}
+        }
+      ],
+      "row_attributes": [
+        {
+          "r": "1",
+          "spans": "1:4"
+        },
+        {
+          "r": "2",
+          "spans": "1:4"
+        },
+        {
+          "r": "3",
+          "spans": "1:4"
+        },
+        {
+          "r": "4",
+          "spans": "1:4"
+        },
+        {
+          "r": "5",
+          "spans": "1:4"
+        },
+        {
+          "r": "6",
+          "spans": "1:4"
+        },
+        {
+          "r": "7",
+          "spans": "1:4"
+        },
+        {
+          "r": "8",
+          "spans": "1:4"
+        },
+        {
+          "r": "9",
+          "spans": "1:4"
+        },
+        {
+          "r": "10",
+          "spans": "1:4"
+        },
+        {
+          "r": "12",
+          "spans": "1:4"
+        },
+        {
+          "r": "13",
+          "spans": "1:4"
+        },
+        {
+          "r": "14",
+          "spans": "1:4"
+        },
+        {
+          "r": "16",
+          "spans": "1:4"
+        },
+        {
+          "r": "17",
+          "spans": "1:4"
+        },
+        {
+          "r": "18",
+          "spans": "1:4"
+        },
+        {
+          "r": "19",
+          "spans": "1:4"
+        },
+        {
+          "r": "20",
+          "spans": "1:4"
+        },
+        {
+          "r": "21",
+          "spans": "1:4"
+        },
+        {
+          "r": "23",
+          "spans": "1:4"
+        },
+        {
+          "r": "24",
+          "spans": "1:4"
+        },
+        {
+          "r": "25",
+          "spans": "1:4"
+        },
+        {
+          "r": "26",
+          "spans": "1:4"
+        },
+        {
+          "r": "27",
+          "spans": "1:4"
+        }
+      ],
+      "hidden_rows": [],
+      "hidden_columns": [],
+      "merges": [],
+      "data_validations": [],
+      "conditional_formatting": [],
+      "hyperlinks": [],
+      "drawing_objects": [],
+      "comments": [],
+      "protection": null,
+      "auto_filter": null,
+      "tables": [],
+      "external_relationships": [],
+      "relationships": {}
+    }
+  ],
+  "media": [],
+  "external_link_parts": [],
+  "custom_xml_parts": [],
+  "macros": [],
+  "embedded_objects": [],
+  "docProps/core.xml": "<ns0:coreProperties xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:ns0=\"http://schemas.openxmlformats.org/package/2006/metadata/core-properties\" xmlns:ns2=\"http://purl.org/dc/terms/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><dc:creator /><ns0:lastModifiedBy /><ns2:created xsi:type=\"dcterms:W3CDTF\">2026-03-19T01:49:13Z</ns2:created><ns2:modified xsi:type=\"dcterms:W3CDTF\">2026-03-19T01:49:13Z</ns2:modified></ns0:coreProperties>",
+  "docProps/app.xml": "<ns0:Properties xmlns:ns0=\"http://schemas.openxmlformats.org/officeDocument/2006/extended-properties\" xmlns:ns1=\"http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes\"><ns0:Application>Microsoft Excel</ns0:Application><ns0:DocSecurity>0</ns0:DocSecurity><ns0:ScaleCrop>false</ns0:ScaleCrop><ns0:HeadingPairs><ns1:vector size=\"2\" baseType=\"variant\"><ns1:variant><ns1:lpstr>Worksheets</ns1:lpstr></ns1:variant><ns1:variant><ns1:i4>1</ns1:i4></ns1:variant></ns1:vector></ns0:HeadingPairs><ns0:TitlesOfParts><ns1:vector size=\"1\" baseType=\"lpstr\"><ns1:lpstr>Sheet1</ns1:lpstr></ns1:vector></ns0:TitlesOfParts><ns0:Company /><ns0:LinksUpToDate>false</ns0:LinksUpToDate><ns0:SharedDoc>false</ns0:SharedDoc><ns0:HyperlinksChanged>false</ns0:HyperlinksChanged><ns0:AppVersion>12.0000</ns0:AppVersion></ns0:Properties>",
+  "docProps/custom.xml": null
+}

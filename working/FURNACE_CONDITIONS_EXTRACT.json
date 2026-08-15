@@ -1,0 +1,211 @@
+{
+  "file": "C:\\Users\\王小明\\OneDrive - UNSW\\桌面\\职称论文\\电磁感应项目\\电磁感应炉管条件 - 20260310-R4.docx",
+  "paragraph_count": 21,
+  "table_count": 2,
+  "image_count": 2,
+  "records": [
+    {
+      "kind": "paragraph",
+      "index": 1,
+      "text": "管内介质：乙烷+蒸汽"
+    },
+    {
+      "kind": "paragraph",
+      "index": 2,
+      "text": "方案一：单组单程炉管（下进上出）"
+    },
+    {
+      "kind": "paragraph",
+      "index": 4,
+      "text": "炉管根数：16"
+    },
+    {
+      "kind": "paragraph",
+      "index": 5,
+      "text": "单根管反应所需热负荷：0.1275MW"
+    },
+    {
+      "kind": "paragraph",
+      "index": 6,
+      "text": "介质入口温度：653℃"
+    },
+    {
+      "kind": "paragraph",
+      "index": 7,
+      "text": "介质出口温度：880℃"
+    },
+    {
+      "kind": "paragraph",
+      "index": 8,
+      "text": "单根炉管处理量：156.7kg/h（120.54kg/h 乙烷+36.16kg/h蒸汽）"
+    },
+    {
+      "kind": "paragraph",
+      "index": 9,
+      "text": "单程炉管金属设计壁温：1125℃"
+    },
+    {
+      "kind": "paragraph",
+      "index": 10,
+      "text": "单程炉管金属操作壁温：950~1100℃"
+    },
+    {
+      "kind": "paragraph",
+      "index": 11,
+      "text": "单程炉管考虑四个温区控制。"
+    },
+    {
+      "kind": "paragraph",
+      "index": 13,
+      "text": "两组6程（1-1-1-1-1-1）炉管（上进上出）"
+    },
+    {
+      "kind": "paragraph",
+      "index": 15,
+      "text": "单根管反应所需热负荷：1.02MW"
+    },
+    {
+      "kind": "paragraph",
+      "index": 16,
+      "text": "介质入口温度：653℃"
+    },
+    {
+      "kind": "paragraph",
+      "index": 17,
+      "text": "介质出口温度：845℃"
+    },
+    {
+      "kind": "paragraph",
+      "index": 18,
+      "text": "单根炉管处理量：1253kg/h（964kg/h 乙烷+289kg/h蒸汽）"
+    },
+    {
+      "kind": "paragraph",
+      "index": 19,
+      "text": "单程炉管金属操作壁温：800~1100℃"
+    },
+    {
+      "kind": "paragraph",
+      "index": 20,
+      "text": "炉管金属设计壁温：1125℃"
+    },
+    {
+      "kind": "paragraph",
+      "index": 21,
+      "text": "每一程管考虑两个温区控制。"
+    },
+    {
+      "kind": "table",
+      "index": 1,
+      "rows": [
+        {
+          "row": 1,
+          "cells": [
+            "",
+            "下",
+            "上"
+          ]
+        },
+        {
+          "row": 2,
+          "cells": [
+            "内径 mm",
+            "43",
+            "46"
+          ]
+        },
+        {
+          "row": 3,
+          "cells": [
+            "壁厚 mm",
+            "6",
+            "6"
+          ]
+        },
+        {
+          "row": 4,
+          "cells": [
+            "管长 mm",
+            "5000",
+            "5000"
+          ]
+        },
+        {
+          "row": 5,
+          "cells": [
+            "炉管间距 mm",
+            "（请按照电磁感应需求确认）",
+            "（请按照电磁感应需求确认）"
+          ]
+        },
+        {
+          "row": 6,
+          "cells": [
+            "材料",
+            "25Cr35Ni",
+            "35Cr45Ni"
+          ]
+        }
+      ],
+      "row_count": 6,
+      "column_count": 3
+    },
+    {
+      "kind": "table",
+      "index": 2,
+      "rows": [
+        {
+          "row": 1,
+          "cells": [
+            "",
+            "第1,2,3程",
+            "第4,5,6程"
+          ]
+        },
+        {
+          "row": 2,
+          "cells": [
+            "内径 mm",
+            "95",
+            "104"
+          ]
+        },
+        {
+          "row": 3,
+          "cells": [
+            "壁厚 mm",
+            "7",
+            "8"
+          ]
+        },
+        {
+          "row": 4,
+          "cells": [
+            "管长 mm",
+            "9200/9200/9200",
+            "9200/9200/9200"
+          ]
+        },
+        {
+          "row": 5,
+          "cells": [
+            "炉管间距mm",
+            "请按照电磁感应需求确认",
+            "请按照电磁感应需求确认"
+          ]
+        },
+        {
+          "row": 6,
+          "cells": [
+            "材料",
+            "25Cr35Ni",
+            "35Cr45Ni"
+          ]
+        }
+      ],
+      "row_count": 6,
+      "column_count": 3
+    }
+  ],
+  "math_texts": []
+}

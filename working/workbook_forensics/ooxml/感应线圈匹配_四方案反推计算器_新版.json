@@ -1,0 +1,155 @@
+{
+  "path": "C:\\Users\\王小明\\OneDrive - UNSW\\桌面\\职称论文\\电磁感应项目\\感应线圈匹配_四方案反推计算器_新版.xlsx",
+  "bytes": 18569,
+  "mtime": 1773886060.0,
+  "sha256": "7240D34FC8FA202AF49F551502BBE18E39F9AEE141F23EFCF59A1CDA0A02FEE2",
+  "parts": [
+    {
+      "name": "docProps/app.xml",
+      "size": 205,
+      "compressed": 149
+    },
+    {
+      "name": "docProps/core.xml",
+      "size": 555,
+      "compressed": 238
+    },
+    {
+      "name": "xl/theme/theme1.xml",
+      "size": 10140,
+      "compressed": 1552
+    },
+    {
+      "name": "xl/worksheets/sheet1.xml",
+      "size": 5272,
+      "compressed": 1317
+    },
+    {
+      "name": "xl/worksheets/sheet2.xml",
+      "size": 13336,
+      "compressed": 2950
+    },
+    {
+      "name": "xl/worksheets/sheet3.xml",
+      "size": 13368,
+      "compressed": 2952
+    },
+    {
+      "name": "xl/worksheets/sheet4.xml",
+      "size": 13370,
+      "compressed": 2953
+    },
+    {
+      "name": "xl/worksheets/sheet5.xml",
+      "size": 13349,
+      "compressed": 2955
+    },
+    {
+      "name": "xl/styles.xml",
+      "size": 4739,
+      "compressed": 872
+    },
+    {
+      "name": "_rels/.rels",
+      "size": 531,
+      "compressed": 192
+    },
+    {
+      "name": "xl/workbook.xml",
+      "size": 1173,
+      "compressed": 419
+    },
+    {
+      "name": "xl/_rels/workbook.xml.rels",
+      "size": 1084,
+      "compressed": 199
+    },
+    {
+      "name": "[Content_Types].xml",
+      "size": 1519,
+      "compressed": 299
+    }
+  ],
+  "workbook": {
+    "calcPr": {
+      "calcId": "124519",
+      "calcMode": "auto",
+      "fullCalcOnLoad": "1"
+    },
+    "workbookPr": {},
+    "defined_names": [],
+    "sheets": [
+      {
+        "name": "汇总",
+        "sheetId": "1",
+        "state": "visible",
+        "relationship_id": "rId1",
+        "part": "//xl/worksheets/sheet1.xml"
+      },
+      {
+        "name": "方案1_100kW_220",
+        "sheetId": "2",
+        "state": "visible",
+        "relationship_id": "rId2",
+        "part": "//xl/worksheets/sheet2.xml"
+      },
+      {
+        "name": "方案2_133kW_888",
+        "sheetId": "3",
+        "state": "visible",
+        "relationship_id": "rId3",
+        "part": "//xl/worksheets/sheet3.xml"
+      },
+      {
+        "name": "方案3_133kW_1027",
+        "sheetId": "4",
+        "state": "visible",
+        "relationship_id": "rId4",
+        "part": "//xl/worksheets/sheet4.xml"
+      },
+      {
+        "name": "方案4_400kW_1027x900",
+        "sheetId": "5",
+        "state": "visible",
+        "relationship_id": "rId5",
+        "part": "//xl/worksheets/sheet5.xml"
+      }
+    ],
+    "external_relationships": []
+  },
+  "sheets": [
+    {
+      "name": "汇总",
+      "part": "//xl/worksheets/sheet1.xml",
+      "error": "missing XML"
+    },
+    {
+      "name": "方案1_100kW_220",
+      "part": "//xl/worksheets/sheet2.xml",
+      "error": "missing XML"
+    },
+    {
+      "name": "方案2_133kW_888",
+      "part": "//xl/worksheets/sheet3.xml",
+      "error": "missing XML"
+    },
+    {
+      "name": "方案3_133kW_1027",
+      "part": "//xl/worksheets/sheet4.xml",
+      "error": "missing XML"
+    },
+    {
+      "name": "方案4_400kW_1027x900",
+      "part": "//xl/worksheets/sheet5.xml",
+      "error": "missing XML"
+    }
+  ],
+  "media": [],
+  "external_link_parts": [],
+  "custom_xml_parts": [],
+  "macros": [],
+  "embedded_objects": [],
+  "docProps/core.xml": "<ns0:coreProperties xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:ns0=\"http://schemas.openxmlformats.org/package/2006/metadata/core-properties\" xmlns:ns2=\"http://purl.org/dc/terms/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><dc:creator>openpyxl</dc:creator><ns2:created xsi:type=\"dcterms:W3CDTF\">2026-03-19T02:06:55Z</ns2:created><ns2:modified xsi:type=\"dcterms:W3CDTF\">2026-03-19T02:06:55Z</ns2:modified></ns0:coreProperties>",
+  "docProps/app.xml": "<ns0:Properties xmlns:ns0=\"http://schemas.openxmlformats.org/officeDocument/2006/extended-properties\"><ns0:Application>Microsoft Excel Compatible / Openpyxl 3.1.5</ns0:Application><ns0:AppVersion>3.1</ns0:AppVersion></ns0:Properties>",
+  "docProps/custom.xml": null
+}

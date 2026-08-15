@@ -1,0 +1,70 @@
+
+
+===== PDF PAGE 1 =====
+
+Volume16,Number10
+SIMPLEINDUCTANCEFORMULASFORRADIOCOILS*
+BY
+HAROLDA.WHEELER
+(HazeltineCorporation,Hoboken,N.J.)
+Tisthepurposeofthisbriefpapertopresenttwosimplefor-
+mulaswhichthewriterhasfoundveryusefulforcomputing
+theinductanceofthesimpletypesofradio-frequencycoils.
+Thenew.formulasarepatternedafteranempiricalformula
+derivedbyProfessorL.A.Hazeltinesomeyearsago,forthe
+Fig.1
+inductanceofamulti-layercoil.Thisformulafollows,for
+dimensionsininches,accordingtoFig.1:
+O.8a2n2L= microhenries (1)6a+9b+10c
+Thisformulaiscorrecttowithinabout1percentwhenthecoil
+hasapproximatelytheshapeshowninFig.1,suchthatthethree
+termsinthedenominatorareaboutequal.
+Thenewformulaswerederivedempiricallyfromtheinduc-
+tanceformulasandcurvesinCircular74oftheBureauofStand-
+ards.Thecorrespondingcoilformulasofthiscircular,however,
+eitherrelyontablesorincludeexpressionswhichareinconvenient
+tocompute.Forthisreasontherewasaneedformoreconvenient
+*OriginalManuscriptReceivedbytheInstitute,June18,1928.
+1398
+October,1928
+
+===== PDF PAGE 2 =====
+
+Wheeler:FormusforRadioCoils
+formulas,evenwiththelossofsomeaccuracy,foruseinthe
+laboratory.Theformulastobegivenareeasytorememberand
+canusuallybecomputedwithonesettingofthesliderule.
+-bt-b--I
+I
+a
+L
+Fig.2
+Oneformula(derivedinAugust,1925)givestheinductance
+ofasingle-layerhelicalcoil,intermsofthedimensionsininches,
+accordingtoFig.2:
+LIIW
+n1
+Fig.3
+a2n2L= microhenries9a+lOb
+Thisformulaiscorrecttowithin1 percentforcoilswithb>0.8a.
+(2)
+1399
+
+===== PDF PAGE 3 =====
+
+1400 Wheeler:FormulasforRadioCoils
+Theotherformula(derivedinDecember,1927)givesthe
+inductanceofasingle-layerspiral(orhelical)coil,intermsof
+thedimensionsininches,accordingtoFig.3(orFig.2):
+a2n2/ a2n2L= or microhenries (3)8a+11c 8a+11b/
+Thisformulaiscorrecttowithin5percentforcoilswithc>0.2a.
+(or2a>b>0.2a).
+Ingeneral,formula(2)shouldbeusedforhelicalcoils,
+wheneverb>a,since(2)ismoreaccurateunderthiscondition.
+Forshorterhelicalcoils,however,formula(3)-inparentheses-
+ismoreaccurate,whena>b>0.2a.Thetwoformulas(2)and
+(3)givethesamevaluewhenb=a.
+Inbothformulas(2)and(3),theaccuracymaybelessthan
+thestatedaccuracywhentherearetoofewturns,whenthe
+spacingbetweenturnsistoogreat,orwhentheskineffectand
+distributedcapacityareimportantfactors.

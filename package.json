@@ -1,0 +1,42 @@
+{
+  "name": "induction-heating-engineering-calculator",
+  "version": "0.2.0-mvp.1",
+  "private": true,
+  "type": "module",
+  "description": "Controlled engineering calculation core for the Induction Heating Engineering Calculator.",
+  "packageManager": "pnpm@11.19.0",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "node scripts/run-vitest.mjs run",
+    "test:watch": "node scripts/run-vitest.mjs",
+    "dev:ui": "vite --config vite.ui.standard.config.ts --host 127.0.0.1",
+    "preview:ui": "vite preview --config vite.ui.standard.config.ts --host 127.0.0.1",
+    "build:standard": "vite build --config vite.standard.config.ts",
+    "build:portable": "vite build --config vite.portable.config.ts",
+    "build:ui:standard": "vite build --config vite.ui.standard.config.ts",
+    "build:ui:portable": "vite build --config vite.ui.portable.config.ts",
+    "verify:sources": "node scripts/verify-source-manifest.mjs",
+    "verify:artifacts": "node scripts/verify-foundation-builds.mjs",
+    "verify:ui:artifacts": "node scripts/verify-ui-builds.mjs",
+    "verify:ui": "pnpm run build:standard && pnpm run build:portable && pnpm run build:ui:standard && pnpm run build:ui:portable && pnpm run verify:ui:artifacts",
+    "build": "pnpm run typecheck && pnpm run test && pnpm run build:standard && pnpm run build:portable && pnpm run verify:artifacts",
+    "verify:foundation": "pnpm run verify:sources && pnpm run build",
+    "verify:mvp": "pnpm run verify:sources && pnpm run typecheck && pnpm run test && pnpm run verify:ui"
+  },
+  "dependencies": {
+    "@noble/hashes": "2.3.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "26.2.0",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4",
+    "typescript": "7.0.2",
+    "vite": "8.2.1",
+    "vitest": "4.1.10"
+  }
+}
