@@ -32,3 +32,5 @@ export * from "./serialization/canonical-json.js";
 export * from "./serialization/case-file.js";
 export * from "./serialization/case-schema.js";
 export * from "./units/index.js";
+export * from "./interchange/index.js";
+export * from "./visualization/sceneModel.js";

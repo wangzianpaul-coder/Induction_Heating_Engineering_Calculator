@@ -1,7 +1,7 @@
 export const TECHNICAL_FREEZE_ID = "IH-EC-V1-G0-2026-08-14-01" as const;
 
 export const VERSION_INFO = Object.freeze({
-  application: "0.3.0-mvp.1",
+  application: "0.9.0-beta.1",
   calculationModel: "1.0.0-gate0",
   materialDatabase: "0.0.0-unreleased",
   caseSchema: "1.0.0-alpha.1",
@@ -16,7 +16,7 @@ export const VERSION_INFO = Object.freeze({
   calculationBasis: "CALCULATION_BASIS@IH-EC-V1-G0-2026-08-14-01",
   calculationContracts: "CALCULATION_CONTRACTS@IH-EC-V1-G0-2026-08-14-01",
   technicalFreezeId: TECHNICAL_FREEZE_ID,
-  implementationPhase: "phase_5b_runnable_mvp",
+  implementationPhase: "v0_9_test_release",
 } as const);
 
 export type VersionInfo = typeof VERSION_INFO;

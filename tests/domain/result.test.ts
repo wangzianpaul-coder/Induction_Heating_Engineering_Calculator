@@ -140,7 +140,7 @@ function contextFor(
       reason: "No method comparison was requested for this calculation.",
     },
     versions: {
-      application: "0.3.0-mvp.1",
+      application: "0.9.0-beta.1",
       calculationModel: "1.0.0-gate0",
       materialDatabase: "0.0.0-unreleased",
       caseSchema: "1.0.0-alpha.1",

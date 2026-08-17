@@ -44,21 +44,61 @@ function normalize(value: unknown, path: string, seen: Set<object>): JsonValue {
 
   try {
     if (Array.isArray(value)) {
-      for (let index = 0; index < value.length; index += 1) {
-        if (!Object.hasOwn(value, index)) {
-          throw new CanonicalJsonError(`${path} contains a sparse array slot at index ${String(index)}.`);
-        }
+      if (Object.getPrototypeOf(value) !== Array.prototype) {
+        throw new CanonicalJsonError(`${path} must use the standard Array prototype.`);
       }
-      const allowedArrayKeys = new Set<string>([
-        ...value.map((_, index) => String(index)),
-        "length",
-      ]);
+      const lengthDescriptor = Object.getOwnPropertyDescriptor(value, "length");
+      if (
+        lengthDescriptor === undefined ||
+        !("value" in lengthDescriptor) ||
+        typeof lengthDescriptor.value !== "number" ||
+        !Number.isSafeInteger(lengthDescriptor.value) ||
+        lengthDescriptor.value < 0
+      ) {
+        throw new CanonicalJsonError(`${path} has an invalid array length.`);
+      }
+      const length = lengthDescriptor.value;
+      const descriptors = new Map<number, PropertyDescriptor>();
       for (const key of Reflect.ownKeys(value)) {
-        if (typeof key !== "string" || !allowedArrayKeys.has(key)) {
+        if (key === "length") continue;
+        if (typeof key !== "string") {
+          throw new CanonicalJsonError(`${path} contains a symbol array key.`);
+        }
+        const index = Number(key);
+        if (
+          !Number.isSafeInteger(index) ||
+          index < 0 ||
+          index >= length ||
+          String(index) !== key
+        ) {
           throw new CanonicalJsonError(`${path} contains a non-JSON array property.`);
         }
+        const descriptor = Object.getOwnPropertyDescriptor(value, key);
+        if (
+          descriptor === undefined ||
+          !descriptor.enumerable ||
+          !("value" in descriptor)
+        ) {
+          throw new CanonicalJsonError(
+            `${path}[${key}] must be an enumerable data property; accessors are forbidden.`,
+          );
+        }
+        descriptors.set(index, descriptor);
       }
-      return value.map((item, index) => normalize(item, `${path}[${index}]`, seen));
+      if (descriptors.size !== length) {
+        throw new CanonicalJsonError(`${path} contains a sparse array slot.`);
+      }
+      const output: JsonValue[] = [];
+      for (let index = 0; index < length; index += 1) {
+        const descriptor = descriptors.get(index);
+        if (descriptor === undefined || !("value" in descriptor)) {
+          throw new CanonicalJsonError(
+            `${path} contains a sparse array slot at index ${String(index)}.`,
+          );
+        }
+        output.push(normalize(descriptor.value, `${path}[${index}]`, seen));
+      }
+      return output;
     }
 
     const prototype = Object.getPrototypeOf(value) as object | null;

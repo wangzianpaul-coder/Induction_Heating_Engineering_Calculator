@@ -1,10 +1,14 @@
 import {
   APPLICATION_READINESS,
+  BASIC_CALCULATOR_SCHEMA_VERSION,
   METHOD_READINESS_ROWS,
   MVP_RUNNABLE_METHOD_DEFINITIONS,
   PARAMETER_DEFINITION_ROWS,
   calculateMvpWorkspace,
+  calculateBasicCalculator,
+  buildVisualizationSceneFromMechanicalInput,
   inspectCurrentCaseFile,
+  loadCaseVisualizationScene,
   loadMvpWorkspace,
   saveMvpWorkspace,
   type CurrentCaseSummary,
@@ -157,12 +161,20 @@ export const ENGINEERING_UI_APPLICATION: EngineeringUiApplication = {
   reference: {
     productName: "Induction Heating Engineering Calculator",
     productShortName: "IH Engineering Calculator",
-    phaseLabel: "Phase 5B controlled Runnable MVP workspace",
+    phaseLabel: "Version 0.9 controlled application workspace",
     technicalFreezeId: APPLICATION_READINESS.versions.technicalFreezeId,
     parameters: PARAMETER_DEFINITION_ROWS.map(parameterRow),
     methods: METHOD_READINESS_ROWS.map(methodRow),
     capabilities: capabilityRows(),
     versions: versionRows(),
+  },
+  basic: {
+    schemaVersion: BASIC_CALCULATOR_SCHEMA_VERSION,
+    calculate: calculateBasicCalculator,
+  },
+  visualization: {
+    buildFromMechanicalInput: buildVisualizationSceneFromMechanicalInput,
+    loadCase: loadCaseVisualizationScene,
   },
   mvp: {
     methods: MVP_RUNNABLE_METHOD_DEFINITIONS,

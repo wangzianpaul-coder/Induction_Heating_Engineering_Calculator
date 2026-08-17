@@ -6,24 +6,29 @@ import { parseAst } from "vite";
 
 const root = process.cwd();
 const RELEASE_MANIFEST_SCHEMA_VERSION = "1.0.0-alpha.1";
-const EXPECTED_IMPLEMENTATION_PHASE = "phase_5b_runnable_mvp";
+const EXPECTED_IMPLEMENTATION_PHASE = "v0_9_test_release";
 const EXPECTED_TECHNICAL_FREEZE_ID = "IH-EC-V1-G0-2026-08-14-01";
+const EXPECTED_UI_RELEASE_PROFILE = "v0.9-test";
+const EXPECTED_UI_ACCEPTANCE_BOUNDARY =
+  "automated_release_gate_with_manual_clean_pc_acceptance_pending";
+const EXPECTED_KNOWN_LIMITATIONS_FILE = "V0_9_KNOWN_LIMITATIONS.md";
+const EXPECTED_DOCUMENT_LANGUAGE = "zh-Hans";
 const packageMetadata = JSON.parse(
   await readFile(resolve(root, "package.json"), "utf8"),
 );
 
 const UI_TARGETS = Object.freeze([
   Object.freeze({
-    label: "Phase 5B Runnable MVP Standard UI",
-    directory: resolve(root, "dist", "phase5-ui-standard-static"),
-    buildKind: "phase5-ui-standard-static",
+    label: "Version 0.9 Test Release Standard UI",
+    directory: resolve(root, "dist", "v0.9-ui-standard-static"),
+    buildKind: "v0.9-ui-standard-static",
     moduleLoading: "static_es_module",
     htmlMode: "module",
   }),
   Object.freeze({
-    label: "Phase 5B Runnable MVP Portable UI",
-    directory: resolve(root, "dist", "phase5-ui-portable-offline"),
-    buildKind: "phase5-ui-portable-offline",
+    label: "Version 0.9 Test Release Portable UI",
+    directory: resolve(root, "dist", "v0.9-ui-portable-offline"),
+    buildKind: "v0.9-ui-portable-offline",
     moduleLoading: "none_iife",
     htmlMode: "classic",
   }),
@@ -102,6 +107,28 @@ async function verifyManifest(target, expectedScope) {
     throw new Error(`${target.label}: release manifest is incomplete.`);
   }
 
+  const isUiManifest = expectedScope === "v0_9_test_release_ui";
+  if (
+    isUiManifest &&
+    (manifest.releaseProfile !== EXPECTED_UI_RELEASE_PROFILE ||
+      manifest.acceptanceBoundary !== EXPECTED_UI_ACCEPTANCE_BOUNDARY ||
+      manifest.knownLimitationsFile !== EXPECTED_KNOWN_LIMITATIONS_FILE)
+  ) {
+    throw new Error(
+      `${target.label}: 0.9 test-release acceptance metadata is incorrect.`,
+    );
+  }
+  if (
+    !isUiManifest &&
+    ["releaseProfile", "acceptanceBoundary", "knownLimitationsFile"].some((key) =>
+      Object.hasOwn(manifest, key),
+    )
+  ) {
+    throw new Error(
+      `${target.label}: foundation manifest contains UI-only release metadata.`,
+    );
+  }
+
   const manifestNames = manifest.files.map((record) => record.file);
   if (new Set(manifestNames).size !== manifestNames.length) {
     throw new Error(`${target.label}: release manifest contains duplicate file records.`);
@@ -129,6 +156,31 @@ async function verifyManifest(target, expectedScope) {
     const sha256 = createHash("sha256").update(bytes).digest("hex");
     if (record.bytes !== fileStat.size || record.sha256 !== sha256) {
       throw new Error(`${target.label}: bytes/SHA-256 mismatch for ${record.file}.`);
+    }
+  }
+  if (isUiManifest) {
+    const knownLimitationsRecord = manifest.files.find(
+      (record) => record.file === EXPECTED_KNOWN_LIMITATIONS_FILE,
+    );
+    if (knownLimitationsRecord === undefined) {
+      throw new Error(
+        `${target.label}: the known-limitations file is absent from the hashed manifest.`,
+      );
+    }
+    const knownLimitationsText = await readFile(
+      safeManifestPath(target.directory, manifest.knownLimitationsFile),
+      "utf8",
+    );
+    if (
+      !knownLimitationsText.startsWith("# 0.9 测试版已知限制") ||
+      !/[\u3400-\u9fff]/u.test(knownLimitationsText) ||
+      /\b(?:ADR|GEO|DER|ID)(?:[-_:]|\b)|\b[A-J]-\d{2}\b|phase_/iu.test(
+        knownLimitationsText,
+      )
+    ) {
+      throw new Error(
+        `${target.label}: known limitations are not Chinese-first public release text.`,
+      );
     }
   }
 
@@ -230,40 +282,57 @@ async function verifyHtmlResourceReferences(html, directory, label) {
   }
 }
 
+function verifyChineseFirstDocument(html, label) {
+  const htmlTags = tags(html, "html");
+  if (
+    htmlTags.length !== 1 ||
+    attribute(htmlTags[0], "lang") !== EXPECTED_DOCUMENT_LANGUAGE
+  ) {
+    throw new Error(`${label}: document language must be zh-Hans.`);
+  }
+  if (!/<title>\s*感应加热工程计算器(?:\s|\||<)/u.test(html)) {
+    throw new Error(`${label}: document title is not Chinese-first.`);
+  }
+  if (!/<noscript\b[^>]*>[^<]*[\u3400-\u9fff][^<]*<\/noscript>/u.test(html)) {
+    throw new Error(`${label}: Chinese no-script guidance is absent.`);
+  }
+}
+
 async function verifyStandardHtml(directory) {
   const htmlPath = resolve(directory, "index.html");
   const html = await readFile(htmlPath, "utf8");
+  verifyChineseFirstDocument(html, "Version 0.9 Test Release Standard UI");
   if (!/\bid\s*=\s*["']root["']/iu.test(html)) {
-    throw new Error("Phase 5B Runnable MVP Standard UI: index.html has no #root mount element.");
+    throw new Error("Version 0.9 Test Release Standard UI: index.html has no #root mount element.");
   }
-  await verifyHtmlResourceReferences(html, directory, "Phase 5B Runnable MVP Standard UI");
+  await verifyHtmlResourceReferences(html, directory, "Version 0.9 Test Release Standard UI");
   const scriptTags = tags(html, "script");
   const moduleScripts = scriptTags.filter(
     (tag) => attribute(tag, "type")?.toLowerCase() === "module",
   );
   if (moduleScripts.length === 0) {
-    throw new Error("Phase 5B Runnable MVP Standard UI: index.html has no module entry script.");
+    throw new Error("Version 0.9 Test Release Standard UI: index.html has no module entry script.");
   }
   for (const tag of scriptTags) {
     const type = attribute(tag, "type");
     const src = attribute(tag, "src");
     if (type?.toLowerCase() !== "module" || src === null) {
-      throw new Error("Phase 5B Runnable MVP Standard UI: every script must be a referenced ES module.");
+      throw new Error("Version 0.9 Test Release Standard UI: every script must be a referenced ES module.");
     }
-    await assertLocalReference(directory, src, "Phase 5B Runnable MVP Standard UI script");
+    await assertLocalReference(directory, src, "Version 0.9 Test Release Standard UI script");
   }
 
   const stylesheets = tags(html, "link").filter(
     (tag) => attribute(tag, "rel")?.toLowerCase() === "stylesheet",
   );
   if (stylesheets.length === 0) {
-    throw new Error("Phase 5B Runnable MVP Standard UI: index.html has no local stylesheet.");
+    throw new Error("Version 0.9 Test Release Standard UI: index.html has no local stylesheet.");
   }
   for (const tag of stylesheets) {
     await assertLocalReference(
       directory,
       attribute(tag, "href"),
-      "Phase 5B Runnable MVP Standard UI stylesheet",
+      "Version 0.9 Test Release Standard UI stylesheet",
     );
   }
 }
@@ -301,7 +370,7 @@ function walkJavaScriptAst(rootNode, visitor) {
 }
 
 function assertNoPortableRuntimeImports(source) {
-  const ast = parseJavaScript(source, "Phase 5B Runnable MVP Portable UI");
+  const ast = parseJavaScript(source, "Version 0.9 Test Release Portable UI");
   let prohibited = false;
   walkJavaScriptAst(ast, (node) => {
     if (
@@ -318,12 +387,12 @@ function assertNoPortableRuntimeImports(source) {
     return true;
   });
   if (prohibited) {
-    throw new Error("Phase 5B Runnable MVP Portable UI: runtime module syntax remains in the classic bundle.");
+    throw new Error("Version 0.9 Test Release Portable UI: runtime module syntax remains in the classic bundle.");
   }
 }
 
 function assertPortableIife(source) {
-  const ast = parseJavaScript(source, "Phase 5B Runnable MVP Portable UI");
+  const ast = parseJavaScript(source, "Version 0.9 Test Release Portable UI");
   const hasTopLevelIife = ast.body.some((statement) => {
     if (statement.type !== "ExpressionStatement") {
       return false;
@@ -336,7 +405,7 @@ function assertPortableIife(source) {
     );
   });
   if (!hasTopLevelIife) {
-    throw new Error("Phase 5B Runnable MVP Portable UI: bundle is not a top-level IIFE.");
+    throw new Error("Version 0.9 Test Release Portable UI: bundle is not a top-level IIFE.");
   }
 }
 
@@ -430,7 +499,7 @@ function cssUrlReferences(source) {
   );
 }
 
-async function assertOfflineStylesheet(source, directory, label = "Phase 5B Runnable MVP UI stylesheet") {
+async function assertOfflineStylesheet(source, directory, label = "Version 0.9 Test Release UI stylesheet") {
   if (/@import\b/iu.test(source)) {
     throw new Error(`${label}: CSS @import is prohibited.`);
   }
@@ -561,13 +630,14 @@ async function verifyRuntimeArtifactPolicy(target, files) {
 
 async function verifyPortableHtmlAndBundle(directory) {
   const html = await readFile(resolve(directory, "index.html"), "utf8");
+  verifyChineseFirstDocument(html, "Version 0.9 Test Release Portable UI");
   if (!/\bid\s*=\s*["']root["']/iu.test(html)) {
-    throw new Error("Phase 5B Runnable MVP Portable UI: index.html has no #root mount element.");
+    throw new Error("Version 0.9 Test Release Portable UI: index.html has no #root mount element.");
   }
-  await verifyHtmlResourceReferences(html, directory, "Phase 5B Runnable MVP Portable UI");
+  await verifyHtmlResourceReferences(html, directory, "Version 0.9 Test Release Portable UI");
   const scriptTags = tags(html, "script");
   if (scriptTags.length !== 1) {
-    throw new Error("Phase 5B Runnable MVP Portable UI: index.html must contain exactly one classic script.");
+    throw new Error("Version 0.9 Test Release Portable UI: index.html must contain exactly one classic script.");
   }
   const scriptTag = scriptTags[0];
   const scriptType = attribute(scriptTag, "type");
@@ -577,7 +647,7 @@ async function verifyPortableHtmlAndBundle(directory) {
     !hasAttribute(scriptTag, "defer") ||
     scriptReference !== "./ih-ec-ui.js"
   ) {
-    throw new Error("Phase 5B Runnable MVP Portable UI: entry must be the deferred classic ./ih-ec-ui.js script.");
+    throw new Error("Version 0.9 Test Release Portable UI: entry must be the deferred classic ./ih-ec-ui.js script.");
   }
 
   const stylesheets = tags(html, "link").filter(
@@ -587,18 +657,18 @@ async function verifyPortableHtmlAndBundle(directory) {
     stylesheets.length !== 1 ||
     attribute(stylesheets[0], "href") !== "./ih-ec-ui.css"
   ) {
-    throw new Error("Phase 5B Runnable MVP Portable UI: entry must reference ./ih-ec-ui.css exactly once.");
+    throw new Error("Version 0.9 Test Release Portable UI: entry must reference ./ih-ec-ui.css exactly once.");
   }
 
   const scriptPath = await assertLocalReference(
     directory,
     scriptReference,
-    "Phase 5B Runnable MVP Portable UI script",
+    "Version 0.9 Test Release Portable UI script",
   );
   const stylesheetPath = await assertLocalReference(
     directory,
     attribute(stylesheets[0], "href"),
-    "Phase 5B Runnable MVP Portable UI stylesheet",
+    "Version 0.9 Test Release Portable UI stylesheet",
   );
   const [script, stylesheet] = await Promise.all([
     readFile(scriptPath, "utf8"),
@@ -606,18 +676,18 @@ async function verifyPortableHtmlAndBundle(directory) {
   ]);
 
   try {
-    new Script(script, { filename: "phase5-ui-portable-offline/ih-ec-ui.js" });
+    new Script(script, { filename: "v0.9-ui-portable-offline/ih-ec-ui.js" });
   } catch (error) {
     throw new Error(
-      `Phase 5B Runnable MVP Portable UI: bundle is not valid classic-script syntax: ${error instanceof Error ? error.message : String(error)}`,
+      `Version 0.9 Test Release Portable UI: bundle is not valid classic-script syntax: ${error instanceof Error ? error.message : String(error)}`,
     );
   }
   assertNoPortableRuntimeImports(script);
   assertPortableIife(script);
   if (!script.includes("The UI root element is missing.")) {
-    throw new Error("Phase 5B Runnable MVP Portable UI: self-starting #root mount evidence is absent.");
+    throw new Error("Version 0.9 Test Release Portable UI: self-starting #root mount evidence is absent.");
   }
-  await assertOfflineStylesheet(stylesheet, directory, "Phase 5B Runnable MVP Portable UI stylesheet");
+  await assertOfflineStylesheet(stylesheet, directory, "Version 0.9 Test Release Portable UI stylesheet");
 }
 
 await verifyOfflinePolicySelfCheck();
@@ -633,7 +703,7 @@ for (const target of FOUNDATION_TARGETS) {
 }
 
 for (const target of UI_TARGETS) {
-  const verified = await verifyManifest(target, "phase_5b_runnable_mvp_ui");
+  const verified = await verifyManifest(target, "v0_9_test_release_ui");
   verifiedVersionMaps.push(verified.manifest.versions);
   for (const extension of [".html", ".css", ".js"]) {
     if (!verified.files.some((file) => file.endsWith(extension))) {
@@ -655,5 +725,5 @@ if (
 }
 
 process.stdout.write(
-  "Phase 5B Runnable MVP UI artifacts verified: Standard module HTML and Portable classic IIFE; manifests, hashes, relative assets, offline policy, and Foundation output isolation pass.\n",
+  "Version 0.9 test-release UI artifacts verified: Chinese-first Standard module HTML and Portable classic IIFE; release metadata, known-limitations hashes, relative assets, offline policy, and Foundation output isolation pass. Manual clean-PC acceptance remains pending.\n",
 );

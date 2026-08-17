@@ -14,17 +14,25 @@ import {
   type UiMvpRawFieldValue,
 } from "./mvp-form.js";
 import {
-  capabilityLabel,
-  capabilityReason,
   controlledValueLabel,
   fieldDescription,
+  fieldHelp,
   fieldLabel,
   limitationText,
+  methodApplicabilityScope,
+  methodDisplayName,
   methodPurpose,
+  methodSourceSummary,
+  moduleLabel,
   optionLabel,
+  publicFacingText,
+  resultOutputLabel,
+  unitSymbol,
+  userResultText,
   useUiLanguage,
   type UiLanguage,
 } from "./i18n.js";
+import { HelpTooltip } from "./HelpTooltip.js";
 import type {
   EngineeringUiApplication,
   UiMvpCalculationResult,
@@ -50,7 +58,7 @@ function resultStatusLabel(status: UiMvpMethodResult["status"], language: UiLang
 }
 
 function methodLabel(method: UiMvpRunnableMethodDefinition, language: UiLanguage): string {
-  return `${method.methodId} · ${language === "zh-CN" ? method.name.zh : method.name.en}`;
+  return methodDisplayName(method.methodId, method.name, language);
 }
 
 function outputValue(value: UiMvpMethodResult["outputs"][number]["value"], language: UiLanguage): string {
@@ -78,12 +86,10 @@ function downloadCanonicalCase(caseId: string, canonicalJson: string): void {
 
 function FieldControl({
   field,
-  methodId,
   value,
   onChange,
 }: {
   readonly field: UiMvpInputFieldDefinition;
-  readonly methodId: UiMvpRunnableMethodId;
   readonly value: UiMvpRawFieldValue;
   readonly onChange: (value: UiMvpRawFieldValue) => void;
 }) {
@@ -92,6 +98,7 @@ function FieldControl({
   const descriptionId = `${inputId}-description`;
   const label = fieldLabel(field.id, field.label, language);
   const description = fieldDescription(field.id, field.description, language);
+  const help = fieldHelp(field.id, field.description, field.kind, language);
   if (field.kind === "boolean") {
     return (
       <div className="calculator-field calculator-field--boolean">
@@ -103,9 +110,9 @@ function FieldControl({
             onChange={(event) => onChange(event.currentTarget.checked)}
             type="checkbox"
           />
-          <span>{label}</span>
+          <span className="calculator-field__label-copy">{label}<HelpTooltip content={help} descriptionId={descriptionId} fieldLabel={label} /></span>
         </label>
-        <p id={descriptionId}>{description} {text("未勾选表示尚未确认。", "Unchecked means not confirmed.")}</p>
+        <p>{description} {text("未勾选表示尚未确认。", "Unchecked means not confirmed.")}</p>
       </div>
     );
   }
@@ -113,7 +120,10 @@ function FieldControl({
   return (
     <div className="calculator-field">
       <label htmlFor={inputId}>
-        <span>{label}{field.required ? <span aria-label={text("必填", "required")} className="required-mark"> *</span> : null}</span>
+        <span className="calculator-field__label-copy">
+          {label}{field.required ? <span aria-label={text("必填", "required")} className="required-mark"> *</span> : null}
+          <HelpTooltip content={help} descriptionId={descriptionId} fieldLabel={label} />
+        </span>
         {field.unit === null ? null : <code>{field.unit}</code>}
       </label>
       {field.kind === "select" ? (
@@ -134,17 +144,16 @@ function FieldControl({
           id={inputId}
           inputMode={field.kind === "number_list_optional" ? "decimal" : undefined}
           onChange={(event) => onChange(event.currentTarget.value)}
-          placeholder={field.placeholder}
+          placeholder={field.kind === "number_list_optional" ? text("例如：0.25, 0.25", "Example: 0.25, 0.25") : ""}
           step={field.kind === "number" ? "any" : undefined}
           type={field.kind === "number" ? "number" : "text"}
           value={typeof value === "string" ? value : ""}
         />
       )}
-      <p id={descriptionId}>
+      <p>
         {description}
         {field.kind === "number_list_optional" ? text(" 使用逗号分隔的规范 SI 数值；[] 表示确认没有；留空表示明确未知。", " Use comma-separated canonical-SI values, [] for confirmed none, or leave blank for explicit unknown.") : ""}
       </p>
-      <span className="field-boundary">{methodId} {text("受控输入 · 不推断默认值", "controlled input · no inferred default")}</span>
     </div>
   );
 }
@@ -164,20 +173,19 @@ function MethodInputPanel({
       <summary>
         <span>
           <strong>{methodLabel(method, language)}</strong>
-          <small lang={language === "zh-CN" ? "en" : "zh-Hans"}>{language === "zh-CN" ? method.name.en : method.name.zh}</small>
+          {language === "en" ? <small lang="zh-Hans">{method.name.zh}</small> : null}
         </span>
-        <span className="module-badge">{text("模块", "Module")} {method.moduleId}</span>
+        <span className="module-badge">{moduleLabel(method.moduleId, language)}</span>
       </summary>
       <div className="method-input-panel__context">
         <p>{methodPurpose(method.methodId, method.purpose, language)}</p>
-        <span>{controlledValueLabel(method.approvalStatus, language)} · {text("适配器", "adapter")} {method.methodVersion}</span>
+        <span>{text("已通过当前版本的计算校验", "Validated for calculation in this release")}</span>
       </div>
       <div className="calculator-fields">
         {method.fields.map((field) => (
           <FieldControl
             field={field}
             key={field.id}
-            methodId={method.methodId}
             onChange={(value) => onFieldChange(field.id, value)}
             value={values[field.id] ?? (field.kind === "boolean" ? false : "")}
           />
@@ -192,67 +200,71 @@ function MethodInputPanel({
 }
 
 function FailureBlock({ failure }: { readonly failure: UiMvpFailure }) {
-  const { text } = useUiLanguage();
+  const { language, text } = useUiLanguage();
   return (
     <div className="result-failure" role="alert">
-      <strong>{text("计算未完成", "Calculation not completed")} · {failure.code}</strong>
-      <p><b>{text("受控详情：", "Details:")}</b> {failure.message}</p>
-      <p><b>{text("建议操作：", "Action:")}</b> {failure.action}</p>
+      <strong>{text("计算未完成", "Calculation not completed")} · {text("错误代码", "Error code")}: {failure.code}</strong>
+      <p>{language === "zh-CN" ? "请检查必填项、单位、数据来源和确认项，修正后重新计算。" : failure.message}</p>
+      {language === "zh-CN" ? null : <p><b>Action:</b> {failure.action}</p>}
     </div>
   );
 }
 
-function ResultCard({ result }: { readonly result: UiMvpMethodResult }) {
+function ResultCard({ result, method }: {
+  readonly result: UiMvpMethodResult;
+  readonly method: UiMvpRunnableMethodDefinition | undefined;
+}) {
   const { language, text } = useUiLanguage();
+  const resultName = method === undefined
+    ? text("工程计算结果", "Engineering calculation result")
+    : methodLabel(method, language);
   return (
     <article className="calculation-result-card">
       <header>
         <div>
-          <p className="eyebrow">{text("受控方法结果", "Controlled method result")}</p>
-          <h3>{result.methodId}</h3>
+          <p className="eyebrow">{text("工程计算结果", "Engineering result")}</p>
+          <h3>{resultName}</h3>
         </div>
         <span className={`result-status result-status--${result.status}`}>{resultStatusLabel(result.status, language)}</span>
       </header>
-      <p className="registry-boundary-note">
-        {text("受控 MVP 适配器结果 · 正式方法注册表激活状态仍为", "Controlled MVP adapter result · formal registry activation remains")} <strong>false</strong>.
-      </p>
       {result.failure === null ? null : <FailureBlock failure={result.failure} />}
-      <section aria-label={`${result.methodId} ${text("输出", "outputs")}`} className="result-output-grid">
+      <section aria-label={`${resultName} ${text("输出", "outputs")}`} className="result-output-grid">
         {result.outputs.map((output) => (
           <div className={output.status === "available" ? "result-output" : "result-output result-output--unavailable"} key={output.outputId}>
-            <span>{language === "zh-CN" ? output.label.zh : output.label.en}</span>
+            <span>{resultOutputLabel(output.outputId, output.label, language)}</span>
             <strong>{outputValue(output.value, language)}</strong>
-            <code>{output.canonicalUnitId ?? text("无量纲", "unitless")}</code>
-            {output.reason === null ? null : <p>{output.reason}</p>}
+            <code>{unitSymbol(output.canonicalUnitId, language)}</code>
+            {output.reason === null ? null : <p>{userResultText(output.reason, language)}</p>}
           </div>
         ))}
       </section>
       <dl className="result-evidence">
-        <div><dt>{text("适用性", "Applicability")}</dt><dd><strong>{controlledValueLabel(result.applicability.status, language)}</strong> · {result.applicability.scope}</dd></div>
-        <div><dt>{text("批准状态", "Approval")}</dt><dd>{controlledValueLabel(result.approvalStatus, language)} · {result.methodVersion}</dd></div>
+        <div><dt>{text("适用性", "Applicability")}</dt><dd><strong>{controlledValueLabel(result.applicability.status, language)}</strong> · {methodApplicabilityScope(result.methodId, language)}</dd></div>
+        <div><dt>{text("结果状态", "Result status")}</dt><dd>{text("已按当前输入完成计算", "Calculated from the current inputs")}</dd></div>
       </dl>
       {result.warnings.length === 0 ? null : (
         <section className="result-list result-list--warning">
-          <strong>{text("警告（受控原文）", "Warnings")}</strong>
+          <strong>{text("注意事项", "Warnings")}</strong>
           <ul>{result.warnings.map((warning, index) => (
             <li key={`${warning.code ?? "warning"}-${String(index)}`}>
-              {warning.code === null ? null : <code>{warning.code}</code>} {warning.message}
-              {warning.predicate === null ? null : <small>{text("判定条件", "Predicate")}: {warning.predicate}</small>}
+              {userResultText(warning.message, language)}
             </li>
           ))}</ul>
         </section>
       )}
       <section className="result-list">
         <strong>{text("适用限制", "Applicability limits")}</strong>
-        <ul>{result.applicability.limitations.map((item) => <li key={item}>{limitationText(item, language)}</li>)}</ul>
+        <ul>{result.applicability.limitations.map((item) => <li key={item}>{publicFacingText(limitationText(item, language), language)}</li>)}</ul>
       </section>
       <section className="result-list">
         <strong>{text("假设", "Assumptions")}</strong>
-        {result.assumptions.length === 0 ? <p>{text("未报告假设。", "None reported.")}</p> : <ul>{result.assumptions.map((item) => <li key={item}>{item}</li>)}</ul>}
+        {result.assumptions.length === 0
+          ? <p>{text("没有额外假设。", "No additional assumptions were reported.")}</p>
+          : <ul>{result.assumptions.map((item) => <li key={item}>{userResultText(item, language)}</li>)}</ul>}
       </section>
       <section className="result-list result-list--sources">
-        <strong>{text("方法来源", "Method sources")}</strong>
-        {result.sources.length === 0 ? <p>{text("未报告结果来源。", "No result source was reported.")}</p> : <ul>{result.sources.map((item) => <li key={item}><code>{item}</code></li>)}</ul>}
+        <strong>{text("计算依据", "Calculation basis")}</strong>
+        <p>{methodSourceSummary(result.methodId, language)}</p>
       </section>
     </article>
   );
@@ -320,8 +332,8 @@ export function CalculatorPage({ application }: CalculatorPageProps) {
           tone: "success",
           title: text("计算完成", "Calculation completed"),
           detail: text(
-            `快照 ${result.snapshotId} 已生成 ${result.results.length.toString()} 个受控方法结果。`,
-            `${result.results.length.toString()} controlled method result(s) produced for snapshot ${result.snapshotId}.`,
+            `已生成 ${result.results.length.toString()} 组工程计算结果。`,
+            `${result.results.length.toString()} engineering result(s) were produced.`,
           ),
         }
       : null);
@@ -341,8 +353,8 @@ export function CalculatorPage({ application }: CalculatorPageProps) {
     downloadCanonicalCase(caseId, result.canonicalJson);
     setNotice({
       tone: "success",
-      title: text("规范 Case 已保存", "Canonical case saved"),
-      detail: text(`快照 ${result.snapshotId} 已下载为本地 JSON。`, `Snapshot ${result.snapshotId} was downloaded as local JSON.`),
+      title: text("方案已保存", "Case saved"),
+      detail: text("方案文件已下载到本地。", "The case file was downloaded locally."),
     });
   }
 
@@ -365,10 +377,10 @@ export function CalculatorPage({ application }: CalculatorPageProps) {
       setCalculation(null);
       setNotice({
         tone: "success",
-        title: text("规范 Case 已打开", "Canonical case opened"),
+        title: text("方案已打开", "Case opened"),
         detail: text(
-          `${file.name} 已恢复快照 ${result.snapshotId}。请重新计算以生成当前结果。`,
-          `${file.name} restored snapshot ${result.snapshotId}. Recalculate to produce current results.`,
+          `${file.name} 已恢复。请重新计算以生成当前结果。`,
+          `${file.name} was restored. Recalculate to produce current results.`,
         ),
       });
     } catch {
@@ -384,33 +396,33 @@ export function CalculatorPage({ application }: CalculatorPageProps) {
     <section aria-labelledby="calculator-title" className="page calculator-page">
       <header className="page-header">
         <div>
-          <p className="eyebrow">{text("可运行 MVP · 受控适配器", "Runnable MVP · controlled adapter")}</p>
+          <p className="eyebrow">{text("0.9 测试版", "Version 0.9 test release")}</p>
           <h1 id="calculator-title">{text("感应加热工程计算器", "Engineering Calculator")}</h1>
           <p className="page-header__description">
-            {text("创建 Case，输入明确的规范 SI 参数，选择已批准路线并计算；所有警告、限制、假设和来源都会完整保留。", "Create a case, enter explicit canonical-SI inputs, select approved routes, calculate, and retain every warning, limit, assumption, and source.")}
+            {text("创建方案，填写工程参数并选择计算功能；结果会同时显示单位、注意事项、适用范围和计算依据。", "Create a case, enter engineering inputs, select calculations, and review units, warnings, applicability, and calculation basis.")}
           </p>
         </div>
         <div className="page-header__actions">
           <input
             accept=".json,application/json"
-            aria-label={text("打开规范 MVP Case JSON", "Open canonical MVP case JSON")}
+            aria-label={text("打开方案文件", "Open case file")}
             className="sr-only"
             onChange={(event) => { void openCase(event); }}
             ref={fileInputRef}
             type="file"
           />
           <button className="button button--secondary" disabled={opening} onClick={() => fileInputRef.current?.click()} type="button">
-            {opening ? text("正在打开…", "Opening…") : text("打开 Case", "Open case")}
+            {opening ? text("正在打开…", "Opening…") : text("打开方案", "Open case")}
           </button>
           <button className="button button--secondary" onClick={resetCase} type="button">{text("新建 / 重置", "New / reset")}</button>
-          <button className="button button--secondary" onClick={save} type="button">{text("保存 Case JSON", "Save case JSON")}</button>
+          <button className="button button--secondary" onClick={save} type="button">{text("保存方案", "Save case")}</button>
           <button className="button button--primary" onClick={calculate} type="button">{text("计算", "Calculate")}</button>
         </div>
       </header>
 
       <div className="scope-banner scope-banner--mvp" role="note">
-        <strong>{text("安全边界", "Safety boundary")}</strong>
-        <span>{text("当前可调用路线通过受控 MVP 适配器执行。正式方法注册表激活状态仍为 false；UI 不提供任何公式、材料属性、阈值或输入默认值。", "The callable routes execute through the controlled MVP adapter. Formal method-registry activation remains false; no formula, material property, threshold, or input value is supplied by the UI.")}</span>
+        <strong>{text("填写原则", "Input principle")}</strong>
+        <span>{text("软件不会猜测材料物性、工况或缺失尺寸。请使用与当前设备一致的图纸、实测或经确认的工程资料。", "The software does not guess material properties, operating conditions, or missing dimensions. Use drawings, measurements, or reviewed engineering records for the current equipment.")}</span>
       </div>
 
       {notice === null ? null : (
@@ -421,18 +433,18 @@ export function CalculatorPage({ application }: CalculatorPageProps) {
 
       <section aria-labelledby="case-identity-title" className="data-panel calculator-section">
         <div className="panel-heading">
-          <div><p className="eyebrow">{text("步骤 1", "Step 1")}</p><h2 id="case-identity-title">{text("Case 标识", "Case identity")}</h2></div>
-          <span className="text-badge">{text("本地 Case", "local case")}</span>
+          <div><p className="eyebrow">{text("步骤 1", "Step 1")}</p><h2 id="case-identity-title">{text("方案信息", "Case information")}</h2></div>
+          <span className="text-badge">{text("本地保存", "saved locally")}</span>
         </div>
         <div className="case-identity-fields">
           <div className="calculator-field">
-            <label htmlFor="mvp-case-id"><span>Case ID<span aria-label={text("必填", "required")} className="required-mark"> *</span></span></label>
-            <input id="mvp-case-id" onChange={(event) => { setCaseId(event.currentTarget.value); clearOutcome(); }} placeholder={text("使用字母、数字、点、下划线或连字符的稳定标识", "Stable letters, digits, dot, underscore, or hyphen")} type="text" value={caseId} />
-            <p>{text("规范 Case 快照使用的稳定标识。", "Stable identity used by the canonical case snapshot.")}</p>
+            <label htmlFor="mvp-case-id"><span className="calculator-field__label-copy">{text("方案编号", "Case number")}<span aria-label={text("必填", "required")} className="required-mark"> *</span><HelpTooltip content={{ what: text("用于区分不同计算方案的简短编号。", "A short number used to distinguish this case."), how: text("可填写项目号加方案序号，例如 coil-test-01。", "Use a project number and case sequence, for example coil-test-01."), impact: text("只影响方案保存和重新打开，不参与工程公式。", "It affects saving and reopening only, not engineering equations.") }} descriptionId="mvp-case-id-description" fieldLabel={text("方案编号", "Case number")} /></span></label>
+            <input aria-describedby="mvp-case-id-description" id="mvp-case-id" onChange={(event) => { setCaseId(event.currentTarget.value); clearOutcome(); }} placeholder={text("例如：coil-test-01", "Example: coil-test-01")} type="text" value={caseId} />
+            <p>{text("用于保存和重新打开方案，不参与计算。", "Used to save and reopen the case; it is not part of the calculation.")}</p>
           </div>
           <div className="calculator-field">
-            <label htmlFor="mvp-case-name"><span>{text("Case 名称", "Case name")}<span aria-label={text("必填", "required")} className="required-mark"> *</span></span></label>
-            <input id="mvp-case-name" onChange={(event) => { setCaseName(event.currentTarget.value); clearOutcome(); }} placeholder={text("描述性的工程 Case 名称", "Descriptive engineering case name")} type="text" value={caseName} />
+            <label htmlFor="mvp-case-name"><span className="calculator-field__label-copy">{text("方案名称", "Case name")}<span aria-label={text("必填", "required")} className="required-mark"> *</span><HelpTooltip content={{ what: text("便于人阅读的方案名称。", "A human-readable case name."), how: text("写明设备、线圈或工况，例如“中频炉三匝线圈试算”。", "Describe the equipment, coil, or operating condition."), impact: text("只用于识别和保存方案，不改变计算结果。", "It identifies the saved case and does not change results.") }} descriptionId="mvp-case-name-description" fieldLabel={text("方案名称", "Case name")} /></span></label>
+            <input aria-describedby="mvp-case-name-description" id="mvp-case-name" onChange={(event) => { setCaseName(event.currentTarget.value); clearOutcome(); }} placeholder={text("例如：中频炉三匝线圈试算", "Example: three-turn induction-coil trial")} type="text" value={caseName} />
             <p>{text("便于阅读的名称，不能为空。", "Human-readable name; it must not be blank.")}</p>
           </div>
         </div>
@@ -440,18 +452,17 @@ export function CalculatorPage({ application }: CalculatorPageProps) {
 
       <section aria-labelledby="method-selection-title" className="data-panel calculator-section">
         <div className="panel-heading">
-          <div><p className="eyebrow">{text("步骤 2", "Step 2")}</p><h2 id="method-selection-title">{text("选择受控方法", "Select controlled methods")}</h2></div>
+          <div><p className="eyebrow">{text("步骤 2", "Step 2")}</p><h2 id="method-selection-title">{text("选择计算功能", "Select calculations")}</h2></div>
           <span className="selection-count">{text(`已选择 ${selectedMethodIds.length.toString()} 个`, `${selectedMethodIds.length.toString()} selected`)}</span>
         </div>
         <div className="method-selection-grid">
           {methods.map((method) => (
             <label className={selectedMethodIds.includes(method.methodId) ? "method-choice is-selected" : "method-choice"} key={method.methodId}>
               <input checked={selectedMethodIds.includes(method.methodId)} onChange={() => toggleMethod(method.methodId)} type="checkbox" />
-              <span className="method-choice__identity"><strong>{method.methodId}</strong><span>{text("模块", "Module")} {method.moduleId}</span></span>
               <span className="method-choice__copy">
-                <strong>{language === "zh-CN" ? method.name.zh : method.name.en}</strong>
-                <small lang={language === "zh-CN" ? "en" : "zh-Hans"}>{language === "zh-CN" ? method.name.en : method.name.zh}</small>
-                <small>{controlledValueLabel(method.approvalStatus, language)}</small>
+                <strong>{methodDisplayName(method.methodId, method.name, language)}</strong>
+                <small>{moduleLabel(method.moduleId, language)}</small>
+                <small>{text("可计算", "Available")}</small>
               </span>
             </label>
           ))}
@@ -464,7 +475,7 @@ export function CalculatorPage({ application }: CalculatorPageProps) {
           <p>{text("所有数值字段均使用所示规范单位。留空或未勾选的字段保持未知或未确认状态。", "All numeric fields use the canonical unit shown. Blank and unchecked fields remain unknown or unconfirmed.")}</p>
         </div>
         {selectedMethods.length === 0 ? (
-          <div className="empty-state" role="status"><span aria-hidden="true" className="empty-state__glyph">i</span><div><strong>{text("尚未选择方法", "No method selected")}</strong><p>{text("请至少选择一个受控方法以显示其准确输入合同。", "Select at least one controlled method to expose its exact input contract.")}</p></div></div>
+          <div className="empty-state" role="status"><span aria-hidden="true" className="empty-state__glyph">i</span><div><strong>{text("尚未选择计算功能", "No calculation selected")}</strong><p>{text("请至少选择一个计算功能，以显示需要填写的工程参数。", "Select at least one calculation to show its required engineering inputs.")}</p></div></div>
         ) : selectedMethods.map((method) => (
           <MethodInputPanel
             key={method.methodId}
@@ -482,7 +493,7 @@ export function CalculatorPage({ application }: CalculatorPageProps) {
       <section aria-labelledby="calculation-results-title" className="calculator-results-section">
         <div className="calculator-section-heading">
           <div><p className="eyebrow">{text("步骤 4", "Step 4")}</p><h2 id="calculation-results-title">{text("计算结果", "Calculation results")}</h2></div>
-          <p>{successfulCalculation === null ? text("当前没有结果快照。", "No current result snapshot.") : `${text("快照", "Snapshot")} ${successfulCalculation.snapshotId}`}</p>
+          <p>{successfulCalculation === null ? text("当前没有计算结果。", "No current calculation result.") : text("已生成当前方案的计算结果。", "Results are available for the current case.")}</p>
         </div>
         {calculation === null ? (
           <div className="empty-state" role="status"><span aria-hidden="true" className="empty-state__glyph">i</span><div><strong>{text("尚未执行计算", "No calculation run")}</strong><p>{text("请完成明确输入并点击“计算”。缺失证据会被报告，绝不会被猜测或补默认值。", "Complete the explicit inputs and press Calculate. Missing evidence is reported, never guessed.")}</p></div></div>
@@ -490,21 +501,12 @@ export function CalculatorPage({ application }: CalculatorPageProps) {
           <FailureBlock failure={calculation.failure} />
         ) : (
           <>
-            {calculation.results.length > 1 ? <div className="comparison-note">{text("方法并排查看 · 所选结果共享同一个 Case 快照；仅可比较工程含义和边界等价的输出。", "Method comparison view · all selected results share this case snapshot; compare only outputs with equivalent engineering meaning and boundaries.")}</div> : null}
-            <div className="calculation-results-grid">{calculation.results.map((result) => <ResultCard key={result.methodId} result={result} />)}</div>
+            {calculation.results.length > 1 ? <div className="comparison-note">{text("并排查看 · 这些结果来自同一份方案输入；只有含义和边界相同的结果才可以直接比较。", "Side-by-side view · these results share the same case inputs; directly compare only outputs with equivalent meaning and boundaries.")}</div> : null}
+            <div className="calculation-results-grid">{calculation.results.map((result) => <ResultCard key={result.methodId} method={methods.find((method) => method.methodId === result.methodId)} result={result} />)}</div>
           </>
         )}
       </section>
 
-      <section aria-labelledby="remaining-gates-title" className="data-panel calculator-section remaining-gates">
-        <div className="panel-heading"><div><p className="eyebrow">{text("保留的发布门禁", "Preserved release gates")}</p><h2 id="remaining-gates-title">{text("此 MVP 中仍不可用", "Still unavailable in this MVP")}</h2></div></div>
-        <ul className="capability-list">
-          {application.reference.capabilities.filter((capability) => !capability.available).map((capability) => (
-            <li key={capability.id}><span className="status-pill status-pill--gated">{text("不可用", "Unavailable")}</span><div><strong>{capabilityLabel(capability.id, capability.label, language)}</strong><p>{capabilityReason(capability.id, capability.reason, language)}</p></div></li>
-          ))}
-        </ul>
-        <p className="remaining-gates__note">{text("请在“方法就绪状态”中查看每个不可调用方法及其正式运行阻断原因。", "See Method Readiness for every non-callable method and its formal runtime block reason.")}</p>
-      </section>
     </section>
   );
 }

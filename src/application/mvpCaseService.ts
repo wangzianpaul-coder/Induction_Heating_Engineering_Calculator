@@ -40,10 +40,12 @@ export const MVP_RUNNABLE_METHOD_IDS = Object.freeze([
   "B-03",
   "D-01",
   "D-03",
+  "D-04",
   "D-07",
   "F-01",
   "H-01",
   "H-03",
+  "J-03",
 ] as const);
 
 export type MvpRunnableMethodId = (typeof MVP_RUNNABLE_METHOD_IDS)[number];

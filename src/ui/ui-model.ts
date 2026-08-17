@@ -1,3 +1,5 @@
+import type { ParametricSceneView } from "../visualization/index.js";
+
 export interface UiVersionItem {
   readonly id: string;
   readonly label: string;
@@ -68,10 +70,12 @@ export type UiMvpRunnableMethodId =
   | "B-03"
   | "D-01"
   | "D-03"
+  | "D-04"
   | "D-07"
   | "F-01"
   | "H-01"
-  | "H-03";
+  | "H-03"
+  | "J-03";
 
 export type UiMvpInputFieldKind =
   | "number"
@@ -103,7 +107,7 @@ export interface UiMvpRunnableMethodDefinition {
   readonly moduleId: string;
   readonly purpose: string;
   readonly approvalStatus: "approved" | "approved_with_limitation";
-  readonly executionBoundary: "phase_5b_controlled_mvp_adapter";
+  readonly executionBoundary: "v0_9_controlled_application_adapter";
   readonly formalRuntimeActivationClaim: false;
   readonly sourceRefs: readonly string[];
   readonly limitations: readonly string[];
@@ -205,6 +209,137 @@ export interface UiMvpApplication {
   readonly load: (text: string) => UiMvpLoadResult;
 }
 
+export interface UiBasicLocalizedText {
+  readonly zh: string;
+  readonly en: string;
+}
+
+export interface UiBasicCoilInput {
+  readonly electricalTurnCount: number;
+  readonly conductorAxialSizeMm: number;
+  readonly windingLengthMm: number;
+  readonly currentPathDiameterMm: number;
+  readonly windingConstruction: "uniform_identical_single_layer" | "other_or_unknown";
+  readonly fullPhysicalWindingLengthConfirmed: boolean;
+  readonly nonOverlappingTurnsConfirmed: boolean;
+  readonly magneticMedium: "air" | "uniform_linear";
+  readonly relativePermeability: number | null;
+}
+
+export interface UiBasicSeriesElectricalInput {
+  readonly resistanceOhm: number;
+  readonly inductanceMicrohenry: number;
+  readonly currentA: number;
+  readonly frequencyKhz: number;
+  readonly portName: string;
+  readonly referencePlaneName: string;
+  readonly loadedState: "empty" | "workpiece_cold" | "workpiece_hot" | "measured_state" | "user_defined_state";
+  readonly equivalentStateName: string;
+  readonly currentBasis: "rms" | "fundamental_rms";
+  readonly coilSeriesPortConfirmed: boolean;
+  readonly linearSinusoidalStateConfirmed: boolean;
+}
+
+export interface UiBasicCalculatorInput {
+  readonly schemaVersion: "0.9.0";
+  readonly coil: UiBasicCoilInput | null;
+  readonly seriesElectrical: UiBasicSeriesElectricalInput | null;
+}
+
+export interface UiBasicCalculatorOutput {
+  readonly key: string;
+  readonly label: UiBasicLocalizedText;
+  readonly status: "available" | "unavailable";
+  readonly value: number | Readonly<{ readonly real: number; readonly imaginary: number }> | null;
+  readonly unit: "one" | "µH" | "Ω" | "V" | null;
+  readonly note: UiBasicLocalizedText | null;
+}
+
+export interface UiBasicCalculatorError {
+  readonly code: string;
+  readonly message: UiBasicLocalizedText;
+  readonly action: UiBasicLocalizedText;
+}
+
+export interface UiBasicCalculatorSectionResult {
+  readonly section: "coil_fill_factor" | "ideal_long_solenoid_limit" | "series_port_electrical";
+  readonly title: UiBasicLocalizedText;
+  readonly status: "success" | "success_with_warnings" | "invalid_input" | "insufficient_data" | "not_applicable" | "not_requested";
+  readonly outputs: readonly UiBasicCalculatorOutput[];
+  readonly warnings: readonly UiBasicLocalizedText[];
+  readonly assumptions: readonly UiBasicLocalizedText[];
+  readonly limitations: readonly UiBasicLocalizedText[];
+  readonly sourceTitles: readonly UiBasicLocalizedText[];
+  readonly applicability: Readonly<{
+    readonly status: "in_domain" | "out_of_domain" | "not_evaluated";
+    readonly summary: UiBasicLocalizedText;
+  }>;
+  readonly error: UiBasicCalculatorError | null;
+}
+
+export interface UiBasicCalculatorResult {
+  readonly schemaVersion: "0.9.0";
+  readonly status: "complete" | "partial" | "failed" | "empty" | "invalid_input";
+  readonly sections: readonly UiBasicCalculatorSectionResult[];
+  readonly notices: readonly UiBasicLocalizedText[];
+  readonly error: UiBasicCalculatorError | null;
+}
+
+export interface UiBasicCalculatorApplication {
+  readonly schemaVersion: "0.9.0";
+  readonly calculate: (input: UiBasicCalculatorInput) => UiBasicCalculatorResult;
+}
+
+export interface UiMechanicalVisualizationInput {
+  readonly snapshotCreatedAt: string;
+  readonly declaredValidDigits: number;
+  readonly workpieceOuterDiameterMm: number;
+  readonly workpieceInnerDiameterMm: number;
+  readonly workpieceActiveLengthMm: number;
+  readonly insulationInnerDiameterMm: number;
+  readonly insulationOuterDiameterMm: number;
+  readonly radialGapMm: number;
+  readonly coilInnerDiameterMm: number;
+  readonly coilOuterDiameterMm: number;
+  readonly coilMeanDiameterMm: number;
+  readonly coilWindingEnvelopeLengthMm: number;
+  readonly helixRevolutionCount: number;
+  readonly helixAxialAdvanceMm: number;
+  readonly leadLengthMm: number;
+  readonly conductorRadialSizeMm: number;
+  readonly conductorOuterDiameterMm: number;
+  readonly conductorInnerDiameterMm: number;
+}
+
+export type UiMechanicalVisualizationBuildResult =
+  | { readonly status: "success"; readonly scene: ParametricSceneView }
+  | {
+      readonly status: "failed";
+      readonly errorCode:
+        | "invalid_mechanical_input"
+        | "inconsistent_geometry"
+        | "viewer_capacity_exceeded";
+      readonly messageZh: string;
+      readonly messageEn: string;
+    };
+
+export type UiCaseVisualizationLoadResult =
+  | { readonly status: "success"; readonly caseName: string; readonly scene: ParametricSceneView }
+  | {
+      readonly status: "failed";
+      readonly errorCode: string;
+      readonly messageZh: string;
+      readonly messageEn: string;
+      readonly missingInputsZh: readonly string[];
+    };
+
+export interface UiVisualizationApplication {
+  readonly buildFromMechanicalInput: (
+    input: UiMechanicalVisualizationInput,
+  ) => UiMechanicalVisualizationBuildResult;
+  readonly loadCase: (caseJson: string) => UiCaseVisualizationLoadResult;
+}
+
 export type UiCaseImportResult =
   | {
       readonly status: "success";
@@ -230,6 +365,8 @@ export interface UiReferenceModel {
 
 export interface EngineeringUiApplication {
   readonly reference: UiReferenceModel;
+  readonly basic: UiBasicCalculatorApplication;
+  readonly visualization: UiVisualizationApplication;
   readonly mvp: UiMvpApplication;
   readonly inspectCaseJson: (text: string) => UiCaseImportResult;
 }

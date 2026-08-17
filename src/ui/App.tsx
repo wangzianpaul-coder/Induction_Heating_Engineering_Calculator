@@ -11,29 +11,40 @@ import {
 } from "react";
 
 import { CalculatorPage } from "./Calculator.js";
+import { BasicCalculatorPage } from "./BasicCalculator.js";
+import { ThreeDVisualizationPage } from "./ThreeDVisualization.js";
 import {
   UiLanguageProvider,
   capabilityLabel,
   capabilityReason,
   caseFieldLabel,
-  controlledValueLabel,
-  methodGateReason,
+  fieldLabel,
+  limitationText,
+  methodApplicabilityScope,
+  methodDisplayName,
+  methodPurpose,
+  methodSourceSummary,
+  moduleLabel,
+  parameterApplicabilityText,
+  parameterDefinitionText,
+  parameterDimensionLabel,
+  parameterHelpText,
+  parameterRoleLabel,
+  publicFacingText,
   uiText,
   useUiLanguage,
-  yesNoLabel,
   type UiLanguage,
 } from "./i18n.js";
 
 import type {
   EngineeringUiApplication,
-  UiCapability,
   UiCaseInspection,
-  UiMethodRecord,
+  UiMvpRunnableMethodDefinition,
   UiParameterRecord,
   UiReferenceModel,
 } from "./ui-model.js";
 
-type PageId = "calculator" | "parameters" | "methods" | "case" | "about";
+type PageId = "basic" | "calculator" | "visualization" | "parameters" | "methods" | "case" | "about";
 
 interface PageDefinition {
   readonly id: PageId;
@@ -44,10 +55,22 @@ interface PageDefinition {
 
 const PRIMARY_PAGES: readonly PageDefinition[] = [
   {
+    id: "basic",
+    label: { zh: "基础计算器", en: "Basic Calculator" },
+    shortLabel: "◎",
+    description: { zh: "单方案快速计算线圈、电感与电气量", en: "Guided coil, inductance, and electrical calculation" },
+  },
+  {
     id: "calculator",
-    label: { zh: "工程计算器", en: "Calculator" },
+    label: { zh: "高级计算", en: "Advanced Calculator" },
     shortLabel: "Σ",
-    description: { zh: "创建、计算、保存并重新打开 Case", en: "Create, calculate, save, and reopen cases" },
+    description: { zh: "创建、计算、保存并重新打开方案", en: "Create, calculate, save, and reopen cases" },
+  },
+  {
+    id: "visualization",
+    label: { zh: "3D 示意 / FEM", en: "3D Schematic / FEM" },
+    shortLabel: "3D",
+    description: { zh: "交互查看机械几何与外部分析边界", en: "Inspect mechanical geometry and external-analysis boundaries" },
   },
   {
     id: "parameters",
@@ -57,21 +80,21 @@ const PRIMARY_PAGES: readonly PageDefinition[] = [
   },
   {
     id: "methods",
-    label: { zh: "方法就绪状态", en: "Method Readiness" },
+    label: { zh: "计算功能说明", en: "Calculation Guide" },
     shortLabel: "M",
-    description: { zh: "合同、证据和发布门禁", en: "Contracts, evidence, and release gates" },
+    description: { zh: "查看当前可用计算及适用范围", en: "Review available calculations and their scope" },
   },
   {
     id: "case",
-    label: { zh: "Case 检查器", en: "Case Inspector" },
+    label: { zh: "方案文件", en: "Case Files" },
     shortLabel: "C",
-    description: { zh: "验证并检查 Case 文件", en: "Validate and inspect a case file" },
+    description: { zh: "验证并检查已保存的方案", en: "Validate and inspect a saved case" },
   },
   {
     id: "about",
     label: { zh: "关于 / 版本", en: "About / Versions" },
     shortLabel: "V",
-    description: { zh: "冻结的软件与工程数据标识", en: "Frozen software identity" },
+    description: { zh: "软件版本与可用功能", en: "Software version and available features" },
   },
 ] as const;
 
@@ -89,10 +112,6 @@ function includesSearch(values: readonly string[], search: string): boolean {
     return true;
   }
   return values.some((value) => value.toLocaleLowerCase("en-US").includes(search));
-}
-
-function humanize(value: string): string {
-  return value.replaceAll("_", " ");
 }
 
 function uniqueSorted(values: readonly string[]): readonly string[] {
@@ -176,7 +195,7 @@ function ParameterDetail({ parameter }: { readonly parameter: UiParameterRecord 
     return (
       <aside className="detail-panel" aria-label={text("参数详情", "Parameter details")}>
         <EmptyState title={text("尚未选择参数", "No parameter selected")}>
-          {text("请选择一行以查看受控定义、单位、适用范围和来源引用。", "Select a row to inspect its controlled definition, units, applicability, and source references.")}
+          {text("请选择一行以查看中文定义、单位、适用范围和填写建议。", "Select a row to inspect its definition, units, applicability, and input guidance.")}
         </EmptyState>
       </aside>
     );
@@ -187,40 +206,30 @@ function ParameterDetail({ parameter }: { readonly parameter: UiParameterRecord 
       <div className="detail-panel__header">
         <div>
           <p className="eyebrow">{text("参数详情", "Parameter detail")}</p>
-          <h2 id="parameter-detail-title">{parameter.id}</h2>
+          <h2 id="parameter-detail-title">{language === "zh-CN" ? parameter.localizedName : parameter.name}</h2>
         </div>
-        <span className="module-badge">{text("模块", "Module")} {parameter.module}</span>
+        <span className="module-badge">{moduleLabel(parameter.module, language)}</span>
       </div>
       <p className="detail-panel__name">
         <span className="parameter-symbol">{parameter.symbol}</span>
         {language === "zh-CN" ? parameter.localizedName : parameter.name}
       </p>
-      <p className="localized-name" lang={language === "zh-CN" ? "en" : "zh-Hans"}>
-        {language === "zh-CN" ? parameter.name : parameter.localizedName}
-      </p>
+      {language === "en" ? <p className="localized-name" lang="zh-Hans">{parameter.localizedName}</p> : null}
       <DefinitionList>
-        <DefinitionItem term={text("定义（受控英文原文）", "Definition")}>{parameter.definition}</DefinitionItem>
-        <DefinitionItem term={text("适用范围（受控英文原文）", "Applicability")}>{parameter.applicability}</DefinitionItem>
-        <DefinitionItem term={text("物理范围", "Physical range")}><code>{parameter.physicalRange}</code></DefinitionItem>
-        <DefinitionItem term={text("量纲", "Dimension")}>{humanize(parameter.dimension)}</DefinitionItem>
-        <DefinitionItem term={text("规范 SI 单位", "Canonical SI unit")}><code>{parameter.canonicalUnit}</code></DefinitionItem>
+        <DefinitionItem term={text("定义", "Definition")}>{parameterDefinitionText(language === "zh-CN" ? parameter.localizedName : parameter.name, language)}</DefinitionItem>
+        <DefinitionItem term={text("适用范围", "Applicability")}>{parameterApplicabilityText(language === "zh-CN" ? parameter.localizedName : parameter.name, language)}</DefinitionItem>
+        <DefinitionItem term={text("数值要求", "Value requirements")}>{language === "zh-CN" ? "必须是有限、物理上合理并与当前工况一致的数值；具体上下限由所选计算功能检查。" : publicFacingText(parameter.physicalRange, language)}</DefinitionItem>
+        <DefinitionItem term={text("物理类型", "Dimension")}>{parameterDimensionLabel(parameter.dimension, language)}</DefinitionItem>
+        <DefinitionItem term={text("计算单位", "Calculation unit")}><code>{parameter.canonicalUnit}</code></DefinitionItem>
         <DefinitionItem term={text("显示单位", "Display units")}>
-          {parameter.displayUnits.length === 0 ? text("未声明", "None declared") : parameter.displayUnits.join(", ")}
+          {parameter.displayUnits.length === 0 ? text("无其他显示单位", "No additional display units") : parameter.displayUnits.map((unit) => unit.replace(/\s*\[[^\]]+\]$/u, "")).join(", ")}
         </DefinitionItem>
-        <DefinitionItem term={text("角色 / 要求", "Role / requirement")}>
-          {humanize(parameter.role)} / {humanize(parameter.requirement)}
-        </DefinitionItem>
-        <DefinitionItem term={text("默认值策略", "Default policy")}>{parameter.defaultPolicy}</DefinitionItem>
-        <DefinitionItem term={text("使用此参数的方法", "Consuming methods")}>
-          {parameter.consumingMethods.length === 0 ? text("未声明", "None declared") : parameter.consumingMethods.join(", ")}
-        </DefinitionItem>
-        <DefinitionItem term={text("来源引用", "Source references")}>
-          {parameter.sourceReferences.length === 0 ? text("未声明", "None declared") : parameter.sourceReferences.join(", ")}
-        </DefinitionItem>
+        <DefinitionItem term={text("用途 / 是否必需", "Role / requirement")}>{parameterRoleLabel(parameter.role, parameter.requirement, language)}</DefinitionItem>
+        <DefinitionItem term={text("默认值", "Default value")}>{text("不自动猜测；由用户按当前设备和工况提供。", "No value is guessed; provide it for the current equipment and operating condition.")}</DefinitionItem>
       </DefinitionList>
       <div className="detail-note">
-        <strong>{text("受控帮助（英文原文）", "Controlled help")}</strong>
-        <p>{parameter.help}</p>
+        <strong>{text("填写建议", "How to provide it")}</strong>
+        <p>{parameterHelpText(language === "zh-CN" ? parameter.localizedName : parameter.name, language)}</p>
       </div>
     </aside>
   );
@@ -267,36 +276,36 @@ function ParametersPage({ model }: { readonly model: UiReferenceModel }) {
 
   return (
     <section className="page" aria-labelledby="parameters-title">
-      <PageHeader eyebrow={text("受控元数据", "Controlled metadata")} title={text("参数定义", "Parameter Definition")} titleId="parameters-title">
-        {text("查询冻结的参数字典。本页仅提供只读元数据；工程计算只能在受控计算器工作区中执行。", "Search the frozen parameter dictionary. This metadata page remains read-only; calculations are performed only in the controlled Calculator workspace.")}
+      <PageHeader eyebrow={text("工程参数词典", "Engineering parameter guide")} title={text("参数定义", "Parameter Definition")} titleId="parameters-title">
+        {text("查询参数的中文含义、单位、填写原则和适用范围。实际数值请在“工程计算器”中填写。", "Review parameter meanings, units, input guidance, and applicability. Enter values in the Calculator.")}
       </PageHeader>
       <div className="scope-banner" role="note">
-        <strong>{text("仅元数据", "Metadata only")}</strong>
+        <strong>{text("只读说明", "Read-only guide")}</strong>
         <span>{text("此处不接收输入值，也不会生成工程计算结果。", "No input values are accepted here, and no engineering result is calculated.")}</span>
       </div>
       <div className="summary-grid summary-grid--three" aria-label={text("参数摘要", "Parameter summary")}>
-        <SummaryCard label={text("受控记录", "Controlled records")} value={model.parameters.length} note={text("公开应用视图", "Public application view")} />
-        <SummaryCard label={text("所属模块", "Owner modules")} value={modules.length} note={text("当前注册表可用", "Available in this registry")} />
-        <SummaryCard label={text("所选模块", "Selected module")} value={moduleFilter === "all" ? text("全部", "All") : moduleFilter} note={text(`${filtered.length.toString()} 条可见记录`, `${filtered.length.toString()} visible records`)} />
+        <SummaryCard label={text("参数数量", "Parameters")} value={model.parameters.length} note={text("工程参数说明", "Engineering parameter guide")} />
+        <SummaryCard label={text("功能类别", "Categories")} value={modules.length} note={text("按工程用途分类", "Grouped by engineering purpose")} />
+        <SummaryCard label={text("当前类别", "Selected category")} value={moduleFilter === "all" ? text("全部", "All") : moduleLabel(moduleFilter, language)} note={text(`${filtered.length.toString()} 条可见记录`, `${filtered.length.toString()} visible records`)} />
       </div>
       <div className="workspace-grid">
-        <section className="data-panel" aria-label={text("参数注册表", "Parameter registry")}>
+        <section className="data-panel" aria-label={text("参数说明列表", "Parameter guide")}>
           <div className="toolbar" role="search">
             <div className="field field--search">
               <label htmlFor={searchId}>{text("搜索参数", "Search parameters")}</label>
               <input
                 id={searchId}
                 onChange={(event) => setSearchText(event.currentTarget.value)}
-                placeholder={text("ID、符号、名称、单位、方法…", "ID, symbol, name, unit, method…")}
+                placeholder={text("名称、符号或单位…", "Name, symbol, or unit…")}
                 type="search"
                 value={searchText}
               />
             </div>
             <div className="field">
-              <label htmlFor={moduleId}>{text("模块", "Module")}</label>
+              <label htmlFor={moduleId}>{text("功能类别", "Category")}</label>
               <select id={moduleId} onChange={(event) => setModuleFilter(event.currentTarget.value)} value={moduleFilter}>
                 <option value="all">{text("全部模块", "All modules")}</option>
-                {modules.map((module) => <option key={module} value={module}>{text("模块", "Module")} {module}</option>)}
+                {modules.map((module) => <option key={module} value={module}>{moduleLabel(module, language)}</option>)}
               </select>
             </div>
             <div className="field">
@@ -304,7 +313,7 @@ function ParametersPage({ model }: { readonly model: UiReferenceModel }) {
               <select id={requirementId} onChange={(event) => setRequirementFilter(event.currentTarget.value)} value={requirementFilter}>
                 <option value="all">{text("全部要求", "All requirements")}</option>
                 {requirements.map((requirement) => (
-                  <option key={requirement} value={requirement}>{humanize(requirement)}</option>
+                  <option key={requirement} value={requirement}>{parameterRoleLabel("input", requirement, language)}</option>
                 ))}
               </select>
             </div>
@@ -317,17 +326,17 @@ function ParametersPage({ model }: { readonly model: UiReferenceModel }) {
               <caption className="sr-only">{text("受控工程参数", "Controlled engineering parameters")}</caption>
               <thead>
                 <tr>
-                  <th scope="col">{text("参数 ID", "Parameter ID")}</th>
                   <th scope="col">{text("符号", "Symbol")}</th>
                   <th scope="col">{text("工程名称", "Engineering name")}</th>
-                  <th scope="col">{text("模块", "Module")}</th>
+                  <th scope="col">{text("功能类别", "Category")}</th>
                   <th scope="col">{text("SI 单位", "SI unit")}</th>
-                  <th scope="col">{text("要求", "Requirement")}</th>
+                  <th scope="col">{text("用途", "Use")}</th>
                 </tr>
               </thead>
               <tbody>
                 {filtered.map((parameter) => (
                   <tr className={selectedId === parameter.id ? "is-selected" : undefined} key={parameter.id}>
+                    <td><span className="parameter-symbol">{parameter.symbol}</span></td>
                     <th scope="row">
                       <button
                         aria-pressed={selectedId === parameter.id}
@@ -335,17 +344,12 @@ function ParametersPage({ model }: { readonly model: UiReferenceModel }) {
                         onClick={() => setSelectedId(parameter.id)}
                         type="button"
                       >
-                        {parameter.id}
+                        {language === "zh-CN" ? parameter.localizedName : parameter.name}
                       </button>
                     </th>
-                    <td><span className="parameter-symbol">{parameter.symbol}</span></td>
-                    <td>
-                      <span className="cell-primary">{language === "zh-CN" ? parameter.localizedName : parameter.name}</span>
-                      <span className="cell-secondary" lang={language === "zh-CN" ? "en" : "zh-Hans"}>{language === "zh-CN" ? parameter.name : parameter.localizedName}</span>
-                    </td>
-                    <td><span className="module-badge">{parameter.module}</span></td>
+                    <td><span className="module-badge">{moduleLabel(parameter.module, language)}</span></td>
                     <td><code>{parameter.canonicalUnit}</code></td>
-                    <td>{humanize(parameter.requirement)}</td>
+                    <td>{parameterRoleLabel(parameter.role, parameter.requirement, language)}</td>
                   </tr>
                 ))}
               </tbody>
@@ -361,12 +365,29 @@ function ParametersPage({ model }: { readonly model: UiReferenceModel }) {
   );
 }
 
-function MethodDetail({ method }: { readonly method: UiMethodRecord | undefined }) {
+function resultSummary(methodId: string, language: UiLanguage): string {
+  const zh: Readonly<Record<string, string>> = {
+    "B-02": "轴向填充系数",
+    "B-03": "理想螺线管电感",
+    "D-01": "螺旋段、引线段、母排段及导体总长度",
+    "D-03": "导体直流电阻",
+    "D-04": "电磁场幅值衰减到 1/e 的铜导体趋肤深度",
+    "D-07": "感抗、复阻抗、阻抗幅值、品质因数和电压分量",
+    "F-01": "输入阻抗、反射电阻、等效电阻、等效电感和耦合系数",
+    "H-01": "单一冷却回路总热负荷",
+    "H-03": "支路平均流速和水力直径",
+    "J-03": "净辐射换热量和辐射网络系数",
+  };
+  if (language === "zh-CN") return zh[methodId] ?? "工程计算结果";
+  return publicFacingText(zh[methodId] ?? "Engineering calculation results", language);
+}
+
+function MethodDetail({ method }: { readonly method: UiMvpRunnableMethodDefinition | undefined }) {
   const { language, text } = useUiLanguage();
   if (method === undefined) {
     return (
       <aside className="detail-panel" aria-label={text("方法详情", "Method details")}>
-        <EmptyState title={text("尚未选择方法", "No method selected")}>{text("请选择一个方法以查看其合同和发布门禁。", "Select a method to inspect its contract and release gate.")}</EmptyState>
+        <EmptyState title={text("尚未选择计算功能", "No calculation selected")}>{text("请选择一个功能以查看用途、输入、结果和适用范围。", "Select a calculation to review its purpose, inputs, results, and applicability.")}</EmptyState>
       </aside>
     );
   }
@@ -375,133 +396,112 @@ function MethodDetail({ method }: { readonly method: UiMethodRecord | undefined 
     <aside className="detail-panel" aria-labelledby="method-detail-title">
       <div className="detail-panel__header">
         <div>
-          <p className="eyebrow">{text("方法合同", "Method contract")}</p>
-          <h2 id="method-detail-title">{method.id}</h2>
+          <p className="eyebrow">{text("计算功能详情", "Calculation details")}</p>
+          <h2 id="method-detail-title">{methodDisplayName(method.methodId, method.name, language)}</h2>
         </div>
-        <span className="module-badge">{text("模块", "Module")} {method.module}</span>
+        <span className="module-badge">{moduleLabel(method.moduleId, language)}</span>
       </div>
-      <p className="detail-panel__name">{language === "zh-CN" ? method.localizedName : method.name}</p>
-      <p className="localized-name" lang={language === "zh-CN" ? "en" : "zh-Hans"}>{language === "zh-CN" ? method.name : method.localizedName}</p>
-      <p className="method-purpose">{method.purpose}</p>
+      {language === "en" ? <p className="localized-name" lang="zh-Hans">{method.name.zh}</p> : null}
+      <p className="method-purpose">{methodPurpose(method.methodId, method.purpose, language)}</p>
       <div className="gate-callout">
-        <StatusPill enabled={method.executionEnabled}>{controlledValueLabel(method.executionStatus.replaceAll(" ", "_"), language)}</StatusPill>
-        <p>{methodGateReason(method.id, method.executionReason, language)}</p>
+        <StatusPill enabled={true}>{text("可计算", "Available")}</StatusPill>
+        <p>{text("此功能已经接入网页计算流程。请按提示提供真实工程数据。", "This calculation is available in the web workflow. Provide real engineering data as prompted.")}</p>
       </div>
       <DefinitionList>
-        <DefinitionItem term={text("方法版本", "Method version")}><code>{method.methodVersion}</code></DefinitionItem>
-        <DefinitionItem term={text("批准状态", "Approval")}>{controlledValueLabel(method.approvalStatus, language)}</DefinitionItem>
-        <DefinitionItem term={text("生命周期", "Lifecycle")}>{controlledValueLabel(method.lifecycleStatus, language)}</DefinitionItem>
-        <DefinitionItem term={text("方法类型", "Method type")}>{controlledValueLabel(method.methodType, language)}</DefinitionItem>
-        <DefinitionItem term={text("科学可信度", "Scientific confidence")}>{controlledValueLabel(method.scientificConfidence, language)}</DefinitionItem>
-        <DefinitionItem term={text("推荐资格", "Recommendation")}>{controlledValueLabel(method.recommendation, language)}</DefinitionItem>
-        <DefinitionItem term={text("需要拆分子方法", "Submethod split required")}>{yesNoLabel(method.requiresSubmethodSplit, language)}</DefinitionItem>
-        <DefinitionItem term={text("已有实现", "Implementation available")}>{yesNoLabel(method.implementationAvailable, language)}</DefinitionItem>
-        <DefinitionItem term={text("输入", "Inputs")}>{method.inputs.length === 0 ? text("未声明", "None declared") : method.inputs.join(", ")}</DefinitionItem>
-        <DefinitionItem term={text("输出", "Outputs")}>{method.outputs.length === 0 ? text("未声明", "None declared") : method.outputs.join(", ")}</DefinitionItem>
+        <DefinitionItem term={text("主要输入", "Main inputs")}>{method.fields.map((field) => fieldLabel(field.id, field.label, language)).join("、")}</DefinitionItem>
+        <DefinitionItem term={text("计算结果", "Results")}>{resultSummary(method.methodId, language)}</DefinitionItem>
+        <DefinitionItem term={text("适用范围", "Applicability")}>{methodApplicabilityScope(method.methodId, language)}</DefinitionItem>
+        <DefinitionItem term={text("计算依据", "Calculation basis")}>{methodSourceSummary(method.methodId, language)}</DefinitionItem>
       </DefinitionList>
+      <div className="detail-note">
+        <strong>{text("使用限制", "Limitations")}</strong>
+        <ul>{method.limitations.map((item) => <li key={item}>{publicFacingText(limitationText(item, language), language)}</li>)}</ul>
+      </div>
     </aside>
   );
 }
 
-function MethodsPage({ model }: { readonly model: UiReferenceModel }) {
+function MethodsPage({ application }: { readonly application: EngineeringUiApplication }) {
   const { language, text } = useUiLanguage();
   const searchId = useId();
   const moduleId = useId();
-  const readinessId = useId();
   const [searchText, setSearchText] = useState("");
   const [moduleFilter, setModuleFilter] = useState("all");
-  const [readinessFilter, setReadinessFilter] = useState("all");
-  const [selectedId, setSelectedId] = useState<string | null>(model.methods[0]?.id ?? null);
+  const methods = application.mvp.methods;
+  const [selectedId, setSelectedId] = useState<string | null>(methods[0]?.methodId ?? null);
   const deferredSearch = useDeferredValue(searchText);
-  const modules = useMemo(() => uniqueSorted(model.methods.map((method) => method.module)), [model.methods]);
+  const modules = useMemo(() => uniqueSorted(methods.map((method) => method.moduleId)), [methods]);
   const filtered = useMemo(() => {
     const search = normalizeSearch(deferredSearch);
-    return model.methods.filter((method) =>
-      (moduleFilter === "all" || method.module === moduleFilter) &&
-      (readinessFilter === "all" || (readinessFilter === "ready") === method.executionEnabled) &&
+    return methods.filter((method) =>
+      (moduleFilter === "all" || method.moduleId === moduleFilter) &&
       includesSearch(
-        [method.id, method.name, method.localizedName, method.purpose, method.executionStatus, method.executionReason],
+        [method.name.en, method.name.zh, methodPurpose(method.methodId, method.purpose, language)],
         search,
       ),
     );
-  }, [deferredSearch, model.methods, moduleFilter, readinessFilter]);
-  const selected = filtered.find((method) => method.id === selectedId);
-  const executableCount = model.methods.filter((method) => method.executionEnabled).length;
+  }, [deferredSearch, language, methods, moduleFilter]);
+  const selected = filtered.find((method) => method.methodId === selectedId);
 
   return (
     <section className="page" aria-labelledby="methods-title">
-      <PageHeader eyebrow={text("发布证据", "Release evidence")} title={text("方法就绪状态", "Method Readiness")} titleId="methods-title">
-        {text("查看冻结的方法合同、生命周期状态和明确的运行门禁。UI 不会自行推断方法是否就绪。", "Inspect frozen contracts, lifecycle state, and explicit runtime release gates. Readiness is never inferred by the UI.")}
+      <PageHeader eyebrow={text("当前可用功能", "Available calculations")} title={text("计算功能说明", "Calculation Guide")} titleId="methods-title">
+        {text("这里仅列出已经接入网页并能实际计算的功能，说明其输入、结果、依据和适用范围。", "This page lists only calculations currently available in the web app, with inputs, results, basis, and applicability.")}
       </PageHeader>
-      <div className="summary-grid summary-grid--three" aria-label={text("方法就绪状态摘要", "Method readiness summary")}>
-        <SummaryCard label={text("已编目方法", "Catalogued methods")} value={model.methods.length} note={text("受控顶层 ID", "Controlled top-level IDs")} />
-        <SummaryCard label={text("运行时已启用", "Runtime enabled")} value={executableCount} note={text("由应用边界报告", "Reported by the application boundary")} />
-        <SummaryCard label={text("受发布门禁限制", "Release gated")} value={model.methods.length - executableCount} note={text("每个方法均保留原因", "Reason retained per method")} />
+      <div className="summary-grid summary-grid--three" aria-label={text("计算功能摘要", "Calculation summary")}>
+        <SummaryCard label={text("可计算功能", "Available calculations")} value={methods.length} note={text("均可在工程计算器中选择", "Selectable in the Calculator")} />
+        <SummaryCard label={text("功能类别", "Categories")} value={modules.length} note={text("覆盖几何、电气、耦合和冷却", "Geometry, electrical, coupling, and cooling")} />
+        <SummaryCard label={text("当前显示", "Currently shown")} value={filtered.length} note={text("可按名称和类别筛选", "Filter by name and category")} />
       </div>
       <div className="workspace-grid">
-        <section className="data-panel" aria-label={text("方法就绪状态注册表", "Method readiness registry")}>
+        <section className="data-panel" aria-label={text("可用计算功能", "Available calculations")}>
           <div className="toolbar" role="search">
             <div className="field field--search">
-              <label htmlFor={searchId}>{text("搜索方法", "Search methods")}</label>
+              <label htmlFor={searchId}>{text("搜索计算功能", "Search calculations")}</label>
               <input
                 id={searchId}
                 onChange={(event) => setSearchText(event.currentTarget.value)}
-                placeholder={text("ID、名称、用途、门禁原因…", "ID, name, purpose, gate reason…")}
+                placeholder={text("名称或用途…", "Name or purpose…")}
                 type="search"
                 value={searchText}
               />
             </div>
             <div className="field">
-              <label htmlFor={moduleId}>{text("模块", "Module")}</label>
+              <label htmlFor={moduleId}>{text("功能类别", "Category")}</label>
               <select id={moduleId} onChange={(event) => setModuleFilter(event.currentTarget.value)} value={moduleFilter}>
                 <option value="all">{text("全部模块", "All modules")}</option>
-                {modules.map((module) => <option key={module} value={module}>{text("模块", "Module")} {module}</option>)}
-              </select>
-            </div>
-            <div className="field">
-              <label htmlFor={readinessId}>{text("运行状态", "Runtime state")}</label>
-              <select id={readinessId} onChange={(event) => setReadinessFilter(event.currentTarget.value)} value={readinessFilter}>
-                <option value="all">{text("全部状态", "All states")}</option>
-                <option value="ready">{text("已启用", "Enabled")}</option>
-                <option value="gated">{text("受发布门禁限制", "Release gated")}</option>
+                {modules.map((module) => <option key={module} value={module}>{moduleLabel(module, language)}</option>)}
               </select>
             </div>
           </div>
-          <div className="table-caption" aria-live="polite"><strong>{filtered.length}</strong> {text(`／共 ${model.methods.length.toString()} 个方法`, `of ${model.methods.length.toString()} methods`)}</div>
-          <div className="table-scroll" tabIndex={0} aria-label={text("可滚动方法就绪状态表", "Scrollable method readiness table")}>
+          <div className="table-caption" aria-live="polite"><strong>{filtered.length}</strong> {text(`／共 ${methods.length.toString()} 个功能`, `of ${methods.length.toString()} calculations`)}</div>
+          <div className="table-scroll" tabIndex={0} aria-label={text("可滚动计算功能表", "Scrollable calculation table")}>
             <table>
-              <caption className="sr-only">{text("方法就绪和发布状态", "Method readiness and release status")}</caption>
+              <caption className="sr-only">{text("当前可用计算功能", "Currently available calculations")}</caption>
               <thead>
                 <tr>
-                  <th scope="col">{text("方法", "Method")}</th>
-                  <th scope="col">{text("工程名称", "Engineering name")}</th>
-                  <th scope="col">{text("模块", "Module")}</th>
-                  <th scope="col">{text("批准状态", "Approval")}</th>
-                  <th scope="col">{text("运行状态", "Runtime status")}</th>
-                  <th scope="col">{text("可信度", "Confidence")}</th>
+                  <th scope="col">{text("计算功能", "Calculation")}</th>
+                  <th scope="col">{text("功能类别", "Category")}</th>
+                  <th scope="col">{text("主要结果", "Main results")}</th>
+                  <th scope="col">{text("状态", "Status")}</th>
                 </tr>
               </thead>
               <tbody>
                 {filtered.map((method) => (
-                  <tr className={selectedId === method.id ? "is-selected" : undefined} key={method.id}>
+                  <tr className={selectedId === method.methodId ? "is-selected" : undefined} key={method.methodId}>
                     <th scope="row">
                       <button
-                        aria-pressed={selectedId === method.id}
+                        aria-pressed={selectedId === method.methodId}
                         className="table-link table-link--method"
-                        onClick={() => setSelectedId(method.id)}
+                        onClick={() => setSelectedId(method.methodId)}
                         type="button"
                       >
-                        {method.id}
+                        {methodDisplayName(method.methodId, method.name, language)}
                       </button>
                     </th>
-                    <td>
-                      <span className="cell-primary">{language === "zh-CN" ? method.localizedName : method.name}</span>
-                      <span className="cell-secondary" lang={language === "zh-CN" ? "en" : "zh-Hans"}>{language === "zh-CN" ? method.name : method.localizedName}</span>
-                    </td>
-                    <td><span className="module-badge">{method.module}</span></td>
-                    <td>{controlledValueLabel(method.approvalStatus, language)}</td>
-                    <td><StatusPill enabled={method.executionEnabled}>{controlledValueLabel(method.executionStatus.replaceAll(" ", "_"), language)}</StatusPill></td>
-                    <td>{controlledValueLabel(method.scientificConfidence, language)}</td>
+                    <td><span className="module-badge">{moduleLabel(method.moduleId, language)}</span></td>
+                    <td>{resultSummary(method.methodId, language)}</td>
+                    <td><StatusPill enabled={true}>{text("可计算", "Available")}</StatusPill></td>
                   </tr>
                 ))}
               </tbody>
@@ -543,6 +543,14 @@ function CasePage({ application }: { readonly application: EngineeringUiApplicat
   const [pending, setPending] = useState(false);
   const [importedCase, setImportedCase] = useState<ImportedCaseState | null>(null);
   const [failure, setFailure] = useState<{ readonly code: string; readonly message: string } | null>(null);
+  const visibleCaseFields = importedCase?.inspection.fields.filter((field) =>
+    field.label !== "Technical freeze" &&
+    field.label !== "Material IDs" &&
+    field.label !== "Selected method IDs" &&
+    !field.label.startsWith("Version · "),
+  ) ?? [];
+  const caseDisplayName = visibleCaseFields.find((field) => field.label === "Case name")?.value
+    ?? text("已验证方案", "Validated case");
 
   async function handleFileChange(event: ChangeEvent<HTMLInputElement>): Promise<void> {
     const file = event.currentTarget.files?.[0];
@@ -588,26 +596,26 @@ function CasePage({ application }: { readonly application: EngineeringUiApplicat
               onClick={() => { if (importedCase !== null) downloadValidatedJson(importedCase); }}
               type="button"
             >
-              {text("下载已验证 JSON", "Download validated JSON")}
+              {text("下载校验后的方案文件", "Download validated case file")}
             </button>
           </>
         }
-        eyebrow={text("严格 Case 文件边界", "Strict case-file boundary")}
-        title={text("Case 检查器", "Case Inspector")}
+        eyebrow={text("本地方案文件", "Local case file")}
+        title={text("方案文件检查", "Case File Check")}
         titleId="case-title"
       >
-        {text("验证现有 Case 文件，但不编辑文件，也不执行计算。", "Validate an existing case file without editing it or running a calculation.")}
+        {text("验证已经保存的方案文件，但不修改文件，也不执行计算。", "Validate an existing case file without editing it or running a calculation.")}
       </PageHeader>
-      <div className="record-label">{text("Case 输入记录 — 不含计算结果", "Case Input Record — No Calculation Result")}</div>
+      <div className="record-label">{text("方案输入记录 — 不含计算结果", "Case Input Record — No Calculation Result")}</div>
       <section className="import-panel" aria-labelledby="import-heading">
         <div>
           <p className="eyebrow">{text("本地文件", "Local file")}</p>
-          <h2 id="import-heading">{text("导入 Case JSON 文件", "Import a case JSON file")}</h2>
-          <p>{text("显示任何详情前，公开应用边界会检查模式版本、软件版本、冻结标识和内容指纹。", "The public application boundary checks schema, versions, freeze identity, and content fingerprints before any details are shown.")}</p>
+          <h2 id="import-heading">{text("导入已保存的方案文件", "Import a saved case file")}</h2>
+          <p>{text("显示内容前，软件会检查文件格式和完整性；检查不会上传或修改本地文件。", "The app checks file format and integrity before showing its contents; the local file is neither uploaded nor modified.")}</p>
         </div>
         <input
           accept=".json,application/json"
-          aria-label={text("Case JSON 文件", "Case JSON file")}
+          aria-label={text("方案文件", "Case file")}
           className="sr-only"
           onChange={(event) => { void handleFileChange(event); }}
           ref={fileInputRef}
@@ -619,18 +627,18 @@ function CasePage({ application }: { readonly application: EngineeringUiApplicat
           onClick={() => fileInputRef.current?.click()}
           type="button"
         >
-          {pending ? text("正在验证…", "Validating…") : text("选择 Case JSON", "Choose case JSON")}
+          {pending ? text("正在验证…", "Validating…") : text("选择方案文件", "Choose case file")}
         </button>
       </section>
       {failure === null ? null : (
         <div className="message message--error" role="alert">
           <strong>{text("导入被拒绝", "Import rejected")} · {failure.code}</strong>
-          <p>{failure.message}</p>
+          <p>{language === "zh-CN" ? "文件格式或内容未通过校验。请确认该文件由本软件保存且未被手工修改。" : publicFacingText(failure.message, language)}</p>
         </div>
       )}
       {importedCase === null ? (
-        <EmptyState title={text("尚未加载已验证 Case", "No validated case loaded")}>
-          {text("请选择现有 Case JSON 文件。此检查器不接受编辑，并严格保持只读。", "Choose an existing case JSON file. This inspector accepts no edits and remains strictly read-only.")}
+        <EmptyState title={text("尚未加载方案", "No validated case loaded")}>
+          {text("请选择现有方案文件。本页不接受编辑，并保持只读。", "Choose an existing case file. This inspector accepts no edits and remains read-only.")}
         </EmptyState>
       ) : (
         <div className="case-grid">
@@ -638,27 +646,16 @@ function CasePage({ application }: { readonly application: EngineeringUiApplicat
             <div className="panel-heading">
               <div>
                 <p className="eyebrow">{text("已验证输入", "Validated input")}</p>
-                <h2 id="case-summary-title">{importedCase.inspection.caseId}</h2>
+                <h2 id="case-summary-title">{caseDisplayName}</h2>
               </div>
               <StatusPill enabled={true}>{text("已验证", "validated")}</StatusPill>
             </div>
             <DefinitionList>
               <DefinitionItem term={text("来源文件", "Source file")}>{importedCase.fileName}</DefinitionItem>
-              <DefinitionItem term={text("快照标识", "Snapshot identity")}><code className="fingerprint">{importedCase.inspection.snapshotId}</code></DefinitionItem>
-              {importedCase.inspection.fields.map((field) => (
+              {visibleCaseFields.map((field) => (
                 <DefinitionItem key={field.label} term={caseFieldLabel(field.label, language)}>{field.value}</DefinitionItem>
               ))}
             </DefinitionList>
-          </section>
-          <section className="data-panel json-panel" aria-labelledby="json-title">
-            <div className="panel-heading">
-              <div>
-                <p className="eyebrow">{text("只读源数据", "Read-only source")}</p>
-                <h2 id="json-title">{text("规范化已验证 JSON", "Canonical validated JSON")}</h2>
-              </div>
-              <span className="text-badge">{text("已验证", "validated")}</span>
-            </div>
-            <pre tabIndex={0}>{importedCase.validatedJson}</pre>
           </section>
         </div>
       )}
@@ -678,27 +675,23 @@ function AboutPage({ model }: { readonly model: UiReferenceModel }) {
         <div>
           <p className="eyebrow">{text("专业工程计算工作区", "Professional engineering workspace")}</p>
           <h2>{text("感应加热工程计算器", model.productName)}</h2>
-          <p>{text("Phase 5B 受控可运行 MVP 工作区", model.phaseLabel)}</p>
-        </div>
-        <div className="freeze-stamp">
-          <span>{text("技术冻结", "Technical freeze")}</span>
-          <code>{model.technicalFreezeId}</code>
+          <p>{text("面向感应加热线圈设计与校核的工程计算工具", "Engineering calculations for induction-heating coil design and checking")}</p>
         </div>
       </div>
       <div className="about-grid">
         <section className="data-panel" aria-labelledby="versions-title">
           <div className="panel-heading">
             <div>
-              <p className="eyebrow">{text("可复现性", "Reproducibility")}</p>
-              <h2 id="versions-title">{text("版本注册表", "Version registry")}</h2>
+              <p className="eyebrow">{text("软件信息", "Software information")}</p>
+              <h2 id="versions-title">{text("当前版本", "Current version")}</h2>
             </div>
           </div>
           <table className="version-table">
-            <caption className="sr-only">{text("应用和工程数据版本", "Application and engineering data versions")}</caption>
+            <caption className="sr-only">{text("软件版本", "Software version")}</caption>
             <thead><tr><th scope="col">{text("组件", "Component")}</th><th scope="col">{text("版本", "Version")}</th></tr></thead>
             <tbody>
-              {model.versions.map((version) => (
-                <tr key={version.id}><th scope="row">{version.label}</th><td><code>{version.value}</code></td></tr>
+              {model.versions.filter((version) => version.id === "application").map((version) => (
+                <tr key={version.id}><th scope="row">{text("软件版本", "Application version")}</th><td><code>{publicFacingText(version.value, language)}</code></td></tr>
               ))}
             </tbody>
           </table>
@@ -711,7 +704,7 @@ function AboutPage({ model }: { readonly model: UiReferenceModel }) {
             </div>
           </div>
           <ul className="capability-list">
-            {model.capabilities.map((capability) => (
+            {model.capabilities.filter((capability) => capability.available).map((capability) => (
               <li key={capability.id}>
                 <StatusPill enabled={capability.available}>{text(capability.available ? "可用" : "不可用", capability.available ? "available" : "unavailable")}</StatusPill>
                 <div><strong>{capabilityLabel(capability.id, capability.label, language)}</strong><p>{capabilityReason(capability.id, capability.reason, language)}</p></div>
@@ -721,33 +714,16 @@ function AboutPage({ model }: { readonly model: UiReferenceModel }) {
         </section>
       </div>
       <div className="scope-banner" role="note">
-        <strong>{text("UI 边界", "UI boundary")}</strong>
-        <span>{text("此界面仅使用稳定的应用 API。工程公式、发布决策和隐藏默认值均不位于 UI 代码中。", "This interface consumes the stable application API. Engineering formulas, release decisions, and hidden defaults do not live in UI code.")}</span>
+        <strong>{text("计算原则", "Calculation principle")}</strong>
+        <span>{text("页面不会隐藏警告、适用范围或假设，也不会为缺失的工程数据自动编造默认值。", "The interface retains warnings, applicability, and assumptions and never invents missing engineering data.")}</span>
       </div>
     </section>
   );
 }
 
-function GatedNavigationItem({ capability }: { readonly capability: UiCapability }) {
-  const { language, text } = useUiLanguage();
-  const reason = capabilityReason(capability.id, capability.reason, language);
-  return (
-    <li>
-      <div aria-disabled="true" className="nav-item nav-item--disabled" title={reason}>
-        <span aria-hidden="true" className="nav-item__icon">×</span>
-        <span className="nav-item__copy">
-          <strong>{capabilityLabel(capability.id, capability.label, language)}</strong>
-          <small>{reason}</small>
-        </span>
-        <span className="nav-item__state">{text("不可用", "Unavailable")}</span>
-      </div>
-    </li>
-  );
-}
-
 function EngineeringAppShell({ application }: { readonly application: EngineeringUiApplication }) {
   const { language, setLanguage, text } = useUiLanguage();
-  const [activePage, setActivePage] = useState<PageId>("calculator");
+  const [activePage, setActivePage] = useState<PageId>("basic");
   const activeDefinition = PRIMARY_PAGES.find((page) => page.id === activePage) ?? PRIMARY_PAGES[0]!;
   const mainRef = useRef<HTMLElement>(null);
   const activeLabel = uiText(language, activeDefinition.label.zh, activeDefinition.label.en);
@@ -785,7 +761,7 @@ function EngineeringAppShell({ application }: { readonly application: Engineerin
           <span aria-hidden="true" className="brand-mark">IH</span>
           <div>
             <strong>{text("感应加热工程计算器", application.reference.productShortName)}</strong>
-            <span>{text("Phase 5B 受控可运行 MVP", application.reference.phaseLabel)}</span>
+            <span>{text("0.9 测试版工程计算工具", "Version 0.9 engineering calculator")}</span>
           </div>
         </div>
         <div className="topbar__context">
@@ -797,10 +773,6 @@ function EngineeringAppShell({ application }: { readonly application: Engineerin
           <div aria-label={text("界面语言", "Interface language")} className="language-switch" role="group">
             <button aria-pressed={language === "zh-CN"} onClick={() => setLanguage("zh-CN")} type="button">简体中文</button>
             <button aria-pressed={language === "en"} onClick={() => setLanguage("en")} type="button">English</button>
-          </div>
-          <div className="freeze-chip">
-            <span>{text("冻结", "Freeze")}</span>
-            <code>{application.reference.technicalFreezeId}</code>
           </div>
         </div>
       </header>
@@ -823,25 +795,21 @@ function EngineeringAppShell({ application }: { readonly application: Engineerin
               </li>
             ))}
           </ul>
-          <p className="nav-heading nav-heading--secondary">{text("受发布门禁限制", "Release gated")}</p>
-          <ul className="nav-list nav-list--gated">
-            {application.reference.capabilities.filter((capability) => !capability.available).map((capability) => (
-              <GatedNavigationItem capability={capability} key={capability.id} />
-            ))}
-          </ul>
         </nav>
       </aside>
       <main id="main-content" ref={mainRef} tabIndex={-1}>
+        {activePage === "basic" ? <BasicCalculatorPage application={application} /> : null}
         {activePage === "calculator" ? <CalculatorPage application={application} /> : null}
+        {activePage === "visualization" ? <ThreeDVisualizationPage application={application} /> : null}
         {activePage === "parameters" ? <ParametersPage model={application.reference} /> : null}
-        {activePage === "methods" ? <MethodsPage model={application.reference} /> : null}
+        {activePage === "methods" ? <MethodsPage application={application} /> : null}
         {activePage === "case" ? <CasePage application={application} /> : null}
         {activePage === "about" ? <AboutPage model={application.reference} /> : null}
       </main>
       <footer className="statusbar">
-        <span><span aria-hidden="true" className="status-dot" /> {text("公开应用 API 已连接", "Public application API connected")}</span>
-        <span>{text("受控 MVP 适配器 · 规范 SI 输入", "Controlled MVP adapter · canonical-SI inputs")}</span>
-        <span>{application.reference.technicalFreezeId}</span>
+        <span><span aria-hidden="true" className="status-dot" /> {text("计算功能已就绪", "Calculations ready")}</span>
+        <span>{text("本地计算 · 国际单位制输入", "Local calculation · SI inputs")}</span>
+        <span>{text("简体中文为默认语言", "Simplified Chinese default")}</span>
       </footer>
     </div>
   );

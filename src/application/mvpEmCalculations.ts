@@ -40,7 +40,7 @@ export type MvpEmMethodId = (typeof MVP_EM_METHOD_IDS)[number];
  * been activated.
  */
 export const MVP_EM_CALCULATION_SCOPE = cloneAndDeepFreeze({
-  scope: "phase_5b_controlled_mvp_adapter" as const,
+  scope: "v0_9_controlled_application_adapter" as const,
   formalRuntimeActivationClaim: false as const,
   methodIds: MVP_EM_METHOD_IDS,
   constraints: [

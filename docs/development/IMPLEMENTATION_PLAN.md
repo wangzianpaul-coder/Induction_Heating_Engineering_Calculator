@@ -205,13 +205,14 @@ fail only dependent calculations.
 
 ## Phase 5 — Desktop engineering UI
 
-Status: **Runnable MVP complete at the Phase-5B controlled-adapter boundary**.
+Status: **complete at the 0.9 test-release UI boundary**.
 
 Progress evidence: `PHASE_5_PROGRESS.md` and `RUNNABLE_MVP.md`. The UI now
-provides local Case creation/editing, eight reviewed narrow evaluator adapters,
-Calculate, result/warning/source views, and canonical save/reopen. Formal
-MethodRegistry execution remains 0/52; material comparison, 3D, formal trace,
-and engineering-report workflows remain gated.
+provides a Chinese-first guided calculator, local Case creation/editing, ten
+reviewed narrow evaluator adapters, Calculate, result/warning/source views,
+canonical save/reopen, CSV/print output, accessible input help, and the Phase-6
+3D workspace. Formal MethodRegistry execution remains 0/52; numerical material
+comparison, formal trace, and signed engineering-report workflows remain gated.
 
 Scope: React desktop shell consuming the stable application API; project/case
 management; dense parameter editing and help; result, status, warning, method,
@@ -225,7 +226,16 @@ resolutions pass acceptance checks.
 
 ## Phase 6 — Parametric 3D and FEM interchange boundary
 
-Status: **pending**.
+Status: **complete at the bounded v1 visualization/interchange boundary**.
+
+Completion evidence: `PHASE_6_PROGRESS.md`. A strict application builder and
+Case loader produce a presentation-safe scene from one immutable geometry
+snapshot. The Three.js viewer provides camera controls, visibility,
+transparency, cutaway, selection and dimensions with a permanent non-FEM
+watermark. The versioned external-reference manifest and admission boundary
+cover ANSYS Maxwell, ANSYS Thermal and COMSOL with exact geometry/hash,
+coordinate, mesh-refinement, convergence, energy-balance and validation gates.
+No browser FEM solver or imported-field overlay is claimed.
 
 Scope: Three.js geometry driven by the same immutable GeometrySnapshot; workpiece
 or furnace tube, insulation layers, air gap, hollow water-cooled helical coil,
@@ -241,7 +251,18 @@ consistency tests pass, and malformed/incompatible external datasets fail closed
 
 ## Phase 7 — Standard/portable builds and release acceptance
 
-Status: **pending**.
+Status: **in progress overall; the automated 0.9 test-release artifact boundary
+passed on 2026-08-17, while local-browser and independent clean-PC acceptance
+remain separate open evidence gates**.
+
+Completion evidence: `PHASE_7_ACCEPTANCE.md`. Standard and Portable builds,
+Chinese-first entry documents, local/offline policy scanning, release manifests,
+artifact hashes and a packaged Chinese known-limitations record are enforced by
+`pnpm run verify:release:0.9`. The fresh successful run is recorded in
+`PHASE_7_ACCEPTANCE.md`; it completes only the automated artifact boundary.
+Independent Windows Chrome/Edge and clean-PC acceptance cannot be inferred from
+source tests and remain explicit external sign-off items rather than hidden
+completion claims.
 
 Scope: integrate and produce Standard Static Web Build and Portable Offline Build;
 embed all runtime dictionaries/data/help/assets; prohibit CDN, remote assets,

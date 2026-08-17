@@ -28,6 +28,15 @@ import {
   type MvpF01CalculationInput,
 } from "./mvpEquivalentCalculations.js";
 import {
+  calculateMvpD04,
+  type MvpD04CalculationInput,
+  type MvpD04CalculationResult,
+} from "./mvpSkinDepthCalculations.js";
+import {
+  calculateMvpJ03,
+  type MvpJ03CalculationResult,
+} from "./mvpRadiationCalculations.js";
+import {
   MVP_RUNNABLE_METHOD_IDS,
   createMvpCaseDraft,
   loadMvpCaseDraft,
@@ -68,7 +77,7 @@ export interface MvpRunnableMethodDefinition {
   readonly moduleId: string;
   readonly purpose: string;
   readonly approvalStatus: "approved" | "approved_with_limitation";
-  readonly executionBoundary: "phase_5b_controlled_mvp_adapter";
+  readonly executionBoundary: "v0_9_controlled_application_adapter";
   readonly formalRuntimeActivationClaim: false;
   readonly sourceRefs: readonly string[];
   readonly limitations: readonly string[];
@@ -217,6 +226,18 @@ const dispositionOptions = Object.freeze([
   option("source_confirmed_not_applicable", "Source-confirmed not applicable"),
 ] as const);
 
+const j03ConfigurationOptions = Object.freeze([
+  option("radiation_to_large_surroundings", "Radiation to large surroundings"),
+  option("long_concentric_two_gray_surfaces", "Long concentric two-gray-surface enclosure"),
+] as const);
+
+const j03ConcentricEvidenceOptions = Object.freeze([
+  option("confirmed", "Confirmed"),
+  option("confirmed_not_satisfied", "Confirmed not satisfied"),
+  option("unconfirmed", "Unconfirmed"),
+  option("not_applicable", "Not applicable to large-surroundings route"),
+] as const);
+
 function specification(id: MvpRunnableMethodId) {
   return METHOD_SPECIFICATION_REGISTRY.get(methodId(id));
 }
@@ -237,7 +258,7 @@ function definition(
     moduleId: spec.moduleId,
     purpose: spec.purpose,
     approvalStatus: spec.approvalStatus,
-    executionBoundary: "phase_5b_controlled_mvp_adapter",
+    executionBoundary: "v0_9_controlled_application_adapter",
     formalRuntimeActivationClaim: false,
     sourceRefs: spec.sourceRefs,
     limitations,
@@ -330,6 +351,40 @@ const D03_FIELDS = Object.freeze([
     option("confirmed_none", "Complete boundary; no series extras"),
     option("unknown", "Unknown or incomplete"),
   ]),
+]);
+
+const D04_FIELDS = Object.freeze([
+  field("frequencyHz", "Excitation frequency", "Sinusoidal operating frequency for the declared copper-property state.", "number", "Hz"),
+  field("resistivityOhmM", "Copper electrical resistivity", "Explicit copper resistivity at the declared material temperature and frequency state; no default is supplied.", "number", "Ω·m"),
+  field("relativePermeability", "Copper relative permeability", "Explicit relative permeability from the same copper-property state; no implicit value of one is supplied.", "number", "1"),
+  field("materialClass", "Conductor material class", "Select copper only when the stated property evidence actually belongs to copper.", "select", null, [
+    option("copper", "Copper"),
+    option("other", "Other material"),
+  ]),
+  field("propertyStateMatch", "Property-state match", "Confirm whether resistivity and relative permeability belong to the same material, temperature and frequency state.", "select", null, [
+    option("same_material_temperature_frequency_state", "Same material, temperature and frequency state"),
+    option("unconfirmed_or_mismatched", "Unconfirmed or mismatched"),
+  ]),
+  field("calculationTemperatureK", "Copper calculation temperature", "Absolute copper temperature represented by the calculation state.", "number", "K"),
+  field("constitutiveRegime", "Conductor response model", "The supported route requires a linear isotropic good conductor.", "select", null, [
+    option("linear_isotropic_good_conductor", "Linear isotropic good conductor"),
+    option("nonlinear_or_unknown", "Nonlinear or unknown"),
+  ]),
+  field("excitation", "Excitation state", "The supported route requires sinusoidal steady-state excitation.", "select", null, [
+    option("sinusoidal_steady_state", "Sinusoidal steady state"),
+    option("other_or_unknown", "Other or unknown"),
+  ]),
+  field("fieldModel", "Local field model", "Confirm whether the locally planar reference model is applicable to the conductor surface.", "select", null, [
+    option("locally_planar_reference", "Locally planar reference"),
+    option("other_or_unknown", "Other or unknown"),
+  ]),
+  field("materialSnapshotId", "Material evidence fingerprint", "Content-addressed fingerprint for the exact copper-property evidence set.", "text", null, [], true, "material:<64 lowercase SHA-256 hex>"),
+  field("materialDisplayName", "Material and state name", "Human-readable name for the copper grade and declared state.", "text", null, [], true, "C110 copper at declared state"),
+  field("propertyTemperatureK", "Property-source temperature", "Absolute temperature at which the supplied resistivity and permeability apply; it must exactly match the calculation state.", "number", "K"),
+  field("propertyFrequencyHz", "Property-source frequency", "Frequency represented by the supplied property evidence; it must exactly match the calculation state.", "number", "Hz"),
+  field("sameMaterialStateConfirmed", "One material state confirmed", "Confirm both supplied properties belong to the same content-addressed copper state.", "boolean"),
+  field("resistivitySourceRef", "Resistivity source record", "Stable project, measurement, datasheet or approved-reference record for the supplied resistivity.", "text", null, [], true, "project.copper.resistivity.state-1"),
+  field("relativePermeabilitySourceRef", "Relative-permeability source record", "Stable project, measurement, datasheet or approved-reference record for the supplied relative permeability.", "text", null, [], true, "project.copper.relative-permeability.state-1"),
 ]);
 
 const D07_FIELDS = Object.freeze([
@@ -458,15 +513,49 @@ const H01_FIELDS = Object.freeze([
   field("designMarginNotRequested", "No design margin requested", "The design-margin equation is not frozen and remains unavailable.", "boolean"),
 ]);
 
+const J03_FIELDS = Object.freeze([
+  field("configuration", "Radiation boundary", "Choose the actual supported radiation network; topology is never inferred from temperatures or areas.", "select", null, j03ConfigurationOptions),
+  field("surface1TemperatureK", "Surface 1 temperature", "Absolute temperature of the radiating surface.", "number", "K"),
+  field("surface1Emissivity", "Surface 1 emissivity", "Explicit total hemispherical emissivity at the declared surface state; no default is supplied.", "number", "1"),
+  field("surface1AreaM2", "Surface 1 radiating area", "Area participating in the declared radiation network.", "number", "m²"),
+  field("surface1MaterialSnapshotId", "Surface 1 material evidence fingerprint", "Content-addressed material and emissivity evidence for surface 1.", "text", null, [], true, "material:<64 lowercase SHA-256 hex>"),
+  field("surface1EmissivitySourceRef", "Surface 1 emissivity source record", "Stable source record for surface 1 emissivity.", "text", null, [], true, "project.surface-1.emissivity.state-1"),
+  field("surface1EmissivityStateTemperatureK", "Surface 1 emissivity-source temperature", "Absolute temperature represented by the surface 1 emissivity evidence; it must exactly match surface temperature.", "number", "K"),
+  field("counterpartKind", "Other radiating boundary", "Select large surroundings or an explicit concentric outer surface consistently with the radiation boundary.", "select", null, [
+    option("large_surroundings", "Large surroundings"),
+    option("concentric_outer_surface", "Concentric outer surface"),
+  ]),
+  field("counterpartTemperatureK", "Other-boundary temperature", "Absolute temperature of the surroundings or concentric outer surface.", "number", "K"),
+  field("surface2Emissivity", "Outer-surface emissivity", "Required only for the long-concentric route; no default is supplied.", "number", "1", [], false),
+  field("surface2AreaM2", "Outer-surface radiating area", "Required only for the long-concentric route and must come from the same geometry evidence.", "number", "m²", [], false),
+  field("surface2MaterialSnapshotId", "Outer-surface material evidence fingerprint", "Required only for the long-concentric route.", "text", null, [], false, "material:<64 lowercase SHA-256 hex>"),
+  field("surface2EmissivitySourceRef", "Outer-surface emissivity source record", "Required only for the long-concentric route.", "text", null, [], false, "project.surface-2.emissivity.state-1"),
+  field("surface2EmissivityStateTemperatureK", "Outer-surface emissivity-source temperature", "Required only for the long-concentric route and must match the outer-surface temperature.", "number", "K", [], false),
+  field("geometrySnapshotId", "Geometry evidence fingerprint", "Content-addressed geometry evidence for the selected configuration and both radiating areas.", "text", null, [], true, "geometry:<64 lowercase SHA-256 hex>"),
+  field("snapshotConfiguration", "Geometry-evidence configuration", "Configuration recorded in the immutable geometry evidence; it must exactly match the selected radiation boundary.", "select", null, j03ConfigurationOptions),
+  field("snapshotSurface1AreaM2", "Geometry-evidence surface 1 area", "Surface 1 area recorded in the immutable geometry evidence.", "number", "m²"),
+  field("snapshotSurface2AreaM2", "Geometry-evidence outer-surface area", "Required for the long-concentric route; leave blank for large surroundings.", "number", "m²", [], false),
+  field("temperatureScale", "Temperature scale", "Fourth-power radiation equations require absolute kelvin.", "select", null, [
+    option("absolute_kelvin", "Absolute kelvin"),
+  ]),
+  field("diffuseGraySurfacesConfirmed", "Diffuse-gray surfaces confirmed", "Confirm the stated emissivities represent diffuse gray surfaces in the declared state.", "boolean"),
+  field("viewFactor", "Surface 1 view factor", "Explicit geometric view factor. This controlled route supports exactly one.", "number", "1"),
+  field("noUnmodelledOpeningsOrObstructionsConfirmed", "No unmodelled openings or obstructions", "Confirm that no opening, shield or obstruction changes the declared radiation network.", "boolean"),
+  field("longConcentricEndEffectsStatus", "Concentric end-effect evidence", "For the long-concentric route, confirm negligible end effects; select not applicable for large surroundings.", "select", null, j03ConcentricEvidenceOptions),
+  field("surface1RoleStatus", "Surface 1 concentric role", "For the long-concentric route, confirm surface 1 is the inner surface; select not applicable for large surroundings.", "select", null, j03ConcentricEvidenceOptions),
+]);
+
 export const MVP_RUNNABLE_METHOD_DEFINITIONS = Object.freeze([
   definition("B-02", B02_FIELDS, ["Uniform identical single-layer turns only.", "ADR-0003 full-envelope semantics and non-overlap must be explicit."]),
   definition("B-03", B03_FIELDS, ["Analytical long-solenoid limit only; no frozen aspect-ratio threshold is applied.", "The result is never a finite-coil Recommended method and does not include end, leakage, lead, or conductor cross-section effects."]),
   definition("D-01", D01_FIELDS, ["Uniform cylindrical mechanical/CAD centre path only.", "Unknown lead or bus groups produce a lower-bound result and warning."]),
   definition("D-03", D03_FIELDS, ["No default resistivity or material state is supplied.", "This MVP form supports either no series extras or an explicitly incomplete terminal boundary."]),
+  definition("D-04", D04_FIELDS, ["Electromagnetic field-amplitude 1/e depth only; never a thermal affected depth.", "Linear homogeneous copper, sinusoidal steady state, and locally planar good-conductor approximation only."]),
   definition("D-07", D07_FIELDS, ["Requires externally established R and L at one coil series port.", "Component voltages are not grid-side or whole-tank voltage."]),
   definition("F-01", F01_FIELDS, ["Estimated linear lumped two-winding reflected-impedance model only; F-02 same-state measurement is preferred for actual equipment.", "Mutual inductance must be supplied with same-state provenance and is never inferred from geometry."]),
   definition("H-01", H01_FIELDS, ["One complete, non-overlapping coil coolant circuit only.", "Design-margin arithmetic is not available in this MVP."]),
   definition("H-03", H03_FIELDS, ["One explicit branch flow and verified D-02 geometry only.", "No OEM/project velocity acceptance or safety conclusion is produced."]),
+  definition("J-03", J03_FIELDS, ["Only large surroundings with view factor one or a long concentric two-gray-surface enclosure are supported.", "Emissivity, area, absolute temperature, material evidence, openings, obstructions and concentric end effects must be explicit."]),
 ] as const);
 
 const DEFINITION_BY_ID = new Map(MVP_RUNNABLE_METHOD_DEFINITIONS.map((item) => [item.methodId, item]));
@@ -492,6 +581,38 @@ function optionalNumberList(record: Record<string, JsonValue>, key: string): rea
   return Array.isArray(value) && value.every((entry) => typeof entry === "number")
     ? value as number[]
     : null;
+}
+
+function optionalNumeric(record: Record<string, JsonValue>, key: string): number | null {
+  return typeof record[key] === "number" ? record[key] : null;
+}
+
+function j03ConcentricEvidence(
+  record: Record<string, JsonValue>,
+  key: "longConcentricEndEffectsStatus" | "surface1RoleStatus",
+  configuration: string,
+): true | false | null | string {
+  const status = text(record, key);
+  if (configuration === "radiation_to_large_surroundings") {
+    return status === "not_applicable" ? null : status;
+  }
+  if (status === "confirmed") return true;
+  if (status === "confirmed_not_satisfied") return false;
+  if (status === "unconfirmed") return null;
+  return status;
+}
+
+function hasJ03Surface2Data(record: Record<string, JsonValue>): boolean {
+  return [
+    "surface2Emissivity",
+    "surface2AreaM2",
+    "surface2MaterialSnapshotId",
+    "surface2EmissivitySourceRef",
+    "surface2EmissivityStateTemperatureK",
+  ].some((key) => {
+    const value = record[key];
+    return value !== undefined && value !== null && value !== "";
+  });
 }
 
 function workspaceFailure(code: string, message: string, action: string): MvpWorkspaceFailure {
@@ -796,6 +917,76 @@ function normalizeThermal(result: MvpThermalCalculationResult, id: "H-01" | "H-0
   };
 }
 
+function bilingual(value: Readonly<{ readonly zh: string; readonly en: string }>): string {
+  return `${value.zh} / ${value.en}`;
+}
+
+function normalizeSkinDepth(
+  result: MvpD04CalculationResult,
+): MvpWorkspaceMethodResult {
+  return {
+    methodId: "D-04",
+    methodVersion: result.methodVersion,
+    approvalStatus: result.approvalStatus,
+    formalRuntimeActivationClaim: false,
+    status: result.status,
+    outputs: result.outputs.map((item) => ({
+      outputId: item.outputId,
+      label: item.label,
+      status: "available" as const,
+      value: item.value,
+      canonicalUnitId: item.canonicalUnit,
+      reason: null,
+    })),
+    warnings: result.warnings.map((warning) => ({
+      code: null,
+      predicate: null,
+      message: bilingual(warning.message),
+    })),
+    assumptions: result.assumptions.map(bilingual),
+    sources: result.sourceTitles.map((source) => bilingual(source.title)),
+    applicability: {
+      status: result.applicability.status,
+      scope: bilingual(result.applicability.domain),
+      limitations: DEFINITION_BY_ID.get("D-04")?.limitations ?? [],
+    },
+    failure: result.failure,
+  };
+}
+
+function normalizeRadiation(
+  result: MvpJ03CalculationResult,
+): MvpWorkspaceMethodResult {
+  return {
+    methodId: "J-03",
+    methodVersion: result.methodVersion,
+    approvalStatus: result.approvalStatus,
+    formalRuntimeActivationClaim: false,
+    status: result.status,
+    outputs: result.outputs.map((item) => ({
+      outputId: item.outputId,
+      label: item.label,
+      status: "available" as const,
+      value: item.value,
+      canonicalUnitId: item.canonicalUnit,
+      reason: null,
+    })),
+    warnings: result.warnings.map((warning) => ({
+      code: null,
+      predicate: null,
+      message: bilingual(warning.message),
+    })),
+    assumptions: result.assumptions.map(bilingual),
+    sources: result.sourceTitles.map((source) => bilingual(source.title)),
+    applicability: {
+      status: result.applicability.status,
+      scope: bilingual(result.applicability.domain),
+      limitations: DEFINITION_BY_ID.get("J-03")?.limitations ?? [],
+    },
+    failure: result.failure,
+  };
+}
+
 function heatTerm(record: Record<string, JsonValue>, prefix: string) {
   const disposition = text(record, `${prefix}Disposition`);
   const common = {
@@ -887,6 +1078,30 @@ function calculateOne(
           : "other_or_unknown",
       } as unknown as MvpD03CalculationInput));
     }
+    case "D-04":
+      return normalizeSkinDepth(calculateMvpD04({
+        methodId: "D-04",
+        frequencyHz: numeric(payload, "frequencyHz"),
+        resistivityOhmM: numeric(payload, "resistivityOhmM"),
+        relativePermeability: numeric(payload, "relativePermeability"),
+        state: {
+          materialClass: text(payload, "materialClass"),
+          propertyStateMatch: text(payload, "propertyStateMatch"),
+          temperatureK: numeric(payload, "calculationTemperatureK"),
+          constitutiveRegime: text(payload, "constitutiveRegime"),
+          excitation: text(payload, "excitation"),
+          fieldModel: text(payload, "fieldModel"),
+        },
+        propertyEvidence: {
+          materialSnapshotId: text(payload, "materialSnapshotId"),
+          materialDisplayName: text(payload, "materialDisplayName"),
+          propertyTemperatureK: numeric(payload, "propertyTemperatureK"),
+          propertyFrequencyHz: numeric(payload, "propertyFrequencyHz"),
+          sameMaterialStateConfirmed: bool(payload, "sameMaterialStateConfirmed"),
+          resistivitySourceRef: text(payload, "resistivitySourceRef"),
+          relativePermeabilitySourceRef: text(payload, "relativePermeabilitySourceRef"),
+        },
+      } as unknown as MvpD04CalculationInput));
     case "D-07":
       return normalizeEm(calculateMvpD07({
         resistanceOhm: numeric(payload, "resistanceOhm"),
@@ -1005,6 +1220,84 @@ function calculateOne(
         overlapAssessmentSourceRef: text(payload, "overlapAssessmentSourceRef"),
         designMarginStatus: bool(payload, "designMarginNotRequested") ? "not_requested" : "requested",
       }), "H-01");
+    }
+    case "J-03": {
+      const configuration = text(payload, "configuration");
+      const counterpartKind = text(payload, "counterpartKind");
+      const counterpart: Record<string, unknown> = {
+        kind: counterpartKind,
+        temperatureK: numeric(payload, "counterpartTemperatureK"),
+      };
+      if (counterpartKind === "concentric_outer_surface") {
+        Object.assign(counterpart, {
+          emissivity: numeric(payload, "surface2Emissivity"),
+          areaM2: numeric(payload, "surface2AreaM2"),
+          materialSnapshotId: text(payload, "surface2MaterialSnapshotId"),
+          emissivitySourceRef: text(payload, "surface2EmissivitySourceRef"),
+          emissivityStateTemperatureK: numeric(
+            payload,
+            "surface2EmissivityStateTemperatureK",
+          ),
+        });
+      } else if (hasJ03Surface2Data(payload)) {
+        // Preserve contradictory caller data as extra evaluator fields so the
+        // exact-schema boundary rejects it instead of silently discarding it.
+        Object.assign(counterpart, {
+          emissivity: optionalNumeric(payload, "surface2Emissivity"),
+          areaM2: optionalNumeric(payload, "surface2AreaM2"),
+          materialSnapshotId: text(payload, "surface2MaterialSnapshotId"),
+          emissivitySourceRef: text(payload, "surface2EmissivitySourceRef"),
+          emissivityStateTemperatureK: optionalNumeric(
+            payload,
+            "surface2EmissivityStateTemperatureK",
+          ),
+        });
+      }
+      return normalizeRadiation(calculateMvpJ03({
+        methodId: "J-03",
+        configuration,
+        surface1: {
+          temperatureK: numeric(payload, "surface1TemperatureK"),
+          emissivity: numeric(payload, "surface1Emissivity"),
+          areaM2: numeric(payload, "surface1AreaM2"),
+          materialSnapshotId: text(payload, "surface1MaterialSnapshotId"),
+          emissivitySourceRef: text(payload, "surface1EmissivitySourceRef"),
+          emissivityStateTemperatureK: numeric(
+            payload,
+            "surface1EmissivityStateTemperatureK",
+          ),
+        },
+        counterpart,
+        boundaryEvidence: {
+          geometrySnapshotId: text(payload, "geometrySnapshotId"),
+          snapshotConfiguration: text(payload, "snapshotConfiguration"),
+          snapshotSurface1AreaM2: numeric(payload, "snapshotSurface1AreaM2"),
+          snapshotSurface2AreaM2: optionalNumeric(
+            payload,
+            "snapshotSurface2AreaM2",
+          ),
+          temperatureScale: text(payload, "temperatureScale"),
+          diffuseGraySurfacesConfirmed: bool(
+            payload,
+            "diffuseGraySurfacesConfirmed",
+          ),
+          viewFactor: numeric(payload, "viewFactor"),
+          noUnmodelledOpeningsOrObstructionsConfirmed: bool(
+            payload,
+            "noUnmodelledOpeningsOrObstructionsConfirmed",
+          ),
+          longConcentricEndEffectsNegligible: j03ConcentricEvidence(
+            payload,
+            "longConcentricEndEffectsStatus",
+            configuration,
+          ),
+          surface1IsInnerSurface: j03ConcentricEvidence(
+            payload,
+            "surface1RoleStatus",
+            configuration,
+          ),
+        },
+      }));
     }
   }
 }

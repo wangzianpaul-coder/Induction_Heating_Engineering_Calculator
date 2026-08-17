@@ -55,7 +55,7 @@ describe("Phase-5B application read models", () => {
     expect(inner?.consumingMethods.map((method) => method.methodId)).toContain("B-01");
   });
 
-  it("keeps the frozen 52/0 registry boundary while reporting eight MVP adapters", () => {
+  it("keeps the frozen 52/0 registry boundary while reporting ten controlled adapters", () => {
     expect(METHOD_READINESS_ROWS).toHaveLength(52);
     expect(METHOD_READINESS_SUMMARY).toEqual({
       specificationCount: 52,
@@ -69,7 +69,7 @@ describe("Phase-5B application read models", () => {
       controlledDerivations: 3,
       methodSpecifications: 52,
       runtimeExecutableMethods: 0,
-      runnableMvpAdapters: 8,
+      runnableMvpAdapters: 10,
       releasedMaterials: 0,
     });
     expect(APPLICATION_READINESS.capabilities.caseCreation.status).toBe("available");
@@ -80,11 +80,11 @@ describe("Phase-5B application read models", () => {
       APPLICATION_READINESS.capabilities.geometry3d.status,
       APPLICATION_READINESS.capabilities.calculationTrace.status,
       APPLICATION_READINESS.capabilities.engineeringReport.status,
-    ]).toEqual(["blocked", "blocked", "blocked", "blocked"]);
+    ]).toEqual(["blocked", "available", "blocked", "blocked"]);
     expect(APPLICATION_READINESS.builds.map((build) => build.phase5UiTargetReadiness))
       .toEqual(["automated_artifact_gate_verified", "automated_artifact_gate_verified"]);
     expect(APPLICATION_READINESS.builds.map((build) => build.currentArtifactScope))
-      .toEqual(["phase_5b_runnable_mvp_ui", "phase_5b_runnable_mvp_ui"]);
+      .toEqual(["v0_9_test_release_ui", "v0_9_test_release_ui"]);
   });
 
   it("failure-closes case input and returns an immutable current-version canonical re-export", () => {

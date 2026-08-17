@@ -61,6 +61,20 @@ describe("canonical JSON", () => {
     expect(() => canonicalStringify(hidden)).toThrow(/hidden fields/u);
   });
 
+  it("reads array elements from descriptors without executing accessors", () => {
+    let reads = 0;
+    const accessorArray = [1];
+    Object.defineProperty(accessorArray, "0", {
+      enumerable: true,
+      get() {
+        reads += 1;
+        return 2;
+      },
+    });
+    expect(() => canonicalStringify(accessorArray)).toThrow(/accessors/u);
+    expect(reads).toBe(0);
+  });
+
   it("deep-freezes nested arrays and records", () => {
     const value = deepFreeze({ nested: { values: [1, 2, 3] } });
     expect(Object.isFrozen(value)).toBe(true);

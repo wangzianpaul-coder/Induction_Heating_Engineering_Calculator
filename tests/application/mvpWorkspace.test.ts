@@ -195,9 +195,9 @@ function input(): MvpWorkspaceInput {
 }
 
 describe("Runnable MVP workspace", () => {
-  it("publishes only the eight controlled adapter definitions", () => {
+  it("publishes only the ten controlled adapter definitions", () => {
     expect(MVP_RUNNABLE_METHOD_DEFINITIONS.map((item) => item.methodId)).toEqual([
-      "B-02", "B-03", "D-01", "D-03", "D-07", "F-01", "H-01", "H-03",
+      "B-02", "B-03", "D-01", "D-03", "D-04", "D-07", "F-01", "H-01", "H-03", "J-03",
     ]);
     expect(MVP_RUNNABLE_METHOD_DEFINITIONS.every((item) =>
       item.formalRuntimeActivationClaim === false && item.fields.length > 0

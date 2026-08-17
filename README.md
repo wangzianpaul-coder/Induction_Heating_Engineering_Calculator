@@ -1,6 +1,6 @@
 # Induction Heating Engineering Calculator
 
-扩展可运行网页计算器版本：`0.3.0-mvp.1`。技术冻结 ID 仍为
+可运行网页计算器 0.9 测试版：`0.9.0-beta.1`。技术冻结 ID 仍为
 `IH-EC-V1-G0-2026-08-14-01`；Calculation Basis、Calculation Contracts、ADR、
 受控来源和 Gate 0 决策均未被放宽。
 
@@ -9,7 +9,7 @@
 在 PowerShell 中进入仓库，然后运行：
 
 ```powershell
-pnpm install --frozen-lockfile --offline
+pnpm install --frozen-lockfile
 pnpm run dev:ui
 ```
 
@@ -21,15 +21,18 @@ pnpm run dev:ui
 ```powershell
 pnpm run build:ui:standard
 pnpm run build:ui:portable
-pnpm run verify:mvp
+pnpm run verify:release:0.9
 ```
 
 构建产物：
 
-- Standard Web：`dist/phase5-ui-standard-static/index.html`
-- Portable Offline：`dist/phase5-ui-portable-offline/index.html`
+- Standard Web：`dist/v0.9-ui-standard-static/index.html`
+- Portable Offline：`dist/v0.9-ui-portable-offline/index.html`
 
 Portable 版本使用本地 classic IIFE、CSS 和 HTML，不需要运行时网络或模块加载。
+请将 Portable 整个目录一起分发，然后可直接打开其 `index.html`。Standard
+版本应通过静态 Web 服务器发布。两种产物均包含可校验的发布清单和
+`V0_9_KNOWN_LIMITATIONS.md`。
 
 ## 当前真实可计算方法
 
@@ -39,23 +42,32 @@ Portable 版本使用本地 classic IIFE、CSS 和 HTML，不需要运行时网�
 | Inductance | `B-03` ideal long-solenoid limit | 空心或显式均匀线性介质；只发布长螺线管解析极限，不作为有限线圈 Recommended |
 | Coil geometry | `D-01` conductor path length | 明确的机械/CAD 圆柱螺旋路径；未知 lead/bus 会保留 lower-bound 警告 |
 | Coil electrical | `D-03` DC resistance | 用户显式提供同材料/同温度电阻率及来源；没有默认铜物性 |
+| Coil electrical | `D-04` copper skin depth | 用户显式提供同状态电阻率和相对磁导率；不把电磁肤深度解释为热影响深度 |
 | Coil electrical | `D-07` series-port parameters | 用户已有同端口、同状态的 R、L、I、f；计算 X、Z、Q 和分量电压 |
 | Coupled circuit | `F-01` reflected impedance | 显式同状态 R1/Lp/R2/Ls/M/f 与来源；输出 Zin、Req、Rref、Leq、k，结果为 estimated 且不作 Recommended |
 | Cooling | `H-01` cooling heat load | 单一完整冷却回路、热源枚举和不重叠证据齐全；不计算设计裕量 |
 | Cooling | `H-03` branch flow geometry | 单支路流量与真实 D-02 上游几何证据齐全；不作 OEM/安全合格判定 |
+| Thermal | `J-03` gray-body radiation | 仅支持已审查的大环境或长同心双表面边界；温度、发射率、面积和几何证据必须明确 |
 
-这八条路线通过受控 Phase-5B application adapter 调用已验证 evaluator。正式 MethodRegistry
-仍保持 `52 specifications / 0 formally runtime-executable`；MVP 不伪装为最终 registry 激活。
+这些路线通过受控应用适配器调用已验证的计算内核。内部正式方法目录仍保持
+`52 specifications / 0 formally runtime-executable`；0.9 测试版不会把窄应用适配器伪装为已完成的全产品运行激活。
 
 ## 主界面流程
 
-1. 打开 **Calculator**，输入稳定 Case ID 与名称。
-2. 选择一个或多个当前可用方法。
-3. 按表单填写 canonical-SI 输入、确认项、状态和来源；空白保持 unknown。
-4. 点击 **Calculate**。
-5. 查看数值、单位、状态、警告、适用范围、假设和方法来源。
-6. 点击 **Save case JSON** 下载内容寻址的当前版本 Case。
-7. 使用 **Open case** 重新打开并编辑；重新计算会产生当前结果快照。
+首次试用建议使用 **基础计算器**：
+
+1. 按页面显示的 mm、µH、kHz 等常用工程单位填写几何和可选串联电气数据；
+2. 点击 **开始计算**，查看数值、单位、警告、适用范围和来源；
+3. 使用 **保存基础方案 / 打开基础方案** 保存或恢复本页输入。基础方案文件不含
+   计算结果，也不属于正式工程 Case。
+
+需要保存完整证据边界时使用 **高级计算**：
+
+1. 输入方案编号和名称，选择一个或多个当前可用功能；
+2. 按表单所示规范 SI 单位填写数据、确认项、工况和来源；空白表示未知；
+3. 点击 **计算**，查看结果、单位、状态、警告、适用范围、假设和方法来源；
+4. 使用 **保存方案 / 打开方案** 下载或重新打开当前版本的内容寻址 Case JSON；
+   重新计算会产生与当前输入一致的新结果。
 
 多选方法会并排显示结果，但只有工程含义和边界相同的输出才可人工比较。目前没有满足
 正式 comparison contract 的同量多方法对，因此不发布 Recommended、排名或归一化差值。
@@ -66,14 +78,22 @@ Portable 版本使用本地 classic IIFE、CSS 和 HTML，不需要运行时网�
   网络求解等仍因来源交叉核验、child split、property provider、warning ID、参数对齐或
   验证门未闭而 Disabled。H-02 尤其不能把任意 `cp/rho` 冒充已批准水物性。
 - released material catalog 仍为空；软件不提供材料默认值或插值。
-- 正式 CalculationResult/Trace、工程报告、3D/FEM、最终 Phase-7 验收仍是后续工作，
-  但不阻止当前 MVP 的本地计算闭环。
+- 参数化 3D 示意已经可在网页中使用；外部 FEM 的严格清单与接纳逻辑作为代码交换
+  边界提供，当前网页不上传求解器文件、不绘制导入场，也不内置 FEM 求解器。
+- 正式 CalculationResult/Trace、签署工程报告和独立全新 Windows 电脑验收仍需后续证据，
+  但不阻止 0.9 测试版的本地计算、方案交换、3D 查看和双构建交付。
 - 方法输入保存在权威 CaseSnapshot 的受控 provenance marker 中。由于 UI 尚未保存原始
   数字文本的有效位语义，MVP 不把这些输入伪装成精度已知的通用 Quantity。
 - 不允许用旧软件输出、截图、工作簿或聊天数值作默认值、校准目标或科学验证目标。
 
-详细边界见 `docs/development/RUNNABLE_MVP.md` 和
-`docs/development/PHASE_5_PROGRESS.md`。
+详细边界见 `docs/development/RUNNABLE_MVP.md`、
+`docs/development/PHASE_5_PROGRESS.md`、`docs/development/PHASE_6_PROGRESS.md`
+和 `docs/development/PHASE_7_ACCEPTANCE.md`。
+
+中文操作、参数和结果说明以及与早期 Excel 的逐项对照见
+`docs/user/V0_9_中文使用说明.md`；全部当前输入和结果字段见
+`docs/user/V0_9_参数与结果附录.md`；0.9 里程碑与 Phase 0–7 的状态说明见
+`docs/development/V0_9_TEST_RELEASE.md`。
 
 ## Source of Truth
 

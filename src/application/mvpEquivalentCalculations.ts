@@ -39,7 +39,7 @@ if (
  * activate F-01 in the formal Gate-0 runtime registry.
  */
 export const MVP_EQUIVALENT_CALCULATION_SCOPE = cloneAndDeepFreeze({
-  scope: "phase_5b_controlled_mvp_adapter" as const,
+  scope: "v0_9_controlled_application_adapter" as const,
   formalRuntimeActivationClaim: false as const,
   methodIds: MVP_EQUIVALENT_METHOD_IDS,
   constraints: [

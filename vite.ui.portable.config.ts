@@ -20,13 +20,13 @@ export default defineConfig({
       scriptFileName: "ih-ec-ui.js",
       stylesheetFileName: "ih-ec-ui.css",
     }),
-    releaseManifestPlugin("phase5-ui-portable-offline", {
-      scope: "phase_5b_runnable_mvp_ui",
+    releaseManifestPlugin("v0.9-ui-portable-offline", {
+      scope: "v0_9_test_release_ui",
     }),
   ],
   build: {
     target: ["chrome120", "edge120"],
-    outDir: "dist/phase5-ui-portable-offline",
+    outDir: "dist/v0.9-ui-portable-offline",
     emptyOutDir: true,
     sourcemap: false,
     minify: "oxc",
