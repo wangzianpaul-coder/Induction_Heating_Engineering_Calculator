@@ -7,7 +7,7 @@ const workspaceRoot = process.cwd();
 const manifestPath = resolve(workspaceRoot, "SOURCE_MANIFEST.csv");
 const referencesRoot = resolve(workspaceRoot, "references");
 const expectedHeader = ["relative_path", "bytes", "last_write_time", "sha256", "role"];
-const expectedRecordCount = 47;
+const expectedRecordCount = 48;
 const allowedRoles = new Set([
   "derived-research-note",
   "legacy-reference",

@@ -101,11 +101,6 @@ export const E03_IMPLEMENTATION_READINESS = Object.freeze({
         "The E-03 contract/metadata input IDs do not yet have a complete controlled alias mapping to the parameter registry, whose E-03 consumer declarations also include frequency and skin_depth." as const,
     }),
     Object.freeze({
-      gateId: "E-03.codata22-local-pin" as const,
-      reason:
-        "CODATA22 remains an online-only controlled dependency without a locally pinned file hash in the frozen source manifest." as const,
-    }),
-    Object.freeze({
       gateId: "E-03.frequency-state-orchestration" as const,
       reason:
         "A-01 rho and effective mu_r must be resolved at the exact E-01 frequency or at the self-consistent f_ref point; the isolated method does not iterate or extrapolate material properties." as const,

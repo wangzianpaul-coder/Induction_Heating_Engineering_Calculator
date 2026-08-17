@@ -7,6 +7,11 @@ import { describe, expect, it } from "vitest";
 
 import { EngineeringApp } from "../../src/ui/App.js";
 import { ENGINEERING_UI_APPLICATION } from "../../src/ui/application-adapter.js";
+import {
+  DEFAULT_UI_LANGUAGE,
+  UI_LANGUAGE_STORAGE_KEY,
+  parseStoredUiLanguage,
+} from "../../src/ui/i18n.js";
 
 const UI_ROOT = join(process.cwd(), "src", "ui");
 
@@ -17,9 +22,39 @@ function uiSourceFiles(): readonly string[] {
 }
 
 describe("Phase 5 engineering UI", () => {
-  it("server-renders the professional shell and explicit gated destinations", () => {
+  it("server-renders Simplified Chinese by default with an accessible visible language switch", () => {
     const html = renderToStaticMarkup(
       createElement(EngineeringApp, { application: ENGINEERING_UI_APPLICATION }),
+    );
+
+    expect(html).toContain("感应加热工程计算器");
+    expect(html).toContain("参数定义");
+    expect(html).toContain("方法就绪状态");
+    expect(html).toContain("Case 检查器");
+    expect(html).toContain("关于 / 版本");
+    expect(html).toContain("计算结果");
+    expect(html).toContain("材料比较");
+    expect(html).toContain("工程报告");
+    expect(html).toContain("不可用");
+    expect(html).toContain("正式方法注册表激活状态仍为 false");
+    expect(html).toContain("Phase 6 参数化三维快照适配器和查看器尚未启用");
+    expect(html).toContain("aria-label=\"工程计算工作区\"");
+    expect(html).toContain("aria-label=\"界面语言\"");
+    expect(html).toContain("aria-pressed=\"true\"");
+    expect(html).toContain("简体中文");
+    expect(html).toContain("English");
+    expect(html).toContain("aria-current=\"page\"");
+    for (const methodId of ENGINEERING_UI_APPLICATION.mvp.methods.map((method) => method.methodId)) {
+      expect(html).toContain(methodId);
+    }
+  });
+
+  it("can render the complete English interface without changing engineering data", () => {
+    const html = renderToStaticMarkup(
+      createElement(EngineeringApp, {
+        application: ENGINEERING_UI_APPLICATION,
+        initialLanguage: "en",
+      }),
     );
 
     expect(html).toContain("Engineering Calculator");
@@ -28,16 +63,28 @@ describe("Phase 5 engineering UI", () => {
     expect(html).toContain("Case Inspector");
     expect(html).toContain("About / Versions");
     expect(html).toContain("Calculation results");
-    expect(html).toContain("Material Comparison");
-    expect(html).toContain("Engineering Report");
-    expect(html).toContain("Unavailable");
-    expect(html).toContain("Formal method-registry activation remains false");
-    expect(html).toContain("The Phase-6 parametric 3D snapshot adapter and viewer are not activated.");
+    expect(html).toContain("Formal method-registry activation remains");
     expect(html).toContain("aria-label=\"Engineering workspace\"");
-    expect(html).toContain("aria-current=\"page\"");
-    for (const methodId of ["B-02", "D-01", "D-03", "D-07", "H-01", "H-03"]) {
-      expect(html).toContain(methodId);
-    }
+    expect(html).toContain("aria-label=\"Interface language\"");
+    expect(html).toContain("aria-pressed=\"true\" type=\"button\">English");
+  });
+
+  it("defaults invalid or absent UI-only language preferences to Simplified Chinese", () => {
+    expect(DEFAULT_UI_LANGUAGE).toBe("zh-CN");
+    expect(UI_LANGUAGE_STORAGE_KEY).toBe("ih-engineering-calculator.ui-language");
+    expect(parseStoredUiLanguage(null)).toBe("zh-CN");
+    expect(parseStoredUiLanguage("unexpected")).toBe("zh-CN");
+    expect(parseStoredUiLanguage("en")).toBe("en");
+  });
+
+  it("keeps the language preference isolated from the canonical Case boundary", () => {
+    const i18nSource = readFileSync(join(UI_ROOT, "i18n.tsx"), "utf8");
+    const formSource = readFileSync(join(UI_ROOT, "mvp-form.ts"), "utf8");
+
+    expect(i18nSource).toContain("window.localStorage.setItem(UI_LANGUAGE_STORAGE_KEY, language)");
+    expect(i18nSource).not.toMatch(/canonicalJson|selectedMethodIds|methodInputs|caseSnapshotId/);
+    expect(formSource).not.toContain(UI_LANGUAGE_STORAGE_KEY);
+    expect(formSource).not.toMatch(/uiLanguage|languagePreference/);
   });
 
   it("exposes the complete public read models without marking methods executable", () => {
@@ -49,7 +96,16 @@ describe("Phase 5 engineering UI", () => {
     expect(
       ENGINEERING_UI_APPLICATION.reference.capabilities.find((item) => item.id === "case-inspector")?.available,
     ).toBe(true);
-    expect(ENGINEERING_UI_APPLICATION.mvp.methods).toHaveLength(6);
+    expect(ENGINEERING_UI_APPLICATION.mvp.methods.map((method) => method.methodId)).toEqual([
+      "B-02",
+      "B-03",
+      "D-01",
+      "D-03",
+      "D-07",
+      "F-01",
+      "H-01",
+      "H-03",
+    ]);
     expect(ENGINEERING_UI_APPLICATION.mvp.methods.every((method) => !method.formalRuntimeActivationClaim)).toBe(true);
   });
 
@@ -109,8 +165,12 @@ describe("Phase 5 engineering UI", () => {
     expect(combinedSource).not.toMatch(/https?:\/\//);
     expect(combinedSource).not.toMatch(/<svg|<img/i);
     expect(`${stylesSource}\n${htmlSource}`).not.toMatch(/url\s*\(/i);
+    expect(htmlSource).toContain('<html lang="zh-Hans">');
+    expect(stylesSource).toContain("body { font-size: 15px; }");
+    expect(stylesSource).toContain("font-size: 14px;");
     expect(stylesSource).toContain("@media (max-width: 1450px)");
     expect(stylesSource).toContain("@media (min-width: 2200px)");
     expect(stylesSource).toContain("@media print");
+    expect(stylesSource).not.toMatch(/font-size:\s*(?:8|9|10)px/);
   });
 });

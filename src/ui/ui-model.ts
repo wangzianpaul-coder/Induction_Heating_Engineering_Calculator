@@ -63,7 +63,15 @@ export interface UiCaseInspection {
   readonly fields: readonly UiCaseField[];
 }
 
-export type UiMvpRunnableMethodId = "B-02" | "D-01" | "D-03" | "D-07" | "H-01" | "H-03";
+export type UiMvpRunnableMethodId =
+  | "B-02"
+  | "B-03"
+  | "D-01"
+  | "D-03"
+  | "D-07"
+  | "F-01"
+  | "H-01"
+  | "H-03";
 
 export type UiMvpInputFieldKind =
   | "number"

@@ -148,4 +148,41 @@ describe("Runnable MVP UI form boundary", () => {
       workspace: { caseId: "case-ui-roundtrip", selectedMethodIds: ["B-02"] },
     });
   });
+
+  it("builds a B-03 air-core form and returns the real inductance result", () => {
+    const empty = createEmptyMvpFormState(METHODS);
+    const built = buildUiMvpWorkspaceInput(
+      "case-ui-b03",
+      "Ideal air-core solenoid",
+      ["B-03"],
+      {
+        ...empty,
+        "B-03": {
+          ...empty["B-03"],
+          currentPathDiameterM: "0.1",
+          windingEnvelopeLengthM: "0.5",
+          electricalTurnCount: "100",
+          mediumKind: "air",
+          relativePermeability: "",
+        },
+      },
+      METHODS,
+    );
+
+    expect(built.status).toBe("success");
+    if (built.status !== "success") return;
+
+    const calculated = ENGINEERING_UI_APPLICATION.mvp.calculate(
+      built.workspace,
+      "2026-08-17T00:00:00.000Z",
+    );
+    expect(calculated.status).toBe("success");
+    if (calculated.status !== "success") return;
+    expect(calculated.results[0]).toMatchObject({
+      methodId: "B-03",
+      status: "success_with_warnings",
+      outputs: [expect.objectContaining({ outputId: "L_inf", canonicalUnitId: "H" })],
+      formalRuntimeActivationClaim: false,
+    });
+  });
 });

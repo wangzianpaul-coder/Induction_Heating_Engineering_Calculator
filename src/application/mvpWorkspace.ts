@@ -18,6 +18,16 @@ import {
   type MvpThermalCalculationResult,
 } from "./mvpThermalCalculations.js";
 import {
+  calculateMvpB03,
+  type MvpB03CalculationInput,
+  type MvpInductanceCalculationResult,
+} from "./mvpInductanceCalculations.js";
+import {
+  calculateMvpF01,
+  type MvpEquivalentCalculationResult,
+  type MvpF01CalculationInput,
+} from "./mvpEquivalentCalculations.js";
+import {
   MVP_RUNNABLE_METHOD_IDS,
   createMvpCaseDraft,
   loadMvpCaseDraft,
@@ -187,6 +197,21 @@ const sourceMethodOptions = Object.freeze([
   option("fem", "FEM result"),
 ] as const);
 
+const f01ParameterSourceOptions = Object.freeze([
+  option("measurement", "Measurement"),
+  option("limited_analytical", "Limited analytical result"),
+  option("fem", "FEM result"),
+  option("user_input_with_source", "User input with source"),
+] as const);
+
+const loadedStateOptions = Object.freeze([
+  option("empty", "Empty coil"),
+  option("workpiece_cold", "Workpiece cold"),
+  option("workpiece_hot", "Workpiece hot"),
+  option("measured_state", "Measured state"),
+  option("user_defined_state", "User-defined state"),
+] as const);
+
 const dispositionOptions = Object.freeze([
   option("known_applicable", "Included, known applicable"),
   option("source_confirmed_not_applicable", "Source-confirmed not applicable"),
@@ -235,6 +260,17 @@ const B02_FIELDS = Object.freeze([
   ]),
   field("identicalTurnSections", "Identical turn sections confirmed", "All turns have identical projected sections.", "boolean"),
   field("nonOverlappingAxialProjection", "No axial overlap confirmed", "Projected turn sections do not overlap.", "boolean"),
+]);
+
+const B03_FIELDS = Object.freeze([
+  field("currentPathDiameterM", "Current-path diameter", "Explicit coil current-path diameter; no outside/inside-diameter guess is made.", "number", "m"),
+  field("windingEnvelopeLengthM", "Winding envelope length", "ADR-0003 full axial winding envelope used as the ideal current-sheet length.", "number", "m"),
+  field("electricalTurnCount", "Electrical turn count", "Electrical turns in the ideal long-solenoid analytical limit.", "number", "1"),
+  field("mediumKind", "Magnetic medium", "Air or a uniform linear medium only.", "select", null, [
+    option("air", "Air core"),
+    option("uniform_linear", "Uniform linear medium"),
+  ]),
+  field("relativePermeability", "Relative permeability", "Required only for a uniform linear medium; air is fixed to 1 by the method.", "number", "1", [], false),
 ]);
 
 const D01_FIELDS = Object.freeze([
@@ -312,6 +348,53 @@ const D07_FIELDS = Object.freeze([
   field("confirmLinearSinusoidal", "Linear sinusoidal steady state confirmed", "Required D-07 model regime.", "boolean"),
 ]);
 
+const F01_FIELDS = Object.freeze([
+  field("primaryResistanceOhm", "Primary resistance R1", "Primary series resistance at the declared state and reference plane.", "number", "Ω"),
+  field("primaryInductanceH", "Primary inductance Lp", "Primary self-inductance at the same state.", "number", "H"),
+  field("secondaryResistanceOhm", "Secondary resistance R2", "Secondary equivalent resistance at the declared state.", "number", "Ω"),
+  field("secondaryInductanceH", "Secondary inductance Ls", "Secondary self-inductance at the same state.", "number", "H"),
+  field("mutualInductanceH", "Mutual inductance M", "Signed mutual inductance with explicit provenance; never guessed from geometry.", "number", "H"),
+  field("frequencyHz", "Frequency", "One shared sinusoidal operating frequency.", "number", "Hz"),
+  field("primaryPortId", "Primary port ID", "Stable primary equivalent-port identity.", "text", null, [], true, "coil.primary.port"),
+  field("secondaryPortId", "Secondary port ID", "Stable and distinct secondary equivalent-port identity.", "text", null, [], true, "workpiece.secondary.port"),
+  field("primaryReferencePlaneId", "Primary reference plane", "Primary R/L reference plane.", "text", null, [], true, "coil.terminals"),
+  field("secondaryReferencePlaneId", "Secondary reference plane", "Secondary R/L reference plane.", "text", null, [], true, "workpiece.equivalent-plane"),
+  field("quantityBasis", "Quantity basis", "RMS or fundamental-RMS phasor basis shared by every parameter.", "select", null, [
+    option("rms", "RMS"),
+    option("fundamental_rms", "Fundamental RMS"),
+  ]),
+  field("loadedState", "Loaded state", "One loading state shared by R1/Lp, R2/Ls and M.", "select", null, loadedStateOptions),
+  field("primaryMaterialStateId", "Primary material-state ID", "Stable primary material-state identity.", "text", null, [], true, "coil.material-state.1"),
+  field("secondaryMaterialStateId", "Secondary material-state ID", "Stable secondary material-state identity.", "text", null, [], true, "workpiece.material-state.1"),
+  field("primaryTemperatureK", "Primary temperature", "Absolute primary material temperature.", "number", "K"),
+  field("secondaryTemperatureK", "Secondary temperature", "Absolute secondary material temperature.", "number", "K"),
+  field("primaryMaterialSnapshotId", "Primary material snapshot ID", "Content-addressed primary material snapshot.", "text", null, [], true, "material:<64 lowercase SHA-256 hex>"),
+  field("secondaryMaterialSnapshotId", "Secondary material snapshot ID", "Content-addressed secondary material snapshot.", "text", null, [], true, "material:<64 lowercase SHA-256 hex>"),
+  field("coupledCircuitStateId", "Coupled-circuit state ID", "Stable identity for this complete coupled operating state.", "text", null, [], true, "coupled-circuit.state-1"),
+  field("primaryParameterSourceKind", "Primary parameter source", "Controlled provenance class for R1 and Lp.", "select", null, f01ParameterSourceOptions),
+  field("secondaryParameterSourceKind", "Secondary parameter source", "Controlled provenance class for R2 and Ls.", "select", null, f01ParameterSourceOptions),
+  field("mutualParameterSourceKind", "Mutual-inductance source", "Controlled provenance class for M.", "select", null, f01ParameterSourceOptions),
+  field("primarySourceRef", "Primary source reference", "Source reference for R1 and Lp.", "text", null, [], true, "project.primary-equivalent.state-1"),
+  field("secondarySourceRef", "Secondary source reference", "Source reference for R2 and Ls.", "text", null, [], true, "project.secondary-equivalent.state-1"),
+  field("mutualSourceRef", "Mutual-inductance source reference", "Source reference for M.", "text", null, [], true, "project.mutual.state-1"),
+  field("primaryStateMatch", "Primary state match", "Whether primary parameters are confirmed for this exact declared state.", "select", null, [
+    option("confirmed_for_declared_state", "Confirmed for declared state"),
+    option("unconfirmed_or_mismatched", "Unconfirmed or mismatched"),
+  ]),
+  field("secondaryStateMatch", "Secondary state match", "Whether secondary parameters are confirmed for this exact declared state.", "select", null, [
+    option("confirmed_for_declared_state", "Confirmed for declared state"),
+    option("unconfirmed_or_mismatched", "Unconfirmed or mismatched"),
+  ]),
+  field("mutualStateMatch", "Mutual state match", "Whether M is confirmed for the same declared state.", "select", null, [
+    option("confirmed_for_declared_state", "Confirmed for declared state"),
+    option("unconfirmed_or_mismatched", "Unconfirmed or mismatched"),
+  ]),
+  field("modelRegime", "Model regime", "F-01 requires a linear lumped two-winding sinusoidal steady-state model.", "select", null, [
+    option("linear_lumped_sinusoidal_steady_state", "Linear lumped sinusoidal steady state"),
+    option("nonlinear_distributed_or_non_sinusoidal_or_unknown", "Nonlinear, distributed, non-sinusoidal, or unknown"),
+  ]),
+]);
+
 const H03_FIELDS = Object.freeze([
   field("volumeFlowM3PerS", "Branch volume flow", "Explicit flow for one declared branch.", "number", "m³/s"),
   field("flowAreaM2", "Hydraulic flow area", "D-02 hydraulic area from the same geometry.", "number", "m²"),
@@ -377,9 +460,11 @@ const H01_FIELDS = Object.freeze([
 
 export const MVP_RUNNABLE_METHOD_DEFINITIONS = Object.freeze([
   definition("B-02", B02_FIELDS, ["Uniform identical single-layer turns only.", "ADR-0003 full-envelope semantics and non-overlap must be explicit."]),
+  definition("B-03", B03_FIELDS, ["Analytical long-solenoid limit only; no frozen aspect-ratio threshold is applied.", "The result is never a finite-coil Recommended method and does not include end, leakage, lead, or conductor cross-section effects."]),
   definition("D-01", D01_FIELDS, ["Uniform cylindrical mechanical/CAD centre path only.", "Unknown lead or bus groups produce a lower-bound result and warning."]),
   definition("D-03", D03_FIELDS, ["No default resistivity or material state is supplied.", "This MVP form supports either no series extras or an explicitly incomplete terminal boundary."]),
   definition("D-07", D07_FIELDS, ["Requires externally established R and L at one coil series port.", "Component voltages are not grid-side or whole-tank voltage."]),
+  definition("F-01", F01_FIELDS, ["Estimated linear lumped two-winding reflected-impedance model only; F-02 same-state measurement is preferred for actual equipment.", "Mutual inductance must be supplied with same-state provenance and is never inferred from geometry."]),
   definition("H-01", H01_FIELDS, ["One complete, non-overlapping coil coolant circuit only.", "Design-margin arithmetic is not available in this MVP."]),
   definition("H-03", H03_FIELDS, ["One explicit branch flow and verified D-02 geometry only.", "No OEM/project velocity acceptance or safety conclusion is produced."]),
 ] as const);
@@ -626,6 +711,64 @@ function normalizeEm(result: MvpEmCalculationResult): MvpWorkspaceMethodResult {
   };
 }
 
+function normalizeInductance(
+  result: MvpInductanceCalculationResult,
+): MvpWorkspaceMethodResult {
+  return {
+    methodId: "B-03",
+    methodVersion: result.methodVersion,
+    approvalStatus: result.approvalStatus,
+    formalRuntimeActivationClaim: false,
+    status: result.status === "disabled" ? "insufficient_data" : result.status,
+    outputs: result.outputs.map((item) => ({
+      outputId: item.outputId,
+      label: item.label,
+      status: item.status,
+      value: item.value,
+      canonicalUnitId: item.unit,
+      reason: null,
+    })),
+    warnings: result.warnings,
+    assumptions: result.assumptions,
+    sources: result.sources,
+    applicability: {
+      status: result.applicability.status,
+      scope: result.applicability.domain,
+      limitations: result.limitations,
+    },
+    failure: result.failure,
+  };
+}
+
+function normalizeEquivalent(
+  result: MvpEquivalentCalculationResult,
+): MvpWorkspaceMethodResult {
+  return {
+    methodId: result.methodId,
+    methodVersion: result.methodVersion,
+    approvalStatus: result.approvalStatus,
+    formalRuntimeActivationClaim: false,
+    status: result.status,
+    outputs: result.outputs.map((item) => ({
+      outputId: item.outputId,
+      label: item.label,
+      status: "available" as const,
+      value: item.value,
+      canonicalUnitId: item.unit,
+      reason: null,
+    })),
+    warnings: result.warnings,
+    assumptions: result.assumptions,
+    sources: result.sources,
+    applicability: {
+      status: result.applicability.status,
+      scope: result.applicability.domain,
+      limitations: result.limitations,
+    },
+    failure: result.failure,
+  };
+}
+
 function normalizeThermal(result: MvpThermalCalculationResult, id: "H-01" | "H-03"): MvpWorkspaceMethodResult {
   return {
     methodId: id,
@@ -703,6 +846,18 @@ function calculateOne(
   switch (item.methodId) {
     case "B-02":
       return normalizeEm(calculateMvpB02(payload as unknown as MvpB02CalculationInput));
+    case "B-03":
+      return normalizeInductance(calculateMvpB03({
+        methodId: "B-03",
+        purpose: "analytical_limit_check",
+        currentPathDiameterM: numeric(payload, "currentPathDiameterM"),
+        windingEnvelopeLengthM: numeric(payload, "windingEnvelopeLengthM"),
+        electricalTurnCount: numeric(payload, "electricalTurnCount"),
+        mediumKind: text(payload, "mediumKind"),
+        relativePermeability: text(payload, "mediumKind") === "air"
+          ? null
+          : numeric(payload, "relativePermeability"),
+      } as MvpB03CalculationInput));
     case "D-01":
       return normalizeEm(calculateMvpD01({
         ...payload,
@@ -746,6 +901,39 @@ function calculateOne(
         portInterpretation: bool(payload, "confirmCoilSeriesPort") ? "coil_series_equivalent_port" : "other_or_unknown",
         modelRegime: bool(payload, "confirmLinearSinusoidal") ? "linear_sinusoidal_steady_state" : "nonlinear_or_non_sinusoidal_or_unknown",
       } as unknown as MvpD07CalculationInput));
+    case "F-01":
+      return normalizeEquivalent(calculateMvpF01({
+        primaryResistanceOhm: numeric(payload, "primaryResistanceOhm"),
+        primaryInductanceH: numeric(payload, "primaryInductanceH"),
+        secondaryResistanceOhm: numeric(payload, "secondaryResistanceOhm"),
+        secondaryInductanceH: numeric(payload, "secondaryInductanceH"),
+        mutualInductanceH: numeric(payload, "mutualInductanceH"),
+        frequencyHz: numeric(payload, "frequencyHz"),
+        primaryPortId: text(payload, "primaryPortId"),
+        secondaryPortId: text(payload, "secondaryPortId"),
+        primaryReferencePlaneId: text(payload, "primaryReferencePlaneId"),
+        secondaryReferencePlaneId: text(payload, "secondaryReferencePlaneId"),
+        quantityBasis: text(payload, "quantityBasis"),
+        loadedState: text(payload, "loadedState"),
+        primaryMaterialStateId: text(payload, "primaryMaterialStateId"),
+        secondaryMaterialStateId: text(payload, "secondaryMaterialStateId"),
+        primaryTemperatureK: numeric(payload, "primaryTemperatureK"),
+        secondaryTemperatureK: numeric(payload, "secondaryTemperatureK"),
+        caseSnapshotId: context.caseSnapshotId,
+        primaryMaterialSnapshotId: text(payload, "primaryMaterialSnapshotId"),
+        secondaryMaterialSnapshotId: text(payload, "secondaryMaterialSnapshotId"),
+        coupledCircuitStateId: text(payload, "coupledCircuitStateId"),
+        primaryParameterSourceKind: text(payload, "primaryParameterSourceKind"),
+        secondaryParameterSourceKind: text(payload, "secondaryParameterSourceKind"),
+        mutualParameterSourceKind: text(payload, "mutualParameterSourceKind"),
+        primarySourceRef: text(payload, "primarySourceRef"),
+        secondarySourceRef: text(payload, "secondarySourceRef"),
+        mutualSourceRef: text(payload, "mutualSourceRef"),
+        primaryStateMatch: text(payload, "primaryStateMatch"),
+        secondaryStateMatch: text(payload, "secondaryStateMatch"),
+        mutualStateMatch: text(payload, "mutualStateMatch"),
+        modelRegime: text(payload, "modelRegime"),
+      } as MvpF01CalculationInput));
     case "H-03":
       {
         const flowSourceMethod = text(payload, "flowSourceMethod");

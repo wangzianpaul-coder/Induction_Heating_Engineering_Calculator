@@ -130,11 +130,11 @@ tolerances, singular-endpoint transformations, or a pinned authoritative
 elliptic comparison provider for `NUM-SIMP-002`. A caller closure, hidden
 tolerance, or unpinned implementation is not substituted.
 
-CODATA22 is mapped to B-03, B-04, B-07, D-04, E-01, E-03, J-03, and J-04, but
-no local CODATA22 release copy is present in `SOURCE_MANIFEST.csv`. Those routes
-retain the frozen constants and remain non-activatable until the controlled
-version, access date, byte count, and SHA-256 pin are added; constants are not
-replaced or recalibrated to close the source gate.
+CODATA22 is mapped to B-03, B-04, B-07, D-04, E-01, E-03, J-03, and J-04. Its
+official NIST JPCRD 2022 release is locally pinned as of 2026-08-17 with exact
+version, access date, byte count, SHA-256, and a visual check of PDF 45 Table
+XXXIII. This closes only the shared source-copy gate; every method-specific
+adapter, warning, provider, property, and validation gate remains independent.
 
 Phase-2 disposition is closed across all 32 A/B/C/D/E/I/J method IDs: 16 have
 complete isolated implementations, 6 expose only independently safe partial
@@ -208,7 +208,7 @@ fail only dependent calculations.
 Status: **Runnable MVP complete at the Phase-5B controlled-adapter boundary**.
 
 Progress evidence: `PHASE_5_PROGRESS.md` and `RUNNABLE_MVP.md`. The UI now
-provides local Case creation/editing, six reviewed narrow evaluator adapters,
+provides local Case creation/editing, eight reviewed narrow evaluator adapters,
 Calculate, result/warning/source views, and canonical save/reopen. Formal
 MethodRegistry execution remains 0/52; material comparison, 3D, formal trace,
 and engineering-report workflows remain gated.

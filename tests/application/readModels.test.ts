@@ -55,7 +55,7 @@ describe("Phase-5B application read models", () => {
     expect(inner?.consumingMethods.map((method) => method.methodId)).toContain("B-01");
   });
 
-  it("keeps the frozen 52/0 registry boundary while reporting six MVP adapters", () => {
+  it("keeps the frozen 52/0 registry boundary while reporting eight MVP adapters", () => {
     expect(METHOD_READINESS_ROWS).toHaveLength(52);
     expect(METHOD_READINESS_SUMMARY).toEqual({
       specificationCount: 52,
@@ -69,7 +69,7 @@ describe("Phase-5B application read models", () => {
       controlledDerivations: 3,
       methodSpecifications: 52,
       runtimeExecutableMethods: 0,
-      runnableMvpAdapters: 6,
+      runnableMvpAdapters: 8,
       releasedMaterials: 0,
     });
     expect(APPLICATION_READINESS.capabilities.caseCreation.status).toBe("available");
