@@ -1,11 +1,17 @@
 import {
   APPLICATION_READINESS,
   BASIC_CALCULATOR_SCHEMA_VERSION,
+  LEGACY_BASIC_CALCULATOR_SCHEMA_VERSION,
+  LEGACY_BASIC_DEFAULT_INPUT,
+  LEGACY_NAGAOKA_TABLE,
   METHOD_READINESS_ROWS,
   MVP_RUNNABLE_METHOD_DEFINITIONS,
   PARAMETER_DEFINITION_ROWS,
   calculateMvpWorkspace,
   calculateBasicCalculator,
+  calculateLegacyBasicCalculator,
+  legacyNagaokaMicroH,
+  legacyTableLookupKn,
   buildVisualizationSceneFromMechanicalInput,
   inspectCurrentCaseFile,
   loadCaseVisualizationScene,
@@ -171,6 +177,14 @@ export const ENGINEERING_UI_APPLICATION: EngineeringUiApplication = {
   basic: {
     schemaVersion: BASIC_CALCULATOR_SCHEMA_VERSION,
     calculate: calculateBasicCalculator,
+  },
+  basicMatching: {
+    schemaVersion: LEGACY_BASIC_CALCULATOR_SCHEMA_VERSION,
+    defaultInput: LEGACY_BASIC_DEFAULT_INPUT,
+    nagaokaTable: LEGACY_NAGAOKA_TABLE,
+    calculate: calculateLegacyBasicCalculator,
+    lookupKn: legacyTableLookupKn,
+    nagaokaMicroH: legacyNagaokaMicroH,
   },
   visualization: {
     buildFromMechanicalInput: buildVisualizationSceneFromMechanicalInput,

@@ -108,6 +108,38 @@ export {
   calculateBasicCalculator,
 } from "./basicCalculator.js";
 
+export {
+  LEGACY_BASIC_CALCULATOR_SCHEMA_VERSION,
+  LEGACY_BASIC_DEFAULT_INPUT,
+  LEGACY_BASIC_MU0,
+  LEGACY_NAGAOKA_TABLE,
+  calculateLegacyBasicCalculator,
+  legacyEllipticBySimpson,
+  legacyEvenSegmentCount,
+  legacyIdealInductanceMicroH,
+  legacyNagaokaCoefficient,
+  legacyNagaokaMicroH,
+  legacySkinDepthMm,
+  legacyTableLookupKn,
+  legacyWheelerMultiMicroH,
+  legacyWheelerSingleMicroH,
+} from "./legacyBasicCalculator.js";
+
+export type {
+  LegacyBasicCalculatorInput,
+  LegacyBasicCalculatorResult,
+  LegacyBasicInvalidResult,
+  LegacyBasicValidResult,
+  LegacyCalculationIssue,
+  LegacyCoilType,
+  LegacyEllipticResult,
+  LegacyNagaokaInductanceResult,
+  LegacyNagaokaLookupResult,
+  LegacyNagaokaResult,
+  LegacyNagaokaSource,
+  LegacySimpsonRow,
+} from "./legacyBasicCalculator.js";
+
 export type {
   BasicCalculatorError,
   BasicCalculatorInput,

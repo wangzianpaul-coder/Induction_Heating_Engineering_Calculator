@@ -290,6 +290,141 @@ export interface UiBasicCalculatorApplication {
   readonly calculate: (input: UiBasicCalculatorInput) => UiBasicCalculatorResult;
 }
 
+export interface UiLegacyBasicCalculatorInput {
+  readonly coilType: "single" | "multi";
+  readonly nagaokaSource: "integral" | "table" | "manual";
+  readonly coilLengthMm: number;
+  readonly coilInnerDiameterMm: number;
+  readonly turns: number;
+  readonly radialWidthMm: number;
+  readonly conductorHeightMm: number;
+  readonly simpsonN: number;
+  readonly manualKn: number;
+  readonly lineVoltageV: number;
+  readonly ratedPowerKw: number;
+  readonly frequencyKHz: number;
+  readonly rectifierFactor: number;
+  readonly equivalentResistanceOhm: number;
+  readonly targetQ: number;
+  readonly copperResistivityMicroOhmCm: number;
+  readonly workpieceMuR: number;
+  readonly workpieceResistivityMicroOhmCm: number;
+  readonly workpieceLengthMm: number;
+  readonly workpieceDiameterMm: number;
+  readonly coilAcResistanceOhm: number;
+  readonly coolingFactor: number;
+  readonly inletTempC: number;
+  readonly outletTempC: number;
+  readonly waterSpecificHeat: number;
+  readonly waterDensityKgL: number;
+}
+
+export interface UiLegacySimpsonRow {
+  readonly i?: number;
+  readonly theta?: number;
+  readonly weight?: number;
+  readonly fF?: number;
+  readonly fE?: number;
+  readonly gap?: true;
+}
+
+export interface UiLegacyNagaokaLookupResult {
+  readonly kn: number;
+  readonly status: "invalid" | "out-low" | "out-high" | "exact" | "interpolated";
+  readonly interval: string;
+  readonly low?: readonly [number, number];
+  readonly high?: readonly [number, number];
+}
+
+export interface UiLegacyCalculationIssue {
+  readonly type: "warn" | "error";
+  readonly text: string;
+}
+
+export interface UiLegacyBasicInvalidResult {
+  readonly input: UiLegacyBasicCalculatorInput;
+  readonly valid: false;
+  readonly error: string;
+  readonly issues: readonly UiLegacyCalculationIssue[];
+}
+
+export interface UiLegacyBasicValidResult {
+  readonly input: UiLegacyBasicCalculatorInput;
+  readonly valid: true;
+  readonly issues: readonly UiLegacyCalculationIssue[];
+  readonly status: "ok" | "warn";
+  readonly geometry: Readonly<{
+    outerDiameterMm: number;
+    meanDiameterMm: number;
+    radiusMm: number;
+    aspectLD: number;
+    aspectDL: number;
+    fillFactor: number;
+  }>;
+  readonly inductance: Readonly<{
+    ideal: number;
+    nagaokaIntegral: Readonly<{
+      kn: number;
+      k: number;
+      F: number;
+      E: number;
+      n: number;
+      sampleRows: readonly UiLegacySimpsonRow[];
+      ideal: number;
+      inductance: number;
+    }>;
+    table: UiLegacyNagaokaLookupResult;
+    tableInductance: number;
+    selectedKn: number;
+    knSourceLabel: string;
+    knSourceActual: "integral" | "table" | "manual";
+    nagaokaSelectedInductance: number;
+    wheelerSingle: number;
+    wheelerMulti: number;
+    method: string;
+    selected: number;
+    reason: string;
+    routeLabel: string;
+  }>;
+  readonly material: Readonly<{
+    copperSkinDepthMm: number;
+    workpieceSkinDepthMm: number;
+  }>;
+  readonly electrical: Readonly<{
+    currentA: number;
+    equivalentResistanceOhm: number;
+    equivalentInductanceMicroH: number;
+    coilVoltageV: number;
+    activeVoltageV: number;
+    transformerRatio: number;
+  }>;
+  readonly cooling: Readonly<{
+    coilLossKw: number;
+    temperatureRiseC: number;
+    waterFlowLMin: number;
+  }>;
+}
+
+export type UiLegacyBasicCalculatorResult =
+  | UiLegacyBasicInvalidResult
+  | UiLegacyBasicValidResult;
+
+export interface UiLegacyBasicCalculatorApplication {
+  readonly schemaVersion: "0.9.0-compat.1";
+  readonly defaultInput: UiLegacyBasicCalculatorInput;
+  readonly nagaokaTable: readonly (readonly [number, number])[];
+  readonly calculate: (
+    input: UiLegacyBasicCalculatorInput,
+  ) => UiLegacyBasicCalculatorResult;
+  readonly lookupKn: (ratio: number) => UiLegacyNagaokaLookupResult;
+  readonly nagaokaMicroH: (
+    radiusMm: number,
+    lengthMm: number,
+    turns: number,
+    n?: number,
+  ) => UiLegacyBasicValidResult["inductance"]["nagaokaIntegral"];
+}
+
 export interface UiMechanicalVisualizationInput {
   readonly snapshotCreatedAt: string;
   readonly declaredValidDigits: number;
@@ -366,6 +501,7 @@ export interface UiReferenceModel {
 export interface EngineeringUiApplication {
   readonly reference: UiReferenceModel;
   readonly basic: UiBasicCalculatorApplication;
+  readonly basicMatching: UiLegacyBasicCalculatorApplication;
   readonly visualization: UiVisualizationApplication;
   readonly mvp: UiMvpApplication;
   readonly inspectCaseJson: (text: string) => UiCaseImportResult;

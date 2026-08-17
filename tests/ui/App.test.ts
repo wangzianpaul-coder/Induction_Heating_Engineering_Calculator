@@ -44,8 +44,8 @@ describe("Phase 5 engineering UI", () => {
     expect(html).toContain("计算结果");
     expect(html).toContain("基础计算器");
     expect(html).toContain("高级计算");
-    expect(html).toContain("线圈几何与理想电感");
-    expect(html).toContain("线圈串联电气参数");
+    expect(html).toContain("感应线圈匹配与电感综合计算器");
+    expect(html).toContain("自动公式判断");
     expect(html).toContain("0.9 测试版");
     expect(html).toContain("这是什么：");
     expect(html).toContain("怎么填写：");
@@ -77,7 +77,7 @@ describe("Phase 5 engineering UI", () => {
     expect(html).toContain("Calculation Guide");
     expect(html).toContain("Case Files");
     expect(html).toContain("About / Versions");
-    expect(html).toContain("Calculation Results");
+    expect(html).toContain("感应线圈匹配与电感综合计算器");
     expect(html).not.toContain("Formal method-registry activation remains");
     expect(html).toContain("aria-label=\"Engineering workspace\"");
     expect(html).toContain("aria-label=\"Interface language\"");
