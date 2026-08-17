@@ -184,9 +184,11 @@ describe("Runnable MVP authoritative CaseSnapshot service", () => {
     expect(Object.isFrozen(draft.methodInputs[0]?.payload)).toBe(true);
     expect(MVP_RUNNABLE_METHOD_IDS).toEqual([
       "B-02",
+      "B-03",
       "D-01",
       "D-03",
       "D-07",
+      "F-01",
       "H-01",
       "H-03",
     ]);

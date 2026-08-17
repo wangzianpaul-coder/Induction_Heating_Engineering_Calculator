@@ -434,7 +434,6 @@ describe("E-03 penetration parameter and reference frequency", () => {
       openGates: [
         { gateId: "E-03.stable-warning-ids" },
         { gateId: "E-03.parameter-id-mapping-closure" },
-        { gateId: "E-03.codata22-local-pin" },
         { gateId: "E-03.frequency-state-orchestration" },
       ],
       penetrationParameterRoute: {

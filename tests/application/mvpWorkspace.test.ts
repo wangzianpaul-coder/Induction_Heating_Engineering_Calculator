@@ -195,13 +195,90 @@ function input(): MvpWorkspaceInput {
 }
 
 describe("Runnable MVP workspace", () => {
-  it("publishes only the six controlled adapter definitions", () => {
+  it("publishes only the eight controlled adapter definitions", () => {
     expect(MVP_RUNNABLE_METHOD_DEFINITIONS.map((item) => item.methodId)).toEqual([
-      "B-02", "D-01", "D-03", "D-07", "H-01", "H-03",
+      "B-02", "B-03", "D-01", "D-03", "D-07", "F-01", "H-01", "H-03",
     ]);
     expect(MVP_RUNNABLE_METHOD_DEFINITIONS.every((item) =>
       item.formalRuntimeActivationClaim === false && item.fields.length > 0
     )).toBe(true);
+  });
+
+  it("calculates the pinned B-03 analytical limit and F-01 equivalent circuit through the workspace", () => {
+    const expanded: MvpWorkspaceInput = {
+      caseId: "mvp-expanded-001",
+      caseName: "Expanded inductance and equivalent circuit",
+      selectedMethodIds: ["B-03", "F-01"],
+      methodInputs: [
+        {
+          methodId: "B-03",
+          payload: {
+            currentPathDiameterM: 0.1,
+            windingEnvelopeLengthM: 0.5,
+            electricalTurnCount: 10,
+            mediumKind: "air",
+          },
+        },
+        {
+          methodId: "F-01",
+          payload: {
+            primaryResistanceOhm: 0.05,
+            primaryInductanceH: 20e-6,
+            secondaryResistanceOhm: 0.01,
+            secondaryInductanceH: 1e-6,
+            mutualInductanceH: 0.5 * Math.sqrt(20e-6 * 1e-6),
+            frequencyHz: 10_000,
+            primaryPortId: "coil.primary.port",
+            secondaryPortId: "workpiece.secondary.equivalent",
+            primaryReferencePlaneId: "coil.primary.terminals",
+            secondaryReferencePlaneId: "workpiece.secondary.model-plane",
+            quantityBasis: "fundamental_rms",
+            loadedState: "workpiece_hot",
+            primaryMaterialStateId: "copper.primary.673K",
+            secondaryMaterialStateId: "steel.secondary.1173K",
+            primaryTemperatureK: 673,
+            secondaryTemperatureK: 1173,
+            primaryMaterialSnapshotId: `material:${"1".repeat(64)}`,
+            secondaryMaterialSnapshotId: `material:${"2".repeat(64)}`,
+            coupledCircuitStateId: "state.loaded.hot.10kHz",
+            primaryParameterSourceKind: "measurement",
+            secondaryParameterSourceKind: "limited_analytical",
+            mutualParameterSourceKind: "fem",
+            primarySourceRef: "PROJECT-MEAS:R1-LP:001",
+            secondarySourceRef: "MODEL:secondary-equivalent:001",
+            mutualSourceRef: "FEM:coupling:M:001",
+            primaryStateMatch: "confirmed_for_declared_state",
+            secondaryStateMatch: "confirmed_for_declared_state",
+            mutualStateMatch: "confirmed_for_declared_state",
+            modelRegime: "linear_lumped_sinusoidal_steady_state",
+          },
+        },
+      ],
+    };
+
+    const calculated = calculateMvpWorkspace(expanded, AT);
+    expect(calculated.status).toBe("success");
+    if (calculated.status !== "success") return;
+    expect(calculated.results.map((result) => [result.methodId, result.status])).toEqual([
+      ["B-03", "success_with_warnings"],
+      ["F-01", "success"],
+    ]);
+    expect(calculated.results.find((result) => result.methodId === "B-03")?.outputs)
+      .toEqual([expect.objectContaining({ outputId: "L_inf", canonicalUnitId: "H" })]);
+    expect(calculated.results.find((result) => result.methodId === "F-01")?.outputs)
+      .toEqual(expect.arrayContaining([
+        expect.objectContaining({ outputId: "Req", canonicalUnitId: "ohm" }),
+        expect.objectContaining({ outputId: "Leq", canonicalUnitId: "H" }),
+      ]));
+
+    const saved = saveMvpWorkspace(expanded, AT);
+    expect(saved.status).toBe("success");
+    if (saved.status === "success") {
+      expect(loadMvpWorkspace(saved.canonicalJson)).toMatchObject({
+        status: "success",
+        workspace: { selectedMethodIds: ["B-03", "F-01"] },
+      });
+    }
   });
 
   it("saves and reopens one authoritative canonical CaseFile", () => {
@@ -229,7 +306,7 @@ describe("Runnable MVP workspace", () => {
     }
   });
 
-  it("calculates all six allowlisted methods through their reviewed evaluators", () => {
+  it("calculates the original six allowlisted methods through their reviewed evaluators", () => {
     const calculated = calculateMvpWorkspace(input(), AT);
     expect(calculated.status).toBe("success");
     if (calculated.status !== "success") return;

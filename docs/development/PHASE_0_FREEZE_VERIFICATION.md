@@ -298,16 +298,15 @@ identify:
   does not substitute the rejected printed comparison equation or a sidewall-
   only total.
 - CODATA22 supports constants used by the isolated B-03, B-04, B-07, D-04,
-  E-01, E-03, J-03, and J-04 routes, but a local release copy with access date
-  and SHA-256 is still an open source gate. `SOURCE_MANIFEST.csv` currently has
-  no CODATA22 entry. The numeric constants remain frozen as specified;
-  dependent runtime release waits for the already-required local pin rather
-  than replacing the source or calibrating the value.
+  E-01, E-03, J-03, and J-04 routes. The source gate was closed on 2026-08-17
+  with the locally pinned official NIST JPCRD PDF, exact byte count and SHA-256
+  in `SOURCE_MANIFEST.csv`, plus visual verification of PDF 45 Table XXXIII.
+  The numeric constants were not replaced or calibrated.
 
 The D-02 and C-01 items are controlled specification conflicts; the B-01,
 E-01, E-03, D-06, and J-06
 items are controlled contract/validation/dictionary mapping conflicts or gaps;
-the B-04 and CODATA22 items are source-review release gates rather than formula
+the remaining B-04 item is a source-review release gate rather than a formula
 rewrites; B-06 retains two controlled source-ref spellings without treating
 them as distinct equations; B-07, J-02 and J-07 retain provider/source/schema
 gates; A-01 retains its material/interpolation-schema and validation-ID gates;

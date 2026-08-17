@@ -1,6 +1,6 @@
 # Induction Heating Engineering Calculator
 
-首个可运行网页计算器版本：`0.2.0-mvp.1`。技术冻结 ID 仍为
+扩展可运行网页计算器版本：`0.3.0-mvp.1`。技术冻结 ID 仍为
 `IH-EC-V1-G0-2026-08-14-01`；Calculation Basis、Calculation Contracts、ADR、
 受控来源和 Gate 0 决策均未被放宽。
 
@@ -14,6 +14,9 @@ pnpm run dev:ui
 ```
 
 浏览器打开 `http://127.0.0.1:5173/`。生产构建与完整 MVP 门禁：
+
+界面默认使用简体中文，右上角可随时切换为 English；语言偏好只保存在本机 UI，
+不会改变或污染 Case JSON。当前版同时放大了正文、说明文字和表单控件字号。
 
 ```powershell
 pnpm run build:ui:standard
@@ -33,13 +36,15 @@ Portable 版本使用本地 classic IIFE、CSS 和 HTML，不需要运行时网�
 | 模块 | 方法 | 当前可用边界 |
 |---|---|---|
 | Coil geometry | `B-02` axial fill factor | 均匀、相同截面、单层且轴向投影不重叠 |
+| Inductance | `B-03` ideal long-solenoid limit | 空心或显式均匀线性介质；只发布长螺线管解析极限，不作为有限线圈 Recommended |
 | Coil geometry | `D-01` conductor path length | 明确的机械/CAD 圆柱螺旋路径；未知 lead/bus 会保留 lower-bound 警告 |
 | Coil electrical | `D-03` DC resistance | 用户显式提供同材料/同温度电阻率及来源；没有默认铜物性 |
 | Coil electrical | `D-07` series-port parameters | 用户已有同端口、同状态的 R、L、I、f；计算 X、Z、Q 和分量电压 |
+| Coupled circuit | `F-01` reflected impedance | 显式同状态 R1/Lp/R2/Ls/M/f 与来源；输出 Zin、Req、Rref、Leq、k，结果为 estimated 且不作 Recommended |
 | Cooling | `H-01` cooling heat load | 单一完整冷却回路、热源枚举和不重叠证据齐全；不计算设计裕量 |
 | Cooling | `H-03` branch flow geometry | 单支路流量与真实 D-02 上游几何证据齐全；不作 OEM/安全合格判定 |
 
-这六条路线通过受控 Phase-5B application adapter 调用已验证 evaluator。正式 MethodRegistry
+这八条路线通过受控 Phase-5B application adapter 调用已验证 evaluator。正式 MethodRegistry
 仍保持 `52 specifications / 0 formally runtime-executable`；MVP 不伪装为最终 registry 激活。
 
 ## 主界面流程
@@ -57,8 +62,9 @@ Portable 版本使用本地 classic IIFE、CSS 和 HTML，不需要运行时网�
 
 ## 明确保留的门禁
 
-- 电感族、完整交流电阻、自然对流/保温设计、完整水物性与网络求解等仍因来源钉扎、
-  child split、property provider、warning ID、参数对齐或验证门未闭而 Disabled。
+- B-04/B-05 有限单层电感、完整交流电阻、H-02 自动冷却流量、自然对流/保温设计和
+  网络求解等仍因来源交叉核验、child split、property provider、warning ID、参数对齐或
+  验证门未闭而 Disabled。H-02 尤其不能把任意 `cp/rho` 冒充已批准水物性。
 - released material catalog 仍为空；软件不提供材料默认值或插值。
 - 正式 CalculationResult/Trace、工程报告、3D/FEM、最终 Phase-7 验收仍是后续工作，
   但不阻止当前 MVP 的本地计算闭环。
@@ -79,4 +85,3 @@ Portable 版本使用本地 classic IIFE、CSS 和 HTML，不需要运行时网�
 4. `APPLICATION_ARCHITECTURE.md` 与 `HANDOFF_TO_CODEX.md`；
 5. `PROJECT_AUDIT.md`；
 6. `working/`、`archive/`、legacy 原型和同步材料仅作只读历史研究。
-

@@ -2,7 +2,7 @@
 
 ## Scope
 
-These commands build the Runnable MVP React application. The UI exposes six
+These commands build the Runnable MVP React application. The UI exposes eight
 reviewed, narrow application adapters while leaving every formal method-registry
 runtime flag unchanged. It provides local Case creation/editing, calculation,
 result inspection, canonical save/reopen, and explicit disabled reasons.
@@ -63,4 +63,3 @@ builds do not overwrite Foundation outputs.
 Passing this automated gate establishes the Runnable MVP artifact boundary. It
 does not claim final clean-PC packaging, full accessibility/performance review,
 formal engineering-report acceptance, or final Phase-7 release sign-off.
-

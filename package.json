@@ -1,6 +1,6 @@
 {
   "name": "induction-heating-engineering-calculator",
-  "version": "0.2.0-mvp.1",
+  "version": "0.3.0-mvp.1",
   "private": true,
   "type": "module",
   "description": "Controlled engineering calculation core for the Induction Heating Engineering Calculator.",

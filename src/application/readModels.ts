@@ -301,7 +301,7 @@ export const APPLICATION_READINESS = cloneAndDeepFreeze({
   ],
   capabilities: {
     parameterDefinitions: { status: "available", reason: "67 frozen canonical parameter records are available read-only." },
-    methodReadiness: { status: "available", reason: "52 frozen method specifications are visible; six reviewed narrow routes are callable through the controlled MVP adapter while formal registry activation remains unchanged." },
+    methodReadiness: { status: "available", reason: "52 frozen method specifications are visible; eight reviewed narrow routes are callable through the controlled MVP adapter while formal registry activation remains unchanged." },
     releasedMaterials: { status: "insufficient_data", reason: "The released material catalog is empty." },
     currentCaseInspection: { status: "available", reason: "Current-version case JSON can be validated, inspected, and canonically re-exported." },
     caseCreation: { status: "available", reason: "The Runnable MVP creates a current-version canonical CaseFile with an exact controlled provenance marker." },

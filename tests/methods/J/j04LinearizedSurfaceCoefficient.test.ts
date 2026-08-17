@@ -188,7 +188,6 @@ describe("J-04 linearized surface coefficient", () => {
         openGates: [
           "formal_J02_J03_snapshot_result_trace_adapter",
           "controlled_warning_publication_policy",
-          "CODATA22_local_read_only_copy_access_date_and_sha256",
         ],
       },
     });

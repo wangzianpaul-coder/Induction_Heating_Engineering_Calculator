@@ -1,7 +1,7 @@
 export const TECHNICAL_FREEZE_ID = "IH-EC-V1-G0-2026-08-14-01" as const;
 
 export const VERSION_INFO = Object.freeze({
-  application: "0.2.0-mvp.1",
+  application: "0.3.0-mvp.1",
   calculationModel: "1.0.0-gate0",
   materialDatabase: "0.0.0-unreleased",
   caseSchema: "1.0.0-alpha.1",

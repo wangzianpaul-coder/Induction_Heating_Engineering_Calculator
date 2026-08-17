@@ -296,31 +296,31 @@ engineering tolerance or applicability threshold.
 | `ID-NUM-01` | numerical source primitives | Simpson and bracketed bisection | n/a | B-08 controlled dispatch/adapter/NUM-SIMP-002; caller-specific root scanning/classification |
 | `B-01` | `approved` | yes | no | GEO-001 input/contract reconciliation, measured-identity uncertainty rule, stable warning IDs, formal adapter |
 | `B-02` | `approved` | yes | no | formal snapshot/result/trace/warning adapter |
-| `B-03` | `approved_with_limitation` | yes | no | CODATA22 local pin and formal snapshot/result/trace/warning adapter |
-| `B-04` | `approved_with_limitation` | yes | no | CODATA22 local pin, EM-L-003 source/table release cross-check, stable warning policy, formal adapter |
+| `B-03` | `approved_with_limitation` | yes | no | formal snapshot/result/trace/warning adapter; CODATA22 local pin closed 2026-08-17 |
+| `B-04` | `approved_with_limitation` | yes | no | EM-L-003 source/table release cross-check, stable warning policy, formal adapter |
 | `B-05` | `approved_with_limitation` | yes | no | stable warning/trigger policy and formal adapter |
 | `B-06` | `approved_with_limitation` | yes | no | independent multilayer snapshot adapter, stable warning policy, recommendation router |
-| `B-07` | `approved_with_limitation` | partial `N=1` self route | no | CODATA22 local pin, pinned approved elliptic provider, CGS/SI release normalization, child split, EM-L-004, parameter mapping |
+| `B-07` | `approved_with_limitation` | partial `N=1` self route | no | pinned approved elliptic provider, CGS/SI release normalization, child split, EM-L-004, parameter mapping |
 | `B-08` | `approved` | no product route; numerical primitive only | no | controlled integrand/dimension/tolerance dispatch, singular transformations, NUM-SIMP-002 provider and formal adapter |
 | `C-01` | `approved` | no | no | controlled choice of Recommended vs external-reference denominator, or separately named metric families |
 | `D-01` | `approved` | yes | no | formal adapter and controlled warning publication |
 | `D-02` | `approved` | partial, round only | no | controlled shape-enum conflict must be resolved |
 | `D-03` | `approved` | yes | no | formal adapter and controlled warning publication |
-| `D-04` | `approved_with_limitation` | yes | no | CODATA22 local pin and formal snapshot/result/trace/warning adapter |
+| `D-04` | `approved_with_limitation` | yes | no | formal snapshot/result/trace/warning adapter |
 | `D-05` | `approved_with_limitation` | partial screening/measurement routes under parent | no | approved child IDs, validation-ID and parameter alignment, EXP-RAC execution, stable warnings, formal adapter |
 | `D-06` | `approved` | yes | no | parameter-dictionary conflict, D-05 evidence route, formal adapter |
 | `D-07` | `approved` | yes | no | formal adapter and controlled warning publication |
-| `E-01` | `approved_with_limitation` | yes | no | CODATA22 local pin, validation-ID naming conflict, material-data route, formal adapter |
+| `E-01` | `approved_with_limitation` | yes | no | validation-ID naming conflict, material-data route, formal adapter |
 | `E-02` | `approved_with_limitation` | no | no | A-01 schema, approved same-state material curves/Curie segments, grid/scenario semantics, parameter mapping |
-| `E-03` | `approved_with_limitation` | yes | no | parameter-ID mapping closure, CODATA22 local pin, frequency-state orchestration, formal adapter |
+| `E-03` | `approved_with_limitation` | yes | no | parameter-ID mapping closure, frequency-state orchestration, formal adapter |
 | `I-01` | `approved_with_limitation` | no | no | finite-domain/global-root/rounding rules, candidate snapshots, J-01/J-02/J-03 adapters, validation cases |
 | `I-02` | `approved_with_limitation` | no | no | heat-limit/area/domain schema, all-root/tangency algorithm, solver settings, candidate dependency snapshots, total CV, rounding and validation |
 | `I-03` | `approved_with_limitation` | no | no | executable I-01/I-02 adapters, feasible-set/F_M schema, upward-closed proof, rounding and dependency-status policy |
 | `I-04` | `approved_with_limitation` | partial fixed-`h`/fixed-`k` routes | no | approved child IDs, nonlinear child/property adapter, stable warning policy, parameter-dictionary alignment |
 | `J-01` | `approved` | partial constant/piecewise-constant `k` routes | no | approved child IDs, `k(T)` property/integration adapter, stable warning policy, formal result/trace adapter |
 | `J-02` | `approved_with_limitation` | partial text-frozen correlation routes | no | local primary-source pins, approved child IDs, film-property/geometry parameter mapping, stable warning policy |
-| `J-03` | `approved` | yes | no | formal surface/material adapter, stable warning policy, CODATA22 local pin |
-| `J-04` | `approved_with_limitation` | yes | no | formal J-02/J-03 adapter, stable warning policy, CODATA22 local pin |
+| `J-03` | `approved` | yes | no | formal surface/material adapter and stable warning policy |
+| `J-04` | `approved_with_limitation` | yes | no | formal J-02/J-03 adapter and stable warning policy |
 | `J-05` | `approved_with_limitation` | no | no | local primary-source pins, dispatcher/domain closure, gap/eccentricity policy, gas-property/area/J-03 adapters, child IDs |
 | `J-06` | `approved` | yes | no | parameter-dictionary alignment, primary-unavailable presentation adapter, stable warning policy |
 | `J-07` | `approved_with_limitation` | no | no | Lc/capacity/h/time-state/dependency/update/integration schemas and primary textbook source |
@@ -504,9 +504,9 @@ source copies, and evidence files were not edited.
 - completion of the B-04 `EM-L-003` L85 Table-1/equation release cross-check and
   a controlled warning policy without invented few-turn/pitch/thickness
   thresholds;
-- a local controlled CODATA22 release copy with exact version, access date,
-  bytes, and SHA-256 before B-03, B-04, B-07, D-04, E-01, E-03, J-03, or J-04
-  can be activated;
+- the CODATA22 local-copy gate is closed by the 2026-08-17 controlled NIST
+  JPCRD copy, byte count, SHA-256, and visual check recorded in the source
+  register and manifest; all other method-specific gates remain independent;
 - controlled B-05 warning triggers without invented few-turn, pitch, or
   conductor-thickness thresholds;
 - an independent B-06 multilayer snapshot adapter, stable warning policy, and
@@ -523,13 +523,12 @@ source copies, and evidence files were not edited.
   `mu_r(T,H,f,state)` curves, Curie/phase segments, temperature-grid generation
   and scenario-band provenance before E-02 can be implemented;
 - controlled reconciliation of E-03 contract-local parameter names with the
-  canonical parameter registry, explicit criterion orchestration, same-state
-  frequency resolution, and a local pinned CODATA22 source copy;
+  canonical parameter registry, explicit criterion orchestration, and same-state
+  frequency resolution;
 - local controlled copies, access dates, byte counts, and SHA-256 records for
   CC75-V, CC75-H, and CB77, plus approved J-02 child IDs and film-property/
   geometry parameter adapters; formal J-02/J-03/J-04 surface-result adapters
-  and a local pinned CODATA22 source copy are also required before dependent
-  combined-surface routes are activated;
+  are also required before dependent combined-surface routes are activated;
 - controlled local RH75/DT69/Kuehn--Goldstein/ONWI sources plus an approved
   J-05 child dispatcher, measured-gap residual/uncertainty and eccentricity
   criteria, closure/end-continuity evidence, gas film-state property mapping,

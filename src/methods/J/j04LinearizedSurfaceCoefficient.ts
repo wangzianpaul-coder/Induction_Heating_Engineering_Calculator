@@ -26,8 +26,8 @@ export const J04_VALIDATION_NOTES = SPECIFICATION.validationNotes;
 
 /**
  * J-04 and J-03 are bound to the same CODATA22 Stefan-Boltzmann value. The
- * CODATA22 local-copy/hash release gate remains open in the controlled source
- * register, so this isolated implementation is not runtime activated.
+ * shared local-copy/hash source gate was closed on 2026-08-17; the independent
+ * formal dependency-adapter and warning-publication gates remain open.
  */
 export const J04_STEFAN_BOLTZMANN_W_PER_M2_K4 =
   J03_STEFAN_BOLTZMANN_W_PER_M2_K4;
@@ -115,7 +115,6 @@ export const J04_LINEARIZED_SURFACE_COEFFICIENT_MAPPING = Object.freeze({
     openGates: Object.freeze([
       "formal_J02_J03_snapshot_result_trace_adapter",
       "controlled_warning_publication_policy",
-      "CODATA22_local_read_only_copy_access_date_and_sha256",
     ] as const),
   }),
 });
